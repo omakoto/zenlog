@@ -3,14 +3,15 @@ package logfiles
 // Create log files and symlinks given a Command.
 
 import (
+	"bufio"
 	"fmt"
+	"github.com/omakoto/zenlog-go/zenlog/config"
+	"github.com/omakoto/zenlog-go/zenlog/util"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
-	"github.com/omakoto/zenlog-go/zenlog/util"
-	"github.com/omakoto/zenlog-go/zenlog/config"
 )
 
 const (
@@ -26,9 +27,13 @@ type LogFiles struct {
 	RawFile string
 	EnvFile string
 
-	San *os.File
-	Raw *os.File
-	Env *os.File
+	SanF *os.File
+	RawF *os.File
+	EnvF *os.File
+
+	San *bufio.Writer
+	Raw *bufio.Writer
+	Env *bufio.Writer
 }
 
 func clamp(v string, maxLen int) string {
@@ -39,11 +44,11 @@ func clamp(v string, maxLen int) string {
 }
 
 // Create and open a log file with the parent directory, if needed.
-func open(name string) *os.File {
+func open(name string) (*os.File, *bufio.Writer) {
 	os.MkdirAll(filepath.Dir(name), 0700)
 	f, err := os.OpenFile(name, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 	util.Check(err, "Cannot create logfile %s", name)
-	return f
+	return f, bufio.NewWriter(f)
 }
 
 // Create "previous" links.
@@ -123,7 +128,7 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 	spid := strconv.Itoa(config.ZenlogPid)
 	items := []struct {
 		fullLogFilename string
-		logType    string
+		logType         string
 	}{
 		{ret.SanFile, SAN},
 		{ret.RawFile, RAW},
@@ -144,12 +149,16 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 }
 
 func (l *LogFiles) Open() {
-	l.San = open(l.SanFile)
-	l.Raw = open(l.RawFile)
-	l.Env = open(l.EnvFile)
+	l.SanF, l.San = open(l.SanFile)
+	l.RawF, l.Raw = open(l.RawFile)
+	l.EnvF, l.Env = open(l.EnvFile)
 }
 
-func closeSingle(f **os.File) {
+func closeSingle(f **os.File, w **bufio.Writer) {
+	if *w != nil {
+		(*w).Flush()
+		*w = nil
+	}
 	if *f != nil {
 		(*f).Close()
 		*f = nil
@@ -157,9 +166,9 @@ func closeSingle(f **os.File) {
 }
 
 func (l *LogFiles) Close() {
-	closeSingle(&l.San)
-	closeSingle(&l.Raw)
-	closeSingle(&l.Env)
+	closeSingle(&l.SanF, &l.San)
+	closeSingle(&l.RawF, &l.Raw)
+	closeSingle(&l.EnvF, &l.Env)
 }
 
 // TODO Move the following functions to somewhere else...

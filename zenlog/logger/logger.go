@@ -165,6 +165,11 @@ func (l *Logger) write(line []byte) {
 
 	l.numLines += util.NumLines(line)
 	l.hasDanglingLastLine = line[len(line)-1] != '\n'
+
+	if l.Config.AutoFlush {
+		l.logFiles.Raw.Flush()
+		l.logFiles.San.Flush()
+	}
 }
 
 func (l *Logger) DoLogger() {

@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"strings"
+	"path/filepath"
 )
 
 var (
@@ -160,4 +161,18 @@ func NumLines(data []byte) int {
 		}
 	}
 	return ret
+}
+
+// Return the fullpath of the zenlog executable.
+func FindSelf() string {
+	me := os.Args[0]
+	Debugf("$0=%s", me)
+
+	path, err := filepath.EvalSymlinks(me)
+	Check(err, "EvalSymlinks failed")
+
+	path, err = filepath.Abs(path)
+	Debugf("$0(resolved)=%s", path)
+
+	return path
 }

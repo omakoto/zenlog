@@ -15,5 +15,5 @@ func main() {
 	builtins.MaybeRunBuiltin(command, args)
 	zenlog.MaybeRunExtetrnalCommand(command, args)
 
-	util.Fatalf("Unknown command: '%s'", command)
+	util.Fatalf("Unknown subcommand: '%s'", command)
 }

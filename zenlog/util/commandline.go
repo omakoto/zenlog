@@ -2,12 +2,11 @@ package util
 
 import (
 	"os"
-	"strings"
 )
 
 func GetSubcommand() (command  string, args []string) {
 	Debugf("os.Args=%+v", os.Args)
-	if len(os.Args) == 1 || strings.HasPrefix(os.Args[1], "-") {
+	if len(os.Args) == 1 {
 		command = ""
 		args = os.Args[1:]
 	} else {

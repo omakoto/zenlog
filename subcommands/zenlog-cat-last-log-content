@@ -5,8 +5,7 @@
 # Supported options: -p PID, -r
 
 set -e
-script_dir="${0%/*}"
 
-"${script_dir}"/zenlog fail-unless-in-zenlog
+zenlog fail-unless-in-zenlog
 
-sed -e 1d -- "$("${script_dir}"/zenlog last-log "${@}")"
+sed -e 1d -- "$(zenlog last-log "${@}")"

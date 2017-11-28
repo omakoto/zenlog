@@ -3,9 +3,8 @@
 # Show the free space of the log disk in bytes.
 
 set -e
-script_dir="${0%/*}"
 
-"${script_dir}"/zenlog ensure-log-dir
+zenlog ensure-log-dir
 
 size_k=$(df --output=avail "$ZENLOG_DIR/" | sed -e 1d)
 

@@ -13,7 +13,9 @@ import (
 )
 
 func InZenlog() bool {
-	return util.Tty() == os.Getenv(envs.ZENLOG_TTY)
+	sig := util.Tty() + ":" + util.Signature()
+	util.Debugf("Signature=%s", sig)
+	return sig == os.Getenv(envs.ZENLOG_SIGNATURE)
 }
 
 func FailIfInZenlog() {

@@ -176,3 +176,12 @@ func FindSelf() string {
 
 	return path
 }
+
+// Return the "signature" of the zenlog executable.
+func Signature() string {
+	self := FindSelf()
+	stat, err := os.Stat(self)
+	Check(err, "Stat failed")
+
+	return fmt.Sprintf("%s:[%d]", self, stat.ModTime().Unix())
+}

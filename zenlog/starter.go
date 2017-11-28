@@ -1,6 +1,7 @@
 package zenlog
 
 import (
+	"fmt"
 	"github.com/kr/pty"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
@@ -30,7 +31,10 @@ func StartZenlog(args []string) int {
 
 	// Create a pty and start the child command.
 	util.Debugf("Executing: %s", config.StartCommand)
-	c := exec.Command("/bin/sh", "-c", envs.ZENLOG_TTY+"=\"$(tty)\" "+config.StartCommand)
+	c := exec.Command("/bin/sh", "-c",
+		envs.ZENLOG_SIGNATURE+
+			fmt.Sprintf("=\"$(tty)\":%s ", util.Shescape(util.Signature()))+
+			config.StartCommand)
 	m, err := pty.Start(c)
 	util.Check(err, "Unable to create pty or execute /bin/sh")
 	defer m.Close()

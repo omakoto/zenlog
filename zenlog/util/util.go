@@ -165,7 +165,8 @@ func NumLines(data []byte) int {
 
 // Return the fullpath of the zenlog executable.
 func FindSelf() string {
-	me := os.Args[0]
+	me, err := os.Executable()
+	Check(err, "Executable failed")
 	Debugf("$0=%s", me)
 
 	path, err := filepath.EvalSymlinks(me)

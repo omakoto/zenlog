@@ -1,4 +1,4 @@
-# -*- mode:shell-script -*-
+#!/bin/bash
 
 # Zenlog compatibility shell functions; provide functions that
 # zenlog(v1) -s provided.

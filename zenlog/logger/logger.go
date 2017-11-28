@@ -88,6 +88,7 @@ func NewLogger(config *config.Config) *Logger {
 }
 
 func (l *Logger) ExportEnviron() {
+	os.Setenv(envs.ZENLOG_DIR, l.Config.LogDir)
 	os.Setenv(envs.ZENLOG_PID, strconv.Itoa(os.Getpid()))
 	os.Setenv(envs.ZENLOG_OUTER_TTY, l.OuterTty)
 	os.Setenv(envs.ZENLOG_LOGGER_IN, l.ForwardPipe.Name())

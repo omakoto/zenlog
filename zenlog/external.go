@@ -9,7 +9,8 @@ import (
 )
 
 func tryRunExtetrnalCommand(path string, command string, args []string) {
-	f := path + "/zenlog-" + command
+	f, err := filepath.Abs(path + "/zenlog-" + command)
+	util.Check(err, "Abs failed")
 
 	util.Debugf("Checking %s", f)
 
@@ -22,7 +23,7 @@ func tryRunExtetrnalCommand(path string, command string, args []string) {
 		util.Debugf("Executing: %s, %v", f, execArgs)
 
 		err := syscall.Exec(f, execArgs, os.Environ())
-		util.Check(err, "Exec failed")
+		util.Check(err, "Exec failed arg0='%s', args=%v", f, execArgs)
 	}
 }
 
@@ -31,7 +32,7 @@ func MaybeRunExtetrnalCommand(command string, args []string) {
 	exePath := util.FindSelf()
 
 	tryRunExtetrnalCommand(filepath.Dir(exePath) + "/../subcommands", command, args)
-	tryRunExtetrnalCommand(filepath.Dir(exePath) + "/../github.com/omakoto/zenlog-go/subcommands", command, args)
+	tryRunExtetrnalCommand(filepath.Dir(exePath) + "/../src/github.com/omakoto/zenlog-go/subcommands", command, args)
 
 	for _, path := range strings.Split(os.Getenv("PATH"), ":") {
 		tryRunExtetrnalCommand(path, command, args)

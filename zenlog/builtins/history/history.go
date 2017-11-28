@@ -63,7 +63,7 @@ func history(pid, nth int, logType LogFileType, writer io.Writer) bool {
 	if nth > 0 {
 		success = writeIfLink(w, dir+strings.Repeat(ch, nth))
 	} else {
-		for i := 1; i <= 10; i++ {
+		for i := 10; i >= 1; i-- {
 			success = writeIfLink(w, dir+strings.Repeat(ch, i)) || success
 		}
 	}

@@ -1,4 +1,4 @@
-package builtins
+package logger
 
 import (
 	"encoding/json"

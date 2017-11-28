@@ -1,4 +1,4 @@
-package builtins
+package logger
 
 import (
 	"github.com/omakoto/zenlog-go/zenlog/config"
@@ -9,6 +9,9 @@ import (
 const (
 	COMMAND_START_COMMAND = "start-command"
 	COMMAND_END_COMMAND   = "end-command"
+
+	// This is a command sent by the signal handler on SIGCHLD.
+	CHILD_DIED_COMMAND   = "child-died"
 
 	READ_TIMEOUT = time.Second * 1
 )

@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"github.com/omakoto/zenlog-go/zenlog/logger"
 )
 
 func InZenlog() bool {
@@ -79,14 +80,14 @@ func MaybeRunBuiltin(command string, args []string) {
 		if len(args) < 1 {
 			util.Fatalf("start-command expects 1 argument.")
 		}
-		StartCommand("", args[:], util.NewClock())
+		logger.StartCommand("", args[:], util.NewClock())
 
 	case "start-command-with-env":
 		FailUnlessInZenlog()
 		if len(args) < 2 {
 			util.Fatalf("start-command expects 2 arguments.")
 		}
-		StartCommand(args[0], args[1:], util.NewClock())
+		logger.StartCommand(args[0], args[1:], util.NewClock())
 
 	case "stop-log", "end-command":
 		FailUnlessInZenlog()
@@ -104,7 +105,7 @@ func MaybeRunBuiltin(command string, args []string) {
 			util.Check(err, "Exit status must be integer; '%s' given.", args[i])
 			i++
 		}
-		EndCommand(exitStatus, wantLineNumber, util.NewClock())
+		logger.EndCommand(exitStatus, wantLineNumber, util.NewClock())
 	case "history":
 		FailUnlessInZenlog()
 		history.HistoryCommand(args)

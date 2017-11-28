@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"github.com/mattn/go-isatty"
-	"github.com/omakoto/zenlog-go/zenlog/builtins"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
@@ -26,7 +25,7 @@ type Logger struct {
 	ForwardPipe *os.File
 	ReversePipe *os.File
 
-	startRequest        *builtins.StartRequest
+	startRequest        *StartRequest
 	logFiles            *logfiles.LogFiles
 	numLines            int
 	hasDanglingLastLine bool
@@ -80,6 +79,11 @@ func NewLogger(config *config.Config) *Logger {
 
 	l.clock = util.NewClock()
 
+	// Update config with the pipe names.
+	config.LoggerIn = l.ForwardPipe.Name()
+	config.LoggerOut = l.ReversePipe.Name()
+	config.OuterTty = util.Tty()
+
 	return &l
 }
 
@@ -112,7 +116,7 @@ func (l *Logger) isOpen() bool {
 }
 
 // Open log files.
-func (l *Logger) openLogs(request *builtins.StartRequest) {
+func (l *Logger) openLogs(request *StartRequest) {
 	// If the previous log is still open, close it.
 	l.closeLogs(nil)
 
@@ -129,7 +133,7 @@ func (l *Logger) openLogs(request *builtins.StartRequest) {
 }
 
 // Close log files.
-func (l *Logger) closeLogs(req *builtins.StopRequest) {
+func (l *Logger) closeLogs(req *StopRequest) {
 	if !l.isOpen() {
 		return
 	}
@@ -179,13 +183,18 @@ func (l *Logger) DoLogger() {
 					continue
 				}
 				switch args[0] {
-				case builtins.COMMAND_START_COMMAND:
+				case CHILD_DIED_COMMAND:
+					util.Debugf("Child died.")
+					l.closeLogs(nil)
+					return
+
+				case COMMAND_START_COMMAND:
 					if len(args) != 2 {
-						util.Say("Invalid number of args (%d) for %s.", len(args), builtins.COMMAND_START_COMMAND)
+						util.Say("Invalid number of args (%d) for %s.", len(args), COMMAND_START_COMMAND)
 						continue
 					}
 					// Parse request.
-					req, err := builtins.DecodeStartRequest(args[1])
+					req, err := DecodeStartRequest(args[1])
 					if util.Warn(err, "Decode error") {
 						continue
 					}
@@ -194,13 +203,13 @@ func (l *Logger) DoLogger() {
 					// Open log.
 					l.openLogs(req)
 					continue
-				case builtins.COMMAND_END_COMMAND:
+				case COMMAND_END_COMMAND:
 					if len(args) != 3 {
-						util.Say("Invalid number of args (%d) for %s.", len(args), builtins.COMMAND_END_COMMAND)
+						util.Say("Invalid number of args (%d) for %s.", len(args), COMMAND_END_COMMAND)
 						continue
 					}
 					// Parse request.
-					req, err := builtins.DecodeStopRequest(args[2])
+					req, err := DecodeStopRequest(args[2])
 					if util.Warn(err, "Decode error") {
 						continue
 					}
@@ -209,11 +218,11 @@ func (l *Logger) DoLogger() {
 					l.closeLogs(req)
 
 					// Send reply.
-					r := builtins.StopReply{l.numLines}
+					r := StopReply{l.numLines}
 
 					fingerprint := args[1]
 					rep := make([]string, 3)
-					rep[0] = builtins.COMMAND_END_COMMAND
+					rep[0] = COMMAND_END_COMMAND
 					rep[1] = fingerprint
 					rep[2] = string(r.MustEncode())
 					l.MustReply(l.Config, rep)
@@ -228,4 +237,10 @@ func (l *Logger) DoLogger() {
 			util.Fatalf("ReadString failed: %s", err)
 		}
 	}
+}
+
+func (l *Logger) OnChildDied() {
+	args := make([]string, 1)
+	args[0] = CHILD_DIED_COMMAND
+	MustSendToLogger(l.Config, args)
 }

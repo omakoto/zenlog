@@ -10,11 +10,10 @@ import (
 	"os"
 	"os/exec"
 	"os/signal"
-	"sync"
 	"syscall"
 )
 
-func StartZenlog(args []string) bool {
+func StartZenlog(args []string) int {
 	config := config.InitConfigiForLogger()
 	util.Dump("config=", config)
 
@@ -34,12 +33,9 @@ func StartZenlog(args []string) bool {
 	c := exec.Command("/bin/sh", "-c", envs.ZENLOG_TTY+"=\"$(tty)\" "+config.StartCommand)
 	m, err := pty.Start(c)
 	util.Check(err, "Unable to create pty or execute /bin/sh")
+	defer m.Close()
 
 	util.PropagateTerminalSize(os.Stdin, m)
-
-	// WG to wait for child exit.
-	var wg sync.WaitGroup
-	wg.Add(1)
 
 	var childStatus int = -1
 
@@ -58,10 +54,7 @@ func StartZenlog(args []string) bool {
 				} else {
 					childStatus = ps.Sys().(syscall.WaitStatus).ExitStatus()
 				}
-				os.Stdin.Close()
-				os.Stdout.Close()
-				m.Close()
-				wg.Done()
+				logger.OnChildDied()
 			default:
 				util.Debugf("Caught unexpected signal: %+v", s)
 			}
@@ -110,12 +103,8 @@ func StartZenlog(args []string) bool {
 		}
 	}()
 	// Logger.
-	go func() {
-		logger.DoLogger()
-	}()
+	logger.DoLogger()
 
-	wg.Wait()
-
-	util.Debugf("Child exited with=%d", childStatus)
-	return true
+	util.Debugf("Zenlog exitting with=%d", childStatus)
+	return childStatus
 }

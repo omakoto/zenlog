@@ -65,7 +65,10 @@ func InitConfigiForLogger() *Config {
 		if _, err := toml.Decode(string(data), &config); err != nil {
 			util.Fatalf("Unable to load %s: %s", file, err)
 		}
+	} else if os.IsNotExist(err) {
+		util.Warn(err, "%s doesn't exist; using the default instead", file)
 	}
+
 	overwriteWithEnviron(&config.StartCommand, "ZENLOG_START_COMMAND", "")
 	overwriteWithEnviron(&config.LogDir, envs.ZENLOG_DIR, "/tmp/zenlog/")
 	overwriteWithEnviron(&config.PrefixCommands, "ZENLOG_PREFIX_COMMANDS", `(?:command|builtin|time|sudo|[a-zA-Z0-9_]+\=.*)`)

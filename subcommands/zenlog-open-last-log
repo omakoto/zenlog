@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Open last log file with ZENLOG_VIEWER.
+#
+# Supported options: -p PID, -r
+
+set -e
+script_dir="${0%/*}"
+
+"${script_dir}"/zenlog fail-unless-in-zenlog
+
+"${script_dir}"/zenlog open-viewer "$("${script_dir}"/zenlog last-log "${@}")"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cat <<'EOF'
+
+Zenlog: Log all command output to separate log files.
+
+See https://github.com/omakoto/zenlog-go for the help.
+
+EOF

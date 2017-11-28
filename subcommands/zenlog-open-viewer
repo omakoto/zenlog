@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Open the given filename in ZENLOG_VIEWER.
+
+set -e
+script_dir="${0%/*}"
+
+file="$1"
+echo "zenlog: Opening '$file' ..."
+"${ZENLOG_VIEWER:-$PAGER}" "$file"

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Print last log file.
+#
+# Supported options: -p PID, -r
+
+set -e
+script_dir="${0%/*}"
+
+"${script_dir}"/zenlog fail-unless-in-zenlog
+
+cat "$("${script_dir}"/zenlog last-log "${@}")"

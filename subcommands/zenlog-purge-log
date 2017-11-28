@@ -1,0 +1,63 @@
+#!/bin/bash
+
+set -e
+script_dir="${0%/*}"
+
+"${script_dir}"/zenlog ensure-log-dir
+
+usage() {
+  cat <<'EOF'
+
+  Zenlog purge-log: Purge old log files.
+
+  Usage:  zenlog purge-log -p DAYS [-P for dry run] [-y to force run] [-b for background]
+
+EOF
+  exit 1
+}
+
+
+purge_days=-1
+purge_yes=0
+purge_delete_command="-delete"
+background=0
+
+while getopts "bp:Py" opt; do
+  case "$opt" in
+    p) purge_days="$OPTARG" ;;
+    P) purge_delete_command="-print" ;;
+    y) purge_yes=1 ;;
+    b) background=1 ;;
+    *) usage;
+  esac
+done
+shift $(($OPTIND - 1))
+
+if (( $purge_days < 0 )); then
+  usage
+fi
+
+if ! (( $purge_yes )) ; then
+  echo -n "Purging logs older than $purge_days days? (y/N) "
+  read res
+  [[ "$res" == "y" || "$res" == "Y" ]] || exit 1
+fi
+
+purge() {
+  # First, remove old log files.
+  find "$ZENLOG_DIR/" -mindepth 1 \( -type f -o -type l \) \
+      -ctime +$(( $purge_days - 1 )) $purge_delete_command || true
+
+  # Remove broken links.
+  find "$ZENLOG_DIR/" -xtype l -delete || true
+
+  # Then, remove all empty directories.
+  find "$ZENLOG_DIR/" -mindepth 1 -type d -print0 | sort -rz | xargs -0 rmdir 2>/dev/null || true
+}
+
+if (( $background )) ; then
+  purge &
+else
+  purge
+fi
+exit 0

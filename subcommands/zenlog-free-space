@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Show the free space of the log disk in bytes.
+
+set -e
+script_dir="${0%/*}"
+
+"${script_dir}"/zenlog ensure-log-dir
+
+size_k=$(df --output=avail "$ZENLOG_DIR/" | sed -e 1d)
+
+if (( $size_k > 0 )) ; then
+  echo $(( $size_k * 1024 ))
+else
+  exit 1
+fi

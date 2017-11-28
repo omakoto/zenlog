@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Open current log file with ZENLOG_VIEWER.
+# Useful used with -p.
+#
+# Supported options: -p PID, -r
+
+set -e
+script_dir="${0%/*}"
+
+"${script_dir}"/zenlog fail-unless-in-zenlog
+
+"${script_dir}"/zenlog open-viewer "$("${script_dir}"/zenlog history -n 0 "${@}")"

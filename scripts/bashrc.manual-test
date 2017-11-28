@@ -1,0 +1,27 @@
+# Print the current command's command line.  Use with "zenlog start-command".
+function bash_last_command() {
+  # Use echo to remove newlines.
+  HISTTIMEFORMAT= history 1 | sed -e 's/^ *[0-9][0-9]* *//'
+}
+
+function bash_dump_env() {
+  {
+    echo "PWD: $(pwd)"
+    echo "git HEAD: $(git rev-parse HEAD) $(git rev-parse --abbrev-ref HEAD)"
+    env # dump environmental variables.
+    # declare -p # this dumps shell variables too, but also functions, and may be too big.
+  } 2>/dev/null
+}
+
+preexec() {
+  zenlog start-command-with-env "$(bash_dump_env)" $(bash_last_command)
+}
+
+prompt_command() {
+  status=$?
+  echo "[rc=$status log=$(zenlog current-log) ($(zenlog stop-log -n $status) lines) ZENLOG_PID=$ZENLOG_PID $(pwd)]"
+}
+
+PS1='[zenlog]$ '
+PS0='$(preexec)'
+PROMPT_COMMAND="prompt_command"

@@ -78,9 +78,9 @@ func InitConfigiForLogger() *Config {
 	if config.StartCommand == "" {
 		shell := os.Getenv("SHELL")
 		if shell != "" {
-			config.StartCommand = shell + " -l"
+			config.StartCommand = "exec " + shell + " -l"
 		} else {
-			config.StartCommand = "/bin/sh -l"
+			config.StartCommand = "exec /bin/sh -l"
 		}
 	}
 

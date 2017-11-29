@@ -1,2 +1,4 @@
+- Expand environmental variables in the toml.
+
 - Refactor subcommands and add tests.
 - Port the end-to-end tests.

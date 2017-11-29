@@ -58,8 +58,7 @@ func WriteToOuter() {
 	for {
 		line, err := in.ReadBytes('\n')
 		if line != nil {
-			line = bytes.TrimRight(line, "\n")
-			line = bytes.TrimRight(line, "\r")
+			line = bytes.TrimRight(line, "\r\n")
 			out.Write(line)
 			out.Write(crlf)
 		}

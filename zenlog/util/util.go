@@ -73,7 +73,7 @@ func Dump(prefix string, obj interface{}) {
 	if !Debug {
 		return
 	}
-	Debugf("%s", prefix, spew.Sdump(obj))
+	Debugf("%s%s", prefix, spew.Sdump(obj))
 }
 
 func Fatalf(format string, a ...interface{}) {

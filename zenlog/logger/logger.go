@@ -11,7 +11,6 @@ import (
 	"github.com/pkg/term"
 	"io"
 	"os"
-	"regexp"
 	"strconv"
 	"syscall"
 )
@@ -29,9 +28,6 @@ type Logger struct {
 	logFiles            *logfiles.LogFiles
 	numLines            int
 	hasDanglingLastLine bool
-
-	rePrefixCommands      *regexp.Regexp
-	reAlwaysNoLogCommands *regexp.Regexp
 
 	sanitizer *util.Sanitizer
 
@@ -58,8 +54,6 @@ func NewLogger(config *config.Config) *Logger {
 
 	l := Logger{Config: config}
 
-	l.rePrefixCommands = regexp.MustCompile("^" + config.PrefixCommands + "$")
-	l.reAlwaysNoLogCommands = regexp.MustCompile("^" + config.AlwaysNoLogCommands + "$")
 	l.sanitizer = util.NewSanitizer()
 
 	l.OuterTty = util.Ttyname(os.Stdin.Fd())
@@ -140,14 +134,7 @@ func (l *Logger) openLogs(request *StartRequest) {
 	l.hasDanglingLastLine = false
 
 	// Check nolog.
-	nolog := false
-	for _, exe := range request.Command.ExeNames {
-		if l.reAlwaysNoLogCommands.MatchString(exe) {
-			nolog = true
-			break
-		}
-	}
-	if nolog {
+	if request.Command.NoLog {
 		l.write([]byte("[reducted]"))
 		l.closeLogs(nil)
 	}

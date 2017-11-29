@@ -14,12 +14,12 @@ function bash_dump_env() {
 }
 
 preexec() {
-  zenlog start-command-with-env "$(bash_dump_env)" $(bash_last_command)
+  $ZENLOG_BIN start-command-with-env "$(bash_dump_env)" $(bash_last_command)
 }
 
 prompt_command() {
   status=$?
-  echo "[rc=$status log=$(zenlog current-log) ($(zenlog stop-log -n $status) lines) ZENLOG_PID=$ZENLOG_PID $(pwd)]"
+  echo "[rc=$status log=$($ZENLOG_BIN current-log) ($($ZENLOG_BIN stop-log -n $status) lines) ZENLOG_PID=$ZENLOG_PID $(pwd)]"
 }
 
 PS1='[zenlog]$ '

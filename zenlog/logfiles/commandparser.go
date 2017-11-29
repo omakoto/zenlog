@@ -11,6 +11,10 @@ import (
 )
 
 const (
+	NO_LOG_PREFIX = "184"
+	FORCE_LOG_PREFIX = "186"
+
+
 	WHITESPACE = " \t\n\r\v"
 )
 
@@ -27,6 +31,10 @@ type Command struct {
 
 	// Comment in a command line.
 	Comment string
+
+	// Whether the command line contained a no log command or had 184.
+	// When 186 is detected, the output will always be logged.
+	NoLog bool
 }
 
 const (
@@ -65,17 +73,39 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 
 	commands := splitCommands(config, pipeLine)
 
+	prefixCommands := regexp.MustCompile("^" + config.PrefixCommands + "$")
+	alwaysNoLogCommands := regexp.MustCompile("^" + config.AlwaysNoLogCommands + "$")
+
 	exes := make([]string, 0, 8)
+
+	noLogDetected := false
+	forceLogDetected := false
 
 	for _, command := range commands {
 		words := reWordSplitter.Pattern().Split(command, -1)
-		if len(words) == 0 || words[0] == "" {
-			continue
+
+		for _, w := range words {
+			switch w {
+			case NO_LOG_PREFIX:
+				noLogDetected = true
+				continue;
+			case FORCE_LOG_PREFIX:
+				forceLogDetected = true
+				continue;
+			}
+			if prefixCommands.MatchString(w) {
+				continue;
+			}
+			if alwaysNoLogCommands.MatchString(w) {
+				noLogDetected = true
+			}
+			exes = append(exes, filepath.Base(w))
+			break
 		}
-		exes = append(exes, filepath.Base(words[0]))
 	}
 
 	ret.ExeNames = exes
+	ret.NoLog = !forceLogDetected && noLogDetected
 	return &ret
 }
 

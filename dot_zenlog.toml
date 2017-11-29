@@ -10,4 +10,4 @@ ZENLOG_DIR = "/tmp/zenlog/"
 ZENLOG_PREFIX_COMMANDS = "(?:builtin|command|time|sudo)"
 
 # Always do not log output from these commands.
-ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:184|vim?|man|nano|pico|more|less|watch|emacs|ssh|h?top|nload|zenlog.*)"
+ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|more|less|watch|emacs|ssh|h?top|nload|zenlog.*)"

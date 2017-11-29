@@ -23,6 +23,8 @@ func maybeStartEmergencyShell(r interface{}, childStatus int) {
 	} else {
 		util.Say("Child finished unsuccessfully: code=%d", childStatus)
 	}
+	//util.Say("Press enter to start shell.")
+	//bufio.NewReader(os.Stdin).ReadString('\n')
 	util.StartEmergencyShell()
 }
 

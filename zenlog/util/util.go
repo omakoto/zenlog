@@ -32,8 +32,8 @@ func init() {
 	rand.Seed(time.Now().Unix())
 }
 
-func SetOutputIsRaw() {
-	outputIsRaw = true
+func SetOutputIsRaw(raw bool) {
+	outputIsRaw = raw
 }
 
 func replaceLf(s string) string {

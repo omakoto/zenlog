@@ -71,7 +71,7 @@ func NewLogger(config *config.Config) *Logger {
 
 	err = l.stdinTerm.SetRaw()
 	util.Check(err, "SetRaw failed")
-	util.SetOutputIsRaw()
+	util.SetOutputIsRaw(true)
 
 	// Make the pipes.
 	l.ForwardPipe = mustMakeFifo(config, "f")
@@ -97,6 +97,7 @@ func (l *Logger) ExportEnviron() {
 
 func (l *Logger) CleanUp() {
 	l.stdinTerm.Restore()
+	util.SetOutputIsRaw(false)
 
 	l.ForwardPipe.Close()
 	l.ReversePipe.Close()

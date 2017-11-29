@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 )
 
 var (
@@ -27,6 +28,8 @@ func init() {
 	if os.Getenv("ZENLOG_DEBUG") == "1" {
 		Debug = true
 	}
+
+	rand.Seed(time.Now().Unix())
 }
 
 func SetOutputIsRaw() {
@@ -46,20 +49,24 @@ func formatMessage(format string, a ...interface{}) string {
 
 func Debugf(format string, a ...interface{}) {
 	if Debug {
-		color := ""
-		end := ""
-		if outputIsRaw {
-			// Logger side
-			color = "\x1b[0m\x1b[1;32m[L]" // Append [L]
-			end = "\x1b[0m\r\n"            // Note the \r.
-		} else {
-			color = "\x1b[0m\x1b[1;33m"
-			end = "\x1b[0m\n"
-		}
-		fmt.Fprint(debugOut, color)
-		fmt.Fprint(debugOut, formatMessage(format, a...))
-		fmt.Fprint(debugOut, end)
+		DebugfForce(format, a)
 	}
+}
+
+func DebugfForce(format string, a ...interface{}) {
+	color := ""
+	end := ""
+	if outputIsRaw {
+		// Logger side
+		color = "\x1b[0m\x1b[1;32m[L]" // Append [L]
+		end = "\x1b[0m\r\n"            // Note the \r.
+	} else {
+		color = "\x1b[0m\x1b[1;33m"
+		end = "\x1b[0m\n"
+	}
+	fmt.Fprint(debugOut, color)
+	fmt.Fprint(debugOut, formatMessage(format, a...))
+	fmt.Fprint(debugOut, end)
 }
 
 func Dump(prefix string, obj interface{}) {

@@ -11,6 +11,7 @@ func realMain() int {
 	command, args := util.GetSubcommand()
 
 	if command == "" {
+		builtins.FailIfInZenlog()
 		return zenlog.StartZenlog(args)
 	}
 	builtins.MaybeRunBuiltin(command, args)

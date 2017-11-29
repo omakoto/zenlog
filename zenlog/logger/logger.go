@@ -229,7 +229,7 @@ func (l *Logger) DoLogger() {
 
 					// Parse request.
 					req := StopRequest{}
-					if !util.TryUnmarshal(args[1], &req) {
+					if !util.TryUnmarshal(args[2], &req) {
 						continue
 					}
 					util.Dump("StopRequest=", req)

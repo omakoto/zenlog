@@ -19,4 +19,8 @@ export ZENLOG_DIR="/tmp/zenlog-manual-test/"
 export ZENLOG_PREFIX_COMMANDS="(?:builtin|time|sudo|command)"
 export ZENLOG_ALWAYS_NO_LOG_COMMANDS="(?:vi|vim|man|nano|pico|less|watch|emacs|ssh|zenlog.*)"
 
-./bin/zenlog
+export ZENLOG_BIN="$(readlink -m bin/zenlog)"
+
+mkdir -p "$ZENLOG_DIR"
+
+"$ZENLOG_BIN"

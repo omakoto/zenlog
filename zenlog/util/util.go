@@ -49,7 +49,7 @@ func formatMessage(format string, a ...interface{}) string {
 
 func Debugf(format string, a ...interface{}) {
 	if Debug {
-		DebugfForce(format, a)
+		DebugfForce(format, a...)
 	}
 }
 

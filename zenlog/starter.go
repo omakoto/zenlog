@@ -68,6 +68,8 @@ func StartZenlog(args []string) int {
 			case syscall.SIGWINCH:
 				util.Debugf("Caught SIGWINCH")
 				util.PropagateTerminalSize(os.Stdin, m)
+				logger.SendFlushRequest()
+
 			case syscall.SIGCHLD:
 				util.Debugf("Caught SIGCHLD")
 				ps, err := c.Process.Wait()

@@ -8,4 +8,6 @@ set -e
 
 zenlog fail-unless-in-zenlog
 
+zenlog flush-all
+
 zenlog open-viewer "$(zenlog last-log "${@}")"

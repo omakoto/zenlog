@@ -117,6 +117,10 @@ func (l *Logger) isOpen() bool {
 	return l.logFiles != nil
 }
 
+func (l *Logger) SendFlushRequest() {
+	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(FLUSH_COMMAND))
+}
+
 // Open log files.
 func (l *Logger) openLogs(request *StartRequest) {
 	// If the previous log is still open, close it.
@@ -186,12 +190,12 @@ func (l *Logger) write(line []byte) {
 	}
 }
 func (l *Logger) flush() {
-	if !l.isOpen() {
-		return
+	if l.isOpen() {
+		l.logFiles.San.Flush()
+		l.logFiles.Raw.Flush()
 	}
-	l.logFiles.Raw.Flush()
-	l.logFiles.San.Flush()
 }
+
 func (l *Logger) DoLogger() {
 	bout := bufio.NewReader(l.ForwardPipe)
 	for {
@@ -214,7 +218,6 @@ func (l *Logger) DoLogger() {
 					return
 
 				case FLUSH_COMMAND:
-					util.Debugf("Flushing...")
 					l.flush()
 					continue
 

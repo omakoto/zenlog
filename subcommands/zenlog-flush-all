@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+
+killall -s SIGWINCH -e zenlog

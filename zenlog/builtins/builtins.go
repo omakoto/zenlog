@@ -115,6 +115,8 @@ func MaybeRunBuiltin(command string, args []string) {
 			i++
 		}
 		logger.EndCommand(exitStatus, wantLineNumber, util.NewClock())
+
+		// History related commands.
 	case "history":
 		FailUnlessInZenlog()
 		history.HistoryCommand(args)

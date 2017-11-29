@@ -8,4 +8,6 @@ set -e
 
 zenlog fail-unless-in-zenlog
 
+zenlog flush-all
+
 sed -e 1d -- "$(zenlog last-log "${@}")"

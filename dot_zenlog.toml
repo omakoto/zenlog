@@ -7,7 +7,7 @@ ZENLOG_DIR = "/tmp/zenlog/"
 
 # Prefix commands are ignored when command lines are parsed;
 # for example "sudo cat" will considered to be a "cat" command.
-ZENLOG_PREFIX_COMMANDS = "(?:builtin|command|time|sudo)"
+ZENLOG_PREFIX_COMMANDS = "(?:command|builtin|time|sudo|[a-zA-Z0-9_]+=.*)"
 
 # Always do not log output from these commands.
 ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|more|less|watch|emacs|ssh|h?top|nload|zenlog.*)"

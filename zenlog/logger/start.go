@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"encoding/json"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -30,28 +29,9 @@ func StartCommand(envs string, commandLineArray []string, clock util.Clock) {
 
 	// Send the start request to the logger.
 	req := StartRequest{*command, logFiles, clock.Now()}
-
 	util.Dump("startRequest=", req)
 
-	vals := make([]string, 2)
-	vals[0] = COMMAND_START_COMMAND
-	vals[1] = string(req.MustEncode())
-	MustSendToLogger(config, vals[:])
+	MustSendToLogger(config, util.StringSlice(COMMAND_START_COMMAND, util.MustMarshal(req)))
 
 	util.ExitSuccess()
-}
-
-func (s *StartRequest) MustEncode() []byte {
-	dat, err := json.Marshal(s)
-	util.Check(err, "Stringfy failed")
-	return dat
-}
-
-func DecodeStartRequest(data string) (*StartRequest, error) {
-	ret := StartRequest{}
-	err := json.Unmarshal([]byte(data), &ret)
-	if err != nil {
-		return nil, err
-	}
-	return &ret, nil
 }

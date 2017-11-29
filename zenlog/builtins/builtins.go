@@ -65,29 +65,36 @@ func MaybeRunBuiltin(command string, args []string) {
 		util.ExitSuccess()
 
 	case "write-to-logger":
+		FailUnlessInZenlog()
 		WriteToLogger()
 		util.ExitSuccess()
 
 	case "write-to-outer":
+		FailUnlessInZenlog()
 		WriteToOuter()
 		util.ExitSuccess()
 
 	case "outer-tty":
+		FailUnlessInZenlog()
 		OuterTty()
 		util.ExitSuccess()
+
+	case "flush":
+		FailUnlessInZenlog()
+		logger.FlushCommand()
 
 		// TODO Refactor these commands for testability.
 	case "start-command":
 		FailUnlessInZenlog()
 		if len(args) < 1 {
-			util.Fatalf("start-command expects 1 argument.")
+			util.Fatalf("start-command expects at least 1 argument.")
 		}
 		logger.StartCommand("", args[:], util.NewClock())
 
 	case "start-command-with-env":
 		FailUnlessInZenlog()
 		if len(args) < 2 {
-			util.Fatalf("start-command expects 2 arguments.")
+			util.Fatalf("start-command-with-env expects at least 2 arguments.")
 		}
 		logger.StartCommand(args[0], args[1:], util.NewClock())
 

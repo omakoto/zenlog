@@ -10,6 +10,8 @@ const (
 	COMMAND_START_COMMAND = "start-command"
 	COMMAND_END_COMMAND   = "end-command"
 
+	FLUSH_COMMAND   = "flush"
+
 	// This is a command sent by the signal handler on SIGCHLD.
 	CHILD_DIED_COMMAND   = "child-died"
 

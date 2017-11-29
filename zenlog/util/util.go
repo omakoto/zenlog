@@ -178,3 +178,7 @@ func Signature() string {
 
 	return fmt.Sprintf("%s:[%d]", self, stat.ModTime().Unix())
 }
+
+func StringSlice(arr ...string) []string {
+	return arr
+}

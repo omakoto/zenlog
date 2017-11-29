@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -27,52 +26,18 @@ func EndCommand(exitStatus int, wantLineNumber bool, clock util.Clock) {
 	fingerprint := util.Fingerprint()
 
 	// Send it.
-	vals := make([]string, 3)
-	vals[0] = COMMAND_END_COMMAND
-	vals[1] = fingerprint
-	vals[2] = string(req.MustEncode())
-	MustSendToLogger(config, vals[:])
+	MustSendToLogger(config, util.StringSlice(COMMAND_END_COMMAND, fingerprint, util.MustMarshal(req)))
 
 	// Wait for reply.
 	ret := MustReceiveFromLogger(config, func(args []string) bool {
 		return (len(args) == 3) && (args[0] == COMMAND_END_COMMAND) && (args[1] == fingerprint)
 	})
-	reply, err := DecodeStopReply(ret[2])
-	util.Check(err, "DecodeStopReply failed")
+	reply := StopReply{}
+	util.MustUnmarshal(ret[2], &reply)
 
 	if wantLineNumber {
 		fmt.Println(reply.NumLines)
 	}
 
 	util.ExitSuccess()
-}
-
-func (s *StopRequest) MustEncode() []byte {
-	dat, err := json.Marshal(s)
-	util.Check(err, "Stringfy failed")
-	return dat
-}
-
-func DecodeStopRequest(data string) (*StopRequest, error) {
-	ret := StopRequest{}
-	err := json.Unmarshal([]byte(data), &ret)
-	if err != nil {
-		return nil, err
-	}
-	return &ret, nil
-}
-
-func (s *StopReply) MustEncode() []byte {
-	dat, err := json.Marshal(s)
-	util.Check(err, "Stringfy failed")
-	return dat
-}
-
-func DecodeStopReply(data string) (*StopReply, error) {
-	ret := StopReply{}
-	err := json.Unmarshal([]byte(data), &ret)
-	if err != nil {
-		return nil, err
-	}
-	return &ret, nil
 }

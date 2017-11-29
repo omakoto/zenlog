@@ -168,11 +168,16 @@ func (l *Logger) write(line []byte) {
 	l.hasDanglingLastLine = line[len(line)-1] != '\n'
 
 	if l.Config.AutoFlush {
-		l.logFiles.Raw.Flush()
-		l.logFiles.San.Flush()
+		l.flush()
 	}
 }
-
+func (l *Logger) flush() {
+	if !l.isOpen() {
+		return
+	}
+	l.logFiles.Raw.Flush()
+	l.logFiles.San.Flush()
+}
 func (l *Logger) DoLogger() {
 	bout := bufio.NewReader(l.ForwardPipe)
 	for {
@@ -194,44 +199,46 @@ func (l *Logger) DoLogger() {
 					l.closeLogs(nil)
 					return
 
+				case FLUSH_COMMAND:
+					util.Debugf("Flushing...")
+					l.flush()
+					continue
+
 				case COMMAND_START_COMMAND:
 					if len(args) != 2 {
 						util.Say("Invalid number of args (%d) for %s.", len(args), COMMAND_START_COMMAND)
 						continue
 					}
 					// Parse request.
-					req, err := DecodeStartRequest(args[1])
-					if util.Warn(err, "Decode error") {
+
+					req := StartRequest{}
+					if !util.TryUnmarshal(args[1], &req) {
 						continue
 					}
 					util.Dump("StartRequest=", req)
 
 					// Open log.
-					l.openLogs(req)
+					l.openLogs(&req)
 					continue
 				case COMMAND_END_COMMAND:
 					if len(args) != 3 {
 						util.Say("Invalid number of args (%d) for %s.", len(args), COMMAND_END_COMMAND)
 						continue
 					}
+					fingerprint := args[1]
+
 					// Parse request.
-					req, err := DecodeStopRequest(args[2])
-					if util.Warn(err, "Decode error") {
+					req := StopRequest{}
+					if !util.TryUnmarshal(args[1], &req) {
 						continue
 					}
+					util.Dump("StopRequest=", req)
 
 					// Close log.
-					l.closeLogs(req)
+					l.closeLogs(&req)
 
 					// Send reply.
-					r := StopReply{l.numLines}
-
-					fingerprint := args[1]
-					rep := make([]string, 3)
-					rep[0] = COMMAND_END_COMMAND
-					rep[1] = fingerprint
-					rep[2] = string(r.MustEncode())
-					l.MustReply(l.Config, rep)
+					l.MustReply(l.Config, util.StringSlice(COMMAND_END_COMMAND, fingerprint, util.MustMarshal(StopReply{l.numLines})))
 					continue
 				}
 			}

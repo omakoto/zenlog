@@ -1,21 +1,22 @@
 package builtins
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
+	"github.com/omakoto/zenlog-go/zenlog"
 	"github.com/omakoto/zenlog-go/zenlog/builtins/history"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
+	"github.com/omakoto/zenlog-go/zenlog/logger"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"io"
 	"os"
 	"strconv"
 	"strings"
-	"github.com/omakoto/zenlog-go/zenlog/logger"
-	"bufio"
-	"bytes"
 )
 
 func InZenlog() bool {
-	sig := util.Tty() + ":" + util.Signature()
+	sig := util.Tty() + ":" + zenlog.Signature()
 	util.Debugf("Signature=%s", sig)
 	return sig == os.Getenv(envs.ZENLOG_SIGNATURE)
 }

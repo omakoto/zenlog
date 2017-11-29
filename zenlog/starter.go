@@ -62,7 +62,7 @@ func StartZenlog(args []string) int {
 	util.Debugf("Executing: %s", config.StartCommand)
 	c := exec.Command("/bin/sh", "-c",
 		envs.ZENLOG_SIGNATURE+
-			fmt.Sprintf("=\"$(tty)\":%s ", util.Shescape(util.Signature()))+
+			fmt.Sprintf("=\"$(tty)\":%s ", util.Shescape(Signature()))+
 			config.StartCommand)
 	m, err := pty.Start(c)
 	util.Check(err, "Unable to create pty or execute /bin/sh")

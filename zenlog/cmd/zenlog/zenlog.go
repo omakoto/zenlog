@@ -7,14 +7,19 @@ import (
 	"os"
 )
 
-func main() {
+func realMain() int {
 	command, args := util.GetSubcommand()
 
 	if command == "" {
-		os.Exit(zenlog.StartZenlog(args))
+		return zenlog.StartZenlog(args)
 	}
 	builtins.MaybeRunBuiltin(command, args)
 	zenlog.MaybeRunExtetrnalCommand(command, args)
 
 	util.Fatalf("Unknown subcommand: '%s'", command)
+	return 0
+}
+
+func main() {
+	os.Exit(util.RunWithRescue(realMain))
 }

@@ -58,23 +58,23 @@ func MaybeRunBuiltin(command string, args []string) {
 
 	case "fail-if-in-zenlog":
 		FailIfInZenlog()
-		os.Exit(0)
+		util.ExitSuccess()
 
 	case "fail-unless-in-zenlog":
 		FailUnlessInZenlog()
-		os.Exit(0)
+		util.ExitSuccess()
 
 	case "write-to-logger":
 		WriteToLogger()
-		os.Exit(0)
+		util.ExitSuccess()
 
 	case "write-to-outer":
 		WriteToOuter()
-		os.Exit(0)
+		util.ExitSuccess()
 
 	case "outer-tty":
 		OuterTty()
-		os.Exit(0)
+		util.ExitSuccess()
 
 		// TODO Refactor these commands for testability.
 	case "start-command":

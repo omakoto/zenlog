@@ -83,12 +83,12 @@ func Dump(prefix string, obj interface{}) {
 func Fatalf(format string, a ...interface{}) {
 	fmt.Fprintf(os.Stderr, formatMessage(format, a...))
 	fmt.Fprint(os.Stderr, "\n")
-	os.Exit(1)
+	ExitFailure()
 }
 
 func Check(err error, format string, a ...interface{}) {
 	if Warn(err, format, a...) {
-		os.Exit(1)
+		ExitFailure()
 	}
 }
 
@@ -109,14 +109,6 @@ func Warn(err error, format string, a ...interface{}) bool {
 		return true
 	}
 	return false
-}
-
-func Exit(success bool) {
-	status := 0
-	if !success {
-		status = 1
-	}
-	os.Exit(status)
 }
 
 func FirstNonEmpty(vals ...string) string {

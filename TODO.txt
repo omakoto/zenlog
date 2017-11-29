@@ -1,7 +1,6 @@
 - Implement nolog.
 
 - Detect crash and start /bin/sh instead.
-- Stop using os.Exit(), since it won't run defer'ed calls.
 
 - Refactor subcommands and add tests.
 

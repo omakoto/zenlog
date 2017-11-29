@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/util"
-	"os"
 	"time"
 )
 
@@ -45,7 +44,7 @@ func EndCommand(exitStatus int, wantLineNumber bool, clock util.Clock) {
 		fmt.Println(reply.NumLines)
 	}
 
-	os.Exit(0)
+	util.ExitSuccess()
 }
 
 func (s *StopRequest) MustEncode() []byte {

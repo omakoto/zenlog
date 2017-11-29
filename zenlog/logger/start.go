@@ -5,7 +5,6 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
 	"github.com/omakoto/zenlog-go/zenlog/util"
-	"os"
 	"strings"
 	"time"
 )
@@ -39,7 +38,7 @@ func StartCommand(envs string, commandLineArray []string, clock util.Clock) {
 	vals[1] = string(req.MustEncode())
 	MustSendToLogger(config, vals[:])
 
-	os.Exit(0)
+	util.ExitSuccess()
 }
 
 func (s *StartRequest) MustEncode() []byte {

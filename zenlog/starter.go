@@ -12,27 +12,34 @@ import (
 	"os/exec"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
-func maybeStartEmergencyShell(r interface{}, childStatus int) {
+func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus int) {
 	if r == nil && childStatus <= 0 {
 		return // okay
 	}
+	startShell := false
 	if r != nil {
 		util.Say("Panic detected: %v", r)
+		startShell = true
 	} else {
 		util.Say("Child finished unsuccessfully: code=%d", childStatus)
+
+		// If the child dies too early, something may be wrong, so start a shell...
+		startShell = (util.NewClock().Now().Sub(startTime).Seconds() < 30)
 	}
-	//util.Say("Press enter to start shell.")
-	//bufio.NewReader(os.Stdin).ReadString('\n')
-	util.StartEmergencyShell()
+	if startShell {
+		util.StartEmergencyShell()
+	}
 }
 
 func StartZenlog(args []string) int {
 	var childStatus int = -1
 
+	startTime := util.NewClock().Now()
 	defer func() {
-		maybeStartEmergencyShell(recover(), childStatus)
+		maybeStartEmergencyShell(startTime, recover(), childStatus)
 	}()
 
 	config := config.InitConfigiForLogger()

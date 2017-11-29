@@ -1,4 +1,2 @@
-- Start emergency shell when child finishes within N seconds or on panic.
-
 - Refactor subcommands and add tests.
 - Port the end-to-end tests.

@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"strings"
 	"github.com/omakoto/zenlog-go/zenlog/logger"
+	"bufio"
+	"bytes"
 )
 
 func InZenlog() bool {
@@ -43,12 +45,38 @@ func WriteToLogger() {
 
 func WriteToOuter() {
 	FailUnlessInZenlog()
-	copyStdinToFile(os.Getenv(envs.ZENLOG_OUTER_TTY))
+	file := os.Getenv(envs.ZENLOG_OUTER_TTY)
+	out, err := os.OpenFile(file, os.O_WRONLY, 0)
+	util.Check(err, "Unable to open "+file)
+
+	in := bufio.NewReader(os.Stdin)
+
+	crlf := make([]byte, 2)
+	crlf[0] = '\r'
+	crlf[1] = '\n'
+
+	for {
+		line, err := in.ReadBytes('\n')
+		if line != nil {
+			line = bytes.TrimRight(line, "\n")
+			line = bytes.TrimRight(line, "\r")
+			out.Write(line)
+			out.Write(crlf)
+		}
+		if err != nil {
+			break
+		}
+	}
 }
 
 func OuterTty() {
 	FailUnlessInZenlog()
 	fmt.Println(os.Getenv(envs.ZENLOG_OUTER_TTY))
+}
+
+func LoggerPipe() {
+	FailUnlessInZenlog()
+	fmt.Println(os.Getenv(envs.ZENLOG_LOGGER_IN))
 }
 
 func MaybeRunBuiltin(command string, args []string) {
@@ -58,30 +86,42 @@ func MaybeRunBuiltin(command string, args []string) {
 
 	case "fail-if-in-zenlog":
 		FailIfInZenlog()
-		util.ExitSuccess()
 
 	case "fail-unless-in-zenlog":
 		FailUnlessInZenlog()
-		util.ExitSuccess()
 
 	case "write-to-logger":
 		FailUnlessInZenlog()
 		WriteToLogger()
-		util.ExitSuccess()
 
 	case "write-to-outer":
 		FailUnlessInZenlog()
 		WriteToOuter()
-		util.ExitSuccess()
 
 	case "outer-tty":
 		FailUnlessInZenlog()
 		OuterTty()
-		util.ExitSuccess()
+
+	case "logger-pipe":
+		FailUnlessInZenlog()
+		LoggerPipe()
 
 	case "flush":
 		FailUnlessInZenlog()
 		logger.FlushCommand()
+
+		// History related commands.
+	case "history":
+		FailUnlessInZenlog()
+		history.HistoryCommand(args)
+
+	case "current-log":
+		FailUnlessInZenlog()
+		history.CurrentLogCommand(args)
+
+	case "last-log":
+		FailUnlessInZenlog()
+		history.LastLogCommand(args)
 
 		// TODO Refactor these commands for testability.
 	case "start-command":
@@ -115,17 +155,8 @@ func MaybeRunBuiltin(command string, args []string) {
 			i++
 		}
 		logger.EndCommand(exitStatus, wantLineNumber, util.NewClock())
-
-		// History related commands.
-	case "history":
-		FailUnlessInZenlog()
-		history.HistoryCommand(args)
-	case "current-log":
-		FailUnlessInZenlog()
-		history.CurrentLogCommand(args)
-	case "last-log":
-		FailUnlessInZenlog()
-		history.LastLogCommand(args)
+	default:
+		return
 	}
-	return
+	util.ExitSuccess()
 }

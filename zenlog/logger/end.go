@@ -38,6 +38,4 @@ func EndCommand(exitStatus int, wantLineNumber bool, clock util.Clock) {
 	if wantLineNumber {
 		fmt.Println(reply.NumLines)
 	}
-
-	util.ExitSuccess()
 }

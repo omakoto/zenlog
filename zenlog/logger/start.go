@@ -32,6 +32,4 @@ func StartCommand(envs string, commandLineArray []string, clock util.Clock) {
 	util.Dump("startRequest=", req)
 
 	MustSendToLogger(config, util.StringSlice(COMMAND_START_COMMAND, util.MustMarshal(req)))
-
-	util.ExitSuccess()
 }

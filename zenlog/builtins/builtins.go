@@ -105,10 +105,6 @@ func MaybeRunBuiltin(command string, args []string) {
 		FailUnlessInZenlog()
 		LoggerPipe()
 
-	case "flush":
-		FailUnlessInZenlog()
-		logger.FlushCommand()
-
 		// History related commands.
 	case "history":
 		FailUnlessInZenlog()

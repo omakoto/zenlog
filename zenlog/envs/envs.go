@@ -3,6 +3,8 @@ package envs
 const (
 	ZENLOG_CONF = "ZENLOG_CONF"
 
+	ZENLOG_BIN        = "ZENLOG_BIN"
+
 	ZENLOG_PID        = "ZENLOG_PID"
 	ZENLOG_SIGNATURE  = "ZENLOG_SIGNATURE"
 	ZENLOG_DIR        = "ZENLOG_DIR"

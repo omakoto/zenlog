@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Show the free space of the log disk in bytes.
 

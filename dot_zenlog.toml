@@ -3,7 +3,7 @@
 ZENLOG_START_COMMAND = "exec /bin/bash -l"
 
 # Log output directory.
-ZENLOG_DIR = "/tmp/zenlog/"
+ZENLOG_DIR = "$HOME/zenlog/"
 
 # Prefix commands are ignored when command lines are parsed;
 # for example "sudo cat" will considered to be a "cat" command.

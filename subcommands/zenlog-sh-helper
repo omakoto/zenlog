@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Basic Zenlog bash helper functions.
 

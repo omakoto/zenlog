@@ -45,6 +45,8 @@ func StartZenlog(args []string) int {
 	config := config.InitConfigiForLogger()
 	util.Dump("config=", config)
 
+	fmt.Printf("Zenlog starting... [ZENLOG_DIR=%s ZENLOG_PID=%d]\n", config.LogDir, config.ZenlogPid)
+
 	logger := logger.NewLogger(config)
 	defer logger.CleanUp()
 	util.Dump("Logger=", logger)

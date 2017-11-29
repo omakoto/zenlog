@@ -126,6 +126,11 @@ func FileExists(file string) bool {
 	return err == nil
 }
 
+func DirExists(file string) bool {
+	stat, err := os.Stat(file)
+	return err == nil && ((stat.Mode() & os.ModeDir) != 0)
+}
+
 func CompressSlash(file string) string {
 	return reSlashes.Pattern().ReplaceAllLiteralString(file, "/")
 }

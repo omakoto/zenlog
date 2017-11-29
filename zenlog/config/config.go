@@ -32,6 +32,8 @@ type Config struct {
 func overwriteWithEnviron(to *string, envKey string, def string) {
 	if val := os.Getenv(envKey); val != "" {
 		*to = val
+	} else {
+		*to = os.ExpandEnv(*to)
 	}
 	if *to == "" {
 		*to = def
@@ -86,7 +88,7 @@ func InitConfigiForLogger() *Config {
 		}
 	}
 
-	if config.TempDir == "" {
+	if config.TempDir == "" || !util.DirExists(config.TempDir) {
 		config.TempDir = util.FirstNonEmpty(os.Getenv("TEMP"), os.Getenv("TMP"), "/tmp/")
 	}
 

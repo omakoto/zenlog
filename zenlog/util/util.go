@@ -5,8 +5,8 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"math/rand"
 	"os"
-	"strings"
 	"path/filepath"
+	"strings"
 )
 
 var (
@@ -33,30 +33,19 @@ func SetOutputIsRaw() {
 	outputIsRaw = true
 }
 
-func formatMessage(format string, a ...interface{}) string {
-	msg := fmt.Sprintf("zenlog: "+format, a...)
-
+func replaceLf(s string) string {
 	if outputIsRaw {
-		msg = strings.Replace(msg, "\n", "\r\n", -1)
+		s = strings.Replace(s, "\n", "\r\n", -1)
 	}
+	return s
+}
 
-	return msg
+func formatMessage(format string, a ...interface{}) string {
+	return replaceLf(fmt.Sprintf("zenlog: "+format, a...))
 }
 
 func Debugf(format string, a ...interface{}) {
 	if Debug {
-		//if !debugOutSet {
-		//	outer := os.Getenv(envs.ZENLOG_OUTER_TTY)
-		//	if outer != "" {
-		//		o, err := os.OpenFile(outer, os.O_WRONLY, 0)
-		//		Warn(err, "Failed to openn")
-		//		if o !=  nil {
-		//			debugOut = o
-		//		}
-		//		debugOutSet = true
-		//	}
-		//}
-
 		color := ""
 		end := ""
 		if outputIsRaw {
@@ -94,18 +83,19 @@ func Check(err error, format string, a ...interface{}) {
 
 func Say(format string, a ...interface{}) {
 	message := formatMessage(format, a...)
+	fmt.Fprint(os.Stderr, "\x1b[0m\x1b[1;33m")
 	fmt.Fprint(os.Stderr, message)
-	fmt.Fprint(os.Stderr, "\n")
+	fmt.Fprint(os.Stderr, replaceLf("\x1b[0m\n"))
 }
 
 func Warn(err error, format string, a ...interface{}) bool {
 	if err != nil {
 		message := formatMessage(format, a...)
-
+		fmt.Fprint(os.Stderr, "\x1b[0m\x1b[1;33m")
 		fmt.Fprint(os.Stderr, message)
 		fmt.Fprint(os.Stderr, ": ")
 		fmt.Fprint(os.Stderr, err.Error())
-		fmt.Fprint(os.Stderr, "\n")
+		fmt.Fprint(os.Stderr, replaceLf("\x1b[0m\n"))
 		return true
 	}
 	return false

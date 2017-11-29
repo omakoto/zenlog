@@ -14,7 +14,25 @@ import (
 	"syscall"
 )
 
+func maybeStartEmergencyShell(r interface{}, childStatus int) {
+	if r == nil && childStatus <= 0 {
+		return // okay
+	}
+	if r != nil {
+		util.Say("Panic detected: %v", r)
+	} else {
+		util.Say("Child finished unsuccessfully: code=%d", childStatus)
+	}
+	util.StartEmergencyShell()
+}
+
 func StartZenlog(args []string) int {
+	var childStatus int = -1
+
+	defer func() {
+		maybeStartEmergencyShell(recover(), childStatus)
+	}()
+
 	config := config.InitConfigiForLogger()
 	util.Dump("config=", config)
 
@@ -40,8 +58,6 @@ func StartZenlog(args []string) int {
 	defer m.Close()
 
 	util.PropagateTerminalSize(os.Stdin, m)
-
-	var childStatus int = -1
 
 	// Signal handler.
 	go func() {
@@ -79,8 +95,7 @@ func StartZenlog(args []string) int {
 			if nr > 0 {
 				// First, write to stdout.
 				nw, ew := os.Stdout.Write(buf[0:nr])
-				if ew != nil {
-					err = ew
+				if util.Warn(ew, "Stdout.Write failed") {
 					break
 				}
 				if nr != nw {
@@ -89,8 +104,7 @@ func StartZenlog(args []string) int {
 				}
 				// Then, write to logger.
 				nw, ew = logger.ForwardPipe.Write(buf[0:nr])
-				if ew != nil {
-					err = ew
+				if util.Warn(ew, "Stdout.Write failed") {
 					break
 				}
 				if nr != nw {
@@ -99,10 +113,7 @@ func StartZenlog(args []string) int {
 				}
 			}
 			if er != nil {
-				if er != io.EOF {
-					err = er
-				}
-				break
+				break // Ignore read error.
 			}
 		}
 	}()

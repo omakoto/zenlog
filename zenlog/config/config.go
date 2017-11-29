@@ -2,7 +2,6 @@ package config
 
 import (
 	"github.com/BurntSushi/toml"
-	"github.com/davecgh/go-spew/spew"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"io/ioutil"
@@ -96,9 +95,7 @@ func InitConfigiForLogger() *Config {
 
 	config.ZenlogPid = os.Getpid()
 
-	if util.Debug {
-		util.Debugf("Config=%s", spew.Sdump(&config))
-	}
+	util.Dump("Config=", config)
 
 	return &config
 }

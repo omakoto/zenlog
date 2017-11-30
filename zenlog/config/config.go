@@ -71,7 +71,7 @@ func InitConfigiForLogger() *Config {
 	}
 
 	overwriteWithEnviron(&c.StartCommand, "ZENLOG_START_COMMAND", "")
-	overwriteWithEnviron(&c.LogDir, envs.ZENLOG_DIR, "/tmp/zenlog/")
+	overwriteWithEnviron(&c.LogDir, envs.ZENLOG_DIR, os.ExpandEnv("$HOME/zenlog/"))
 	overwriteWithEnviron(&c.PrefixCommands, "ZENLOG_PREFIX_COMMANDS", `(?:command|builtin|time|sudo|[a-zA-Z0-9_]+\=.*)`)
 	overwriteWithEnviron(&c.AlwaysNoLogCommands, "ZENLOG_ALWAYS_NO_LOG_COMMANDS", `(?:vi|vim|man|nano|pico|less|watch|emacs|zenlog.*)`)
 	overwriteWithEnviron(&c.CommandSplitter, "ZENLOG_COMMAND_SPLITTER", "")

@@ -126,7 +126,7 @@ func (l *Logger) openLogs(request *StartRequest) {
 	l.startRequest = request
 	l.logFiles = &request.LogFiles
 
-	l.logFiles.Open()
+	l.logFiles.Open(false)
 
 	l.write([]byte("$ " + request.Command.CommandLine + "\n"))
 

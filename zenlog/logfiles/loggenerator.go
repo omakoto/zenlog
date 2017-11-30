@@ -44,11 +44,21 @@ func clamp(v string, maxLen int) string {
 }
 
 // Create and open a log file with the parent directory, if needed.
-func open(name string) (*os.File, *bufio.Writer) {
+func open(name string, truncate bool) (*os.File, *bufio.Writer) {
 	os.MkdirAll(filepath.Dir(name), 0700)
-	f, err := os.OpenFile(name, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+	mode := os.O_APPEND | os.O_WRONLY | os.O_CREATE
+	if truncate {
+		mode |= os.O_TRUNC
+	}
+	f, err := os.OpenFile(name, mode, 0600)
 	util.Check(err, "Cannot create logfile %s", name)
 	return f, bufio.NewWriter(f)
+}
+
+func makeSymlink(from, to string) {
+	if !util.FileExists(to) {
+		util.Warn(os.Symlink(from, to), "Symlink failed")
+	}
 }
 
 // Create "previous" links.
@@ -73,7 +83,7 @@ func createPrevLink(fullDirName, logType, logFullFileName string) {
 		}
 		util.Warn(os.Rename(from, to), "Rename failed")
 	}
-	util.Warn(os.Symlink(logFullFileName, fullDirName+oneLetter), "Symlink failed")
+	makeSymlink(logFullFileName, fullDirName+oneLetter)
 }
 
 // Create auxiliary links.
@@ -96,7 +106,7 @@ func createLinks(config *config.Config, parentDirName, childDirName, logType, lo
 		fmt.Sprintf("%04d/%02d/%02d", now.Year(), now.Month(), now.Day()) + "/"
 
 	util.Warn(os.MkdirAll(fullDirName, 0700), "MkdirAll failed")
-	util.Warn(os.Symlink(logFullFileName, fullDirName+filepath.Base(logFullFileName)), "Symlink failed")
+	makeSymlink(logFullFileName, fullDirName+filepath.Base(logFullFileName))
 	createPrevLink(fullChildDir, logType, logFullFileName)
 }
 
@@ -123,7 +133,7 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 	ret.RawFile = strings.Replace(f, M, RAW, 1)
 	ret.EnvFile = strings.Replace(f, M, ENV, 1)
 
-	ret.Open()
+	ret.Open(true)
 
 	spid := strconv.Itoa(config.ZenlogPid)
 	items := []struct {
@@ -148,10 +158,10 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 	return ret
 }
 
-func (l *LogFiles) Open() {
-	l.SanF, l.San = open(l.SanFile)
-	l.RawF, l.Raw = open(l.RawFile)
-	l.EnvF, l.Env = open(l.EnvFile)
+func (l *LogFiles) Open(truncate bool) {
+	l.SanF, l.San = open(l.SanFile, truncate)
+	l.RawF, l.Raw = open(l.RawFile, truncate)
+	l.EnvF, l.Env = open(l.EnvFile, truncate)
 }
 
 func closeSingle(f **os.File, w **bufio.Writer) {

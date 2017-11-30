@@ -57,9 +57,18 @@ zenlog history -e -p $_ZENLOG_LOGGER_PID
 exit
 EOF
 
+fail=0
 echo "Checking tree..."
 diff --color=always -c $medir/results/tree1.txt <($TREE -aF "$ZENLOG_DIR")
+fail=$(( $fail || $?))
 
 echo "Checking log files..."
 diff --color=always  -X $medir/diff-ignore-files.txt \
     -ur $medir/results/files "$ZENLOG_DIR"
+fail=$(( $fail || $?))
+
+if (( $fail )); then
+    echo "Some tests failed."
+else
+    echo "All tests passed."
+fi

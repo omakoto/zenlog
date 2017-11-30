@@ -1,0 +1,7 @@
+$ 186 fgrep dev < data/fstab
+# device; this may be used with UUID= as a more robust way to name devices
+/dev/mapper/debian--vg-root /               ext4    errors=remount-ro 0       1
+# /boot was on /dev/sda1 during installation
+/dev/mapper/debian--vg-swap_1 none            swap    sw              0       0
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
+/dev/disk/by-uuid/6ab156b9-fcab-442a-87fa-bb1cbaf1eb86 /mnt/2nd auto nosuid,nodev,nofail,x-gvfs-show 0 0

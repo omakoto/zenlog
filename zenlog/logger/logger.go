@@ -85,7 +85,7 @@ func (l *Logger) ExportEnviron() {
 	os.Setenv(envs.ZENLOG_BIN, util.FindSelf())
 
 	os.Setenv(envs.ZENLOG_DIR, l.Config.LogDir)
-	os.Setenv(envs.ZENLOG_PID, strconv.Itoa(os.Getpid()))
+	os.Setenv(envs.ZENLOG_PID, strconv.Itoa(l.Config.ZenlogPid))
 	os.Setenv(envs.ZENLOG_OUTER_TTY, l.OuterTty)
 	os.Setenv(envs.ZENLOG_LOGGER_IN, l.ForwardPipe.Name())
 	os.Setenv(envs.ZENLOG_LOGGER_OUT, l.ReversePipe.Name())
@@ -146,7 +146,7 @@ func (l *Logger) closeLogs(req *StopRequest) {
 		return
 	}
 	if req != nil {
-		l.logFiles.WriteFinishToEnv(req.ExitStatus, l.startRequest.StartTime, l.clock.Now())
+		l.logFiles.WriteFinishToEnv(req.ExitStatus, l.startRequest.StartTime, util.GetInjectedNow(l.clock))
 	}
 	l.logFiles.Close()
 

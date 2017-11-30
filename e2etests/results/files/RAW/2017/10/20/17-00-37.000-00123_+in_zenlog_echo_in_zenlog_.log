@@ -1,0 +1,2 @@
+$ in_zenlog && echo "in zenlog"
+in zenlog

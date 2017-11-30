@@ -1,4 +1,1 @@
-- FZF doesn't seem to work properly.
-
 - Refactor subcommands and add tests.
-- Port the end-to-end tests.

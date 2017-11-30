@@ -1,0 +1,2 @@
+$ cat data/fstab | fgrep dev
+[reducted]

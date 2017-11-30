@@ -21,14 +21,14 @@ func StartCommand(envs string, commandLineArray []string, clock util.Clock) {
 	command := logfiles.ParseCommandLine(config, commandLine)
 
 	// Open the log file.
-	now := clock.Now()
+	now := util.GetInjectedNow(clock)
 	logFiles := logfiles.OpenLogFiles(config, now, command)
 	defer logFiles.Close()
 
 	logFiles.WriteEnv(command, envs, now)
 
 	// Send the start request to the logger.
-	req := StartRequest{*command, logFiles, clock.Now()}
+	req := StartRequest{*command, logFiles, now}
 	util.Dump("startRequest=", req)
 
 	MustSendToLogger(config, util.StringSlice(COMMAND_START_COMMAND, util.MustMarshal(req)))

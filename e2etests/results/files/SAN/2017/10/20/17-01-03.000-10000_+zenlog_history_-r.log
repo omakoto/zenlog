@@ -1,0 +1,5 @@
+$ zenlog history -r
+/tmp/zenlog-test/RAW/2017/10/20/17-00-57.000-10000_+zenlog_current-log_-r.log
+/tmp/zenlog-test/RAW/2017/10/20/17-00-59.000-10000_+zenlog_last-log_-r.log
+/tmp/zenlog-test/RAW/2017/10/20/17-01-01.000-10000_+zenlog_history.log
+/tmp/zenlog-test/RAW/2017/10/20/17-01-03.000-10000_+zenlog_history_-r.log

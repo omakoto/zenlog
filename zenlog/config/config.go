@@ -95,7 +95,7 @@ func InitConfigiForLogger() *Config {
 	ensureSlash(&c.LogDir)
 	ensureSlash(&c.TempDir)
 
-	c.ZenlogPid = os.Getpid()
+	c.ZenlogPid = util.GetLoggerPid()
 
 	util.Dump("Logger config=", c)
 

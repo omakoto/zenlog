@@ -1,0 +1,2 @@
+$ /usr/bin/cat data/fstab
+bash: /usr/bin/cat: No such file or directory

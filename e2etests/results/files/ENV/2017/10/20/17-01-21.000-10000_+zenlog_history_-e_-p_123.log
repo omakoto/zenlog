@@ -1,0 +1,6 @@
+Command: zenlog history -e -p 123
+Start time: 2017/10/20 17:01:21
+ZENLOG_PID=10000
+Exit status: 0
+Finish time: 2017/10/20 17:01:22
+Duration: 1s

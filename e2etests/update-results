@@ -1,0 +1,12 @@
+#!/bin/bash
+
+medir="${0%/*}"
+
+cd "$medir" || exit 1
+
+. "./zenlog-test-common"
+
+rm -fr results
+mkdir -p results
+$TREE "$ZENLOG_DIR" > results/tree1.txt
+cp -pr "$ZENLOG_DIR" results/files

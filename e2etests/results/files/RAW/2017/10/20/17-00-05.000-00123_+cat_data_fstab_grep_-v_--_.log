@@ -1,0 +1,6 @@
+$ cat data/fstab | grep -v -- '^#'
+/dev/mapper/debian--vg-root /               ext4    errors=remount-ro 0       1
+UUID=023bac6e-433f-45dd-b656-ced17ee4ef0d /boot           ext2    defaults        0       2
+/dev/mapper/debian--vg-swap_1 none            swap    sw              0       0
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
+/dev/disk/by-uuid/6ab156b9-fcab-442a-87fa-bb1cbaf1eb86 /mnt/2nd auto nosuid,nodev,nofail,x-gvfs-show 0 0

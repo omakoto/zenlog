@@ -24,10 +24,11 @@ func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus in
 		util.Say("Panic detected: %v", r)
 		startShell = true
 	} else {
-		util.Say("Child finished unsuccessfully: code=%d", childStatus)
-
 		// If the child dies too early, something may be wrong, so start a shell...
-		startShell = (util.NewClock().Now().Sub(startTime).Seconds() < 30)
+		if util.NewClock().Now().Sub(startTime).Seconds() < 30 {
+			util.Say("Child finished unsuccessfully, too soon?: code=%d%s", childStatus)
+			startShell = true
+		}
 	}
 	if startShell {
 		util.StartEmergencyShell()

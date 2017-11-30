@@ -1,0 +1,2 @@
+$ echo $'a\xffb' # broken utf8
+aÿb

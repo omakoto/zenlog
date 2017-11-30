@@ -1,0 +1,41 @@
+#!/bin/bash
+
+medir="$(readlink -f "${0%/*}")"
+
+$medir/../scripts/build.sh
+
+# Clear all ZENLOG_ variables.
+for env in ${!ZENLOG_*} ; do
+  unset "$env"
+done
+
+# Configuration.
+export ZENLOG_BIN="$medir/../bin/zenlog"
+
+export ZENLOG_CONF="$medir/zenlog.toml"
+export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $medir/bashrc"
+export ZENLOG_DIR=/tmp/zenlog-test
+
+export _ZENLOG_LOGGER_PID=123
+export _ZENLOG_TIME_INJECTION_FILE=/tmp/zenlog-time
+echo 1508544000 >"$_ZENLOG_TIME_INJECTION_FILE"
+
+#export ZENLOG_DEBUG=1
+
+export TREE="tree -aF"
+
+clear_log() {
+  # Prepare log dir.
+  rm -fr "$ZENLOG_DIR"/*
+  mkdir -p "$ZENLOG_DIR"
+}
+
+# Start
+run_zenlog() {
+  script -qec "$ZENLOG_BIN" /dev/null
+}
+
+# If executed as a command, run run_zenlog.
+if [[ "$0" == "${BASH_SOURCE[0]}" ]] ; then
+  run_zenlog
+fi

@@ -101,8 +101,8 @@ func (l *Logger) CleanUp() {
 	l.ForwardPipe.Close()
 	l.ReversePipe.Close()
 
-	os.Remove(l.ForwardPipe.Name())
-	os.Remove(l.ReversePipe.Name())
+	util.Warn(os.Remove(l.ForwardPipe.Name()), "Remove failed")
+	util.Warn(os.Remove(l.ReversePipe.Name()), "Remove failed")
 }
 
 func (l *Logger) MustReply(config *config.Config, vals []string) {
@@ -114,6 +114,10 @@ func (l *Logger) MustReply(config *config.Config, vals []string) {
 
 func (l *Logger) isOpen() bool {
 	return l.logFiles != nil
+}
+
+func (l *Logger) SendCloseRequest() {
+	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(CLOSE_COMMAND))
 }
 
 func (l *Logger) SendFlushRequest() {
@@ -208,6 +212,10 @@ func (l *Logger) DoLogger() {
 					util.Debugf("Child died.")
 					l.closeLogs(nil)
 					return
+
+				case CLOSE_COMMAND:
+					util.ExitSuccess()
+					continue
 
 				case FLUSH_COMMAND:
 					l.flush()

@@ -56,7 +56,7 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 
 	// Set up signal handler.
 	sigch := make(chan os.Signal)
-	signal.Notify(sigch, syscall.SIGCHLD, syscall.SIGWINCH)
+	signal.Notify(sigch, syscall.SIGCHLD, syscall.SIGWINCH, syscall.SIGHUP)
 
 	// Set up environmental variables.
 	l.ExportEnviron()
@@ -79,10 +79,14 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 			switch s {
 			case syscall.SIGWINCH:
 				util.Debugf("Caught SIGWINCH")
-				util.PropagateTerminalSize(os.Stdin, m)
 
-				// Also flush the log.
+				util.PropagateTerminalSize(os.Stdin, m)
 				l.SendFlushRequest()
+
+			case syscall.SIGHUP:
+				util.Debugf("Caught SIGHUP")
+
+				l.SendCloseRequest()
 
 			case syscall.SIGCHLD:
 				util.Debugf("Caught SIGCHLD")
@@ -139,7 +143,7 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 	// Logger.
 	l.DoLogger()
 
-	util.Debugf("Zenlog exitting with=%d", childStatus)
+	util.Debugf("Zenlog exiting with=%d", childStatus)
 	if childStatus == RESURRECT_CODE {
 		return 0, true
 	}

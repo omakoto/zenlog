@@ -1,3 +1,4 @@
 - Improve the command line parser. (Actually parse; don't use split.)
+I couldn't find any packages that can handle $'...', $"..." and pipelines (i.e."cat|cat" -> ["cat", "|", "cat"]).
 
 - Refactor subcommands and add tests.

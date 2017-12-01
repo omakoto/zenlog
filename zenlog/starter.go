@@ -92,14 +92,14 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 				util.Debugf("Caught SIGCHLD")
 				ps, err := c.Process.Wait()
 				if err != nil {
-					util.Fatalf("Wait failed: %s", err)
+					util.Warn(err, "Wait failed")
 					childStatus = 255
 				} else {
 					childStatus = ps.Sys().(syscall.WaitStatus).ExitStatus()
 				}
 				l.OnChildDied()
 			default:
-				util.Debugf("Caught unexpected signal: %+v", s)
+				util.Say("Caught unexpected signal: %+v", s)
 			}
 		}
 	}()

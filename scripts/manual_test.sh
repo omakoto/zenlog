@@ -21,6 +21,8 @@ export ZENLOG_ALWAYS_NO_LOG_COMMANDS="(?:vi|vim|man|nano|pico|less|watch|emacs|s
 
 export ZENLOG_BIN="$(readlink -m bin/zenlog)"
 
+export PS1_OVERRIDE="[zenlog-testing]"
+
 mkdir -p "$ZENLOG_DIR"
 
 "$ZENLOG_BIN"

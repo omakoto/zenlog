@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Open the given filename in ZENLOG_VIEWER.
 

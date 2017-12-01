@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Run du over ZENLOG_DIR.
 

@@ -7,7 +7,7 @@ env_filter() {
 }
 
 preexec() {
-  "$ZENLOG_BIN" start-command-with-env "$(bash_dump_env | env_filter)" $(bash_last_command)
+  "$ZENLOG_BIN" start-command-with-env "$(bash_dump_env | env_filter)" "$(bash_last_command)"
 }
 
 prompt_command() {

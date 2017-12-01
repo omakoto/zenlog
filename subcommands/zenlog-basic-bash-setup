@@ -25,7 +25,7 @@ _prompt_command() {
 # Before starting a command, tell zenlog to start logging, with the
 # full command line.
 _preexec_command() {
-  "$ZENLOG_BIN" start-command-with-env "$(bash_dump_env)" $(bash_last_command)
+  "$ZENLOG_BIN" start-command-with-env "$(bash_dump_env)" "$(bash_last_command)"
 }
 
 PROMPT_COMMAND="_prompt_command"

@@ -1,2 +1,2 @@
-$ echo ok | cat # tag test abc def <>/
+$ echo ok | cat # tag test abc  def <>/
 ok

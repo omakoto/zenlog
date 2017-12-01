@@ -54,7 +54,10 @@ zenlog_last_log -e # fun e last log
 zenlog current-log -e -p $_ZENLOG_LOGGER_PID
 zenlog last-log -e -p $_ZENLOG_LOGGER_PID
 zenlog history -e -p $_ZENLOG_LOGGER_PID
-exit
+export ZENLOG_PID=$_ZENLOG_LOGGER_PID
+cat data/fstab|cat -n|cat -E
+cat data/* #Wildcard
+echo $_ZENLOG_E2E_EXIT_TIME >"$_ZENLOG_TIME_INJECTION_FILE"; exit
 EOF
 
 fail=0

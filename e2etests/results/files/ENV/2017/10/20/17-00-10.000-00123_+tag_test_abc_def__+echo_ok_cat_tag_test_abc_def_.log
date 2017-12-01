@@ -1,4 +1,4 @@
-Command: echo ok | cat # tag test abc def <>/
+Command: echo ok | cat # tag test abc  def <>/
 Start time: 2017/10/20 17:00:10
 ZENLOG_PID=123
 Exit status: 0

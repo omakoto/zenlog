@@ -96,6 +96,8 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 			if prefixCommands.MatchString(w) {
 				continue;
 			}
+
+			// Let's only use the first command for auto-184.
 			if i == 0 && alwaysNoLogCommands.MatchString(w) {
 				noLogDetected = true
 			}

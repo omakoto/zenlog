@@ -76,6 +76,7 @@ echo ok
 zenlog cat-last-log-content
 zenlog ensure-log-dir
 zenlog purge-log -y -p 9999999
+command fgrep dev < data/fstab
 echo $_ZENLOG_E2E_EXIT_TIME >"$_ZENLOG_TIME_INJECTION_FILE"; exit
 EOF
 

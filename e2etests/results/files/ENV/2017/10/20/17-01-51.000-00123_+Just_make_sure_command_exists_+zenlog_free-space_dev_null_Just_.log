@@ -1,0 +1,6 @@
+Command: zenlog free-space >/dev/null # Just make sure command exists
+Start time: 2017/10/20 17:01:51
+ZENLOG_PID=123
+Exit status: 0
+Finish time: 2017/10/20 17:01:52
+Duration: 1s

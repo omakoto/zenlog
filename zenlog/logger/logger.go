@@ -144,6 +144,9 @@ func (l *Logger) openLogs(request *StartRequest) {
 	if request.Command.NoLog {
 		l.write([]byte("[reducted]"))
 		l.closeLogs(nil)
+
+		// HACK: This is to update the injected clock even for reducted commands.
+		util.GetInjectedNow(l.clock)
 	}
 }
 

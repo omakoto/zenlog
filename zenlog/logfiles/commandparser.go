@@ -81,7 +81,7 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 	noLogDetected := false
 	forceLogDetected := false
 
-	for _, command := range commands {
+	for i, command := range commands {
 		words := reWordSplitter.Pattern().Split(command, -1)
 
 		for _, w := range words {
@@ -96,7 +96,7 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 			if prefixCommands.MatchString(w) {
 				continue;
 			}
-			if alwaysNoLogCommands.MatchString(w) {
+			if i == 0 && alwaysNoLogCommands.MatchString(w) {
 				noLogDetected = true
 			}
 			exes = append(exes, filepath.Base(w))

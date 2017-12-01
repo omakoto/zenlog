@@ -1,0 +1,6 @@
+Command: 186 fgrep dev < data/fstab
+Start time: 2017/10/20 17:00:29
+ZENLOG_PID=123
+Exit status: 0
+Finish time: 2017/10/20 17:00:30
+Duration: 1s

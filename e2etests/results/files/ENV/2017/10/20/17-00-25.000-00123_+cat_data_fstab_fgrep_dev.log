@@ -1,0 +1,3 @@
+Command: cat data/fstab | fgrep dev
+Start time: 2017/10/20 17:00:25
+ZENLOG_PID=123

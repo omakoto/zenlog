@@ -1,4 +1,4 @@
-package zenlog
+package main
 
 import (
 	"os"
@@ -20,10 +20,7 @@ func tryRunExtetrnalCommand(path string, command string, args []string) {
 		execArgs = append(execArgs, f)
 		execArgs = append(execArgs, args...)
 
-		util.Debugf("Executing: %s, %v", f, execArgs)
-
-		err := syscall.Exec(f, execArgs, os.Environ())
-		util.Check(err, "Exec failed arg0='%s', args=%v", f, execArgs)
+		util.MustExec(execArgs)
 	}
 }
 

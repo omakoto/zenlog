@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+const RESURRECT_CODE = 13
+
+
 func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus int) {
 	if r == nil && childStatus <= 0 {
 		return // okay
@@ -35,12 +38,14 @@ func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus in
 	}
 }
 
-func StartZenlog(args []string) int {
+func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 	var childStatus int = -1
 
 	startTime := util.NewClock().Now()
 	defer func() {
-		maybeStartEmergencyShell(startTime, recover(), childStatus)
+		if !resurrect {
+			maybeStartEmergencyShell(startTime, recover(), childStatus)
+		}
 	}()
 
 	config := config.InitConfigiForLogger()
@@ -134,6 +139,12 @@ func StartZenlog(args []string) int {
 	// Logger.
 	logger.DoLogger()
 
-	util.Debugf("Zenlog exitting with=%d", childStatus)
-	return childStatus
+	if childStatus == RESURRECT_CODE {
+		util.Debugf("Zenlog exitting with=%d", childStatus)
+		return 0, true
+	} else {
+		util.Debugf("Zenlog exitting with=%d", childStatus)
+	}
+
+	return childStatus, false
 }

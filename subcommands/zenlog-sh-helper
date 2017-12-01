@@ -54,4 +54,13 @@ function bash_dump_env() {
   } 2>/dev/null
 }
 
+# If called from the login shell, then close the current zenlog session and restart zenlog.
+function zenlog_restart() {
+    if zenlog in-zenlog; then
+        exit 13
+    else
+        echo "Not in zenlog." 1>&2
+    fi
+}
+
 EOF

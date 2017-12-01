@@ -1,0 +1,2 @@
+$ command fgrep dev < data/fstab
+[reducted]

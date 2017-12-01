@@ -53,4 +53,12 @@ bind -x '"\e1": "open_last_log"'
 # Press ALT+2 on prompt to open the last log file on the web browser *with color*.
 bind -x '"\e2": "open_last_raw"'
 
+#===================================================================
+# Simple bash setup script for Bash.
+#
+# Add the following line to your $HOME/.bashrc file.
+#
+# . <(zenlog basic-bash-setup)
+#===================================================================
+
 EOF

@@ -1,0 +1,6 @@
+Command: zenlog outer-tty # Just make sure command exists
+Start time: 2017/10/20 17:01:37
+ZENLOG_PID=123
+Exit status: 0
+Finish time: 2017/10/20 17:01:38
+Duration: 1s

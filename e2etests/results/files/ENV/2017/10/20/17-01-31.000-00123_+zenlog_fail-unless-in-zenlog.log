@@ -1,0 +1,6 @@
+Command: zenlog fail-unless-in-zenlog
+Start time: 2017/10/20 17:01:31
+ZENLOG_PID=123
+Exit status: 0
+Finish time: 2017/10/20 17:01:32
+Duration: 1s

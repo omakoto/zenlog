@@ -57,6 +57,25 @@ zenlog history -e -p $_ZENLOG_LOGGER_PID
 export ZENLOG_PID=$_ZENLOG_LOGGER_PID
 cat data/fstab|cat -n|cat -E
 cat data/* #Wildcard
+zenlog fail-if-in-zenlog
+zenlog fail-unless-in-zenlog
+echo to_logger | zenlog write-to-logger
+echo to_outer | zenlog write-to-outer
+zenlog outer-tty # Just make sure command exists
+zenlog help >/dev/null # Just make sure command exists
+zenlog -h >/dev/null # Just make sure command exists
+zenlog --help >/dev/null # Just make sure command exists
+zenlog du >/dev/null # Just make sure command exists
+zenlog free-space >/dev/null # Just make sure command exists
+zenlog sh-helper >/dev/null # Just make sure command exists
+zenlog flush # Just make sure command exists
+zenlog flush-all # Just make sure command exists
+echo ok
+zenlog cat-last-log
+echo ok
+zenlog cat-last-log-content
+zenlog ensure-log-dir
+zenlog purge-log -y -p 9999999
 echo $_ZENLOG_E2E_EXIT_TIME >"$_ZENLOG_TIME_INJECTION_FILE"; exit
 EOF
 

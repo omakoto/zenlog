@@ -17,7 +17,6 @@ import (
 
 const RESURRECT_CODE = 13
 
-
 func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus int) {
 	if r == nil && childStatus <= 0 {
 		return // okay
@@ -49,20 +48,18 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 	}()
 
 	config := config.InitConfigiForLogger()
-	util.Dump("config=", config)
 
 	fmt.Printf("Zenlog starting... [ZENLOG_DIR=%s ZENLOG_PID=%d]\n", config.LogDir, config.ZenlogPid)
 
-	logger := logger.NewLogger(config)
-	defer logger.CleanUp()
-	util.Dump("Logger=", logger)
+	l := logger.NewLogger(config)
+	defer l.CleanUp()
 
 	// Set up signal handler.
 	sigch := make(chan os.Signal)
 	signal.Notify(sigch, syscall.SIGCHLD, syscall.SIGWINCH)
 
 	// Set up environmental variables.
-	logger.ExportEnviron()
+	l.ExportEnviron()
 
 	// Create a pty and start the child command.
 	util.Debugf("Executing: %s", config.StartCommand)
@@ -83,24 +80,27 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 			case syscall.SIGWINCH:
 				util.Debugf("Caught SIGWINCH")
 				util.PropagateTerminalSize(os.Stdin, m)
-				logger.SendFlushRequest()
+
+				// Also flush the log.
+				l.SendFlushRequest()
 
 			case syscall.SIGCHLD:
 				util.Debugf("Caught SIGCHLD")
 				ps, err := c.Process.Wait()
 				if err != nil {
 					util.Fatalf("Wait failed: %s", err)
+					childStatus = 255
 				} else {
 					childStatus = ps.Sys().(syscall.WaitStatus).ExitStatus()
 				}
-				logger.OnChildDied()
+				l.OnChildDied()
 			default:
 				util.Debugf("Caught unexpected signal: %+v", s)
 			}
 		}
 	}()
 
-	// Forward the input from stdin to the logger.
+	// Forward the input from stdin to the l.
 	go func() {
 		io.Copy(m, os.Stdin)
 	}()
@@ -121,9 +121,9 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 					err = io.ErrShortWrite
 					break
 				}
-				// Then, write to logger.
-				nw, ew = logger.ForwardPipe.Write(buf[0:nr])
-				if util.Warn(ew, "Stdout.Write failed") {
+				// Then, write to l.
+				nw, ew = l.ForwardPipe.Write(buf[0:nr])
+				if util.Warn(ew, "ForwardPipe.Write failed") {
 					break
 				}
 				if nr != nw {
@@ -132,18 +132,16 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 				}
 			}
 			if er != nil {
-				break // Ignore read error.
+				break
 			}
 		}
 	}()
 	// Logger.
-	logger.DoLogger()
+	l.DoLogger()
 
+	util.Debugf("Zenlog exitting with=%d", childStatus)
 	if childStatus == RESURRECT_CODE {
-		util.Debugf("Zenlog exitting with=%d", childStatus)
 		return 0, true
-	} else {
-		util.Debugf("Zenlog exitting with=%d", childStatus)
 	}
 
 	return childStatus, false

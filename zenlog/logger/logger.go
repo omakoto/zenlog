@@ -78,6 +78,8 @@ func NewLogger(config *config.Config) *Logger {
 	config.LoggerOut = l.ReversePipe.Name()
 	config.OuterTty = util.Tty()
 
+	util.Dump("Logger=", l)
+
 	return &l
 }
 

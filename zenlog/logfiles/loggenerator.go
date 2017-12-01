@@ -110,8 +110,9 @@ func createLinks(config *config.Config, parentDirName, childDirName, logType, lo
 	createPrevLink(fullChildDir, logType, logFullFileName)
 }
 
+// Open the log files for a command line.
 func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFiles {
-	ret := LogFiles{}
+	l := LogFiles{}
 
 	tag := ""
 	if command.Comment != "" {
@@ -129,20 +130,20 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 		tag,
 		clamp(util.FilenameSafe(command.CommandLine), 32))
 
-	ret.SanFile = strings.Replace(f, M, SAN, 1)
-	ret.RawFile = strings.Replace(f, M, RAW, 1)
-	ret.EnvFile = strings.Replace(f, M, ENV, 1)
+	l.SanFile = strings.Replace(f, M, SAN, 1)
+	l.RawFile = strings.Replace(f, M, RAW, 1)
+	l.EnvFile = strings.Replace(f, M, ENV, 1)
 
-	ret.Open(true)
+	l.Open(true)
 
 	spid := strconv.Itoa(config.ZenlogPid)
 	items := []struct {
 		fullLogFilename string
 		logType         string
 	}{
-		{ret.SanFile, SAN},
-		{ret.RawFile, RAW},
-		{ret.EnvFile, ENV},
+		{l.SanFile, SAN},
+		{l.RawFile, RAW},
+		{l.EnvFile, ENV},
 	}
 	for _, item := range items {
 		createPrevLink(config.LogDir, item.logType, item.fullLogFilename)
@@ -155,9 +156,10 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 		}
 	}
 
-	return ret
+	return l
 }
 
+// Open the log files.
 func (l *LogFiles) Open(truncate bool) {
 	l.SanF, l.San = open(l.SanFile, truncate)
 	l.RawF, l.Raw = open(l.RawFile, truncate)
@@ -191,6 +193,7 @@ func (l *LogFiles) writeTimeToEnv(key string, t time.Time) {
 	l.Env.WriteString("\n")
 }
 
+// Write the command start information to the ENV file.
 func (l *LogFiles) WriteEnv(command *Command, envs string, startTime time.Time) {
 	l.Env.WriteString("Command: ")
 	l.Env.WriteString(command.CommandLine)
@@ -204,6 +207,7 @@ func (l *LogFiles) WriteEnv(command *Command, envs string, startTime time.Time) 
 	}
 }
 
+// Write the command finish information to the ENV file.
 func (l *LogFiles) WriteFinishToEnv(exitCode int, startTime, finishTime time.Time) {
 	l.Env.WriteString("Exit status: ")
 	l.Env.WriteString(strconv.Itoa(exitCode))

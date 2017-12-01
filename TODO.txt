@@ -1,1 +1,3 @@
+- Improve the command line parser. (Actually parse; don't use split.)
+
 - Refactor subcommands and add tests.

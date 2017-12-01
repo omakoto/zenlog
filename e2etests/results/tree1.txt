@@ -414,7 +414,7 @@
 │   │   │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │   │   │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │   │   │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│   │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│   │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │   │   │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │   │   │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │   │   │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -455,7 +455,7 @@
 │   │   │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │   │   │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │   │   │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│   │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│   │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │   │   │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │   │   │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │   │   │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -505,7 +505,7 @@
 │   │   │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │   │   │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │   │   │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│   │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│   │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │   │   │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │   │   │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │   │   │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -652,7 +652,7 @@
 │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -804,7 +804,7 @@
 │       │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │       │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │       │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│       │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│       │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │       │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │       │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │       │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -860,7 +860,7 @@
 │       │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │       │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │       │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│       │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│       │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │       │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │       │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │       │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -925,7 +925,7 @@
 │       │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │       │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │       │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│       │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│       │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │       │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │       │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │       │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -1004,7 +1004,7 @@
 │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -1083,7 +1083,7 @@
 │               ├── 17-01-31.000-00123_+zenlog_fail-unless-in-zenlog.log
 │               ├── 17-01-33.000-00123_+echo_to_logger_zenlog_write-to-l.log
 │               ├── 17-01-35.000-00123_+echo_to_outer_zenlog_write-to-ou.log
-│               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+│               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
 │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
 │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
 │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -1403,12 +1403,12 @@
     │   ├── EEEEEE -> /tmp/zenlog-test/ENV/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
     │   ├── EEEEEEE -> /tmp/zenlog-test/ENV/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
     │   ├── EEEEEEEE -> /tmp/zenlog-test/ENV/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
-    │   ├── EEEEEEEEE -> /tmp/zenlog-test/ENV/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+    │   ├── EEEEEEEEE -> /tmp/zenlog-test/ENV/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
     │   ├── ENV/
     │   │   └── 2017/
     │   │       └── 10/
     │   │           └── 20/
-    │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+    │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
     │   │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
     │   │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
     │   │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/ENV/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -1422,7 +1422,7 @@
     │   │   └── 2017/
     │   │       └── 10/
     │   │           └── 20/
-    │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+    │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
     │   │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
     │   │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
     │   │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/RAW/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -1438,13 +1438,13 @@
     │   ├── RRRRRR -> /tmp/zenlog-test/RAW/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
     │   ├── RRRRRRR -> /tmp/zenlog-test/RAW/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
     │   ├── RRRRRRRR -> /tmp/zenlog-test/RAW/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
-    │   ├── RRRRRRRRR -> /tmp/zenlog-test/RAW/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+    │   ├── RRRRRRRRR -> /tmp/zenlog-test/RAW/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
     │   ├── S -> /tmp/zenlog-test/SAN/2017/10/20/17-01-53.000-00123_+Just_make_sure_command_exists_+zenlog_flush-all_Just_make_sure_.log
     │   ├── SAN/
     │   │   └── 2017/
     │   │       └── 10/
     │   │           └── 20/
-    │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+    │   │               ├── 17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
     │   │               ├── 17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
     │   │               ├── 17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
     │   │               ├── 17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log -> /tmp/zenlog-test/SAN/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
@@ -1460,7 +1460,7 @@
     │   ├── SSSSSS -> /tmp/zenlog-test/SAN/2017/10/20/17-01-43.000-00123_+Just_make_sure_command_exists_+zenlog_--help_dev_null_Just_make.log
     │   ├── SSSSSSS -> /tmp/zenlog-test/SAN/2017/10/20/17-01-41.000-00123_+Just_make_sure_command_exists_+zenlog_-h_dev_null_Just_make_sur.log
     │   ├── SSSSSSSS -> /tmp/zenlog-test/SAN/2017/10/20/17-01-39.000-00123_+Just_make_sure_command_exists_+zenlog_help_dev_null_Just_make_s.log
-    │   └── SSSSSSSSS -> /tmp/zenlog-test/SAN/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_Just_make_sure_.log
+    │   └── SSSSSSSSS -> /tmp/zenlog-test/SAN/2017/10/20/17-01-37.000-00123_+Just_make_sure_command_exists_+zenlog_outer-tty_dev_null_Just_m.log
     ├── or_test/
     │   ├── E -> /tmp/zenlog-test/ENV/2017/10/20/17-00-22.000-00123_+or_test_+false_echo_or_test_or_test.log
     │   ├── ENV/

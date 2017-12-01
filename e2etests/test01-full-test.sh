@@ -61,7 +61,7 @@ zenlog fail-if-in-zenlog
 zenlog fail-unless-in-zenlog
 echo to_logger | zenlog write-to-logger
 echo to_outer | zenlog write-to-outer
-zenlog outer-tty # Just make sure command exists
+zenlog outer-tty >/dev/null # Just make sure command exists
 zenlog help >/dev/null # Just make sure command exists
 zenlog -h >/dev/null # Just make sure command exists
 zenlog --help >/dev/null # Just make sure command exists

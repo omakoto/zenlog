@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Open current log file with ZENLOG_VIEWER.
 # Useful used with -p.

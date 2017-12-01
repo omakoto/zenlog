@@ -172,6 +172,12 @@ func FindSelf() string {
 	return path
 }
 
+func SelfCtime() time.Time {
+	stat, err := os.Stat(FindSelf())
+	Check(err, "Stat failed")
+	return stat.ModTime()
+}
+
 func StringSlice(arr ...string) []string {
 	return arr
 }

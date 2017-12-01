@@ -79,6 +79,14 @@ func LoggerPipe() {
 	fmt.Println(os.Getenv(envs.ZENLOG_LOGGER_IN))
 }
 
+func CheckUpdate() {
+	if strconv.FormatInt(util.SelfCtime().Unix(), 10) == os.Getenv(envs.ZENLOG_BIN_CTIME) {
+		util.ExitSuccess()
+	}
+	util.Say("Zenlog updated. Run \"zenlog_restart\" (or \"exit 13\") to restart a zenlog session.")
+	util.ExitFailure()
+}
+
 func MaybeRunBuiltin(command string, args []string) {
 	switch strings.Replace(command, "_", "-", -1) {
 	case "in-zenlog":
@@ -118,6 +126,10 @@ func MaybeRunBuiltin(command string, args []string) {
 	case "last-log":
 		FailUnlessInZenlog()
 		history.LastLogCommand(args)
+
+	case "check-update":
+		FailUnlessInZenlog()
+		CheckUpdate()
 
 		// TODO Refactor these commands for testability.
 	case "start-command":

@@ -167,6 +167,7 @@ func FindSelf() string {
 	Check(err, "EvalSymlinks failed")
 
 	path, err = filepath.Abs(path)
+	Check(err, "Abs failed")
 	Debugf("$0(resolved)=%s", path)
 
 	return path

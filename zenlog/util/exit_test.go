@@ -1,11 +1,15 @@
 package util
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/davecgh/go-spew/spew"
+)
 
 func CheckRunWithRescue(t *testing.T, expected int, f func() int) {
 	actual := RunWithRescue(f)
 	if expected != actual {
-		t.Errorf("Expected=%d actual=%d f=%v\n", expected, actual, f)
+		t.Errorf("Expected=%d actual=%d f=%s\n", expected, actual, spew.Sdump(f))
 	}
 }
 

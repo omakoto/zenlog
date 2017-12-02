@@ -19,8 +19,10 @@ type Config struct {
 	PrefixCommands      string `toml:"ZENLOG_PREFIX_COMMANDS"`
 	AlwaysNoLogCommands string `toml:"ZENLOG_ALWAYS_NO_LOG_COMMANDS"`
 	AutoFlush           bool   `toml:"ZENLOG_AUTO_FLUSH"`
-	CommandSplitter     string `toml:"ZENLOG_COMMAND_SPLITTER"`
-	CommentSplitter     string `toml:"ZENLOG_COMMENT_SPLITTER"`
+
+	UseExperimentalCommandParser bool   `toml:"ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER"`
+	CommandSplitter              string `toml:"ZENLOG_COMMAND_SPLITTER"`
+	CommentSplitter              string `toml:"ZENLOG_COMMENT_SPLITTER"`
 
 	ZenlogPid int
 
@@ -62,6 +64,9 @@ func InitConfigiForLogger() *Config {
 		file = os.ExpandEnv("$HOME/.zenlog.toml")
 	}
 	var c Config
+
+	c.UseExperimentalCommandParser = true // Default to true.
+
 	data, err := ioutil.ReadFile(file)
 	if err == nil {
 		if _, err := toml.Decode(string(data), &c); err != nil {
@@ -75,10 +80,14 @@ func InitConfigiForLogger() *Config {
 	overwriteWithEnviron(&c.LogDir, envs.ZENLOG_DIR, os.ExpandEnv("$HOME/zenlog/"))
 	overwriteWithEnviron(&c.PrefixCommands, "ZENLOG_PREFIX_COMMANDS", `(?:command|builtin|time|sudo|[a-zA-Z0-9_]+\=.*)`)
 	overwriteWithEnviron(&c.AlwaysNoLogCommands, "ZENLOG_ALWAYS_NO_LOG_COMMANDS", `(?:vi|vim|man|nano|pico|emacs|zenlog.*)`)
+
 	overwriteWithEnviron(&c.CommandSplitter, "ZENLOG_COMMAND_SPLITTER", "")
 	overwriteWithEnviron(&c.CommentSplitter, "ZENLOG_COMMENT_SPLITTER", "")
+
 	overwriteWithEnviron(&c.TempDir, envs.ZENLOG_TEMP, "")
+
 	overwriteBoolWithEnviron(&c.AutoFlush, envs.ZENLOG_AUTOFLUSH)
+	overwriteBoolWithEnviron(&c.UseExperimentalCommandParser, envs.ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER)
 
 	if c.StartCommand == "" {
 		shell := os.Getenv("SHELL")
@@ -139,6 +148,7 @@ func InitConfigForCommands() *Config {
 	c.PrefixCommands = lc.PrefixCommands
 	c.CommandSplitter = lc.CommandSplitter
 	c.CommentSplitter = lc.CommentSplitter
+	c.UseExperimentalCommandParser = lc.UseExperimentalCommandParser
 
 	util.Dump("Command config=", c)
 	return &c

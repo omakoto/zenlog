@@ -4,6 +4,10 @@ medir="${0%/*}"
 
 . "$medir/zenlog-test-common"
 
+# This is the default now.
+# export ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER=1
+
+
 clear_log
 
 cd "$medir"
@@ -75,6 +79,7 @@ zenlog cat-last-log-content
 zenlog ensure-log-dir
 zenlog purge-log -y -p 9999999
 command fgrep dev < data/fstab
+V="a b c" echo ok
 echo $_ZENLOG_E2E_EXIT_TIME >"$_ZENLOG_TIME_INJECTION_FILE"; exit
 EOF
 

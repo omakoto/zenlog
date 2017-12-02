@@ -21,7 +21,7 @@ func TestEncodeSuccess(t *testing.T) {
 		if s && (string(p) == v.prefix) && SlicesEqual(a, v.args) {
 			// OK
 		} else {
-			t.Errorf("i=%d: [success=%s] Source pre='%s' args=[%d]%v, Actual pre='%s' args=[%d]%v", i, s, v.prefix, len(v.args), v.args, p, len(a), a)
+			t.Errorf("i=%d: [success=%v] Source pre='%s' args=[%d]%v, Actual pre='%s' args=[%d]%v", i, s, v.prefix, len(v.args), v.args, p, len(a), a)
 		}
 	}
 }

@@ -4,6 +4,7 @@ package logfiles
 
 import (
 	"github.com/omakoto/zenlog-go/zenlog/config"
+	"github.com/omakoto/zenlog-go/zenlog/shell"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"path/filepath"
 	"regexp"
@@ -11,9 +12,8 @@ import (
 )
 
 const (
-	NO_LOG_PREFIX = "184"
+	NO_LOG_PREFIX    = "184"
 	FORCE_LOG_PREFIX = "186"
-
 
 	WHITESPACE = " \t\n\r\v"
 )
@@ -61,18 +61,74 @@ func splitCommands(config *config.Config, commandLine string) []string {
 	return re.Split(commandLine, -1)
 }
 
+func extractCommandsWithRegex(config *config.Config, commandLine string) (commands [][]string, comment string) {
+
+	pipeLine, comment := splitComment(config, commandLine)
+
+	commands = make([][]string, 0, 16)
+
+	for _, command := range splitCommands(config, pipeLine) {
+		commands = append(commands, reWordSplitter.Pattern().Split(command, -1))
+	}
+	return
+}
+
+func extractCommandsWithParser(config *config.Config, commandLine string) (commands [][]string, comment string) {
+	commands = make([][]string, 0, 16)
+	comment = ""
+
+	tokens := shell.ShellSplit(commandLine)
+	if len(tokens) == 0 {
+		return
+	}
+	last := tokens[len(tokens)-1]
+	if strings.HasPrefix(last, "#") {
+		comment = last[1:]
+		comment = strings.Trim(comment, " \t\r\n")
+		tokens = tokens[0:len(tokens)-1]
+	}
+
+	current := make([]string, 0, 16)
+
+	push := func() {
+		if len(current) > 0 {
+			commands = append(commands, current)
+			current = make([]string, 0, 16)
+		}
+	};
+
+	for _, word := range tokens {
+		if shell.IsCommandSeparator(word) {
+			push()
+			continue;
+		}
+		current = append(current, word)
+	}
+	push()
+	return
+}
+
+func extractCommands(config *config.Config, commandLine string) (commands [][]string, comment string) {
+	if !config.UseExperimentalCommandParser {
+		return extractCommandsWithRegex(config, commandLine)
+	}
+	return extractCommandsWithParser(config, commandLine)
+}
+
 // Take a command line, and extract a list of the commands and the comment.
 // e.g. "/bin/cat /etc/passwd | grep xxx # find xxx" -> ["cat", "grep"] "find xxx"
 // TODO Make it actually understand quotes, etc.
 func ParseCommandLine(config *config.Config, commandLine string) *Command {
+	// Save command.
 	ret := Command{}
 	ret.CommandLine = strings.Trim(commandLine, WHITESPACE)
 
-	pipeLine, comment := splitComment(config, commandLine)
+	// Tokenize.
+	commands, comment := extractCommands(config, commandLine)
+
 	ret.Comment = comment
 
-	commands := splitCommands(config, pipeLine)
-
+	// Get command names, and check 184/186.
 	prefixCommands := regexp.MustCompile("^" + config.PrefixCommands + "$")
 	alwaysNoLogCommands := regexp.MustCompile("^" + config.AlwaysNoLogCommands + "$")
 
@@ -82,19 +138,17 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 	forceLogDetected := false
 
 	for i, command := range commands {
-		words := reWordSplitter.Pattern().Split(command, -1)
-
-		for _, w := range words {
+		for _, w := range command {
 			switch w {
 			case NO_LOG_PREFIX:
 				noLogDetected = true
-				continue;
+				continue
 			case FORCE_LOG_PREFIX:
 				forceLogDetected = true
-				continue;
+				continue
 			}
 			if prefixCommands.MatchString(w) {
-				continue;
+				continue
 			}
 
 			// Let's only use the first command for auto-184.
@@ -110,67 +164,3 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 	ret.NoLog = !forceLogDetected && noLogDetected
 	return &ret
 }
-
-//var (
-//	SHELL_SPECIAL_CHARS    = []byte(";|&<>(){}\n")
-//	SHELL_WHITESPACE_CHARS = []byte(" \t")
-//
-//	SPECIAL_TOKEN    = SHELL_SPECIAL_CHARS[0:1]
-//	WHITESPACE_TOKEN = SHELL_WHITESPACE_CHARS[0:1]
-//)
-//
-//func isSpace(b byte) bool {
-//	switch b {
-//	case ' ', '\t':
-//		return true
-//	}
-//	return false
-//}
-//
-//func consecutive(data []byte, chars []byte) (found bool, token []byte, nextPos int) {
-//	nextPos = 0
-//	for {
-//		if bytes.Index(chars, data[nextPos:nextPos+1]) >= 0 {
-//			break
-//		}
-//		nextPos++
-//	}
-//	if nextPos == 0 {
-//		found = false
-//	} else {
-//		found = true
-//		token = data[0:nextPos]
-//	}
-//	return
-//}
-//
-//func ScanShellToken(data []byte, atEOF bool) (advance int, token []byte, err error) {
-//	if len(data) == 0 && atEOF {
-//		return 0, nil, nil
-//	}
-//	if found, _, next := consecutive(data, SHELL_SPECIAL_CHARS); found {
-//		return next, SPECIAL_TOKEN, nil
-//	}
-//	if found, _, next := consecutive(data, SHELL_WHITESPACE_CHARS); found {
-//		return next, WHITESPACE_TOKEN, nil
-//	}
-//
-//	pos := 0
-//	for {
-//		if pos >= len(data) || isSpace(data[pos]) {
-//			break
-//		}
-//		pos++
-//
-//	}
-//	return pos, data[0:pos], nil
-//}
-//
-//func ParseCommandLine(commandLine string) Command {
-//	//exes := make([]string, 0, 8)
-//	scanner := bufio.NewScanner(strings.NewReader(commandLine))
-//	scanner.Split(ScanShellToken)
-//
-//	scanner.Scan()
-//
-//}

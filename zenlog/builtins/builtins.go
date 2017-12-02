@@ -15,18 +15,21 @@ import (
 	"strings"
 )
 
+// InZenlog true if the current process is running in a zenlog session.
 func InZenlog() bool {
 	sig := util.Tty() + ":" + zenlog.Signature()
 	util.Debugf("Signature=%s", sig)
 	return sig == os.Getenv(envs.ZenlogSignature)
 }
 
+// FailIfInZenlog quites the current process with an error code with an error message if it's running in a zenlog session.
 func FailIfInZenlog() {
 	if InZenlog() {
 		util.Fatalf("Already in zenlog.")
 	}
 }
 
+// FailUnlessInZenlog quites the current process with an error code with an error message unless it's running in a zenlog session.
 func FailUnlessInZenlog() {
 	if !InZenlog() {
 		util.Fatalf("Not in zenlog.")
@@ -39,11 +42,13 @@ func copyStdinToFile(file string) {
 	io.Copy(out, os.Stdin)
 }
 
+// WriteToLogger read from STDIN and writes to the current logger. Implies FailUnlessInZenlog().
 func WriteToLogger() {
 	FailUnlessInZenlog()
 	copyStdinToFile(os.Getenv(envs.ZenlogLoggerIn))
 }
 
+// WriteToOuter read from STDIN and writes to the console, without logging. Implies FailUnlessInZenlog().
 func WriteToOuter() {
 	FailUnlessInZenlog()
 	file := os.Getenv(envs.ZenlogOuterTty)
@@ -69,17 +74,19 @@ func WriteToOuter() {
 	}
 }
 
+// OuterTty prints the outer TTY device filename. Implies FailUnlessInZenlog().
 func OuterTty() {
 	FailUnlessInZenlog()
 	fmt.Println(os.Getenv(envs.ZenlogOuterTty))
 }
 
+// LoggerPipe prints named pile filename to the logger. Implies FailUnlessInZenlog().
 func LoggerPipe() {
 	FailUnlessInZenlog()
 	fmt.Println(os.Getenv(envs.ZenlogLoggerIn))
 }
 
-func CheckUpdate() {
+func checkUpdate() {
 	if strconv.FormatInt(util.SelfCtime().Unix(), 10) == os.Getenv(envs.ZenlogBinCtime) {
 		util.ExitSuccess()
 	}
@@ -87,6 +94,7 @@ func CheckUpdate() {
 	util.ExitFailure()
 }
 
+// MaybeRunBuiltin runs a builtin command if a given command is a builtin subcommand.
 func MaybeRunBuiltin(command string, args []string) {
 	switch strings.Replace(command, "_", "-", -1) {
 	case "in-zenlog":
@@ -129,7 +137,7 @@ func MaybeRunBuiltin(command string, args []string) {
 
 	case "check-update":
 		FailUnlessInZenlog()
-		CheckUpdate()
+		checkUpdate()
 
 		// TODO Refactor these commands for testability.
 	case "start-command":

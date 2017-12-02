@@ -11,21 +11,21 @@ import (
 	"strings"
 )
 
-type LogFileType int
+type logFileType int
 
 const (
-	LogTypeSan LogFileType = iota
-	LogTypeRaw
-	LogTypeEnv
+	logTypeSan logFileType = iota
+	logTypeRaw
+	logTypeEnv
 )
 
-func logChar(logType LogFileType) string {
+func logChar(logType logFileType) string {
 	switch logType {
-	case LogTypeSan:
+	case logTypeSan:
 		return "S"
-	case LogTypeRaw:
+	case logTypeRaw:
 		return "R"
-	case LogTypeEnv:
+	case logTypeEnv:
 		return "E"
 	}
 	util.Fatalf("Unknown type %d", logType)
@@ -44,7 +44,7 @@ func writeIfLink(w *bufio.Writer, filename string) bool {
 	return true
 }
 
-func history(pid, nth int, logType LogFileType, writer io.Writer) bool {
+func history(pid, nth int, logType logFileType, writer io.Writer) bool {
 	if nth < 0 {
 		util.Fatalf("Invalid argument for nth: %d", nth)
 	}
@@ -70,16 +70,17 @@ func history(pid, nth int, logType LogFileType, writer io.Writer) bool {
 	return success
 }
 
-func flagsToLogType(flagR, flagE bool) LogFileType {
+func flagsToLogType(flagR, flagE bool) logFileType {
 	if flagR {
-		return LogTypeRaw
+		return logTypeRaw
 	}
 	if flagE {
-		return LogTypeEnv
+		return logTypeEnv
 	}
-	return LogTypeSan
+	return logTypeSan
 }
 
+// AllHistoryCommand is the implementation of "zenlog history".
 func AllHistoryCommand(args []string) {
 	flags := flag.NewFlagSet("zenlog history", flag.ExitOnError)
 	r := flags.Bool("r", false, "Print RAW filename")
@@ -92,6 +93,7 @@ func AllHistoryCommand(args []string) {
 	util.Exit(history(*p, *n, flagsToLogType(*r, *e), os.Stdout))
 }
 
+// CurrentLogCommand is the implementation of "zenlog current-log".
 func CurrentLogCommand(args []string) {
 	flags := flag.NewFlagSet("zenlog current-log", flag.ExitOnError)
 	r := flags.Bool("r", false, "Print RAW filename")
@@ -103,6 +105,7 @@ func CurrentLogCommand(args []string) {
 	util.Exit(history(*p, 1, flagsToLogType(*r, *e), os.Stdout))
 }
 
+// LastLogCommand is the implementation of "zenlog last-log".
 func LastLogCommand(args []string) {
 	flags := flag.NewFlagSet("zenlog last-log", flag.ExitOnError)
 	r := flags.Bool("r", false, "Print RAW filename")

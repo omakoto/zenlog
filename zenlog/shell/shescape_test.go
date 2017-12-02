@@ -1,4 +1,4 @@
-package util
+package shell
 
 import (
 	"testing"

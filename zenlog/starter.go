@@ -6,6 +6,7 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
 	"github.com/omakoto/zenlog-go/zenlog/logger"
+	"github.com/omakoto/zenlog-go/zenlog/shell"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"io"
 	"os"
@@ -65,7 +66,7 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 	util.Debugf("Executing: %s", config.StartCommand)
 	c := exec.Command("/bin/sh", "-c",
 		envs.ZENLOG_SIGNATURE+
-			fmt.Sprintf("=\"$(tty)\":%s ", util.Shescape(Signature()))+
+			fmt.Sprintf("=\"$(tty)\":%s ", shell.Shescape(Signature()))+
 			config.StartCommand)
 	m, err := pty.Start(c)
 	util.Check(err, "Unable to create pty or execute /bin/sh")

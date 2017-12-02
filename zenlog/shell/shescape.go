@@ -1,12 +1,14 @@
-package util
+package shell
 
 import (
 	"bytes"
 	"strings"
+
+	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
 var (
-	reNeedsEscaping = NewLazyRegexp(`[^a-zA-Z0-9\-\.\_\/]`)
+	reNeedsEscaping = util.NewLazyRegexp(`[^a-zA-Z0-9\-\.\_\/]`)
 )
 
 // Escape a string for shell.

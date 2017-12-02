@@ -26,6 +26,12 @@ func AssertStringsEqual(t *testing.T, input string, expected string, actual stri
 	}
 }
 
+func AssertStringSlicesEqual(t *testing.T, input string, expected []string, actual []string) {
+	if !SlicesEqual(expected, actual) {
+		t.Errorf("input=%s expected=%v actual=%v", input, expected, actual)
+	}
+}
+
 func AssertFileExist(t *testing.T, file string) {
 	if !FileExists(file) {
 		t.Errorf("File %s not createtd.", file)

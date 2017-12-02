@@ -1,13 +1,14 @@
 package config
 
 import (
-	"github.com/BurntSushi/toml"
-	"github.com/omakoto/zenlog-go/zenlog/envs"
-	"github.com/omakoto/zenlog-go/zenlog/util"
 	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/BurntSushi/toml"
+	"github.com/omakoto/zenlog-go/zenlog/envs"
+	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
 // Represents configuration parameters.
@@ -73,7 +74,7 @@ func InitConfigiForLogger() *Config {
 	overwriteWithEnviron(&c.StartCommand, "ZENLOG_START_COMMAND", "")
 	overwriteWithEnviron(&c.LogDir, envs.ZENLOG_DIR, os.ExpandEnv("$HOME/zenlog/"))
 	overwriteWithEnviron(&c.PrefixCommands, "ZENLOG_PREFIX_COMMANDS", `(?:command|builtin|time|sudo|[a-zA-Z0-9_]+\=.*)`)
-	overwriteWithEnviron(&c.AlwaysNoLogCommands, "ZENLOG_ALWAYS_NO_LOG_COMMANDS", `(?:vi|vim|man|nano|pico|less|watch|emacs|zenlog.*)`)
+	overwriteWithEnviron(&c.AlwaysNoLogCommands, "ZENLOG_ALWAYS_NO_LOG_COMMANDS", `(?:vi|vim|man|nano|pico|emacs|zenlog.*)`)
 	overwriteWithEnviron(&c.CommandSplitter, "ZENLOG_COMMAND_SPLITTER", "")
 	overwriteWithEnviron(&c.CommentSplitter, "ZENLOG_COMMENT_SPLITTER", "")
 	overwriteWithEnviron(&c.TempDir, envs.ZENLOG_TEMP, "")

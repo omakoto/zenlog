@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Force all running zenlog sessions to flush the log files.
+
 set -e
 
 killall -s SIGWINCH -e zenlog

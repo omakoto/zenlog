@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Basic Zenlog bash helper functions.
-
-# Install it with:
-# . <(zenlog sh-helper)
-
 cat <<'EOF'
+
+#==============================================================================
+# Basic Zenlog bash helper functions.
+#
+# Add the following line to your $HOME/.bashrc file.
+#
+# . <(zenlog sh-helper)
+#==============================================================================
 
 # Run a command without logging the output.
 function _zenlog_nolog() {
@@ -13,31 +16,11 @@ function _zenlog_nolog() {
 }
 alias 184=_zenlog_nolog
 
-# For backward compatibility.
-function zenlog_in_zenlog() {
-  zenlog in-zenlog
-}
-
-# For backward compatibility.
-function in_zenlog() {
-  zenlog in-zenlog
-}
-
-# Run a command with forcing log, regardless of ZENLOG_ALWAYS_184_COMMANDS.
+# Run a command with forcing log, regardless of ZENLOG_ALWAYS_NO_LOG_COMMANDS.
 function _zenlog_force_log() {
   "${@}"
 }
 alias 186=_zenlog_force_log
-
-# For backward compatibility.
-function zenlog_current_log() {
-  zenlog current-log "$@"
-}
-
-# For backward compatibility.
-function zenlog_last_log() {
-  zenlog last-log "$@"
-}
 
 # Print the current command's command line.  Use with "zenlog start-command".
 function bash_last_command() {
@@ -61,6 +44,26 @@ function zenlog_restart() {
     else
         echo "Not in zenlog." 1>&2
     fi
+}
+
+# For backward compatibility.
+function zenlog_in_zenlog() {
+  zenlog in-zenlog
+}
+
+# For backward compatibility.
+function in_zenlog() {
+  zenlog in-zenlog
+}
+
+# For backward compatibility.
+function zenlog_current_log() {
+  zenlog current-log "$@"
+}
+
+# For backward compatibility.
+function zenlog_last_log() {
+  zenlog last-log "$@"
 }
 
 EOF

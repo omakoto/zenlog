@@ -10,4 +10,5 @@ ZENLOG_DIR = "$HOME/zenlog/"
 ZENLOG_PREFIX_COMMANDS = "(?:command|builtin|time|sudo|[a-zA-Z0-9_]+=.*)"
 
 # Always do not log output from these commands.
-ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|more|less|watch|emacs|ssh|h?top|nload|zenlog.*)"
+# You might also want to add commands like: more, less, ssh, ...
+ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|emacs|htop|zenlog.*)"

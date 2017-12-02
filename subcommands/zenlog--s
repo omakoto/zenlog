@@ -1,17 +1,14 @@
 #!/bin/bash
 
-# Zenlog compatibility shell functions; provide functions that
-# zenlog(v1) -s provided.
-
-set -e
-
-# Base sh-helper.
-script_dir="${0%/*}"
-
 zenlog sh-helper
 
 # Legacy sh-helper.
 cat <<'EOF'
+
+#==============================================================================
+# Zenlog compatibility shell functions; provide functions that
+# zenlog(v1) -s provided.
+#==============================================================================
 
 zenlog_echo_command() {
   zenlog show-command "$@"
@@ -41,7 +38,6 @@ zenlog_cat_last_log_content() {
   zenlog cat-last-log-content "${@}"
 }
 
-# Useful: when used with -p PID.
 zenlog_open_current_log() {
   zenlog open-current-log "${@}"
 }

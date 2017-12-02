@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# Basic zenlog setup for bash.
-
-# Install it with:
-# . <(zenlog basic-bash-setup)
-
 cat <<'EOF'
 
-ZENLOG_BIN=zenlog
+#==============================================================================
+# Simple bash setup script for Bash.
+#
+# Add the following line to your $HOME/.bashrc file.
+#
+# . <(zenlog basic-bash-setup)
+#==============================================================================
+
+ZENLOG_BIN="${ZENLOG_BIN:-zenlog}"
 
 # Include this file from .bash_profile like:
 # . PATH-TO-THIS-FILE/zenlog.bash
@@ -15,7 +18,7 @@ ZENLOG_BIN=zenlog
 ZENLOG_VIEWER=less
 
 # Install the basic shell helper functions.
-. <($ZENLOG_BIN sh-helper)
+. <("$ZENLOG_BIN" sh-helper)
 
 # Stop the current logging before every prompt.
 _prompt_command() {
@@ -40,7 +43,7 @@ open_last_raw() {
   local temp="$(tempfile)"
 
   a2h "$log" > "$temp" || {
-    echo "Failed to execute A2H. Install it from https://github.com/omakoto/a2h-rs."
+    echo "Failed to execute A2H. Install it from https://github.com/omakoto/a2h-rs." 1>&2
     return 1
   }
   "${ZENLOG_RAW_VIEWER:-google-chrome}" "$temp"
@@ -52,13 +55,5 @@ bind -x '"\e1": "open_last_log"'
 
 # Press ALT+2 on prompt to open the last log file on the web browser *with color*.
 bind -x '"\e2": "open_last_raw"'
-
-#===================================================================
-# Simple bash setup script for Bash.
-#
-# Add the following line to your $HOME/.bashrc file.
-#
-# . <(zenlog basic-bash-setup)
-#===================================================================
 
 EOF

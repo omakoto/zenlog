@@ -28,7 +28,7 @@ func TestCreateLogFiles(t *testing.T) {
 		{"/bin/echo ok # comment tag ", "/tmp/zenlog-test/log/SAN/2011/10/21/06-02-02.123-00111_+comment_tag__+_bin_echo_ok_comment_tag.log"},
 	}
 	for _, v := range tests {
-		actual := OpenLogFiles(&config, clock.Now(), ParseCommandLine(&config, v.commandLine))
+		actual := CreateAndOpenLogFiles(&config, clock.Now(), ParseCommandLine(&config, v.commandLine))
 		defer actual.Close()
 		util.AssertStringsEqual(t, v.commandLine, v.log, actual.SanFile)
 		util.AssertStringsEqual(t, v.commandLine, strings.Replace(v.log, "SAN", "RAW", 1), actual.RawFile)

@@ -117,7 +117,7 @@ func (l *Logger) isOpen() bool {
 }
 
 func (l *Logger) SendCloseRequest() {
-	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(CloseCommand))
+	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(CloseSessionCommand))
 }
 
 func (l *Logger) SendFlushRequest() {
@@ -211,14 +211,9 @@ func (l *Logger) DoLogger() {
 					continue
 				}
 				switch args[0] {
-				case ChildDiedCommand:
-					util.Debugf("Child died.")
+				case CloseSessionCommand:
 					l.closeLogs(nil)
 					return
-
-				case CloseCommand:
-					util.ExitSuccess()
-					continue
 
 				case FlushCommand:
 					l.flush()
@@ -273,7 +268,5 @@ func (l *Logger) DoLogger() {
 }
 
 func (l *Logger) OnChildDied() {
-	args := make([]string, 1)
-	args[0] = ChildDiedCommand
-	MustSendToLogger(l.Config, args)
+	l.SendCloseRequest()
 }

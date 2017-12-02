@@ -11,7 +11,7 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
-// Represents configuration parameters.
+// Config represents configuration parameters, read from ~/.zenlog.toml and overridden with the environmental variables.
 type Config struct {
 	LogDir              string `toml:"ZENLOG_DIR"`
 	TempDir             string `toml:"ZENLOG_TEMP"`
@@ -57,8 +57,8 @@ func ensureSlash(v *string) {
 	*v = *v + "/"
 }
 
-// Initialize a config, loading from ~/.zenlog.toml and the environmental variables.
-func InitConfigiForLogger() *Config {
+// InitConfigForLogger returns a Config for a new session, loading from ~/.zenlog.toml and the environmental variables.
+func InitConfigForLogger() *Config {
 	file := os.Getenv(envs.ZenlogConf)
 	if file == "" {
 		file = os.ExpandEnv("$HOME/.zenlog.toml")
@@ -112,6 +112,8 @@ func InitConfigiForLogger() *Config {
 	return &c
 }
 
+// InitConfigForCommands returns a Config for subcommands, loading from ~/.zenlog.toml and the environmental variables.
+// Some of the parameters (such as ZenlogPid) will be inherited from the current zenlog session.
 func InitConfigForCommands() *Config {
 	var c Config
 
@@ -143,7 +145,7 @@ func InitConfigForCommands() *Config {
 	}
 
 	// We still need to load certain parameters from TOML.
-	lc := InitConfigiForLogger()
+	lc := InitConfigForLogger()
 	c.AlwaysNoLogCommands = lc.AlwaysNoLogCommands
 	c.PrefixCommands = lc.PrefixCommands
 	c.CommandSplitter = lc.CommandSplitter

@@ -22,7 +22,7 @@ func StartCommand(envs string, commandLineArray []string, clock util.Clock) {
 
 	// Open the log file.
 	now := util.GetInjectedNow(clock)
-	logFiles := logfiles.OpenLogFiles(config, now, command)
+	logFiles := logfiles.CreateAndOpenLogFiles(config, now, command)
 	defer logFiles.Close()
 
 	logFiles.WriteEnv(command, envs, now)

@@ -22,6 +22,7 @@ var (
 	reWordSplitter = util.NewLazyRegexp(`\s+`)
 )
 
+// Command represents a single running command executed by the user on the shell.
 type Command struct {
 	// Trim()'ed version of the command line.
 	CommandLine string
@@ -115,9 +116,8 @@ func extractCommands(config *config.Config, commandLine string) (commands [][]st
 	return extractCommandsWithParser(config, commandLine)
 }
 
-// Take a command line, and extract a list of the commands and the comment.
+// ParseCommandLine takes a command line, and extracts a list of the commands and the comment out of it.
 // e.g. "/bin/cat /etc/passwd | grep xxx # find xxx" -> ["cat", "grep"] "find xxx"
-// TODO Make it actually understand quotes, etc.
 func ParseCommandLine(config *config.Config, commandLine string) *Command {
 	// Save command.
 	ret := Command{}

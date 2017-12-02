@@ -24,7 +24,8 @@ func tryRunExtetrnalCommand(path string, command string, args []string) {
 	}
 }
 
-// Look for "zenlog-SUBCOMMAND" in PATH and execute it.
+// MaybeRunExtetrnalCommand looks for "zenlog-SUBCOMMAND", first in the zenlog "subcommand" directory,
+// then in PATH and executes it.
 func MaybeRunExtetrnalCommand(command string, args []string) {
 	exePath := util.FindSelf()
 

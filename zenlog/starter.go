@@ -49,7 +49,7 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 		}
 	}()
 
-	config := config.InitConfigiForLogger()
+	config := config.InitConfigForLogger()
 
 	fmt.Printf("Zenlog starting... [ZENLOG_DIR=%s ZENLOG_PID=%d]\n", config.LogDir, config.ZenlogPid)
 

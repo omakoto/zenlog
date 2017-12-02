@@ -22,6 +22,7 @@ const (
 	maxPrevLinks = 10
 )
 
+// LogFiles represents a set of log files (san, raw and env) for a single command.
 type LogFiles struct {
 	SanFile string
 	RawFile string
@@ -110,8 +111,8 @@ func createLinks(config *config.Config, parentDirName, childDirName, logType, lo
 	createPrevLink(fullChildDir, logType, logFullFileName)
 }
 
-// Open the log files for a command line.
-func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFiles {
+// CreateAndOpenLogFiles opens the log files for a command.
+func CreateAndOpenLogFiles(config *config.Config, now time.Time, command *Command) LogFiles {
 	l := LogFiles{}
 
 	tag := ""
@@ -159,7 +160,7 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 	return l
 }
 
-// Open the log files.
+// Open actually opens the set of the log files.
 func (l *LogFiles) Open(truncate bool) {
 	l.SanF, l.San = open(l.SanFile, truncate)
 	l.RawF, l.Raw = open(l.RawFile, truncate)
@@ -177,6 +178,7 @@ func closeSingle(f **os.File, w **bufio.Writer) {
 	}
 }
 
+// Close opens all the log files.
 func (l *LogFiles) Close() {
 	closeSingle(&l.SanF, &l.San)
 	closeSingle(&l.RawF, &l.Raw)
@@ -193,7 +195,7 @@ func (l *LogFiles) writeTimeToEnv(key string, t time.Time) {
 	l.Env.WriteString("\n")
 }
 
-// Write the command start information to the ENV file.
+// WriteEnv writes the command start information to the ENV file, and a string given via 'env', to the ENV log file.
 func (l *LogFiles) WriteEnv(command *Command, envs string, startTime time.Time) {
 	l.Env.WriteString("Command: ")
 	l.Env.WriteString(command.CommandLine)
@@ -207,7 +209,7 @@ func (l *LogFiles) WriteEnv(command *Command, envs string, startTime time.Time) 
 	}
 }
 
-// Write the command finish information to the ENV file.
+// WriteFinishToEnv write the command finish information to the ENV file.
 func (l *LogFiles) WriteFinishToEnv(exitCode int, startTime, finishTime time.Time) {
 	l.Env.WriteString("Exit status: ")
 	l.Env.WriteString(strconv.Itoa(exitCode))

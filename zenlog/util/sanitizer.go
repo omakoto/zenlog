@@ -8,11 +8,11 @@ type Sanitizer struct {
 	reSanitizer *regexp.Regexp
 	reCrLf      *regexp.Regexp
 	reCr        *regexp.Regexp
-	reBs *regexp.Regexp
+	reBs        *regexp.Regexp
 
-	empty     []byte
-	nl        []byte
-	bs []byte
+	empty []byte
+	nl    []byte
+	bs    []byte
 }
 
 func NewSanitizer() *Sanitizer {

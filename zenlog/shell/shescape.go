@@ -22,4 +22,3 @@ func Shescape(s string) string {
 	buffer.WriteString("'")
 	return buffer.String()
 }
-

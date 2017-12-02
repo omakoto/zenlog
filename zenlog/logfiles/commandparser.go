@@ -85,7 +85,7 @@ func extractCommandsWithParser(config *config.Config, commandLine string) (comma
 	if strings.HasPrefix(last, "#") {
 		comment = last[1:]
 		comment = strings.Trim(comment, " \t\r\n")
-		tokens = tokens[0:len(tokens)-1]
+		tokens = tokens[0 : len(tokens)-1]
 	}
 
 	current := make([]string, 0, 16)
@@ -95,12 +95,12 @@ func extractCommandsWithParser(config *config.Config, commandLine string) (comma
 			commands = append(commands, current)
 			current = make([]string, 0, 16)
 		}
-	};
+	}
 
 	for _, word := range tokens {
 		if shell.IsCommandSeparator(word) {
 			push()
-			continue;
+			continue
 		}
 		current = append(current, word)
 	}

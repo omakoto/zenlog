@@ -10,7 +10,7 @@ func Ar(a ...string) []string {
 	return a
 }
 
-func SlicesEqual(a []string, b[] string) bool {
+func SlicesEqual(a []string, b []string) bool {
 	if len(a) != len(b) {
 		return false
 	}
@@ -19,7 +19,7 @@ func SlicesEqual(a []string, b[] string) bool {
 			return false
 		}
 	}
-	return true;
+	return true
 }
 
 func AssertStringsEqual(t *testing.T, input string, expected string, actual string) {

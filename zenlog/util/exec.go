@@ -1,8 +1,8 @@
 package util
 
 import (
-	"syscall"
 	"os"
+	"syscall"
 )
 
 func MustExec(args []string) {

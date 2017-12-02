@@ -1,12 +1,12 @@
 package logfiles
 
 import (
-	"testing"
-	"time"
-	"os"
-	"strings"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/util"
+	"os"
+	"strings"
+	"testing"
+	"time"
 )
 
 func TestCreateLogFiles(t *testing.T) {
@@ -19,10 +19,10 @@ func TestCreateLogFiles(t *testing.T) {
 
 	// TODO The input time is GMT but the logfilename uses a local time.
 	// This needs to generate a local time. How?
-	clock := util.NewInjectedClock(time.Unix(1319202062, 123 * 1000 * 1000))
+	clock := util.NewInjectedClock(time.Unix(1319202062, 123*1000*1000))
 	tests := []struct {
 		commandLine string
-		log string
+		log         string
 	}{
 		{"/bin/echo ok", "/tmp/zenlog-test/log/SAN/2011/10/21/06-01-02.123-00111_+_bin_echo_ok.log"},
 		{"/bin/echo ok # comment tag ", "/tmp/zenlog-test/log/SAN/2011/10/21/06-02-02.123-00111_+comment_tag__+_bin_echo_ok_comment_tag.log"},

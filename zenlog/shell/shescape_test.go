@@ -7,7 +7,7 @@ import (
 func TestShescape(t *testing.T) {
 	inputs := []struct {
 		expected string
-		source string
+		source   string
 	}{
 		{"", ""},
 		{"abc", "abc"},

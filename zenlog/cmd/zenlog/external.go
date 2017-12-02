@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github.com/omakoto/zenlog-go/zenlog/util"
 	"os"
+	"path/filepath"
 	"strings"
 	"syscall"
-	"github.com/omakoto/zenlog-go/zenlog/util"
-	"path/filepath"
 )
 
 func tryRunExtetrnalCommand(path string, command string, args []string) {
@@ -16,7 +16,7 @@ func tryRunExtetrnalCommand(path string, command string, args []string) {
 
 	stat, err := os.Stat(f)
 	if (err == nil) && ((stat.Mode() & syscall.S_IXUSR) != 0) {
-		execArgs := make([]string, 0, len(args) + 1)
+		execArgs := make([]string, 0, len(args)+1)
 		execArgs = append(execArgs, f)
 		execArgs = append(execArgs, args...)
 
@@ -28,8 +28,8 @@ func tryRunExtetrnalCommand(path string, command string, args []string) {
 func MaybeRunExtetrnalCommand(command string, args []string) {
 	exePath := util.FindSelf()
 
-	tryRunExtetrnalCommand(filepath.Dir(exePath) + "/../subcommands", command, args)
-	tryRunExtetrnalCommand(filepath.Dir(exePath) + "/../src/github.com/omakoto/zenlog-go/subcommands", command, args)
+	tryRunExtetrnalCommand(filepath.Dir(exePath)+"/../subcommands", command, args)
+	tryRunExtetrnalCommand(filepath.Dir(exePath)+"/../src/github.com/omakoto/zenlog-go/subcommands", command, args)
 
 	for _, path := range strings.Split(os.Getenv("PATH"), ":") {
 		tryRunExtetrnalCommand(path, command, args)

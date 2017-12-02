@@ -4,7 +4,7 @@ import (
 	"os"
 )
 
-func GetSubcommand() (command  string, args []string) {
+func GetSubcommand() (command string, args []string) {
 	Debugf("os.Args=%+v", os.Args)
 	if len(os.Args) == 1 {
 		command = ""

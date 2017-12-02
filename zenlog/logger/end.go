@@ -26,11 +26,11 @@ func EndCommand(exitStatus int, wantLineNumber bool, clock util.Clock) {
 	fingerprint := util.Fingerprint()
 
 	// Send it.
-	MustSendToLogger(config, util.StringSlice(COMMAND_END_COMMAND, fingerprint, util.MustMarshal(req)))
+	MustSendToLogger(config, util.StringSlice(CommandEndCommand, fingerprint, util.MustMarshal(req)))
 
 	// Wait for reply.
 	ret := MustReceiveFromLogger(config, func(args []string) bool {
-		return (len(args) == 3) && (args[0] == COMMAND_END_COMMAND) && (args[1] == fingerprint)
+		return (len(args) == 3) && (args[0] == CommandEndCommand) && (args[1] == fingerprint)
 	})
 	reply := StopReply{}
 	util.MustUnmarshal(ret[2], &reply)

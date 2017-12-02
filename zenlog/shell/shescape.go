@@ -12,7 +12,7 @@ var (
 )
 
 // Escape a string for shell.
-func Shescape(s string) string {
+func Escape(s string) string {
 	if !reNeedsEscaping.Pattern().MatchString(s) {
 		return s
 	}

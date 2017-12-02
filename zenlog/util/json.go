@@ -6,24 +6,24 @@ import (
 )
 
 var (
-	debugJson = false
+	debugJSON = false
 )
 
 func init() {
-	debugJson = debugJson || (os.Getenv("ZENLOG_DEBUG_JSON") == "1")
+	debugJSON = debugJSON || (os.Getenv("ZENLOG_DEBUG_JSON") == "1")
 }
 
 func MustMarshal(v interface{}) string {
 	data, err := json.Marshal(v)
 	Check(err, "json.Marshal failed")
-	if debugJson {
+	if debugJSON {
 		DebugfForce("Marshal -> \"%s\"", data)
 	}
 	return string(data)
 }
 
 func MustUnmarshal(data string, v interface{}) {
-	if debugJson {
+	if debugJSON {
 		DebugfForce("Unarshal <- \"%s\"", data)
 	}
 	err := json.Unmarshal([]byte(data), v)
@@ -31,7 +31,7 @@ func MustUnmarshal(data string, v interface{}) {
 }
 
 func TryUnmarshal(data string, v interface{}) bool {
-	if debugJson {
+	if debugJSON {
 		DebugfForce("Unarshal <- \"%s\"", data)
 	}
 	err := json.Unmarshal([]byte(data), v)

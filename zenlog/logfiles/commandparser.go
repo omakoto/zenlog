@@ -12,10 +12,10 @@ import (
 )
 
 const (
-	NO_LOG_PREFIX    = "184"
-	FORCE_LOG_PREFIX = "186"
+	noLogPrefix    = "184"
+	forceLogPrefix = "186"
 
-	WHITESPACE = " \t\n\r\v"
+	whitespaceChars = " \t\n\r\v"
 )
 
 var (
@@ -38,8 +38,8 @@ type Command struct {
 }
 
 const (
-	DEFAULT_COMMAND_SPLITTER = `\s*(?:\;|\|\&|\|\||\||&&|\(|\)|{|})\s*`
-	DEFAULT_COMMENT_SPLITTER = `(?:^|[\;\|\&\(\)\{\}]|\s+)\#\s*`
+	defaultCommandSplitter = `\s*(?:\;|\|\&|\|\||\||&&|\(|\)|{|})\s*`
+	defaultCommentSplitter = `(?:^|[\;\|\&\(\)\{\}]|\s+)\#\s*`
 )
 
 // Take a command line and split into the command part and the comment part.
@@ -47,7 +47,7 @@ const (
 // Note when # appears in the middle of a word, it won't start a comment.
 // i.g. "this is comma#nd" is a 3 word command and the # mark doesn't start a comment.
 func splitComment(config *config.Config, commandLine string) (string, string) {
-	pat := util.FirstNonEmpty(config.CommentSplitter, DEFAULT_COMMENT_SPLITTER)
+	pat := util.FirstNonEmpty(config.CommentSplitter, defaultCommentSplitter)
 	re := regexp.MustCompile(pat)
 	vals := re.Split(commandLine, 2)
 	if len(vals) == 2 {
@@ -57,7 +57,7 @@ func splitComment(config *config.Config, commandLine string) (string, string) {
 }
 
 func splitCommands(config *config.Config, commandLine string) []string {
-	re := regexp.MustCompile(util.FirstNonEmpty(config.CommandSplitter, DEFAULT_COMMAND_SPLITTER))
+	re := regexp.MustCompile(util.FirstNonEmpty(config.CommandSplitter, defaultCommandSplitter))
 	return re.Split(commandLine, -1)
 }
 
@@ -77,7 +77,7 @@ func extractCommandsWithParser(config *config.Config, commandLine string) (comma
 	commands = make([][]string, 0, 16)
 	comment = ""
 
-	tokens := shell.ShellSplit(commandLine)
+	tokens := shell.Split(commandLine)
 	if len(tokens) == 0 {
 		return
 	}
@@ -121,7 +121,7 @@ func extractCommands(config *config.Config, commandLine string) (commands [][]st
 func ParseCommandLine(config *config.Config, commandLine string) *Command {
 	// Save command.
 	ret := Command{}
-	ret.CommandLine = strings.Trim(commandLine, WHITESPACE)
+	ret.CommandLine = strings.Trim(commandLine, whitespaceChars)
 
 	// Tokenize.
 	commands, comment := extractCommands(config, commandLine)
@@ -140,10 +140,10 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 	for i, command := range commands {
 		for _, w := range command {
 			switch w {
-			case NO_LOG_PREFIX:
+			case noLogPrefix:
 				noLogDetected = true
 				continue
-			case FORCE_LOG_PREFIX:
+			case forceLogPrefix:
 				forceLogDetected = true
 				continue
 			}

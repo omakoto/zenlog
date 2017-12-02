@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-const RESURRECT_CODE = 13
+const resurrectCode = 13
 
 func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus int) {
 	if r == nil && childStatus <= 0 {
@@ -38,8 +38,9 @@ func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus in
 	}
 }
 
+// StartZenlog starts a new zenlog session.
 func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
-	var childStatus int = -1
+	var childStatus = -1
 
 	startTime := util.NewClock().Now()
 	defer func() {
@@ -65,8 +66,8 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 	// Create a pty and start the child command.
 	util.Debugf("Executing: %s", config.StartCommand)
 	c := exec.Command("/bin/sh", "-c",
-		envs.ZENLOG_SIGNATURE+
-			fmt.Sprintf("=\"$(tty)\":%s ", shell.Shescape(Signature()))+
+		envs.ZenlogSignature+
+			fmt.Sprintf("=\"$(tty)\":%s ", shell.Escape(Signature()))+
 			config.StartCommand)
 	m, err := pty.Start(c)
 	util.Check(err, "Unable to create pty or execute /bin/sh")
@@ -145,7 +146,7 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 	l.DoLogger()
 
 	util.Debugf("Zenlog exiting with=%d", childStatus)
-	if childStatus == RESURRECT_CODE {
+	if childStatus == resurrectCode {
 		return 0, true
 	}
 

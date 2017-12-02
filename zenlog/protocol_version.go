@@ -6,9 +6,9 @@ import (
 )
 
 // Version of the logger - command communication protocol.
-const PROTOCOL_VERSION = 1
+const protocolVersion = 1
 
-// Return the "signature" of the zenlog executable.
+// Signature returns the "signature" of the zenlog executable.
 func Signature() string {
-	return fmt.Sprintf("%s:[%d]", util.FindSelf(), PROTOCOL_VERSION)
+	return fmt.Sprintf("%s:[%d]", util.FindSelf(), protocolVersion)
 }

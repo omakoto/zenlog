@@ -2,7 +2,8 @@
 
 set -e
 
-GO_FILES=
+go get github.com/golang/lint/golint                        # Linter
+go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
 
 NOT_FORMATTED=$(gofmt -s -d $(find . -type f -name '*.go'))
 
@@ -14,4 +15,4 @@ fi
 go test -v -race ./...                   # Run all the tests with the race detector enabled
 go vet ./...                             # go vet is the official Go static analyzer
 megacheck ./...                          # "go vet on steroids" + linter
-golint -set_exit_status $(go list ./...) # one last linter
+# golint -set_exit_status $(go list ./...) # one last linter

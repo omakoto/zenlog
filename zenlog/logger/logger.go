@@ -84,14 +84,14 @@ func NewLogger(config *config.Config) *Logger {
 }
 
 func (l *Logger) ExportEnviron() {
-	os.Setenv(envs.ZENLOG_BIN, util.FindSelf())
-	os.Setenv(envs.ZENLOG_BIN_CTIME, strconv.FormatInt(util.SelfCtime().Unix(), 10))
+	os.Setenv(envs.ZenlogBin, util.FindSelf())
+	os.Setenv(envs.ZenlogBinCtime, strconv.FormatInt(util.SelfCtime().Unix(), 10))
 
-	os.Setenv(envs.ZENLOG_DIR, l.Config.LogDir)
-	os.Setenv(envs.ZENLOG_PID, strconv.Itoa(l.Config.ZenlogPid))
-	os.Setenv(envs.ZENLOG_OUTER_TTY, l.OuterTty)
-	os.Setenv(envs.ZENLOG_LOGGER_IN, l.ForwardPipe.Name())
-	os.Setenv(envs.ZENLOG_LOGGER_OUT, l.ReversePipe.Name())
+	os.Setenv(envs.ZenlogDir, l.Config.LogDir)
+	os.Setenv(envs.ZenlogPid, strconv.Itoa(l.Config.ZenlogPid))
+	os.Setenv(envs.ZenlogOuterTty, l.OuterTty)
+	os.Setenv(envs.ZenlogLoggerIn, l.ForwardPipe.Name())
+	os.Setenv(envs.ZenlogLoggerOut, l.ReversePipe.Name())
 }
 
 func (l *Logger) CleanUp() {
@@ -117,11 +117,11 @@ func (l *Logger) isOpen() bool {
 }
 
 func (l *Logger) SendCloseRequest() {
-	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(CLOSE_COMMAND))
+	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(CloseCommand))
 }
 
 func (l *Logger) SendFlushRequest() {
-	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(FLUSH_COMMAND))
+	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(FlushCommand))
 }
 
 // Open log files.
@@ -211,22 +211,22 @@ func (l *Logger) DoLogger() {
 					continue
 				}
 				switch args[0] {
-				case CHILD_DIED_COMMAND:
+				case ChildDiedCommand:
 					util.Debugf("Child died.")
 					l.closeLogs(nil)
 					return
 
-				case CLOSE_COMMAND:
+				case CloseCommand:
 					util.ExitSuccess()
 					continue
 
-				case FLUSH_COMMAND:
+				case FlushCommand:
 					l.flush()
 					continue
 
-				case COMMAND_START_COMMAND:
+				case CommandStartCommand:
 					if len(args) != 2 {
-						util.Say("Invalid number of args (%d) for %s.", len(args), COMMAND_START_COMMAND)
+						util.Say("Invalid number of args (%d) for %s.", len(args), CommandStartCommand)
 						continue
 					}
 					// Parse request.
@@ -240,9 +240,9 @@ func (l *Logger) DoLogger() {
 					// Open log.
 					l.openLogs(&req)
 					continue
-				case COMMAND_END_COMMAND:
+				case CommandEndCommand:
 					if len(args) != 3 {
-						util.Say("Invalid number of args (%d) for %s.", len(args), COMMAND_END_COMMAND)
+						util.Say("Invalid number of args (%d) for %s.", len(args), CommandEndCommand)
 						continue
 					}
 					fingerprint := args[1]
@@ -258,7 +258,7 @@ func (l *Logger) DoLogger() {
 					l.closeLogs(&req)
 
 					// Send reply.
-					l.MustReply(l.Config, util.StringSlice(COMMAND_END_COMMAND, fingerprint, util.MustMarshal(StopReply{l.numLines})))
+					l.MustReply(l.Config, util.StringSlice(CommandEndCommand, fingerprint, util.MustMarshal(StopReply{l.numLines})))
 					continue
 				}
 			}
@@ -274,6 +274,6 @@ func (l *Logger) DoLogger() {
 
 func (l *Logger) OnChildDied() {
 	args := make([]string, 1)
-	args[0] = CHILD_DIED_COMMAND
+	args[0] = ChildDiedCommand
 	MustSendToLogger(l.Config, args)
 }

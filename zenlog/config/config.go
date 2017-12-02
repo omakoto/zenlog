@@ -59,7 +59,7 @@ func ensureSlash(v *string) {
 
 // Initialize a config, loading from ~/.zenlog.toml and the environmental variables.
 func InitConfigiForLogger() *Config {
-	file := os.Getenv(envs.ZENLOG_CONF)
+	file := os.Getenv(envs.ZenlogConf)
 	if file == "" {
 		file = os.ExpandEnv("$HOME/.zenlog.toml")
 	}
@@ -77,17 +77,17 @@ func InitConfigiForLogger() *Config {
 	}
 
 	overwriteWithEnviron(&c.StartCommand, "ZENLOG_START_COMMAND", "")
-	overwriteWithEnviron(&c.LogDir, envs.ZENLOG_DIR, os.ExpandEnv("$HOME/zenlog/"))
+	overwriteWithEnviron(&c.LogDir, envs.ZenlogDir, os.ExpandEnv("$HOME/zenlog/"))
 	overwriteWithEnviron(&c.PrefixCommands, "ZENLOG_PREFIX_COMMANDS", `(?:command|builtin|time|sudo|[a-zA-Z0-9_]+\=.*)`)
 	overwriteWithEnviron(&c.AlwaysNoLogCommands, "ZENLOG_ALWAYS_NO_LOG_COMMANDS", `(?:vi|vim|man|nano|pico|emacs|zenlog.*)`)
 
 	overwriteWithEnviron(&c.CommandSplitter, "ZENLOG_COMMAND_SPLITTER", "")
 	overwriteWithEnviron(&c.CommentSplitter, "ZENLOG_COMMENT_SPLITTER", "")
 
-	overwriteWithEnviron(&c.TempDir, envs.ZENLOG_TEMP, "")
+	overwriteWithEnviron(&c.TempDir, envs.ZenlogTemp, "")
 
-	overwriteBoolWithEnviron(&c.AutoFlush, envs.ZENLOG_AUTOFLUSH)
-	overwriteBoolWithEnviron(&c.UseExperimentalCommandParser, envs.ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER)
+	overwriteBoolWithEnviron(&c.AutoFlush, envs.ZenlogAutoflush)
+	overwriteBoolWithEnviron(&c.UseExperimentalCommandParser, envs.ZenlogUseExperimentalCommandParser)
 
 	if c.StartCommand == "" {
 		shell := os.Getenv("SHELL")
@@ -117,29 +117,29 @@ func InitConfigForCommands() *Config {
 
 	// Take over some of the parameters from the logger.
 
-	pid, err := strconv.Atoi(os.Getenv(envs.ZENLOG_PID))
+	pid, err := strconv.Atoi(os.Getenv(envs.ZenlogPid))
 	util.Check(err, "ZENLOG_PID not integer")
 	c.ZenlogPid = pid
 
-	c.LogDir = os.Getenv(envs.ZENLOG_DIR)
-	c.OuterTty = os.Getenv(envs.ZENLOG_OUTER_TTY)
-	c.LoggerIn = os.Getenv(envs.ZENLOG_LOGGER_IN)
-	c.LoggerOut = os.Getenv(envs.ZENLOG_LOGGER_OUT)
+	c.LogDir = os.Getenv(envs.ZenlogDir)
+	c.OuterTty = os.Getenv(envs.ZenlogOuterTty)
+	c.LoggerIn = os.Getenv(envs.ZenlogLoggerIn)
+	c.LoggerOut = os.Getenv(envs.ZenlogLoggerOut)
 
 	if c.ZenlogPid == 0 {
-		util.Fatalf(envs.ZENLOG_PID + " not set.")
+		util.Fatalf(envs.ZenlogPid + " not set.")
 	}
 	if c.LogDir == "" {
-		util.Fatalf(envs.ZENLOG_DIR + " not set.")
+		util.Fatalf(envs.ZenlogDir + " not set.")
 	}
 	if c.OuterTty == "" {
-		util.Fatalf(envs.ZENLOG_OUTER_TTY + " not set.")
+		util.Fatalf(envs.ZenlogOuterTty + " not set.")
 	}
 	if c.LoggerIn == "" {
-		util.Fatalf(envs.ZENLOG_LOGGER_IN + " not set.")
+		util.Fatalf(envs.ZenlogLoggerIn + " not set.")
 	}
 	if c.LoggerOut == "" {
-		util.Fatalf(envs.ZENLOG_LOGGER_OUT + " not set.")
+		util.Fatalf(envs.ZenlogLoggerOut + " not set.")
 	}
 
 	// We still need to load certain parameters from TOML.

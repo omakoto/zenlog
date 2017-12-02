@@ -18,7 +18,7 @@ import (
 func InZenlog() bool {
 	sig := util.Tty() + ":" + zenlog.Signature()
 	util.Debugf("Signature=%s", sig)
-	return sig == os.Getenv(envs.ZENLOG_SIGNATURE)
+	return sig == os.Getenv(envs.ZenlogSignature)
 }
 
 func FailIfInZenlog() {
@@ -41,12 +41,12 @@ func copyStdinToFile(file string) {
 
 func WriteToLogger() {
 	FailUnlessInZenlog()
-	copyStdinToFile(os.Getenv(envs.ZENLOG_LOGGER_IN))
+	copyStdinToFile(os.Getenv(envs.ZenlogLoggerIn))
 }
 
 func WriteToOuter() {
 	FailUnlessInZenlog()
-	file := os.Getenv(envs.ZENLOG_OUTER_TTY)
+	file := os.Getenv(envs.ZenlogOuterTty)
 	out, err := os.OpenFile(file, os.O_WRONLY, 0)
 	util.Check(err, "Unable to open "+file)
 
@@ -71,16 +71,16 @@ func WriteToOuter() {
 
 func OuterTty() {
 	FailUnlessInZenlog()
-	fmt.Println(os.Getenv(envs.ZENLOG_OUTER_TTY))
+	fmt.Println(os.Getenv(envs.ZenlogOuterTty))
 }
 
 func LoggerPipe() {
 	FailUnlessInZenlog()
-	fmt.Println(os.Getenv(envs.ZENLOG_LOGGER_IN))
+	fmt.Println(os.Getenv(envs.ZenlogLoggerIn))
 }
 
 func CheckUpdate() {
-	if strconv.FormatInt(util.SelfCtime().Unix(), 10) == os.Getenv(envs.ZENLOG_BIN_CTIME) {
+	if strconv.FormatInt(util.SelfCtime().Unix(), 10) == os.Getenv(envs.ZenlogBinCtime) {
 		util.ExitSuccess()
 	}
 	util.Say("Zenlog updated. Run \"zenlog_restart\" (or \"exit 13\") to restart a zenlog session.")
@@ -117,7 +117,7 @@ func MaybeRunBuiltin(command string, args []string) {
 		// History related commands.
 	case "history":
 		FailUnlessInZenlog()
-		history.HistoryCommand(args)
+		history.AllHistoryCommand(args)
 
 	case "current-log":
 		FailUnlessInZenlog()

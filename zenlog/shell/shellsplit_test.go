@@ -32,7 +32,7 @@ func TestShellSplit(t *testing.T) {
 		{`echo $'a\xffb' # broken utf8`, util.Ar(`echo`, `$'a\xffb'`, `# broken utf8`)},
 	}
 	for _, v := range inputs {
-		actual := ShellSplit(v.source)
+		actual := Split(v.source)
 		util.AssertStringSlicesEqual(t, "Source="+v.source, v.expected, actual)
 	}
 }

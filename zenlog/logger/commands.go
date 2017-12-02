@@ -7,16 +7,16 @@ import (
 )
 
 const (
-	CLOSE_COMMAND = "close"
-	FLUSH_COMMAND = "flush"
+	CloseCommand = "close"
+	FlushCommand = "flush"
 
-	COMMAND_START_COMMAND = "start-command"
-	COMMAND_END_COMMAND   = "end-command"
+	CommandStartCommand = "start-command"
+	CommandEndCommand   = "end-command"
 
 	// This is a command sent by the signal handler on SIGCHLD.
-	CHILD_DIED_COMMAND = "child-died"
+	ChildDiedCommand = "child-died"
 
-	READ_TIMEOUT = time.Second * 1
+	readTimeout = time.Second * 1
 )
 
 func MustSendToLogger(config *config.Config, vals []string) {
@@ -24,7 +24,7 @@ func MustSendToLogger(config *config.Config, vals []string) {
 }
 
 func MustReceiveFromLogger(config *config.Config, predicate func(vals []string) bool) []string {
-	ret, err := util.ReadFromFile(config.LoggerOut, predicate, READ_TIMEOUT)
+	ret, err := util.ReadFromFile(config.LoggerOut, predicate, readTimeout)
 	util.Check(err, "Failed to receive from logger")
 	return ret
 }

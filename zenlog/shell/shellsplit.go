@@ -29,16 +29,15 @@ func newSplitter(text string) splitter {
 func (s *splitter) peek() (rune, bool) {
 	if s.next < len(s.text) {
 		return s.text[s.next], true
-	} else {
-		return '\x00', false
 	}
+	return '\x00', false
 }
 
 func (s *splitter) read() (rune, bool) {
 	r, ok := s.peek()
 
 	if ok {
-		s.next += 1
+		s.next++
 	}
 	return r, ok
 }
@@ -222,7 +221,7 @@ func (s *splitter) tokenize(end int) {
 	}
 }
 
-func ShellSplit(text string) []string {
+func Split(text string) []string {
 	s := newSplitter(text)
 	s.tokenize(-1)
 	return s.result

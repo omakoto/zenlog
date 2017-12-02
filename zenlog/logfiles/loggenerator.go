@@ -15,11 +15,11 @@ import (
 )
 
 const (
-	SAN = "SAN"
-	RAW = "RAW"
-	ENV = "ENV"
+	sanDir = "SAN"
+	rawDir = "RAW"
+	envDir = "ENV"
 
-	MAX_PREV_LINKS = 10
+	maxPrevLinks = 10
 )
 
 type LogFiles struct {
@@ -70,7 +70,7 @@ func createPrevLink(fullDirName, logType, logFullFileName string) {
 		return // just in case.
 	}
 	oneLetter := logType[0:1]
-	for i := MAX_PREV_LINKS; i >= 2; i-- {
+	for i := maxPrevLinks; i >= 2; i-- {
 		from := fullDirName + (strings.Repeat(oneLetter, i-1))
 		if !util.FileExists(from) {
 			continue
@@ -130,9 +130,9 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 		tag,
 		clamp(util.FilenameSafe(command.CommandLine), 32))
 
-	l.SanFile = strings.Replace(f, M, SAN, 1)
-	l.RawFile = strings.Replace(f, M, RAW, 1)
-	l.EnvFile = strings.Replace(f, M, ENV, 1)
+	l.SanFile = strings.Replace(f, M, sanDir, 1)
+	l.RawFile = strings.Replace(f, M, rawDir, 1)
+	l.EnvFile = strings.Replace(f, M, envDir, 1)
 
 	l.Open(true)
 
@@ -141,9 +141,9 @@ func OpenLogFiles(config *config.Config, now time.Time, command *Command) LogFil
 		fullLogFilename string
 		logType         string
 	}{
-		{l.SanFile, SAN},
-		{l.RawFile, RAW},
-		{l.EnvFile, ENV},
+		{l.SanFile, sanDir},
+		{l.RawFile, rawDir},
+		{l.EnvFile, envDir},
 	}
 	for _, item := range items {
 		createPrevLink(config.LogDir, item.logType, item.fullLogFilename)

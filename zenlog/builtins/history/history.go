@@ -80,7 +80,7 @@ func flagsToLogType(flagR, flagE bool) LogFileType {
 	return LogTypeSan
 }
 
-func HistoryCommand(args []string) {
+func AllHistoryCommand(args []string) {
 	flags := flag.NewFlagSet("zenlog history", flag.ExitOnError)
 	r := flags.Bool("r", false, "Print RAW filename")
 	e := flags.Bool("e", false, "Print ENV filename")

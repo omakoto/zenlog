@@ -1,6 +1,6 @@
 #!/bin/bash
 
-medir="$(readlink -f "${0%/*}")"
+medir=$(readlink -m "$medir")
 
 $medir/../scripts/build.sh
 
@@ -12,8 +12,8 @@ done
 # Configuration.
 export ZENLOG_BIN="$medir/../bin/zenlog"
 
-export ZENLOG_CONF="$medir/zenlog.toml"
-export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $medir/bashrc"
+export ZENLOG_CONF="$medir/files/zenlog.toml"
+export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $medir/files/bashrc"
 export ZENLOG_DIR=/tmp/zenlog-test
 
 export _ZENLOG_LOGGER_PID=123

@@ -8,8 +8,6 @@ clear_log
 
 cd "$medir"
 
-#export ZENLOG_DEBUG=1 ; echo $'command cat /etc/fstab\nexit' | run_zenlog; exit 0
-
 run_zenlog <<EOF
 echo ok; tick 3
 cat data/fstab | grep -v -- '^#'
@@ -86,7 +84,7 @@ diff --color=always -c $medir/results/tree1.txt <($TREE -aF "$ZENLOG_DIR")
 fail=$(( $fail || $?))
 
 echo "Checking log files..."
-diff --color=always  -X $medir/diff-ignore-files.txt \
+diff --color=always  -X $medir/files/diff-ignore-files.txt \
     -ur $medir/results/files "$ZENLOG_DIR"
 fail=$(( $fail || $?))
 

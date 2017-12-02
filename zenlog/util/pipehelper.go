@@ -9,8 +9,6 @@ import (
 	"time"
 )
 
-// TODO Let's just use json; we don't need it.
-
 const (
 	//commandMarker = "!zenlog:"
 	//escape         = '\\'
@@ -105,7 +103,7 @@ func _decode(s string) []string {
 	return ret
 }
 
-// Extract a command string from a given string, and return the prefix part
+// TryDecodeBytes extracts a command string from a given string, and return the prefix part
 // (i.e. the part followed by the command string) and the split up command
 // arguments.
 func TryDecodeBytes(s []byte) (success bool, prefix []byte, args []string) {
@@ -129,6 +127,7 @@ func TryDecodeBytes(s []byte) (success bool, prefix []byte, args []string) {
 	return
 }
 
+// WriteToFile writes encoded args to a file.
 func WriteToFile(filename string, args []string) error {
 	file, err := os.OpenFile(filename, os.O_WRONLY, 0)
 	if err != nil {
@@ -139,6 +138,8 @@ func WriteToFile(filename string, args []string) error {
 	return err
 }
 
+// ReadFromFile read encoded args from a file. The predicate callback can be used to tell whether a
+// received set of args is what's expected or not.
 func ReadFromFile(filename string, predicate func(vals []string) bool, timeout time.Duration) ([]string, error) {
 	file, err := os.OpenFile(filename, os.O_RDONLY, 0)
 	if err != nil {
@@ -162,7 +163,7 @@ func ReadFromFile(filename string, predicate func(vals []string) bool, timeout t
 			if line != nil {
 				success, _, args := TryDecodeBytes(line)
 				Debugf("reply: %v", args)
-				if success && predicate(args) {
+				if success && predicate != nil && predicate(args) {
 					ch <- result{args, nil}
 					return
 				}

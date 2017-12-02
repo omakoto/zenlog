@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -190,4 +191,13 @@ func ZenlogBinCtime() time.Time {
 // StringSlice is a convenient way to build a string slice.
 func StringSlice(arr ...string) []string {
 	return arr
+}
+
+// GetIntEnv extracts an integer from an environmental variable.
+func GetIntEnv(name string, def int) int {
+	ret, err := strconv.Atoi(os.Getenv(name))
+	if err != nil {
+		return def
+	}
+	return ret
 }

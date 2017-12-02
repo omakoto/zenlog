@@ -166,6 +166,17 @@ func (s *splitter) tokenize(end int) {
 		if !ok {
 			break
 		}
+		if end >= 0 && end == int(r) {
+			s.pushRuneNoSpecial(r)
+			break
+		}
+		if end < 0 && isWhitespace(r) {
+			s.pushWord()
+			continue
+		}
+		if s.wasSpecial != isSpecialChar(r) {
+			s.pushWord()
+		}
 		if r == '\\' {
 			s.pushRune(r)
 			r, ok = s.read()
@@ -193,14 +204,6 @@ func (s *splitter) tokenize(end int) {
 		if s.maybeEatDollar(r) {
 			continue
 		}
-		if end < 0 && isWhitespace(r) {
-			s.pushWord()
-			continue
-		}
-		if end >= 0 && end == int(r) {
-			s.pushRuneNoSpecial(r)
-			break
-		}
 		if !s.hasRunes && r == '#' {
 			for {
 				s.pushRuneNoSpecial(r)
@@ -211,9 +214,6 @@ func (s *splitter) tokenize(end int) {
 				}
 			}
 		}
-		if s.wasSpecial != isSpecialChar(r) {
-			s.pushWord()
-		}
 		s.pushRune(r)
 	}
 	if end < 0 {
@@ -221,6 +221,9 @@ func (s *splitter) tokenize(end int) {
 	}
 }
 
+// Split splits a whole command line into tokens.
+// Example: "cat fi\ le.txt|grep -V ^# >'out$$.txt' # Find non-comment lines."
+// -> output: cat, fi\ le.txt, |, grep, -V, ^#, >, out.txt ,# Find non-comment lines.
 func Split(text string) []string {
 	s := newSplitter(text)
 	s.tokenize(-1)

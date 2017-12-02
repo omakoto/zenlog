@@ -30,6 +30,8 @@ func TestShellSplit(t *testing.T) {
 		{`'a x ;' b`, util.Ar(`'a x ;'`, `b`)},
 		{`cat|&grep>&ab#def  # commenct;abc`, util.Ar(`cat`, `|&`, `grep`, `>&`, `ab#def`, `# commenct;abc`)},
 		{`echo $'a\xffb' # broken utf8`, util.Ar(`echo`, `$'a\xffb'`, `# broken utf8`)},
+		{`cat fi\ le.txt|grep -V ^# >'out$$.txt' # Find non-comment lines.`,
+			util.Ar(`cat`, `fi\ le.txt`, `|`, `grep`, `-V`, `^#`, `>`, `'out$$.txt'`, `# Find non-comment lines.`)},
 	}
 	for _, v := range inputs {
 		actual := Split(v.source)

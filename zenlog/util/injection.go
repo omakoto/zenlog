@@ -8,23 +8,12 @@ import (
 	"time"
 )
 
-func getIntEenv(name string, def int) int {
-	ret, err := strconv.Atoi(os.Getenv(name))
-	if err != nil {
-		return def
-	}
-	return ret
-}
-
 var (
-	zenlogPidInjected = getIntEenv("_ZENLOG_LOGGER_PID", os.Getpid())
-	timeOverrideFile  = os.Getenv("_ZENLOG_TIME_INJECTION_FILE")
+	// E2E tests set _ZENLOG_TIME_INJECTION_FILE to the file that contains an injected time.
+	timeOverrideFile = os.Getenv("_ZENLOG_TIME_INJECTION_FILE")
 )
 
-func GetLoggerPid() int {
-	return zenlogPidInjected
-}
-
+// GetInjectedNow returns an injected time if _ZENLOG_TIME_INJECTION_FILE is set, or otherwise just returns a passed Clock.
 func GetInjectedNow(clock Clock) time.Time {
 	if timeOverrideFile == "" {
 		return clock.Now()

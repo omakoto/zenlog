@@ -7,7 +7,7 @@ import (
 )
 
 func CheckRunWithRescue(t *testing.T, expected int, f func() int) {
-	actual := RunWithRescue(f)
+	actual := runWithRescue(f)
 	if expected != actual {
 		t.Errorf("Expected=%d actual=%d f=%s\n", expected, actual, spew.Sdump(f))
 	}

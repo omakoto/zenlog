@@ -4,7 +4,6 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog"
 	"github.com/omakoto/zenlog-go/zenlog/builtins"
 	"github.com/omakoto/zenlog-go/zenlog/util"
-	"os"
 )
 
 func restart() {
@@ -31,5 +30,5 @@ func realMain() int {
 }
 
 func main() {
-	os.Exit(util.RunWithRescue(realMain))
+	util.RunAndExit(realMain)
 }

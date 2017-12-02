@@ -105,7 +105,8 @@ func InitConfigForLogger() *Config {
 	ensureSlash(&c.LogDir)
 	ensureSlash(&c.TempDir)
 
-	c.ZenlogPid = util.GetLoggerPid()
+	// For E2E testing, override the PID with _ZENLOG_LOGGER_PID, if set.
+	c.ZenlogPid = util.GetIntEnv("_ZENLOG_LOGGER_PID", os.Getpid())
 
 	util.Dump("Logger config=", c)
 

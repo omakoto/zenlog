@@ -1,18 +1,39 @@
 package envs
 
 const (
+	// ZenlogConf is an environmental variable key.
 	ZenlogConf = "ZENLOG_CONF"
 
-	ZenlogBin      = "ZENLOG_BIN"
+	// ZenlogBin is an environmental variable key.
+	ZenlogBin = "ZENLOG_BIN"
+
+	// ZenlogBinCtime is an environmental variable key.
 	ZenlogBinCtime = "ZENLOG_BIN_CTIME"
 
-	ZenlogPid                          = "ZENLOG_PID"
-	ZenlogSignature                    = "ZENLOG_SIGNATURE"
-	ZenlogDir                          = "ZENLOG_DIR"
-	ZenlogTemp                         = "ZENLOG_TEMP"
-	ZenlogAutoflush                    = "ZENLOG_AUTO_FLUSH"
+	// ZenlogPid is an environmental variable key.
+	ZenlogPid = "ZENLOG_PID"
+
+	// ZenlogSignature is an environmental variable key.
+	ZenlogSignature = "ZENLOG_SIGNATURE"
+
+	// ZenlogDir is an environmental variable key.
+	ZenlogDir = "ZENLOG_DIR"
+
+	// ZenlogTemp is an environmental variable key.
+	ZenlogTemp = "ZENLOG_TEMP"
+
+	// ZenlogAutoflush is an environmental variable key.
+	ZenlogAutoflush = "ZENLOG_AUTO_FLUSH"
+
+	// ZenlogUseExperimentalCommandParser is an environmental variable key.
 	ZenlogUseExperimentalCommandParser = "ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER"
-	ZenlogOuterTty                     = "ZENLOG_OUTER_TTY"
-	ZenlogLoggerIn                     = "ZENLOG_LOGGER_IN"
-	ZenlogLoggerOut                    = "ZENLOG_LOGGER_OUT"
+
+	// ZenlogOuterTty is an environmental variable key.
+	ZenlogOuterTty = "ZENLOG_OUTER_TTY"
+
+	// ZenlogLoggerIn is an environmental variable key.
+	ZenlogLoggerIn = "ZENLOG_LOGGER_IN"
+
+	// ZenlogLoggerOut is an environmental variable key.
+	ZenlogLoggerOut = "ZENLOG_LOGGER_OUT"
 )

@@ -9,6 +9,9 @@ for env in ${!ZENLOG_*} ; do
   unset "$env"
 done
 
+# Make sure to close the shell when the input finishes.
+unset IGNOREEOF
+
 # Configuration.
 export ZENLOG_BIN="$medir/../bin/zenlog"
 
@@ -59,10 +62,3 @@ check_result() {
 
     return $fail
 }
-
-
-
-# If executed as a command, run run_zenlog.
-if [[ "$0" == "${BASH_SOURCE[0]}" ]] ; then
-  run_zenlog
-fi

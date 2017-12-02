@@ -2,4 +2,8 @@
 
 set -e
 
-"${0%/*}/../e2etests/test01-full-test.sh"
+for test in "${0%/*}/../e2etests/"test*.sh ; do
+    echo "$test"
+    "$test"
+done
+

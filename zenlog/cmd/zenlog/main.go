@@ -24,7 +24,7 @@ func realMain() int {
 		return status
 	}
 	builtins.MaybeRunBuiltin(command, args)
-	MaybeRunExtetrnalCommand(command, args)
+	MaybeRunExternalCommand(command, args)
 
 	util.Fatalf("Unknown subcommand: '%s'", command)
 	return 0

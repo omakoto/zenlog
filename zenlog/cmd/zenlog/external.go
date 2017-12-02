@@ -8,7 +8,7 @@ import (
 	"syscall"
 )
 
-func tryRunExtetrnalCommand(path string, command string, args []string) {
+func tryRunExternalCommand(path string, command string, args []string) {
 	f, err := filepath.Abs(path + "/zenlog-" + command)
 	util.Check(err, "Abs failed")
 
@@ -24,15 +24,15 @@ func tryRunExtetrnalCommand(path string, command string, args []string) {
 	}
 }
 
-// MaybeRunExtetrnalCommand looks for "zenlog-SUBCOMMAND", first in the zenlog "subcommand" directory,
+// MaybeRunExternalCommand looks for "zenlog-SUBCOMMAND", first in the zenlog "subcommand" directory,
 // then in PATH and executes it.
-func MaybeRunExtetrnalCommand(command string, args []string) {
+func MaybeRunExternalCommand(command string, args []string) {
 	zenlogBinDir := util.FindZenlogBinDir()
 
-	tryRunExtetrnalCommand(filepath.Dir(zenlogBinDir)+"/../subcommands", command, args)
-	tryRunExtetrnalCommand(filepath.Dir(zenlogBinDir)+"/../src/github.com/omakoto/zenlog-go/subcommands", command, args)
+	tryRunExternalCommand(zenlogBinDir+"/../subcommands", command, args)
+	tryRunExternalCommand(zenlogBinDir+"/../src/github.com/omakoto/zenlog-go/subcommands", command, args)
 
 	for _, path := range strings.Split(os.Getenv("PATH"), ":") {
-		tryRunExtetrnalCommand(path, command, args)
+		tryRunExternalCommand(path, command, args)
 	}
 }

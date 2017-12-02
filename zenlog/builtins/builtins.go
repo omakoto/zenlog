@@ -87,7 +87,7 @@ func LoggerPipe() {
 }
 
 func checkUpdate() {
-	if strconv.FormatInt(util.SelfCtime().Unix(), 10) == os.Getenv(envs.ZenlogBinCtime) {
+	if strconv.FormatInt(util.ZenlogBinCtime().Unix(), 10) == os.Getenv(envs.ZenlogBinCtime) {
 		util.ExitSuccess()
 	}
 	util.Say("Zenlog updated. Run \"zenlog_restart\" (or \"exit 13\") to restart a zenlog session.")

@@ -4,11 +4,13 @@ import (
 	"regexp"
 )
 
+// LazyRegexp is a sharable lazily compiled regexp.
 type LazyRegexp struct {
 	pattern string
 	regexp  *regexp.Regexp
 }
 
+// NewLazyRegexp returns a sharable lazily compiled regexp.
 func NewLazyRegexp(pattern string) LazyRegexp {
 	return LazyRegexp{pattern, nil}
 }

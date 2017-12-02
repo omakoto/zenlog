@@ -9,7 +9,7 @@ import (
 
 func restart() {
 	util.Say("Restarting zenlog...")
-	util.MustExec(util.StringSlice(util.FindSelf()))
+	util.MustExec(util.StringSlice(util.FindZenlogBin()))
 }
 
 func realMain() int {

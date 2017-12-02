@@ -63,6 +63,8 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 	// Set up environmental variables.
 	l.ExportEnviron()
 
+	// TODO This should move to the logger too.
+
 	// Create a pty and start the child command.
 	util.Debugf("Executing: %s", config.StartCommand)
 	c := exec.Command("/bin/sh", "-c",

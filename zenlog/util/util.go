@@ -11,6 +11,7 @@ import (
 )
 
 var (
+	// Debug is whether the debug output is enabled or not.
 	Debug       = false
 	outputIsRaw = false
 
@@ -32,6 +33,7 @@ func init() {
 	rand.Seed(time.Now().Unix())
 }
 
+// SetOutputIsRaw sets whether stdout is in raw mode or not.
 func SetOutputIsRaw(raw bool) {
 	outputIsRaw = raw
 }
@@ -157,8 +159,8 @@ func NumLines(data []byte) int {
 	return ret
 }
 
-// Return the fullpath of the zenlog executable.
-func FindSelf() string {
+// FindZenlogBin returns the fullpath of the zenlog executable.
+func FindZenlogBin() string {
 	me, err := os.Executable()
 	Check(err, "Executable failed")
 	Debugf("$0=%s", me)
@@ -173,12 +175,19 @@ func FindSelf() string {
 	return path
 }
 
-func SelfCtime() time.Time {
-	stat, err := os.Stat(FindSelf())
+// FindZenlogBinDir returns the fullpath of the directory where the zenlog executable is.
+func FindZenlogBinDir() string {
+	return filepath.Dir(FindZenlogBin())
+}
+
+// ZenlogBinCtime returns the ctime of the zenlog executable.
+func ZenlogBinCtime() time.Time {
+	stat, err := os.Stat(FindZenlogBin())
 	Check(err, "Stat failed")
 	return stat.ModTime()
 }
 
+// StringSlice is a convenient way to build a string slice.
 func StringSlice(arr ...string) []string {
 	return arr
 }

@@ -1,25 +1,28 @@
 package shell
 
 import (
-	"strings"
 	"bytes"
+	"strings"
 )
 
+// Shell tokenizer.
+// TODO Handle operators such as |.
+
 type splitter struct {
-	text   []rune
+	text []rune
 
 	// Input.
-	next   int
+	next int
 
 	// Output.
-	buffer bytes.Buffer
+	buffer   bytes.Buffer
 	hasRunes bool
 
 	result []string
 }
 
 func newSplitter(text string) splitter {
-	return splitter{[]rune(text), 0,  bytes.Buffer{}, false, make([]string, 0, 16)}
+	return splitter{[]rune(text), 0, bytes.Buffer{}, false, make([]string, 0, 16)}
 }
 
 func (s *splitter) peek() (rune, bool) {
@@ -77,11 +80,14 @@ func (s *splitter) eatSingleQuote() {
 	}
 }
 
-func (s *splitter) eatDoubleQuote() {
+func (s *splitter) eatDoubleQuote(end rune) {
 	for {
 		r, ok := s.read()
-		if r == '"' || !ok {
+		if r == end || !ok {
 			return
+		}
+		if s.maybeEatDoller(r) {
+			continue
 		}
 		if r == '\\' {
 			r, ok = s.read()
@@ -93,6 +99,26 @@ func (s *splitter) eatDoubleQuote() {
 	}
 }
 
+func (s *splitter) maybeEatDoller(r rune) bool {
+	if r == '$' {
+		s.pushRune(r)
+		next, ok := s.peek()
+		if !ok {
+			return true
+		}
+		if next == '(' {
+			s.tokenize(')')
+			return true
+		}
+		if next == '{' {
+			s.tokenize('}')
+			return true
+		}
+		return true
+	}
+	return false
+}
+
 func isWhitespace(r rune) bool {
 	switch r {
 	case ' ', '\t', '\r', '\n', '\v':
@@ -101,19 +127,11 @@ func isWhitespace(r rune) bool {
 	return false
 }
 
-func (s *splitter) tokenize() {
+func (s *splitter) tokenize(end int) {
 	for {
 		r, ok := s.read()
 		if !ok {
 			break
-		}
-		if r == '\'' {
-			s.eatSingleQuote()
-			continue
-		}
-		if r == '"' {
-			s.eatDoubleQuote()
-			continue
 		}
 		if r == '\\' {
 			r, ok = s.read()
@@ -123,17 +141,38 @@ func (s *splitter) tokenize() {
 			s.pushRune(r)
 			continue
 		}
-		if isWhitespace(r) {
+		if r == '\'' {
+			s.eatSingleQuote()
+			continue
+		}
+		if r == '"' {
+			s.eatDoubleQuote('"')
+			continue
+		}
+		if r == '`' {
+			s.eatDoubleQuote('`')
+			continue
+		}
+		if s.maybeEatDoller(r) {
+			continue
+		}
+		if  end < 0 && isWhitespace(r) {
 			s.pushWord()
 			continue
 		}
+		if end >= 0 && end == int(r) {
+			s.pushRune(r)
+			break
+		}
 		s.pushRune(r)
 	}
-	s.pushWord()
+	if end < 0 {
+		s.pushWord()
+	}
 }
 
 func ShellSplit(text string) []string {
 	s := newSplitter(text)
-	s.tokenize()
+	s.tokenize(-1)
 	return s.result
 }

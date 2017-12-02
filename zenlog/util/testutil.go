@@ -2,6 +2,8 @@ package util
 
 import (
 	"testing"
+
+	"github.com/davecgh/go-spew/spew"
 )
 
 func Ar(a ...string) []string {
@@ -28,7 +30,7 @@ func AssertStringsEqual(t *testing.T, input string, expected string, actual stri
 
 func AssertStringSlicesEqual(t *testing.T, input string, expected []string, actual []string) {
 	if !SlicesEqual(expected, actual) {
-		t.Errorf("input=%s expected=%v actual=%v", input, expected, actual)
+		t.Errorf("input=%s expected=%s actual=%s", input, spew.Sdump(expected), spew.Sdump(actual))
 	}
 }
 

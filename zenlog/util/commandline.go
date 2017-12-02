@@ -4,6 +4,7 @@ import (
 	"os"
 )
 
+// GetSubcommand extracts a zenlog subcommand name from os.Args.
 func GetSubcommand() (command string, args []string) {
 	Debugf("os.Args=%+v", os.Args)
 	if len(os.Args) == 1 {

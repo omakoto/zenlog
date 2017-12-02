@@ -5,6 +5,7 @@ import (
 	"syscall"
 )
 
+// MustExec is a must-version of syscall.Exec.
 func MustExec(args []string) {
 	Debugf("Executing: %v", args)
 

@@ -2,6 +2,7 @@ package util
 
 import "syscall"
 
+// StartEmergencyShell exec's /bin/sh.
 func StartEmergencyShell() {
 	Say("Starting emergency shell...")
 

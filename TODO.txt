@@ -1,3 +1,5 @@
 - Address all lint warnings.
 
+- Clean up e2e tests.
+
 - Refactor subcommands and add tests.

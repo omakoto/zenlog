@@ -1,0 +1,4 @@
+$ zenlog history
+/tmp/zenlog-test/01/SAN/2017/10/20/17-01-01.000-10000_+zenlog_current-log_-r.log
+/tmp/zenlog-test/01/SAN/2017/10/20/17-01-03.000-10000_+zenlog_last-log_-r.log
+/tmp/zenlog-test/01/SAN/2017/10/20/17-01-05.000-10000_+zenlog_history.log

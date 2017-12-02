@@ -2,6 +2,7 @@
 
 medir="${0%/*}"
 
+TEST_NAME=01
 . "$medir/zenlog-test-common"
 
 # This is the default now.
@@ -83,18 +84,4 @@ V="a b c" echo ok
 echo $_ZENLOG_E2E_EXIT_TIME >"$_ZENLOG_TIME_INJECTION_FILE"; exit
 EOF
 
-fail=0
-echo "Checking tree..."
-diff --color=always -c $medir/results/tree1.txt <($TREE -aF "$ZENLOG_DIR")
-fail=$(( $fail || $?))
-
-echo "Checking log files..."
-diff --color=always  -X $medir/files/diff-ignore-files.txt \
-    -ur $medir/results/files "$ZENLOG_DIR"
-fail=$(( $fail || $?))
-
-if (( $fail )); then
-    echo "Some tests failed."
-else
-    echo "All tests passed."
-fi
+check_result 01

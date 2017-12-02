@@ -12,9 +12,9 @@ done
 # Configuration.
 export ZENLOG_BIN="$medir/../bin/zenlog"
 
-export ZENLOG_CONF="$medir/files/zenlog.toml"
-export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $medir/files/bashrc"
-export ZENLOG_DIR=/tmp/zenlog-test
+export ZENLOG_CONF="$medir/files/$TEST_NAME/zenlog.toml"
+export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $medir/files/$TEST_NAME/bashrc"
+export ZENLOG_DIR=/tmp/zenlog-test/$TEST_NAME
 
 export _ZENLOG_LOGGER_PID=123
 export _ZENLOG_TIME_INJECTION_FILE=/tmp/zenlog-time
@@ -36,6 +36,31 @@ clear_log() {
 run_zenlog() {
   script -qec "$ZENLOG_BIN" /dev/null
 }
+
+check_result() {
+    local name="$1"
+
+    local fail=0
+    echo "Checking tree..."
+    diff --color=always -c $medir/results/$name/tree.txt <($TREE -aF "$ZENLOG_DIR")
+    fail=$(( $fail || $?))
+
+    echo "Checking log files..."
+    diff --color=always  -X $medir/files/diff-ignore-files.txt \
+        -ur $medir/results/$name/files "$ZENLOG_DIR"
+    fail=$(( $fail || $?))
+
+
+    if (( $fail )); then
+        echo "Some tests failed."
+    else
+        echo "All tests passed."
+    fi
+
+    return $fail
+}
+
+
 
 # If executed as a command, run run_zenlog.
 if [[ "$0" == "${BASH_SOURCE[0]}" ]] ; then

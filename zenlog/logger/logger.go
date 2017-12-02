@@ -3,22 +3,29 @@ package logger
 import (
 	"bufio"
 	"fmt"
+	"io"
+	"os"
+	"os/exec"
+	"strconv"
+	"syscall"
+
+	"github.com/kr/pty"
 	"github.com/mattn/go-isatty"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
+	"github.com/omakoto/zenlog-go/zenlog/shell"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"github.com/pkg/term"
-	"io"
-	"os"
-	"strconv"
-	"syscall"
 )
 
 type Logger struct {
 	Config *config.Config
 
+	child *exec.Cmd
+
 	OuterTty  string
+	master    *os.File
 	stdinTerm *term.Term
 
 	ForwardPipe *os.File
@@ -83,7 +90,7 @@ func NewLogger(config *config.Config) *Logger {
 	return &l
 }
 
-func (l *Logger) ExportEnviron() {
+func (l *Logger) exportEnviron() {
 	os.Setenv(envs.ZenlogBin, util.FindZenlogBin())
 	os.Setenv(envs.ZenlogBinCtime, strconv.FormatInt(util.ZenlogBinCtime().Unix(), 10))
 
@@ -94,7 +101,76 @@ func (l *Logger) ExportEnviron() {
 	os.Setenv(envs.ZenlogLoggerOut, l.ReversePipe.Name())
 }
 
+// StartChild starts a child process in a new PTY.
+func (l *Logger) StartChild() {
+	l.exportEnviron()
+
+	// Create a pty and start the child command.
+	util.Debugf("Executing: %s", l.Config.StartCommand)
+	l.child = exec.Command("/bin/sh", "-c",
+		envs.ZenlogSignature+
+			fmt.Sprintf("=\"$(tty)\":%s ", shell.Escape(Signature()))+
+			l.Config.StartCommand)
+	var err error
+	l.master, err = pty.Start(l.child)
+	util.Check(err, "Unable to create pty or execute /bin/sh")
+
+	util.PropagateTerminalSize(os.Stdin, l.master)
+}
+
+// Child returns the child process.
+func (l *Logger) Child() *exec.Cmd {
+	return l.child
+}
+
+// Child returns the master tty.
+func (l *Logger) Master() *os.File {
+	return l.master
+}
+
+func (l *Logger) startForwarders() {
+	m := l.master
+	// Forward the input from stdin to the l.
+	go func() {
+		io.Copy(m, os.Stdin)
+	}()
+
+	// Read the output, and write to the STDOUT, and also to the pipe.
+	go func() {
+		buf := make([]byte, 32*1024)
+
+		var err error
+		for {
+			nr, err := m.Read(buf)
+			if nr > 0 {
+				// First, write to stdout.
+				nw, ew := os.Stdout.Write(buf[0:nr])
+				util.Warn(ew, "Stdout.Write failed")
+				if nr != nw {
+					util.Warn(io.ErrShortWrite, "ErrShortWrite for Stdout")
+				}
+				// Then, write to l.
+				nw, ew = l.ForwardPipe.Write(buf[0:nr])
+				util.Warn(ew, "ForwardPipe.Write failed")
+				if nr != nw {
+					util.Warn(io.ErrShortWrite, "ErrShortWrite for ForwardPipe")
+				}
+			}
+			if err != nil {
+				break
+			}
+		}
+		if err != nil && err != io.EOF && err != io.ErrClosedPipe {
+			util.Warn(err, "Forwarder finishing with an error")
+		}
+	}()
+}
+
 func (l *Logger) CleanUp() {
+	if l.master != nil {
+		l.master.Close()
+	}
+
 	l.stdinTerm.Restore()
 	util.SetOutputIsRaw(false)
 
@@ -195,7 +271,10 @@ func (l *Logger) flush() {
 	}
 }
 
+// Start the forwarders, and do the main loop.
 func (l *Logger) DoLogger() {
+	l.startForwarders()
+
 	bout := bufio.NewReader(l.ForwardPipe)
 	for {
 		line, err := bout.ReadBytes('\n')

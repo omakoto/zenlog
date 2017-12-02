@@ -1,7 +1,8 @@
-package zenlog
+package logger
 
 import (
 	"fmt"
+
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 

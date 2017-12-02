@@ -4,20 +4,20 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/omakoto/zenlog-go/zenlog"
-	"github.com/omakoto/zenlog-go/zenlog/builtins/history"
-	"github.com/omakoto/zenlog-go/zenlog/envs"
-	"github.com/omakoto/zenlog-go/zenlog/logger"
-	"github.com/omakoto/zenlog-go/zenlog/util"
 	"io"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/omakoto/zenlog-go/zenlog/builtins/history"
+	"github.com/omakoto/zenlog-go/zenlog/envs"
+	"github.com/omakoto/zenlog-go/zenlog/logger"
+	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
 // InZenlog true if the current process is running in a zenlog session.
 func InZenlog() bool {
-	sig := util.Tty() + ":" + zenlog.Signature()
+	sig := util.Tty() + ":" + logger.Signature()
 	util.Debugf("Signature=%s", sig)
 	return sig == os.Getenv(envs.ZenlogSignature)
 }

@@ -41,7 +41,7 @@ run_zenlog() {
 }
 
 check_result() {
-    local name="$1"
+    local name="$TEST_NAME"
 
     local fail=0
     echo "Checking tree..."

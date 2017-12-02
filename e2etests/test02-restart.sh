@@ -48,4 +48,4 @@ coproc ioproc {
 }
 script -qefc "$ZENLOG_BIN" /proc/$$/fd/${ioproc[1]} <&"${ioproc[0]}"
 
-check_result 02
+check_result

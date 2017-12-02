@@ -5,10 +5,6 @@ medir="${0%/*}"
 TEST_NAME=01
 . "$medir/zenlog-test-common"
 
-# This is the default now.
-# export ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER=1
-
-
 clear_log
 
 cd "$medir"
@@ -84,4 +80,4 @@ V="a b c" echo ok
 echo $_ZENLOG_E2E_EXIT_TIME >"$_ZENLOG_TIME_INJECTION_FILE"; exit
 EOF
 
-check_result 01
+check_result

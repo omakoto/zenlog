@@ -9,11 +9,13 @@ update() {
 
         cd "$medir" || exit 1
 
-        rm -fr results
-        mkdir -p results/$TEST_NAME
-        $TREE "$ZENLOG_DIR" > results/$TEST_NAME/tree.txt
-        cp -pr "$ZENLOG_DIR" results/$TEST_NAME/files
+        out=results/$TEST_NAME
+        rm -fr "$out"
+        mkdir -p "$out"
+        $TREE "$ZENLOG_DIR" > "$out"/tree.txt
+        cp -pr "$ZENLOG_DIR" "$out"/files
     )
 }
 
 update 01
+update 02

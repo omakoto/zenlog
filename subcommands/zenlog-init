@@ -18,7 +18,7 @@ ask() {
 #==========================================================
 # Maybe create ~/.zenlog.toml
 
-toml_to=$HOME/.zenlog.tomlx
+toml_to=$HOME/.zenlog.toml
 toml_from=$(zenlog zenlog-src-top)/dot_zenlog.toml
 
 if [[ ! -e "$toml_to" ]] ; then

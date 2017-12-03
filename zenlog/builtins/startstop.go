@@ -2,16 +2,18 @@ package builtins
 
 import (
 	"flag"
+	"strconv"
 
 	"github.com/omakoto/zenlog-go/zenlog/logger"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
-// StartCommand tells zenlog to start logging for a command.
+// startCommand tells zenlog to start logging for a command.
 func startCommand(args []string) {
 	flags := flag.NewFlagSet("zenlog start", flag.ExitOnError)
 	e := flags.String("e", "", "Pass string to write to ENV file")
 	flags.Parse(args)
+	args = flags.Args()
 
 	if len(args) < 1 {
 		util.Fatalf("start-command expects at least 1 argument.")
@@ -19,10 +21,19 @@ func startCommand(args []string) {
 	logger.StartCommand(*e, args[:], util.NewClock())
 }
 
-// StartWithEnvCommand tells zenlog to start logging for a command.
-func startWithEnvCommand(args []string) {
-	if len(args) < 2 {
-		util.Fatalf("start-command-with-env expects at least 2 arguments.")
+// stopCommand tells zenlog to stop logging for the current command.
+func stopCommand(args []string) {
+	flags := flag.NewFlagSet("zenlog stop-command", flag.ExitOnError)
+	wantLineNumber := flags.Bool("n", false, "Print number of lines in log")
+	flags.Parse(args)
+	args = flags.Args()
+
+	exitStatus := -1
+	var err error
+
+	if len(args) > 0 {
+		exitStatus, err = strconv.Atoi(args[0])
+		util.Check(err, "Exit status must be integer; '%s' given.", args[0])
 	}
-	logger.StartCommand(args[0], args[1:], util.NewClock())
+	logger.EndCommand(exitStatus, *wantLineNumber, util.NewClock())
 }

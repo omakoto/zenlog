@@ -11,4 +11,4 @@ zenlog fail-unless-in-zenlog
 
 zenlog flush-all
 
-zenlog open-viewer "$(zenlog history -n 0 "${@}")"
+zenlog open-viewer "$(zenlog current-log "${@}")"

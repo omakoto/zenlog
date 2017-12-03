@@ -10,29 +10,40 @@ cat <<'EOF'
 # . <(zenlog basic-bash-setup)
 #==============================================================================
 
+#==============================================================================
+# Customize this.
+ZENLOG_VIEWER=${ZENLOG_VIEWER:-less}
+
+#==============================================================================
 ZENLOG_BIN="${ZENLOG_BIN:-zenlog}"
-
-# Include this file from .bash_profile like:
-# . PATH-TO-THIS-FILE/zenlog.bash
-
-ZENLOG_VIEWER=less
 
 # Install the basic shell helper functions.
 . <("$ZENLOG_BIN" sh-helper)
 
-# Stop the current logging before every prompt.
-_prompt_command() {
-  "$ZENLOG_BIN" end-command
+#==============================================================================
+# Pre-post exec hook.
+# - Execute "zenlog_bash_postexec $?" in PROMPT_COMMAND.
+# - Execute "zenlog_bash_preexec" in PS0.
+
+_postexec() {
+    local status=$?
+    local lines=$(zenlog_bash_postexec -n "$status")
+    echo "[rc=$status log=$($ZENLOG_BIN current-log) (${lines:-n/a} lines) $(pwd)]"
 }
 
-# Before starting a command, tell zenlog to start logging, with the
-# full command line.
-_preexec_command() {
-  "$ZENLOG_BIN" start-command-with-env "$(bash_dump_env)" "$(bash_last_command)"
+_preexec() {
+    zenlog_bash_preexec
 }
 
-PROMPT_COMMAND="_prompt_command"
-PS0='$(_preexec_command)'
+PROMPT_COMMAND="_postexec"
+PS0='$(_preexec)'
+
+#==============================================================================
+# Set up hot keys.
+# - Press ALT+1 on prompt to open the last log.
+# - Press ALT+2 on prompt to open the last log file on the web browser *with color*.
+#   (Must install a2h.)
+
 
 open_last_log() {
   "$ZENLOG_BIN" open-current-log
@@ -49,11 +60,7 @@ open_last_raw() {
   "${ZENLOG_RAW_VIEWER:-google-chrome}" "$temp"
 }
 
-# Press ALT+1 on prompt to open the last log.
-# See README.md.
 bind -x '"\e1": "open_last_log"'
-
-# Press ALT+2 on prompt to open the last log file on the web browser *with color*.
 bind -x '"\e2": "open_last_raw"'
 
 EOF

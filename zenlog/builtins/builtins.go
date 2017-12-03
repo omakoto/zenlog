@@ -139,32 +139,14 @@ func MaybeRunBuiltin(command string, args []string) {
 		FailUnlessInZenlog()
 		checkUpdate()
 
-		// TODO Refactor these commands for testability.
 	case "start-command":
 		FailUnlessInZenlog()
 		startCommand(args)
 
-	case "start-command-with-env":
-		FailUnlessInZenlog()
-		startWithEnvCommand(args)
-
 	case "stop-log", "end-command":
 		FailUnlessInZenlog()
+		stopCommand(args)
 
-		wantLineNumber := false
-		i := 0
-		if i < len(args) && args[i] == "-n" {
-			i++
-			wantLineNumber = true
-		}
-		exitStatus := -1
-		var err error
-		if i < len(args) {
-			exitStatus, err = strconv.Atoi(args[i])
-			util.Check(err, "Exit status must be integer; '%s' given.", args[i])
-			i++
-		}
-		logger.EndCommand(exitStatus, wantLineNumber, util.NewClock())
 	default:
 		return
 	}

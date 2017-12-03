@@ -2,17 +2,16 @@
 
 . <("$ZENLOG_BIN" -s)
 
-env_filter() {
-    grep '^\(Command:\|Start time:\|Finish time:\|Duration:\|ZENLOG_PID=\)'
+function zenlog_bash_dump_env() {
+  echo "---ENV---"
 }
 
 preexec() {
-  "$ZENLOG_BIN" start-command-with-env "$(bash_dump_env | env_filter)" "$(bash_last_command)"
+  zenlog_bash_preexec
 }
 
 prompt_command() {
-  status=$?
-  lines=$("$ZENLOG_BIN" stop-log -n $status)
+  lines=$(zenlog_bash_preexec -n)
   echo "Lines: $lines"
 }
 

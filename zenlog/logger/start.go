@@ -26,6 +26,7 @@ func StartCommand(envs string, commandLineArray []string, clock util.Clock) {
 	defer logFiles.Close()
 
 	logFiles.WriteEnv(command, envs, now)
+	logFiles.Close() // We want to close it before Dump().
 
 	// Send the start request to the logger.
 	req := StartRequest{*command, logFiles, now}

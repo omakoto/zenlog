@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# For backward compatibility.
+
+set -e
+
+env="$1"
+shift
+
+zenlog start-command -e "$env" "$@"

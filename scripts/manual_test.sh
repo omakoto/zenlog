@@ -13,11 +13,11 @@ if [[ "$1" == "-d" ]] ;then
     export ZENLOG_DEBUG=1
 fi
 
-#export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $(readlink -m scripts)/bashrc.manual-test"
-export ZENLOG_START_COMMAND="exec /bin/bash -l"
+export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $(readlink -m scripts)/bashrc.manual-test"
+#export ZENLOG_START_COMMAND="exec /bin/bash -l"
 export ZENLOG_DIR="/tmp/zenlog-manual-test/"
 export ZENLOG_PREFIX_COMMANDS="(?:builtin|time|sudo|command)"
-export ZENLOG_ALWAYS_NO_LOG_COMMANDS="(?:vi|vim|man|nano|pico|less|watch|emacs|ssh|zenlog.*)"
+export ZENLOG_ALWAYS_NO_LOG_COMMANDS="(?:vim?|nano|pico|emacs|zenlog.*)"
 
 export ZENLOG_BIN="$(readlink -m bin/zenlog)"
 

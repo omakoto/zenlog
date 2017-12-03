@@ -10,17 +10,15 @@ cat <<'EOF'
 # . <(zenlog sh-helper)
 #==============================================================================
 
-# Run a command without logging the output.
-function _zenlog_nolog() {
+function _zenlog_just_run() {
   "${@}"
 }
-alias 184=_zenlog_nolog
+
+# Run a command without logging the output.
+alias 184=_zenlog_just_run
 
 # Run a command with forcing log, regardless of ZENLOG_ALWAYS_NO_LOG_COMMANDS.
-function _zenlog_force_log() {
-  "${@}"
-}
-alias 186=_zenlog_force_log
+alias 186=_zenlog_just_run
 
 # Print the current command's command line.  Use with "zenlog start-command".
 function bash_last_command() {

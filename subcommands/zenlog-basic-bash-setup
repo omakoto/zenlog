@@ -17,6 +17,16 @@ zenlog basic-xsh-setup
 cat <<'EOF'
 
 #==============================================================================
+# Set up hot keys.
+# - Press ALT+1 on prompt to open the last log.
+# - Press ALT+2 on prompt to open the last log file on the web browser *with color*.
+#   (Must install a2h.)
+#==============================================================================
+
+bind -x '"\e1": "open_last_log"'
+bind -x '"\e2": "open_last_raw"'
+
+#==============================================================================
 # Pre/post exec hooks to tell when commands start and end.
 #==============================================================================
 
@@ -30,17 +40,9 @@ zenlog_bash_basic_ps0() {
     zenlog_bash_preexec
 }
 
-PROMPT_COMMAND="zenlog_bash_basic_prompt_command"
-PS0='$(zenlog_bash_basic_ps0)'
-
-#==============================================================================
-# Set up hot keys.
-# - Press ALT+1 on prompt to open the last log.
-# - Press ALT+2 on prompt to open the last log file on the web browser *with color*.
-#   (Must install a2h.)
-
-
-bind -x '"\e1": "open_last_log"'
-bind -x '"\e2": "open_last_raw"'
+if zenlog in-zenlog; then
+    PROMPT_COMMAND="zenlog_bash_basic_prompt_command;$PROMPT_COMMAND"
+    PS0='$PS0$(zenlog_bash_basic_ps0)'
+fi
 
 EOF

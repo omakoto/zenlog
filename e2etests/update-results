@@ -17,8 +17,6 @@ update() {
     )
 }
 
-update 01
-update 02
-update 03
-update 04
-update 05
+for n in $(seq -f %02.0f 1 6) ; do
+    update $n
+done

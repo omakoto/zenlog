@@ -17,20 +17,10 @@ zenlog basic-xsh-setup
 cat <<'EOF'
 
 #==============================================================================
-# Pre/post exec hooks.
-#==============================================================================
-
-zenlog_zsh_basic_precmd() {
-    local last_status=$?
-    local lines=$(zenlog_zsh_postexec -n "$last_status")
-    echo "[rc=$last_status log=$($ZENLOG_BIN current-log) (${lines:-n/a} lines) $(pwd)]"
-}
-
-precmd_functions+=(zenlog_zsh_basic_precmd)
-preexec_functions+=(zenlog_zsh_preexec)
-
-#==============================================================================
-# Define hot keys.
+# Set up hot keys.
+# - Press ALT+1 on prompt to open the last log.
+# - Press ALT+2 on prompt to open the last log file on the web browser *with color*.
+#   (Must install a2h.)
 #==============================================================================
 
 zle -N open_last_log
@@ -41,5 +31,20 @@ bindkey "\e1" open_last_log
 
 # ALT+2 to open the log with chrome using A2H
 bindkey "\e2" open_last_raw
+
+#==============================================================================
+# Pre/post exec hooks.
+#==============================================================================
+
+zenlog_zsh_basic_precmd() {
+    local last_status=$?
+    local lines=$(zenlog_zsh_postexec -n "$last_status")
+    echo "[rc=$last_status log=$($ZENLOG_BIN current-log) (${lines:-n/a} lines) $(pwd)]"
+}
+
+if zenlog in-zenlog; then
+    precmd_functions=(zenlog_zsh_basic_precmd "$precmd_functions[@]")
+    preexec_functions+=(zenlog_zsh_preexec)
+fi
 
 EOF

@@ -1,6 +1,6 @@
 #!bash
 
-. <("$ZENLOG_BIN" -s)
+. <("$ZENLOG_BIN" sh-helper)
 
 function zenlog_bash_dump_env() {
   echo "---ENV---"

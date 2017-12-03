@@ -1,6 +1,6 @@
 Command: zenlog cat-last-log-content
 Start time: 2017/10/20 17:02:05
-ZENLOG_PID=123
+---ENV---
 Exit status: 0
 Finish time: 2017/10/20 17:02:06
 Duration: 1s

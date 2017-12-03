@@ -16,7 +16,7 @@ unset IGNOREEOF
 export ZENLOG_BIN="$medir/../bin/zenlog"
 
 export ZENLOG_CONF="$medir/files/$TEST_NAME/zenlog.toml"
-export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $medir/files/$TEST_NAME/bashrc"
+export ZENLOG_START_COMMAND="exec /bin/bash --noprofile --rcfile $medir/files/bashrc"
 export ZENLOG_DIR=/tmp/zenlog-test/$TEST_NAME
 
 export _ZENLOG_LOGGER_PID=123

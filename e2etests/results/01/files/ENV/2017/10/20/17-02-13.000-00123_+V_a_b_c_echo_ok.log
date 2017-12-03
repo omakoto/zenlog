@@ -1,6 +1,6 @@
 Command: V="a b c" echo ok
 Start time: 2017/10/20 17:02:13
-ZENLOG_PID=123
+---ENV---
 Exit status: 0
 Finish time: 2017/10/20 17:02:14
 Duration: 1s

@@ -10,9 +10,7 @@ cat <<'EOF'
 # . <(zenlog sh-helper)
 #==============================================================================
 
-function _zenlog_just_run() {
-  "${@}"
-}
+function _zenlog_just_run() { "${@}"; }
 
 # Run a command without logging the output.
 alias 184=_zenlog_just_run
@@ -36,15 +34,18 @@ function zenlog_bash_dump_env() {
     } 2>/dev/null
 }
 
+# Execute this command in Bash's PS0 to tell zenlog to start logging for a command.
 function zenlog_bash_preexec() {
     zenlog start-command -e "$(zenlog_bash_dump_env)" "$(zenlog_bash_last_command)"
 }
 
+# Execute this command in Bash's PROMPT_COMMAND to tell zenlog to stop logging for the current command.
 function zenlog_bash_postexec() {
     local implicit_status=$?
     local opt=""
     if [[ "$1" == "-n" ]] ; then
         opt="-n"
+        shift
     fi
     local status="${1:-$implicit_status}"
 
@@ -61,23 +62,9 @@ function zenlog_restart() {
 }
 
 # For backward compatibility.
-function zenlog_in_zenlog() {
-  zenlog in-zenlog
-}
-
-# For backward compatibility.
-function in_zenlog() {
-  zenlog in-zenlog
-}
-
-# For backward compatibility.
-function zenlog_current_log() {
-  zenlog current-log "$@"
-}
-
-# For backward compatibility.
-function zenlog_last_log() {
-  zenlog last-log "$@"
-}
+function zenlog_in_zenlog() { zenlog in-zenlog; }
+function in_zenlog() { zenlog in-zenlog; }
+function zenlog_current_log() { zenlog current-log "$@"; }
+function zenlog_last_log() { zenlog last-log "$@"; }
 
 EOF

@@ -1,3 +1,3 @@
 Command: zenlog_restart
 Start time: 2017/10/20 17:00:02
-ZENLOG_PID=123
+---ENV---

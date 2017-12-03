@@ -145,7 +145,7 @@ func MaybeRunBuiltin(command string, args []string) {
 
 	case "stop-log", "end-command":
 		FailUnlessInZenlog()
-		stopCommand(args)
+		endCommand(args)
 
 	default:
 		return

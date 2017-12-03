@@ -11,7 +11,7 @@ preexec() {
 }
 
 prompt_command() {
-  lines=$(zenlog_bash_preexec -n)
+  lines=$(zenlog_bash_postexec -n)
   echo "Lines: $lines"
 }
 

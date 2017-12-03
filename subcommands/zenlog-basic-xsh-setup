@@ -1,0 +1,31 @@
+#!/bin/bash
+
+cat <<'EOF'
+
+export ZENLOG_VIEWER=${ZENLOG_VIEWER:-less}
+
+export ZENLOG_BIN="${ZENLOG_BIN:-zenlog}"
+
+# Install the basic shell helper functions.
+. <("$ZENLOG_BIN" sh-helper)
+
+#==============================================================================
+# Functions for hot keys.
+#==============================================================================
+
+open_last_log() {
+  "$ZENLOG_BIN" open-current-log
+}
+
+open_last_raw() {
+  local log="$("$ZENLOG_BIN" current-log -r)"
+  local temp="$(tempfile)"
+
+  a2h "$log" > "$temp" || {
+    echo "Failed to execute A2H. Install it from https://github.com/omakoto/a2h-rs." 1>&2
+    return 1
+  }
+  "${ZENLOG_RAW_VIEWER:-google-chrome}" "$temp"
+}
+
+EOF

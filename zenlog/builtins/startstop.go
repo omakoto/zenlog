@@ -21,7 +21,7 @@ func startCommand(args []string) {
 	logger.StartCommand(*e, args[:], util.NewClock())
 }
 
-// stopCommand tells zenlog to stop logging for the current command.
+// endCommand tells zenlog to stop logging for the current command.
 func endCommand(args []string) {
 	flags := flag.NewFlagSet("zenlog end-command", flag.ExitOnError)
 	wantLineNumber := flags.Bool("n", false, "Print number of lines in log")

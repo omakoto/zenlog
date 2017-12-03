@@ -86,11 +86,11 @@ func LoggerPipe() {
 	fmt.Println(os.Getenv(envs.ZenlogLoggerIn))
 }
 
-func checkUpdate() {
+func checkBinUpdate() {
 	if strconv.FormatInt(util.ZenlogBinCtime().Unix(), 10) == os.Getenv(envs.ZenlogBinCtime) {
 		util.ExitSuccess()
 	}
-	util.Say("Zenlog updated. Run \"zenlog_restart\" (or \"exit 13\") to restart a zenlog session.")
+	util.Say("Zenlog binary updated. Run \"zenlog_restart\" (or \"exit 13\") to restart a zenlog session.")
 	util.ExitFailure()
 }
 
@@ -122,7 +122,6 @@ func MaybeRunBuiltin(command string, args []string) {
 		FailUnlessInZenlog()
 		LoggerPipe()
 
-		// History related commands.
 	case "history":
 		FailUnlessInZenlog()
 		history.AllHistoryCommand(args)
@@ -135,9 +134,9 @@ func MaybeRunBuiltin(command string, args []string) {
 		FailUnlessInZenlog()
 		history.LastLogCommand(args)
 
-	case "check-update":
+	case "check-update", "check-bin-update":
 		FailUnlessInZenlog()
-		checkUpdate()
+		checkBinUpdate()
 
 	case "start-command":
 		FailUnlessInZenlog()

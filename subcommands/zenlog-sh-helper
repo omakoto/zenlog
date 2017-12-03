@@ -10,13 +10,9 @@ cat <<'EOF'
 # . <(zenlog sh-helper)
 #==============================================================================
 
-function _zenlog_just_run() { "${@}"; }
-
-# Run a command without logging the output.
-alias 184=_zenlog_just_run
-
-# Run a command with forcing log, regardless of ZENLOG_ALWAYS_NO_LOG_COMMANDS.
-alias 186=_zenlog_just_run
+#==============================================================================
+# Bash specific.
+#==============================================================================
 
 # Zehlog helper command: print the current command's command line for bash.
 function zenlog_bash_last_command() {
@@ -25,12 +21,13 @@ function zenlog_bash_last_command() {
 }
 
 # Zenlog helper command: print the "environment".
+# Re-define this function to change what's written to ENV log files.
 function zenlog_bash_dump_env() {
     {
         echo "PWD: $(pwd)"
         echo "git HEAD: $(git rev-parse HEAD) $(git rev-parse --abbrev-ref HEAD)"
-        env # dump environmental variables.
-        # declare -p # this dumps shell variables too, but also functions, and may be too big.
+        env
+        # declare -p # Use this instead of env to dump shell variables too.
     } 2>/dev/null
 }
 
@@ -47,10 +44,53 @@ function zenlog_bash_postexec() {
         opt="-n"
         shift
     fi
-    local status="${1:-$implicit_status}"
 
-    zenlog end-command $opt "$status"
+    zenlog end-command $opt "${1:-$implicit_status}"
 }
+
+#==============================================================================
+# Zsh specific.
+#==============================================================================
+
+# Zenlog helper command: print the "environment".
+# Re-define this function to change what's written to ENV log files.
+function zenlog_zsh_dump_env() {
+    {
+        echo "PWD: $(pwd)"
+        echo "git HEAD: $(git rev-parse HEAD) $(git rev-parse --abbrev-ref HEAD)"
+        env
+    } 2>/dev/null
+}
+
+# Execute this command in Zsh's preexec_functions to tell zenlog to start logging for a command.
+function zenlog_zsh_preexec() {
+    local cmd="$3" # Current command line.
+    zenlog start-command -e "$(zenlog_zsh_dump_env)" "$cmd"
+}
+
+# Execute this command in Zsh's precmd_functions to tell zenlog to stop logging for the current command.
+function zenlog_zsh_postexec() {
+    local implicit_status=$?
+    local opt=""
+    if [[ "$1" == "-n" ]] ; then
+        opt="-n"
+        shift
+    fi
+
+    zenlog end-command $opt "${1:-$implicit_status}"
+}
+
+#==============================================================================
+# Generic helper commands.
+#==============================================================================
+
+function _zenlog_just_run() { "${@}"; }
+
+# Run a command without logging the output.
+alias 184=_zenlog_just_run
+
+# Run a command with forcing log, regardless of ZENLOG_ALWAYS_NO_LOG_COMMANDS.
+alias 186=_zenlog_just_run
 
 # If called from the login shell, then close the current zenlog session and restart zenlog.
 function zenlog_restart() {

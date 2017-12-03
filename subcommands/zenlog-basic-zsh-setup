@@ -1,0 +1,45 @@
+#!/bin/bash
+
+cat <<'EOF'
+
+#==============================================================================
+# Simple setup script for Zsh.
+#
+# Add the following line to your $HOME/.zrc file.
+#
+# . <(zenlog basic-zsh-setup)
+#==============================================================================
+
+EOF
+
+zenlog basic-xsh-setup
+
+cat <<'EOF'
+
+#==============================================================================
+# Pre/post exec hooks.
+#==============================================================================
+
+zenlog_zsh_basic_precmd() {
+    local last_status=$?
+    local lines=$(zenlog_zsh_postexec -n "$last_status")
+    echo "[rc=$last_status log=$($ZENLOG_BIN current-log) (${lines:-n/a} lines) $(pwd)]"
+}
+
+precmd_functions+=(zenlog_zsh_basic_precmd)
+preexec_functions+=(zenlog_zsh_preexec)
+
+#==============================================================================
+# Define hot keys.
+#==============================================================================
+
+zle -N open_last_log
+zle -N open_last_raw
+
+# ALT+1 to open the log with ZENLOG_VIEWER (default: less)
+bindkey "\e1" open_last_log
+
+# ALT+2 to open the log with chrome using A2H
+bindkey "\e2" open_last_raw
+
+EOF

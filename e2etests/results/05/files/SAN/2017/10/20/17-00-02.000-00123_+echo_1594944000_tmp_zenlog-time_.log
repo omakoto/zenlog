@@ -1,0 +1,2 @@
+$ echo 1594944000 >"/tmp/zenlog-time"; exit
+exit

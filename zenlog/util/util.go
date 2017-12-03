@@ -2,13 +2,15 @@ package util
 
 import (
 	"fmt"
-	"github.com/davecgh/go-spew/spew"
+	"log"
 	"math/rand"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/davecgh/go-spew/spew"
 )
 
 var (
@@ -186,6 +188,23 @@ func ZenlogBinCtime() time.Time {
 	stat, err := os.Stat(FindZenlogBin())
 	Check(err, "Stat failed")
 	return stat.ModTime()
+}
+
+// ZenlogSrcTopDir returns the fullpath of the source top directory.
+func ZenlogSrcTopDir() string {
+	zenlogBinDir := FindZenlogBinDir()
+
+	for _, d := range StringSlice("/../", "/../src/github.com/omakoto/zenlog-go/") {
+		candidate := zenlogBinDir + d
+		candidate, err := filepath.Abs(candidate)
+		Check(err, "Abs failed")
+
+		if DirExists(candidate + "/subcommands") {
+			return candidate
+		}
+	}
+	log.Fatalf("Zenlog source directory not found.")
+	return ""
 }
 
 // StringSlice is a convenient way to build a string slice.

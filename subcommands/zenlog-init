@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# zenlog init: Initialize ~/.zenlog.toml and ~/.bashrc/ or ~/.zshrc.
+
+set -e
+
+msg() {
+    echo "zenlog-init: $*"
+}
+
+ask() {
+    local res
+    echo -n "zenlog-init: $* [Y/n]: "
+    read res
+    [[ "$res" == "" || "$res" == y || "$res" == Y ]]
+}
+
+#==========================================================
+# Maybe create ~/.zenlog.toml
+
+toml_to=$HOME/.zenlog.tomlx
+toml_from=$(zenlog zenlog-src-top)/dot_zenlog.toml
+
+if [[ ! -e "$toml_to" ]] ; then
+    if ask "Wish to create file '$toml_to'?"; then
+        cp "$toml_from" "$toml_to"
+    fi
+fi
+
+#==========================================================
+# Maybe add "basic setup" to the shell's RC file.
+
+maybe_add_to_rc() {
+    local file="$1" command="$2"
+
+    if [[ -e "$file" ]] ;then
+        if grep -q "$command" -- "$file"; then
+            return 0 # Already added.
+        fi
+    fi
+
+    if ask "Wish to add '$command' to '$file'?"; then
+        echo ". <($command)" >> $file
+    fi
+}
+
+case "$(basename $SHELL)" in
+    bash)
+        maybe_add_to_rc "$HOME/.bashrc" 'zenlog basic-bash-setup'
+        ;;
+    zsh)
+        maybe_add_to_rc "$HOME/.zshrc" 'zenlog basic-zsh-setup'
+        ;;
+    *)
+        echo "Unknown shell $SHELL" 1>&2
+        exit 1
+        ;;
+esac
+
+exit 0

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# zenlog update: Install the latest zenlog from github.
+
+set -e
+
+from=github.com/omakoto/zenlog-go/zenlog/cmd/zenlog
+echo "Downloading and compiling zenlog..."
+go get -u "$from"
+
+if zenlog in-zenlog; then
+    zenlog check-bin-update
+fi

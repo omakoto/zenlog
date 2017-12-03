@@ -27,10 +27,7 @@ func tryRunExternalCommand(path string, command string, args []string) {
 // MaybeRunExternalCommand looks for "zenlog-SUBCOMMAND", first in the zenlog "subcommand" directory,
 // then in PATH and executes it.
 func MaybeRunExternalCommand(command string, args []string) {
-	zenlogBinDir := util.FindZenlogBinDir()
-
-	tryRunExternalCommand(zenlogBinDir+"/../subcommands", command, args)
-	tryRunExternalCommand(zenlogBinDir+"/../src/github.com/omakoto/zenlog-go/subcommands", command, args)
+	tryRunExternalCommand(util.ZenlogSrcTopDir()+"/subcommands", command, args)
 
 	for _, path := range strings.Split(os.Getenv("PATH"), ":") {
 		tryRunExternalCommand(path, command, args)

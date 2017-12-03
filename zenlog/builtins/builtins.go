@@ -100,6 +100,14 @@ func MaybeRunBuiltin(command string, args []string) {
 	case "in-zenlog":
 		util.Exit(InZenlog())
 
+	case "zenlog-bin":
+		fmt.Println(util.FindZenlogBin())
+		util.ExitSuccess()
+
+	case "zenlog-src-top":
+		fmt.Println(util.ZenlogSrcTopDir())
+		util.ExitSuccess()
+
 	case "fail-if-in-zenlog":
 		FailIfInZenlog()
 
@@ -134,7 +142,7 @@ func MaybeRunBuiltin(command string, args []string) {
 		FailUnlessInZenlog()
 		history.LastLogCommand(args)
 
-	case "check-update", "check-bin-update":
+	case "check-bin-update":
 		FailUnlessInZenlog()
 		checkBinUpdate()
 

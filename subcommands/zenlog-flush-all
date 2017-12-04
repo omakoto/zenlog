@@ -4,4 +4,4 @@
 
 set -e
 
-killall -s SIGWINCH -e zenlog
+killall -u $(id -un) -s SIGWINCH -e zenlog

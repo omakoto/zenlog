@@ -17,9 +17,10 @@ work with zenlog.
 
 [See the readme of the old version.](https://github.com/omakoto/zenlog)
 
-Zenlog-go is a complete write in Go, and no longer relies on script(1). 
+Zenlog-go uses the same idea, but is a complete write in Go, and no longer relies on script(1).
+Instead it'll create a PTY by itself. 
 
-## Quick start: install and setup (Bash)
+## Quick start: Install and set up
 
 To install, set up the Go SDK and run:
 
@@ -27,13 +28,35 @@ To install, set up the Go SDK and run:
 go install -u github.com/omakoto/zenlog-go/zenlog/cmd/zenlog 
 ```
 
-Then add the following to your `.bashrc`.
+Then, create `~/.zenlog.toml` and update `.bashrc` (or `.zshrc`) by running:
+
 ```
-. <(zenlog basic-bash-setup)
+zenlog init
 ```
 
-(Note this will overwrite `P0` and `PROMPT_COMMAND`, so if you don't like it, look at the script
-and do whatever you want.)
+Then, start a new zenlog session by running:
+
+```
+zenlog
+```
+
+Then, try running `ls -l` and then press `ALT+1`. The output of the `ls` command should open
+in `less`. (If the hotkey doesn't work, then run `zenlog open-last-log` instead.)
+
+
+## Manual bash Setup
+
+`zenlog init` will add `. <(zenlog basic-bash-setup)`, which overwrites `P0` and `PROMPT_COMMAND`.
+
+```
+. <(zenlog sh-setup)
+```
+ 
+TO BE WRITTEN
+
+## Manual zsh setup (experimentawl)
+
+TO BE WRITTEN
 
 ### Using other shells
 
@@ -41,27 +64,5 @@ Any shell should work, as long as it supports some sort of "pre-exec" and "post-
 
 Look at the output of `zenlog basic-bash-setup` and figure it out.
 
-## Using Zenlog
-
-Once you setup your `.bashrc`, just run `zenlog` to start a new session.
-
-As the [Caveats](#caveats) section describes, it's not recommended to use zenlog as a login shell.
-Just change your terminal app's setting and use zenlog as a custom startup program.
-
-Once in zenlog, output of all commands are stored under `$ZENLOG_DIR` (`$HOME/zenlog/` by default).
-
-### Opening log files with commands
-
-Try running `ls -l $HOME` and then `zenlog open-last-log`, which should invoke less
-(`$ZENLOG_VIEWER`) with the output of the `ls` command.
-
-### Opening log files with hotkeys
-
-`basic-bash-setup` also sets up a hotkey `ALT+1` to open the last log.
-
-Also if you have [A2H](https://github.com/omakoto/a2h-rs) installed, `ALT+2` will open the last log
-in Google Chrome (change it with `$ZENLOG_RAW_VIEWER`) *with colors*.
-
-## Below documentation is under construction...
 
 [See also the readme of the old version.](https://github.com/omakoto/zenlog)

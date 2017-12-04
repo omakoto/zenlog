@@ -33,7 +33,12 @@ bind -x '"\e2": "open_last_raw"'
 zenlog_bash_basic_prompt_command() {
     local last_status=$?
     local lines=$(zenlog_bash_postexec -n "$last_status")
-    echo "[rc=$last_status log=$($ZENLOG_BIN current-log) (${lines:-n/a} lines) $(pwd)]"
+    local last_log="$(zenlog current-log)"
+
+    if [[ -n "$last_log" ]]; then
+        echo -e "[\e[0;44mrc=$last_status log=$last_log (${lines:-n/a} lines)\e[0m]"
+    fi
+
     if [[ -n "$ZENLOG_PREV_PROMPT_COMMAND" ]] ; then
         "$ZENLOG_PREV_PROMPT_COMMAND"
     fi

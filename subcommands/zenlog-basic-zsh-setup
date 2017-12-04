@@ -39,7 +39,11 @@ bindkey "\e2" open_last_raw
 zenlog_zsh_basic_precmd() {
     local last_status=$?
     local lines=$(zenlog_zsh_postexec -n "$last_status")
-    echo "[rc=$last_status log=$($ZENLOG_BIN current-log) (${lines:-n/a} lines) $(pwd)]"
+    local last_log="$(zenlog current-log)"
+
+    if [[ -n "$last_log" ]]; then
+        echo -e "[\e[0;44mrc=$last_status log=$last_log (${lines:-n/a} lines)\e[0m]"
+    fi
 }
 
 if zenlog in-zenlog; then

@@ -1,6 +1,6 @@
 # Sample ~/.zenlog.toml file.
 
-ZENLOG_START_COMMAND = "exec /bin/bash -l"
+ZENLOG_START_COMMAND = "exec $SHELL -l"
 
 # Log output directory.
 ZENLOG_DIR = "$HOME/zenlog/"

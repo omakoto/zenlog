@@ -92,6 +92,7 @@ func NewLogger(config *config.Config) *Logger {
 
 func (l *Logger) exportEnviron() {
 	os.Setenv(envs.ZenlogBin, util.FindZenlogBin())
+	os.Setenv(envs.ZenlogSourceTop, util.ZenlogSrcTopDir())
 	os.Setenv(envs.ZenlogBinCtime, strconv.FormatInt(util.ZenlogBinCtime().Unix(), 10))
 
 	os.Setenv(envs.ZenlogDir, l.Config.LogDir)

@@ -57,4 +57,19 @@ case "$(basename $SHELL)" in
         ;;
 esac
 
+#==========================================================
+
+
+echo
+echo "*** Dot files initialized ***"
+echo
+
+if zenlog in-zenlog ; then
+    echo "Now type 'exit 13' to restart a zenlog session."
+else
+    echo "Now type 'zenlog' to start a zenlog session."
+fi
+
+echo
+
 exit 0

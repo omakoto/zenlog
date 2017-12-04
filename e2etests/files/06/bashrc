@@ -3,5 +3,6 @@
 . <("$ZENLOG_BIN" sh-helper)
 
 PS1='$ '
-
+unset PS0
+unset PROMPT_COMMAND
 . <("$ZENLOG_BIN" basic-bash-setup)

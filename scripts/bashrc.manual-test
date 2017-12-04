@@ -1,3 +1,5 @@
+unset PROMPT_COMMAND
+unset PS0
 . <("$ZENLOG_BIN" basic-bash-setup)
 
 PS1='[zenlog]$ '

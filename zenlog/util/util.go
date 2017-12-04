@@ -7,110 +7,18 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
-	"strings"
 	"time"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 var (
-	// Debug is whether the debug output is enabled or not.
-	Debug       = false
-	outputIsRaw = false
-
 	reFilenameSafe = NewLazyRegexp(`[^a-zA-Z0-9\-\_\.\+]+`)
 	reSlashes      = NewLazyRegexp(`//+`)
-
-	//debugOutSet = false
-	debugOut = os.Stderr
 
 	reRegexCleaner = NewLazyRegexp(`(?:\s+|\s*#[^\n]*\n\s*)`)
 )
 
 func init() {
-	// If ZENLOG_DEBUG is set to '1', enable debug log.
-	if os.Getenv("ZENLOG_DEBUG") == "1" {
-		Debug = true
-	}
-
 	rand.Seed(time.Now().Unix())
-}
-
-// SetOutputIsRaw sets whether stdout is in raw mode or not.
-func SetOutputIsRaw(raw bool) {
-	outputIsRaw = raw
-}
-
-func replaceLf(s string) string {
-	if outputIsRaw {
-		s = strings.Replace(s, "\n", "\r\n", -1)
-	}
-	return s
-}
-
-func formatMessage(format string, a ...interface{}) string {
-	return replaceLf(fmt.Sprintf("zenlog: "+format, a...))
-}
-
-func Debugf(format string, a ...interface{}) {
-	if Debug {
-		DebugfForce(format, a...)
-	}
-}
-
-func DebugfForce(format string, a ...interface{}) {
-	color := ""
-	end := ""
-	if outputIsRaw {
-		// Logger side
-		color = "\x1b[0m\x1b[1;32m[L]" // Append [L]
-		end = "\x1b[0m\r\n"            // Note the \r.
-	} else {
-		color = "\x1b[0m\x1b[1;33m"
-		end = "\x1b[0m\n"
-	}
-	fmt.Fprint(debugOut, color)
-	fmt.Fprint(debugOut, formatMessage(format, a...))
-	fmt.Fprint(debugOut, end)
-}
-
-func Dump(prefix string, obj interface{}) {
-	if !Debug {
-		return
-	}
-	Debugf("%s%s", prefix, spew.Sdump(obj))
-}
-
-func Fatalf(format string, a ...interface{}) {
-	fmt.Fprintf(os.Stderr, formatMessage(format, a...))
-	fmt.Fprint(os.Stderr, "\n")
-	ExitFailure()
-}
-
-func Check(err error, format string, a ...interface{}) {
-	if Warn(err, format, a...) {
-		ExitFailure()
-	}
-}
-
-func Say(format string, a ...interface{}) {
-	message := formatMessage(format, a...)
-	fmt.Fprint(os.Stderr, "\x1b[0m\x1b[1;33m")
-	fmt.Fprint(os.Stderr, message)
-	fmt.Fprint(os.Stderr, replaceLf("\x1b[0m\n"))
-}
-
-func Warn(err error, format string, a ...interface{}) bool {
-	if err != nil {
-		message := formatMessage(format, a...)
-		fmt.Fprint(os.Stderr, "\x1b[0m\x1b[1;33m")
-		fmt.Fprint(os.Stderr, message)
-		fmt.Fprint(os.Stderr, ": ")
-		fmt.Fprint(os.Stderr, err.Error())
-		fmt.Fprint(os.Stderr, replaceLf("\x1b[0m\n"))
-		return true
-	}
-	return false
 }
 
 func FirstNonEmpty(vals ...string) string {

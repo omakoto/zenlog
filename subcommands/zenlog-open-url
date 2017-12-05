@@ -48,13 +48,18 @@ selected = ""
 if reversed_uniq.length == 1
   selected = reversed_uniq[0]
 else
-  Open3.pipeline_rw("fzf") {|cin, cout, wait_thrs|
-    reversed_uniq.each do |url|
-      cin.puts url
-    end
-    cin.close
-    selected = cout.read.chomp!
-  }
+  begin
+    Open3.pipeline_rw("fzf") {|cin, cout, wait_thrs|
+      reversed_uniq.each do |url|
+        cin.puts url
+      end
+      cin.close
+      selected = cout.read.chomp!
+    }
+  rescue SystemCallError
+    $stderr.puts "zenlog: Failed to execute fzf. If fzf is not installed, install from: https://github.com/junegunn/fzf"
+    exit 2
+  end
 
   if selected == ""
     $stderr.puts "zenlog: No URLs selected."

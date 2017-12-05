@@ -86,7 +86,7 @@ func InitConfigForLogger() *Config {
 
 	overwriteWithEnviron(&c.TempDir, envs.ZenlogTemp, "")
 
-	overwriteBoolWithEnviron(&c.AutoFlush, envs.ZenlogAutoflush)
+	overwriteBoolWithEnviron(&c.AutoFlush, envs.ZenlogAutoFlush)
 	overwriteBoolWithEnviron(&c.UseExperimentalCommandParser, envs.ZenlogUseExperimentalCommandParser)
 
 	if c.StartCommand == "" {

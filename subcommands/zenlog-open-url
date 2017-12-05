@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+#
+# zenlog open-url
+#   Find URLs in recent log files and open it in the browser.
+#   If multiple URLs are found, run FZF to have the user select one.
+
+require 'open3'
+
+# The browser to use.
+BROWSER = ENV['ZENLOG_BROWSER'] || ENV['BROWSER'] || "google-chrome"
+
+# Regex that matches a URL. This intentionally ignores the last period.
+ZENLOG_URL_REGEXP = ENV['ZENLOG_URL_REGEXP']
+pattern = ZENLOG_URL_REGEXP ? Regexp.compile(ZENLOG_URL_REGEXP) : %r((?:https?|file)\:\/\/\S+)
+
+# Extract the URLs in the recent output.
+urls = []
+
+%x(zenlog history).split(/\n/).each do |filename|
+  open(filename, 'r') do |file|
+    file.each_line do |line|
+      line.chomp!
+      line.scan(pattern) do |match|
+        match.gsub! /\.+$/, "" # Remove following dots.
+        urls.push match
+      end
+    end
+  end
+end
+
+map = {}
+reversed_uniq = []
+urls.reverse.each do |url|
+  next if map.has_key? url
+  map[url] = 1
+  reversed_uniq.push url
+end
+
+if reversed_uniq.length == 0
+  $stderr.puts "zenlog: No URLs found in recent log."
+  exit 1
+end
+
+# Run FZF to have the user select one.
+
+selected = ""
+
+if reversed_uniq.length == 1
+  selected = reversed_uniq[0]
+else
+  Open3.pipeline_rw("fzf") {|cin, cout, wait_thrs|
+    reversed_uniq.each do |url|
+      cin.puts url
+    end
+    cin.close
+    selected = cout.read.chomp!
+  }
+
+  if selected == ""
+    $stderr.puts "zenlog: No URLs selected."
+    exit 1
+  end
+end
+
+# Open in the browser.
+
+puts "zenlog: Opening #{selected} ..."
+
+spawn BROWSER, selected

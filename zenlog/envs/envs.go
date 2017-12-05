@@ -25,8 +25,8 @@ const (
 	// ZenlogTemp is an environmental variable key for the temporary directory.
 	ZenlogTemp = "ZENLOG_TEMP"
 
-	// ZenlogAutoflush is an environmental variable key.
-	ZenlogAutoflush = "ZENLOG_AUTO_FLUSH"
+	// ZenlogAutoFlush is an environmental variable key.
+	ZenlogAutoFlush = "ZENLOG_AUTO_FLUSH"
 
 	// ZenlogUseExperimentalCommandParser is an environmental variable key.
 	ZenlogUseExperimentalCommandParser = "ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER"

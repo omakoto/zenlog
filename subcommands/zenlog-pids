@@ -4,8 +4,4 @@
 # Note this command just uses the named pipe filenames. If there was a zenlog
 # that didn't close cleanly, this command will pick it up.
 
-set -e
-
-temp=
-
-ls "$(zenlog temp-dir)"/zenlog.*f.pipe | sed -e 's/^.*\/zenlog\.//; s/f\.pipe$//'
+ls "$(zenlog temp-dir)"/zenlog.*f.pipe | sed -e 's/^.*zenlog\.//; s/f\.pipe$//'

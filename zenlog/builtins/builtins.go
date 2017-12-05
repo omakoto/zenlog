@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"github.com/omakoto/zenlog-go/zenlog/builtins/history"
+	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
 	"github.com/omakoto/zenlog-go/zenlog/logger"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -106,6 +107,10 @@ func MaybeRunBuiltin(command string, args []string) {
 
 	case "zenlog-src-top":
 		fmt.Println(util.ZenlogSrcTopDir())
+		util.ExitSuccess()
+
+	case "temp-dir":
+		fmt.Println(config.InitConfigForCommands().TempDir)
 		util.ExitSuccess()
 
 	case "fail-if-in-zenlog":

@@ -152,6 +152,7 @@ func InitConfigForCommands() *Config {
 	c.CommandSplitter = lc.CommandSplitter
 	c.CommentSplitter = lc.CommentSplitter
 	c.UseExperimentalCommandParser = lc.UseExperimentalCommandParser
+	c.TempDir = lc.TempDir
 
 	util.Dump("Command config=", c)
 	return &c

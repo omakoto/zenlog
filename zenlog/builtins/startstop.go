@@ -10,7 +10,7 @@ import (
 
 // startCommand tells zenlog to start logging for a command.
 func startCommand(args []string) {
-	flags := flag.NewFlagSet("zenlog start", flag.ExitOnError)
+	flags := flag.NewFlagSet("zenlog start-command", flag.ExitOnError)
 	e := flags.String("e", "", "Pass string to write to ENV file")
 	flags.Parse(args)
 	args = flags.Args()

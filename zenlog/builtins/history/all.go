@@ -6,8 +6,10 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
+	"github.com/omakoto/zenlog-go/zenlog/builtins"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -21,7 +23,8 @@ func AllCommandsAndLogCommand(args []string) {
 	r := flags.Bool("r", false, "Print RAW filename instead")
 	e := flags.Bool("e", false, "Print ENV filename instead")
 	n := flags.Float64("n", 30, "Only print log within last n days. [default=30]")
-	//c := flags.Bool("c", false, "Limit to current zenlog session")
+	c := flags.Bool("c", false, "Limit to current zenlog session")
+	l := flags.Bool("l", false, "Print log filenames only, no commands")
 
 	flags.Parse(args)
 
@@ -31,6 +34,19 @@ func AllCommandsAndLogCommand(args []string) {
 			return nil
 		}
 		if info.Mode().IsRegular() {
+			log := path
+			if *r {
+				log = strings.Replace(log, logfiles.SanDir, logfiles.RawDir, 1)
+			} else if *e {
+				log = strings.Replace(log, logfiles.SanDir, logfiles.EnvDir, 1)
+			}
+			fmt.Print(log)
+
+			if *l {
+				fmt.Print("\n")
+				return nil
+			}
+
 			i, err := os.Open(path)
 			if err != nil {
 				return nil
@@ -44,20 +60,19 @@ func AllCommandsAndLogCommand(args []string) {
 			first = strings.TrimLeft(first, "$")
 			first = strings.TrimLeft(first, " ")
 
-			if *r {
-				path = strings.Replace(path, logfiles.SanDir, logfiles.RawDir, 1)
-			} else if *e {
-				path = strings.Replace(path, logfiles.SanDir, logfiles.EnvDir, 1)
-			}
-
-			fmt.Print(path)
 			fmt.Print(" ")
 			fmt.Print(first)
 		}
 		return nil
 	}
 
-	filepath.Walk(config.LogDir+logfiles.SanDir, wf)
+	root := config.LogDir + logfiles.SanDir
+	if *c {
+		builtins.FailUnlessInZenlog()
+		root = config.LogDir + "pids/" + strconv.Itoa(config.ZenlogPid) + "/" + logfiles.SanDir
+	}
+
+	filepath.Walk(root, wf)
 
 	util.Exit(true)
 }

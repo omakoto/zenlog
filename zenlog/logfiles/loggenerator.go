@@ -15,9 +15,9 @@ import (
 )
 
 const (
-	sanDir = "SAN"
-	rawDir = "RAW"
-	envDir = "ENV"
+	SanDir = "SAN"
+	RawDir = "RAW"
+	EnvDir = "ENV"
 
 	maxPrevLinks = 10
 )
@@ -131,9 +131,9 @@ func CreateAndOpenLogFiles(config *config.Config, now time.Time, command *Comman
 		tag,
 		clamp(util.FilenameSafe(command.CommandLine), 32))
 
-	l.SanFile = strings.Replace(f, M, sanDir, 1)
-	l.RawFile = strings.Replace(f, M, rawDir, 1)
-	l.EnvFile = strings.Replace(f, M, envDir, 1)
+	l.SanFile = strings.Replace(f, M, SanDir, 1)
+	l.RawFile = strings.Replace(f, M, RawDir, 1)
+	l.EnvFile = strings.Replace(f, M, EnvDir, 1)
 
 	l.Open(true)
 
@@ -142,9 +142,9 @@ func CreateAndOpenLogFiles(config *config.Config, now time.Time, command *Comman
 		fullLogFilename string
 		logType         string
 	}{
-		{l.SanFile, sanDir},
-		{l.RawFile, rawDir},
-		{l.EnvFile, envDir},
+		{l.SanFile, SanDir},
+		{l.RawFile, RawDir},
+		{l.EnvFile, EnvDir},
 	}
 	for _, item := range items {
 		createPrevLink(config.LogDir, item.logType, item.fullLogFilename)

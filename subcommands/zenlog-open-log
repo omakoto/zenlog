@@ -3,35 +3,10 @@
 # Open log file selected with fzf with ZENLOG_VIEWER.
 #
 # Supported options: -r [open RAW] -e [open ENV]
-#
-# TODO Feed the command line to FZF to be able to search by command line.
 
 set -e
 
-zenlog fail-unless-in-zenlog
-
-type=SAN
-while getopts "re" opt; do
-    case "$opt" in
-        r) type=RAW ;;
-        e) type=ENV ;;
-        *) exit 1 ;;
-    esac
-done
-shift $(($OPTIND - 1))
-
-
-# This is slow.
-#find /zenlog/SAN/ -type f | while read name ; do
-#    echo -n "$name "
-#    sed -ne 's/^\$ //p; 1q' "$name" # extract command line
-#done
-
-list_log_files() {
-    find /zenlog/$type/ -type f
-}
-
-file=$(list_log_files | zenlog fzf-wrapper '--preview=cat {+}')
+file=$(zenlog all-commands "$@" | zenlog fzf-wrapper --tac '--nth=2..' '--with-nth=2..' '--preview=cat {1}' | awk '{print $1}')
 
 if [[ -z "$file" ]] ; then
     exit 1

@@ -18,12 +18,18 @@ func AllCommandsAndLogCommand(args []string) {
 	config := config.InitConfigForCommands()
 
 	flags := flag.NewFlagSet("zenlog all-log", flag.ExitOnError)
-	r := flags.Bool("r", false, "Print RAW filename")
-	e := flags.Bool("e", false, "Print ENV filename")
+	r := flags.Bool("r", false, "Print RAW filename instead")
+	e := flags.Bool("e", false, "Print ENV filename instead")
+	n := flags.Float64("n", 30, "Only print log within last n days. [default=30]")
+	//c := flags.Bool("c", false, "Limit to current zenlog session")
 
 	flags.Parse(args)
 
+	now := util.GetInjectedNow(util.NewClock())
 	wf := func(path string, info os.FileInfo, err error) error {
+		if now.Sub(info.ModTime()).Hours() > *n {
+			return nil
+		}
 		if info.Mode().IsRegular() {
 			i, err := os.Open(path)
 			if err != nil {

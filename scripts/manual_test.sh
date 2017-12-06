@@ -37,6 +37,8 @@ export ZENLOG_BIN="$(readlink -m bin/zenlog)"
 
 export PS1_OVERRIDE="[zenlog-testing]"
 
+unset ZENLOG_NO_DEFAULT_BINDING ZENLOG_NO_DEFAULT_PROMPT
+
 mkdir -p "$ZENLOG_DIR"
 
 "$ZENLOG_BIN"

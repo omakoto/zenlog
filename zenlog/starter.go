@@ -10,6 +10,7 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/logger"
 	"github.com/omakoto/zenlog-go/zenlog/util"
+	"runtime/pprof"
 )
 
 const resurrectCode = 13
@@ -36,7 +37,7 @@ func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus in
 
 func setupSignalHandler(l *logger.Logger, childStatus *int) {
 	sigch := make(chan os.Signal)
-	signal.Notify(sigch, syscall.SIGCHLD, syscall.SIGWINCH, syscall.SIGHUP)
+	signal.Notify(sigch, syscall.SIGCHLD, syscall.SIGWINCH, syscall.SIGHUP, syscall.SIGUSR2)
 
 	// Signal handler.
 	go func() {
@@ -63,6 +64,15 @@ func setupSignalHandler(l *logger.Logger, childStatus *int) {
 					*childStatus = ps.Sys().(syscall.WaitStatus).ExitStatus()
 				}
 				l.OnChildDied()
+
+			case syscall.SIGUSR2:
+				fmt.Println("SIGUSR2")
+
+				p := pprof.Lookup("goroutine")
+				l.RunWithCookedTerminal(func() {
+					p.WriteTo(os.Stdout, 1)
+				})
+
 			default:
 				util.Say("Caught unexpected signal: %+v", s)
 			}

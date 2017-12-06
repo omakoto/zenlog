@@ -323,3 +323,10 @@ func (l *Logger) DoLogger() {
 func (l *Logger) OnChildDied() {
 	l.SendCloseRequest()
 }
+
+// RunWithCookedTerminal is a hacky method to run a given callback with the output mode set to cooked. It doesn't even take a lock.
+func (l *Logger) RunWithCookedTerminal(f func()) {
+	l.stdinTerm.Restore()
+	f()
+	l.stdinTerm.SetRaw() // TODO Restore to the original mode...
+}

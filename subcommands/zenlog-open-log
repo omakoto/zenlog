@@ -6,7 +6,7 @@
 
 set -e
 
-file=$(zenlog all-commands "$@" | zenlog fzf-wrapper --tac '--nth=2..' '--with-nth=2..' '--preview=cat {1}' | awk '{print $1}')
+file=$(zenlog select-log "$@")
 
 if [[ -z "$file" ]] ; then
     exit 1

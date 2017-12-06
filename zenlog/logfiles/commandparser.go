@@ -140,6 +140,8 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 	for i, command := range commands {
 		for _, w := range command {
 			switch w {
+			case "":
+				continue
 			case noLogPrefix:
 				noLogDetected = true
 				continue
@@ -147,15 +149,16 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 				forceLogDetected = true
 				continue
 			}
-			if prefixCommands.MatchString(w) {
+			basename := filepath.Base(w)
+			if prefixCommands.MatchString(basename) {
 				continue
 			}
 
 			// Let's only use the first command for auto-184.
-			if i == 0 && alwaysNoLogCommands.MatchString(w) {
+			if i == 0 && alwaysNoLogCommands.MatchString(basename) {
 				noLogDetected = true
 			}
-			exes = append(exes, filepath.Base(w))
+			exes = append(exes, basename)
 			break
 		}
 	}

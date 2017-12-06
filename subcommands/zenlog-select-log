@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Print log file selected with fzf.
+#
+# Supported options: -r [open RAW] -e [open ENV]
+
+set -e
+
+zenlog all-commands "$@" | zenlog fzf-wrapper --tac '--nth=2..' '--with-nth=2..' '--preview=cat {1}' | awk '{print $1}'

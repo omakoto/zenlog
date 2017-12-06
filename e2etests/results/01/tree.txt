@@ -74,7 +74,7 @@
 │   │   ├── SSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log
 │   │   └── SSSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 │   ├── echo/
-│   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   │   ├── EE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
 │   │   ├── EEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-03.000-00123_+echo_ok.log
 │   │   ├── EEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
@@ -100,8 +100,8 @@
 │   │   │               ├── 17-01-59.000-00123_+echo_ok.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
 │   │   │               ├── 17-02-03.000-00123_+echo_ok.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-03.000-00123_+echo_ok.log
 │   │   │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│   │   │               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   │               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   ├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   │   ├── RAW/
 │   │   │   └── 2017/
 │   │   │       └── 10/
@@ -118,7 +118,7 @@
 │   │   │               ├── 17-01-59.000-00123_+echo_ok.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
 │   │   │               ├── 17-02-03.000-00123_+echo_ok.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-03.000-00123_+echo_ok.log
 │   │   │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│   │   │               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   │               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   │   ├── RR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
 │   │   ├── RRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-03.000-00123_+echo_ok.log
 │   │   ├── RRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
@@ -128,7 +128,7 @@
 │   │   ├── RRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
 │   │   ├── RRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
 │   │   ├── RRRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
-│   │   ├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   ├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   │   ├── SAN/
 │   │   │   └── 2017/
 │   │   │       └── 10/
@@ -145,7 +145,7 @@
 │   │   │               ├── 17-01-59.000-00123_+echo_ok.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-59.000-00123_+echo_ok.log
 │   │   │               ├── 17-02-03.000-00123_+echo_ok.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-03.000-00123_+echo_ok.log
 │   │   │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│   │   │               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   │               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   │   ├── SS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
 │   │   ├── SSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-03.000-00123_+echo_ok.log
 │   │   ├── SSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-59.000-00123_+echo_ok.log
@@ -156,24 +156,24 @@
 │   │   ├── SSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
 │   │   └── SSSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
 │   ├── exit/
-│   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   │   ├── ENV/
 │   │   │   └── 2017/
 │   │   │       └── 10/
 │   │   │           └── 20/
-│   │   │               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   │               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   ├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   │   ├── RAW/
 │   │   │   └── 2017/
 │   │   │       └── 10/
 │   │   │           └── 20/
-│   │   │               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   │               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │   ├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   │   └── SAN/
 │   │       └── 2017/
 │   │           └── 10/
 │   │               └── 20/
-│   │                   └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│   │                   └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │   ├── export/
 │   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-27.000-10000_+export_ZENLOG_PID_123.log
 │   │   ├── EE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-59.000-00123_+export_ZENLOG_PID_10000.log
@@ -219,10 +219,11 @@
 │   │               └── 20/
 │   │                   └── 17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
 │   ├── fgrep/
-│   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-│   │   ├── EE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
-│   │   ├── EEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
-│   │   ├── EEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
+│   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│   │   ├── EE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│   │   ├── EEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
+│   │   ├── EEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
+│   │   ├── EEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 │   │   ├── ENV/
 │   │   │   └── 2017/
 │   │   │       └── 10/
@@ -230,8 +231,9 @@
 │   │   │               ├── 17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 │   │   │               ├── 17-00-27.000-00123_+fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
 │   │   │               ├── 17-00-29.000-00123_+186_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
-│   │   │               └── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-│   │   ├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│   │   │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│   │   │               └── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│   │   ├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
 │   │   ├── RAW/
 │   │   │   └── 2017/
 │   │   │       └── 10/
@@ -239,11 +241,13 @@
 │   │   │               ├── 17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 │   │   │               ├── 17-00-27.000-00123_+fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
 │   │   │               ├── 17-00-29.000-00123_+186_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
-│   │   │               └── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-│   │   ├── RR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
-│   │   ├── RRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
-│   │   ├── RRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
-│   │   ├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│   │   │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│   │   │               └── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│   │   ├── RR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│   │   ├── RRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
+│   │   ├── RRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
+│   │   ├── RRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
+│   │   ├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
 │   │   ├── SAN/
 │   │   │   └── 2017/
 │   │   │       └── 10/
@@ -251,10 +255,12 @@
 │   │   │               ├── 17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 │   │   │               ├── 17-00-27.000-00123_+fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
 │   │   │               ├── 17-00-29.000-00123_+186_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
-│   │   │               └── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-│   │   ├── SS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
-│   │   ├── SSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
-│   │   └── SSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
+│   │   │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│   │   │               └── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│   │   ├── SS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│   │   ├── SSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
+│   │   ├── SSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
+│   │   └── SSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 │   ├── grep/
 │   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
 │   │   ├── ENV/
@@ -582,16 +588,16 @@
 │       │               └── 17-01-19.000-10000_+fun_e_last_log_+zenlog_last_log_-e_fun_e_last_lo.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-19.000-10000_+fun_e_last_log_+zenlog_last_log_-e_fun_e_last_lo.log
 │       ├── SS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-51.000-00123_+fun_r_last_log_+zenlog_last_log_-r_fun_r_last_lo.log
 │       └── SSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log
-├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-├── EE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-├── EEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-├── EEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
-├── EEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
-├── EEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
-├── EEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-03.000-00123_+echo_ok.log
-├── EEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
-├── EEEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
-├── EEEEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-57.000-00123_+Just_make_sure_command_exists_+zenlog_flush-all_Just_make_sure_.log
+├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+├── EE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+├── EEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
+├── EEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+├── EEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
+├── EEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
+├── EEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
+├── EEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-03.000-00123_+echo_ok.log
+├── EEEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
+├── EEEEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
 ├── ENV/
 │   └── 2017/
 │       └── 10/
@@ -662,7 +668,8 @@
 │               ├── 17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
 │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
 │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│               ├── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 ├── pids/
 │   ├── 10000/
 │   │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-27.000-10000_+export_ZENLOG_PID_123.log
@@ -750,16 +757,16 @@
 │   │   ├── SSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-11.000-10000_+zenlog_last-log_-r_-p_123.log
 │   │   └── SSSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-09.000-10000_+zenlog_current-log_-r_-p_123.log
 │   └── 123/
-│       ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── EE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│       ├── EEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-│       ├── EEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
-│       ├── EEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
-│       ├── EEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
-│       ├── EEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-03.000-00123_+echo_ok.log
-│       ├── EEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
-│       ├── EEEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
-│       ├── EEEEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-57.000-00123_+Just_make_sure_command_exists_+zenlog_flush-all_Just_make_sure_.log
+│       ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│       ├── EE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│       ├── EEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
+│       ├── EEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│       ├── EEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
+│       ├── EEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
+│       ├── EEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
+│       ├── EEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-03.000-00123_+echo_ok.log
+│       ├── EEEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
+│       ├── EEEEEEEEEE -> /tmp/zenlog-test/01/ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
 │       ├── ENV/
 │       │   └── 2017/
 │       │       └── 10/
@@ -816,8 +823,9 @@
 │       │               ├── 17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
 │       │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
 │       │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│       │               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│       │               ├── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│       │               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│       ├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │       ├── RAW/
 │       │   └── 2017/
 │       │       └── 10/
@@ -874,17 +882,18 @@
 │       │               ├── 17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
 │       │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
 │       │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│       │               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── RR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│       ├── RRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-│       ├── RRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
-│       ├── RRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
-│       ├── RRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
-│       ├── RRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-03.000-00123_+echo_ok.log
-│       ├── RRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
-│       ├── RRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
-│       ├── RRRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-01-57.000-00123_+Just_make_sure_command_exists_+zenlog_flush-all_Just_make_sure_.log
-│       ├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│       │               ├── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│       │               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│       ├── RR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│       ├── RRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
+│       ├── RRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│       ├── RRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
+│       ├── RRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
+│       ├── RRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
+│       ├── RRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-03.000-00123_+echo_ok.log
+│       ├── RRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
+│       ├── RRRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
+│       ├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 │       ├── SAN/
 │       │   └── 2017/
 │       │       └── 10/
@@ -941,17 +950,18 @@
 │       │               ├── 17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
 │       │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
 │       │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│       │               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── SS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│       ├── SSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-│       ├── SSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
-│       ├── SSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
-│       ├── SSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
-│       ├── SSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-03.000-00123_+echo_ok.log
-│       ├── SSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
-│       ├── SSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-59.000-00123_+echo_ok.log
-│       └── SSSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-57.000-00123_+Just_make_sure_command_exists_+zenlog_flush-all_Just_make_sure_.log
-├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│       │               ├── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│       │               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│       ├── SS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│       ├── SSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
+│       ├── SSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+│       ├── SSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
+│       ├── SSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
+│       ├── SSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
+│       ├── SSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-03.000-00123_+echo_ok.log
+│       ├── SSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
+│       └── SSSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-59.000-00123_+echo_ok.log
+├── R -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 ├── RAW/
 │   └── 2017/
 │       └── 10/
@@ -1022,17 +1032,18 @@
 │               ├── 17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
 │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
 │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-├── RR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-├── RRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-├── RRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
-├── RRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
-├── RRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
-├── RRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-03.000-00123_+echo_ok.log
-├── RRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
-├── RRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
-├── RRRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-01-57.000-00123_+Just_make_sure_command_exists_+zenlog_flush-all_Just_make_sure_.log
-├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+│               ├── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+├── RR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+├── RRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
+├── RRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+├── RRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
+├── RRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
+├── RRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
+├── RRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-03.000-00123_+echo_ok.log
+├── RRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
+├── RRRRRRRRRR -> /tmp/zenlog-test/01/RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
+├── S -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 ├── SAN/
 │   └── 2017/
 │       └── 10/
@@ -1103,16 +1114,17 @@
 │               ├── 17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
 │               ├── 17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
 │               ├── 17-02-13.000-00123_+V_a_b_c_echo_ok.log
-│               └── 17-02-15.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-├── SS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
-├── SSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
-├── SSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
-├── SSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
-├── SSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
-├── SSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-03.000-00123_+echo_ok.log
-├── SSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
-├── SSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-59.000-00123_+echo_ok.log
-├── SSSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-57.000-00123_+Just_make_sure_command_exists_+zenlog_flush-all_Just_make_sure_.log
+│               ├── 17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+│               └── 17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+├── SS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-15.000-00123_+_bin_fgrep_data_fstab.log
+├── SSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log
+├── SSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fstab.log
+├── SSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-09.000-00123_+zenlog_purge-log_-y_-p_9999999.log
+├── SSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-07.000-00123_+zenlog_ensure-log-dir.log
+├── SSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-05.000-00123_+zenlog_cat-last-log-content.log
+├── SSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-03.000-00123_+echo_ok.log
+├── SSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
+├── SSSSSSSSSS -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-59.000-00123_+echo_ok.log
 └── tags/
     ├── and_test/
     │   ├── E -> /tmp/zenlog-test/01/ENV/2017/10/20/17-00-21.000-00123_+and_test_+true_echo_and_test_and_test.log
@@ -1524,4 +1536,4 @@
                     └── 20/
                         └── 17-01-31.000-00123_+Wildcard_+cat_data_Wildcard.log -> /tmp/zenlog-test/01/SAN/2017/10/20/17-01-31.000-00123_+Wildcard_+cat_data_Wildcard.log
 
-483 directories, 1041 files
+483 directories, 1053 files

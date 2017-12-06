@@ -29,7 +29,7 @@ zle -N zenlog_open_last_raw
 zle -N zenlog_open_selected_log
 zle -N zenlog_open_selected_raw
 
-if [[ "$ZENLOG_NO_BINDING" != "1" ]] ; then
+if [[ "$ZENLOG_NO_DEFAULT_BINDING" != "1" ]] ; then
     bindkey "\e1" zenlog_open_last_log
     bindkey "\e2" zenlog_open_last_raw
     bindkey "\e3" zenlog_open_selected_log
@@ -50,7 +50,7 @@ zenlog_zsh_basic_precmd() {
     fi
 }
 
-if zenlog in-zenlog; then
+if zenlog in-zenlog && [[ "$ZENLOG_NO_DEFAULT_PROMPT" != "1" ]] ; then
     precmd_functions=(zenlog_zsh_basic_precmd "$precmd_functions[@]")
     preexec_functions+=(zenlog_zsh_preexec)
 fi

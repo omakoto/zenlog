@@ -24,7 +24,7 @@ cat <<'EOF'
 # - Press ALT+3 / ALT+4 Similar, but select a log with FZF.
 #==============================================================================
 
-if [[ "$ZENLOG_NO_BINDING" != "1" ]] ; then
+if [[ "$ZENLOG_NO_DEFAULT_BINDING" != "1" ]] ; then
     bind -x '"\e1": "zenlog_open_last_log"'
     bind -x '"\e2": "zenlog_open_last_raw"'
     bind -x '"\e3": "zenlog_open_selected_log"'
@@ -53,7 +53,7 @@ zenlog_bash_basic_ps0() {
     zenlog_bash_preexec
 }
 
-if zenlog in-zenlog; then
+if zenlog in-zenlog && [[ "$ZENLOG_NO_DEFAULT_PROMPT" != "1" ]] ; then
     ZENLOG_PREV_PROMPT_COMMAND="$PROMPT_COMMAND"
     PROMPT_COMMAND="zenlog_bash_basic_prompt_command"
     PS0="${PS0}"'$(zenlog_bash_basic_ps0 >/dev/null)'

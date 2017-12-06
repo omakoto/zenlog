@@ -1,5 +1,3 @@
-- CPU time relatievly high; consider using tee(2) and splice(2)
-
 - Address all lint warnings.
 
 - Clean up e2e tests.

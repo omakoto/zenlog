@@ -4,8 +4,8 @@ set -e
 
 "${0%/*}"/build.sh
 
-go get github.com/golang/lint/golint                        # Linter
-go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
+#go get github.com/golang/lint/golint                        # Linter
+#go get honnef.co/go/tools/cmd/megacheck                     # Badass static analyzer/linter
 
 NOT_FORMATTED=$(gofmt -s -d $(find . -type f -name '*.go'))
 

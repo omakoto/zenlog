@@ -29,7 +29,7 @@ func AllCommandsAndLogCommand(args []string) {
 
 	now := util.GetInjectedNow(util.NewClock())
 	wf := func(path string, info os.FileInfo, err error) error {
-		if now.Sub(info.ModTime()).Hours() > *n {
+		if now.Sub(info.ModTime()).Hours() > (*n * 24) {
 			return nil
 		}
 		if info.Mode().IsRegular() || (info.Mode()&os.ModeType) == os.ModeSymlink {

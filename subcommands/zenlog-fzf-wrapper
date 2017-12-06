@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Wrapper around fzf. If fzf can't be executed, offer to install it.
+
+fzf "$@"
+if (( $? == 127 )) ; then
+    echo -n "zenlog: FZF not found. Do you want to install with \"go get\"? [y/N] " 1>&2
+    read res </dev/tty
+    if  [[ "$res" = [yY] ]] ; then
+        go get -u github.com/junegunn/fzf
+    else
+        exit 1
+    fi
+fi

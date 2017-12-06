@@ -2,7 +2,7 @@
 
 # Open last log file with ZENLOG_VIEWER.
 #
-# Supported options: -p PID, -r
+# Supported options: -p PID, -r [open RAW] -e [open ENV]
 
 set -e
 

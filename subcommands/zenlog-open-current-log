@@ -3,7 +3,7 @@
 # Open current log file with ZENLOG_VIEWER.
 # Useful used with -p.
 #
-# Supported options: -p PID, -r
+# Supported options: -p PID, -r [open RAW] -e [open ENV]
 
 set -e
 

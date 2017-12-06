@@ -2,6 +2,13 @@
 
 # Show all running zenlog PIDs.
 # Note this command just uses the named pipe filenames. If there was a zenlog
-# that didn't close cleanly, this command will pick it up.
+# that didn't close cleanly, this command might pick it up.
 
-ls "$(zenlog temp-dir)"/zenlog.*f.pipe | sed -e 's/^.*zenlog\.//; s/f\.pipe$//'
+for pid in $(ls "$(zenlog temp-dir)"/zenlog.*f.pipe | sed -e 's/^.*zenlog\.//; s/f\.pipe$//') ; do
+    if [[ -d /proc/ ]] && ! [[ -d /proc/$pid/  ]] ; then
+        # TODO Maybe also check if it's actually a zenlog process.
+        # TODO Maybe remove stale pipe files.
+        continue
+    fi
+    echo $pid
+done

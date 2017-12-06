@@ -5,6 +5,6 @@
 set -e
 
 file="$1"
-echo "zenlog: Opening '$file' ..."
+echo "zenlog: Opening $file ..."
 
 "${ZENLOG_VIEWER:-$PAGER}" "$file"

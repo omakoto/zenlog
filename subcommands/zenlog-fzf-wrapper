@@ -4,10 +4,15 @@
 
 fzf "$@"
 if (( $? == 127 )) ; then
-    echo -n "zenlog: FZF not found. Do you want to install with \"go get\"? [y/N] " 1>&2
+    echo -n "zenlog: FZF not found. Do you want to install it with \"go get\"? [y/N] " 1>&2
     read res </dev/tty
     if  [[ "$res" = [yY] ]] ; then
-        go get -u github.com/junegunn/fzf
+        if ! go get -u github.com/junegunn/fzf; then
+            echo "zenlog: Unable to install FZF." 1>&2
+            exit 1
+        fi
+        echo "zenlog: Installed FZF. Please rerun the command." 1>&2
+        exit 2
     else
         exit 1
     fi

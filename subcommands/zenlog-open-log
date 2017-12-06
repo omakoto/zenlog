@@ -20,6 +20,13 @@ while getopts "re" opt; do
 done
 shift $(($OPTIND - 1))
 
+
+# This is slow.
+#find /zenlog/SAN/ -type f | while read name ; do
+#    echo -n "$name "
+#    sed -ne 's/^\$ //p; 1q' "$name" # extract command line
+#done
+
 list_log_files() {
     find /zenlog/$type/ -type f
 }

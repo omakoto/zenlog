@@ -148,7 +148,7 @@ func MaybeRunBuiltin(command string, args []string) {
 		history.LastLogCommand(args)
 
 	case "all-commands":
-		history.AllCommandsAndLogCommand(args)
+		AllCommandsAndLogCommand(args)
 
 	case "check-bin-update":
 		FailUnlessInZenlog()

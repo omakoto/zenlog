@@ -1,4 +1,4 @@
-package history
+package builtins
 
 import (
 	"bufio"
@@ -9,7 +9,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/omakoto/zenlog-go/zenlog/builtins"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -33,7 +32,7 @@ func AllCommandsAndLogCommand(args []string) {
 		if now.Sub(info.ModTime()).Hours() > *n {
 			return nil
 		}
-		if info.Mode().IsRegular() {
+		if info.Mode().IsRegular() || (info.Mode()&os.ModeType) == os.ModeSymlink {
 			log := path
 			if *r {
 				log = strings.Replace(log, logfiles.SanDir, logfiles.RawDir, 1)
@@ -68,10 +67,11 @@ func AllCommandsAndLogCommand(args []string) {
 
 	root := config.LogDir + logfiles.SanDir
 	if *c {
-		builtins.FailUnlessInZenlog()
+		FailUnlessInZenlog()
 		root = config.LogDir + "pids/" + strconv.Itoa(config.ZenlogPid) + "/" + logfiles.SanDir
 	}
 
+	util.Debugf("root=%s", root)
 	filepath.Walk(root, wf)
 
 	util.Exit(true)

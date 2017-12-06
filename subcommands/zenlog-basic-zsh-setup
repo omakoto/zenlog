@@ -46,7 +46,7 @@ zenlog_zsh_basic_precmd() {
     local last_log="$(zenlog current-log)"
 
     if [[ -n "$last_log" ]]; then
-        echo -e "[\e[0;44mrc=$last_status log=$last_log (${lines:-n/a} lines)\e[0m]"
+        echo -e "[\e[0;44m\$?=$last_status $last_log (${lines:-n/a} lines)\e[0m]"
     fi
 }
 

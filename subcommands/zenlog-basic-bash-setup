@@ -41,7 +41,7 @@ zenlog_bash_basic_prompt_command() {
     local last_log="$(zenlog current-log)"
 
     if [[ -n "$last_log" ]]; then
-        echo -e "[\e[0;44mrc=$last_status log=$last_log (${lines:-n/a} lines)\e[0m]"
+        echo -e "[\e[0;44m\$?=$last_status $last_log (${lines:-n/a} lines)\e[0m]"
     fi
 
     if [[ -n "$ZENLOG_PREV_PROMPT_COMMAND" ]] ; then

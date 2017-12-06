@@ -21,10 +21,13 @@ cat <<'EOF'
 # - Press ALT+1 on prompt to open the last log.
 # - Press ALT+2 on prompt to open the last log file on the web browser *with color*.
 #   (Must install a2h.)
+# - Press ALT+3 / ALT+4 Similar, but select a log with FZF.
 #==============================================================================
 
 bind -x '"\e1": "open_last_log"'
 bind -x '"\e2": "open_last_raw"'
+bind -x '"\e3": "open_selected_log"'
+bind -x '"\e4": "open_selected_raw"'
 
 #==============================================================================
 # Pre/post exec hooks to tell when commands start and end.

@@ -17,8 +17,12 @@ open_last_log() {
   "$ZENLOG_BIN" open-current-log
 }
 
-open_last_raw() {
-  local log="$("$ZENLOG_BIN" current-log -r)"
+open_selected_log() {
+  "$ZENLOG_BIN" open-log
+}
+
+open_zenlog_raw_with_browser() {
+  local log="$1"
   local temp="$(tempfile)"
 
   a2h "$log" > "$temp" || {
@@ -26,6 +30,14 @@ open_last_raw() {
     return 1
   }
   "${ZENLOG_RAW_VIEWER:-google-chrome}" "$temp"
+}
+
+open_last_raw() {
+  open_zenlog_raw_with_browser "$("$ZENLOG_BIN" current-log -r)"
+}
+
+open_selected_raw() {
+  open_zenlog_raw_with_browser "$("$ZENLOG_BIN" select-log -r)"
 }
 
 EOF

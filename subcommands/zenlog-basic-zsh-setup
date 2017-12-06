@@ -21,16 +21,18 @@ cat <<'EOF'
 # - Press ALT+1 on prompt to open the last log.
 # - Press ALT+2 on prompt to open the last log file on the web browser *with color*.
 #   (Must install a2h.)
+# - Press ALT+3 / ALT+4 Similar, but select a log with FZF.
 #==============================================================================
 
 zle -N open_last_log
 zle -N open_last_raw
+zle -N open_selected_log
+zle -N open_selected_raw
 
-# ALT+1 to open the log with ZENLOG_VIEWER (default: less)
 bindkey "\e1" open_last_log
-
-# ALT+2 to open the log with chrome using A2H
 bindkey "\e2" open_last_raw
+bindkey "\e3" open_selected_log
+bindkey "\e4" open_selected_raw
 
 #==============================================================================
 # Pre/post exec hooks.

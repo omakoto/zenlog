@@ -137,34 +137,7 @@ func (l *Logger) startForwarders() {
 	}()
 
 	// Read the output, and write to the STDOUT, and also to the pipe.
-	go func() {
-		buf := make([]byte, 32*1024)
-
-		var err error
-		for {
-			nr, err := m.Read(buf)
-			if nr > 0 {
-				// First, write to stdout.
-				nw, ew := os.Stdout.Write(buf[0:nr])
-				util.Warn(ew, "Stdout.Write failed")
-				if nr != nw {
-					util.Warn(io.ErrShortWrite, "ErrShortWrite for Stdout")
-				}
-				// Then, write to l.
-				nw, ew = l.ForwardPipe.Write(buf[0:nr])
-				util.Warn(ew, "ForwardPipe.Write failed")
-				if nr != nw {
-					util.Warn(io.ErrShortWrite, "ErrShortWrite for ForwardPipe")
-				}
-			}
-			if err != nil {
-				break
-			}
-		}
-		if err != nil && err != io.EOF && err != io.ErrClosedPipe {
-			util.Warn(err, "Forwarder finishing with an error")
-		}
-	}()
+	go tee(m, os.Stdout, l.ForwardPipe)
 }
 
 func (l *Logger) CleanUp() {

@@ -13,15 +13,15 @@ export ZENLOG_BIN="${ZENLOG_BIN:-zenlog}"
 # Functions for hot keys.
 #==============================================================================
 
-open_last_log() {
+zenlog_open_last_log() {
   "$ZENLOG_BIN" open-current-log
 }
 
-open_selected_log() {
+zenlog_open_selected_log() {
   "$ZENLOG_BIN" open-log
 }
 
-open_zenlog_raw_with_browser() {
+zenlog_open_raw_with_browser() {
   local log="$1"
   local temp="$(tempfile)"
 
@@ -32,12 +32,12 @@ open_zenlog_raw_with_browser() {
   "${ZENLOG_RAW_VIEWER:-google-chrome}" "$temp"
 }
 
-open_last_raw() {
-  open_zenlog_raw_with_browser "$("$ZENLOG_BIN" current-log -r)"
+zenlog_open_last_raw() {
+  zenlog_open_raw_with_browser "$("$ZENLOG_BIN" current-log -r)"
 }
 
-open_selected_raw() {
-  open_zenlog_raw_with_browser "$("$ZENLOG_BIN" select-log -r)"
+zenlog_open_selected_raw() {
+  zenlog_open_raw_with_browser "$("$ZENLOG_BIN" select-log -r)"
 }
 
 EOF

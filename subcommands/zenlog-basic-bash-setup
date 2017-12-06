@@ -24,10 +24,12 @@ cat <<'EOF'
 # - Press ALT+3 / ALT+4 Similar, but select a log with FZF.
 #==============================================================================
 
-bind -x '"\e1": "open_last_log"'
-bind -x '"\e2": "open_last_raw"'
-bind -x '"\e3": "open_selected_log"'
-bind -x '"\e4": "open_selected_raw"'
+if [[ "$ZENLOG_NO_BINDING" != "1" ]] ; then
+    bind -x '"\e1": "zenlog_open_last_log"'
+    bind -x '"\e2": "zenlog_open_last_raw"'
+    bind -x '"\e3": "zenlog_open_selected_log"'
+    bind -x '"\e4": "zenlog_open_selected_raw"'
+fi
 
 #==============================================================================
 # Pre/post exec hooks to tell when commands start and end.

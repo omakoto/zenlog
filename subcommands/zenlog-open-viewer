@@ -5,6 +5,12 @@
 set -e
 
 file="$1"
+
+if [[ -z "$file" ]]; then
+    echo "zenlog open-viewer: Missing filename." 1>&2
+    exit 1
+fi
+
 echo "zenlog: Opening $file ..."
 
 "${ZENLOG_VIEWER:-$PAGER}" "$file"

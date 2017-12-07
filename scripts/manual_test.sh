@@ -29,6 +29,8 @@ shift $(($OPTIND - 1))
 
 export PATH="$(readlink -m bin):$PATH"
 
+export ZENLOG_CONF=$(pwd)/dot_zenlog.toml
+
 export ZENLOG_DIR="/tmp/zenlog-manual-test/"
 export ZENLOG_PREFIX_COMMANDS="(?:builtin|time|sudo|command)"
 export ZENLOG_ALWAYS_NO_LOG_COMMANDS="(?:vim?|nano|pico|emacs|zenlog.*)"

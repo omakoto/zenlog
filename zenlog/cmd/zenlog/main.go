@@ -4,6 +4,7 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog"
 	"github.com/omakoto/zenlog-go/zenlog/builtins"
 	"github.com/omakoto/zenlog-go/zenlog/util"
+	"runtime"
 )
 
 func restart() {
@@ -30,5 +31,6 @@ func realMain() int {
 }
 
 func main() {
+	runtime.GOMAXPROCS(1)
 	util.RunAndExit(realMain)
 }

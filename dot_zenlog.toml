@@ -21,3 +21,5 @@ ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|emacs|htop|zenlog.*)"
 #ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER=false
 #ZENLOG_COMMAND_SPLITTER = '\s*(?:\;|\|\&|\|\||\||&&|\(|\)|{|})\s*'
 #ZENLOG_COMMENT_SPLITTER = '(?:^|[\;\|\&\(\)\{\}]|\s+)\#\s*'
+
+#ZENLOG_MAXPROC=1

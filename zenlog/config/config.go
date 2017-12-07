@@ -9,6 +9,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
 	"github.com/omakoto/zenlog-go/zenlog/util"
+	"runtime"
 )
 
 // Config represents configuration parameters, read from ~/.zenlog.toml and overridden with the environmental variables.
@@ -23,6 +24,8 @@ type Config struct {
 	UseExperimentalCommandParser bool   `toml:"ZENLOG_USE_EXPERIMENTAL_COMMAND_PARSER"`
 	CommandSplitter              string `toml:"ZENLOG_COMMAND_SPLITTER"`
 	CommentSplitter              string `toml:"ZENLOG_COMMENT_SPLITTER"`
+
+	Maxproc int `toml:"ZENLOG_MAXPROC"`
 
 	ZenlogPid int
 
@@ -89,6 +92,10 @@ func InitConfigForLogger() *Config {
 	overwriteBoolWithEnviron(&c.AutoFlush, envs.ZenlogAutoFlush)
 	overwriteBoolWithEnviron(&c.UseExperimentalCommandParser, envs.ZenlogUseExperimentalCommandParser)
 
+	if c.Maxproc < 1 {
+		c.Maxproc = 1
+	}
+
 	if c.StartCommand == "" {
 		shell := os.Getenv("SHELL")
 		if shell != "" {
@@ -107,6 +114,8 @@ func InitConfigForLogger() *Config {
 
 	// For E2E testing, override the PID with _ZENLOG_LOGGER_PID, if set.
 	c.ZenlogPid = util.GetIntEnv("_ZENLOG_LOGGER_PID", os.Getpid())
+
+	runtime.GOMAXPROCS(c.Maxproc)
 
 	util.Dump("Logger config=", c)
 
@@ -153,6 +162,7 @@ func InitConfigForCommands() *Config {
 	c.CommentSplitter = lc.CommentSplitter
 	c.UseExperimentalCommandParser = lc.UseExperimentalCommandParser
 	c.TempDir = lc.TempDir
+	c.Maxproc = lc.Maxproc
 
 	util.Dump("Command config=", c)
 	return &c

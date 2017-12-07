@@ -25,10 +25,7 @@ zenlog_open_raw_with_browser() {
   local log="$1"
   local temp="$(tempfile)"
 
-  a2h "$log" > "$temp" || {
-    echo "Failed to execute A2H. Install it from https://github.com/omakoto/a2h-rs." 1>&2
-    return 1
-  }
+  zenlog a2h-wrapper "$log" > "$temp" || return 1
   "${ZENLOG_RAW_VIEWER:-google-chrome}" "$temp"
 }
 

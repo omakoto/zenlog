@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Wrapper around a2h.
+
+a2h "$@"
+if (( $? == 127 )) ; then
+    # See fzf-wrapper.
+    echo $'zenlog: A2H not found. Run this command to install: \e[1;33mgo get -u github.com/omakoto/a2h\e[0m' 1>&2
+    exit 1
+fi

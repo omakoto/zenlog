@@ -1,19 +1,23 @@
 #!/bin/bash
 
-# Wrapper around fzf. If fzf can't be executed, offer to install it.
+# Wrapper around fzf.
 
 fzf "$@"
 if (( $? == 127 )) ; then
-    echo -n "zenlog: FZF not found. Do you want to install it with \"go get\"? [y/N] " 1>&2
-    read res </dev/tty
-    if  [[ "$res" = [yY] ]] ; then
-        if ! go get -u github.com/junegunn/fzf; then
-            echo "zenlog: Unable to install FZF." 1>&2
-            exit 1
-        fi
-        echo "zenlog: Installed FZF. Please rerun the command." 1>&2
-        exit 2
-    else
-        exit 1
-    fi
+# This turned out to be flakey; </dev/tty doesn't always work.
+#    echo -n "zenlog: FZF not found. Do you want to install it with \"go get\"? [y/N] " 1>&2
+#    read -N 1 res </dev/tty
+#    if  [[ "$res" = [yY] ]] ; then
+#        if ! go get -u github.com/junegunn/fzf; then
+#            echo "zenlog: Unable to install FZF." 1>&2
+#            exit 1
+#        fi
+#        echo "zenlog: Installed FZF. Please rerun the command." 1>&2
+#        exit 2
+#    else
+#        exit 1
+#    fi
+
+    echo $'zenlog: FZF not found. Run this command to install: \e[1;33mgo get -u github.com/junegunn/fzf\e[0m' 1>&2
+    exit 1
 fi

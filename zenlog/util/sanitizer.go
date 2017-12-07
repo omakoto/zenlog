@@ -7,7 +7,6 @@ import (
 type Sanitizer struct {
 	reSanitizer *regexp.Regexp
 	reCrLf      *regexp.Regexp
-	reCr        *regexp.Regexp
 	reBs        *regexp.Regexp
 
 	empty []byte
@@ -42,8 +41,7 @@ func NewSanitizer() *Sanitizer {
 	         | \x1b [\x40-\x5A\x5C\x5F]   # 2 byte sequence
 		`))
 
-	s.reCrLf = regexp.MustCompile(`\s*\r*\n`)
-	s.reCr = regexp.MustCompile(`\s*\r`)
+	s.reCrLf = regexp.MustCompile(`\r\n?`)
 	s.reBs = regexp.MustCompile(`\x08`)
 
 	s.empty = make([]byte, 0)
@@ -57,7 +55,6 @@ func (s *Sanitizer) Sanitize(data []byte) []byte {
 
 	data = s.reSanitizer.ReplaceAllLiteral(data, s.empty)
 	data = s.reCrLf.ReplaceAllLiteral(data, s.nl)
-	data = s.reCr.ReplaceAllLiteral(data, s.nl)
 	data = s.reBs.ReplaceAllLiteral(data, s.bs)
 
 	return data

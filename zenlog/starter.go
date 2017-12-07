@@ -1,6 +1,7 @@
 package zenlog
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"os/signal"
@@ -35,6 +36,15 @@ func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus in
 	}
 }
 
+func dumpAllGoroutines() {
+	b := bytes.Buffer{}
+
+	p := pprof.Lookup("goroutine")
+	p.WriteTo(&b, 1)
+
+	util.Say(b.String())
+}
+
 func setupSignalHandler(l *logger.Logger, childStatus *int) {
 	sigch := make(chan os.Signal)
 	signal.Notify(sigch, syscall.SIGCHLD, syscall.SIGWINCH, syscall.SIGHUP, syscall.SIGUSR2)
@@ -66,12 +76,8 @@ func setupSignalHandler(l *logger.Logger, childStatus *int) {
 				l.OnChildDied()
 
 			case syscall.SIGUSR2:
-				fmt.Println("SIGUSR2")
-
-				p := pprof.Lookup("goroutine")
-				l.RunWithCookedTerminal(func() {
-					p.WriteTo(os.Stdout, 1)
-				})
+				util.Say("Caught SIGUSR2; dumping stacktraces.")
+				dumpAllGoroutines()
 
 			default:
 				util.Say("Caught unexpected signal: %+v", s)

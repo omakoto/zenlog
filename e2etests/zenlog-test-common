@@ -12,6 +12,8 @@ done
 # Make sure to close the shell when the input finishes.
 unset IGNOREEOF
 
+export PATH="$(pwd)/bin:$PATH"
+
 # Configuration.
 export ZENLOG_BIN="$medir/../bin/zenlog"
 

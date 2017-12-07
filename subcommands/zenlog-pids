@@ -4,10 +4,12 @@
 # Note this command just uses the named pipe filenames. If there was a zenlog
 # that didn't close cleanly, this command might pick it up.
 
-for pid in $(ls "$(zenlog temp-dir)"/zenlog.*f.pipe | sed -e 's/^.*zenlog\.//; s/f\.pipe$//') ; do
+dir="$(zenlog temp-dir)"
+
+for pid in $(ls "$dir/zenlog".*{f,r}.pipe | sed -e 's/^.*zenlog\.//; s/[fr]\.pipe$//' | sort -nu) ; do
     if [[ -d /proc/ ]] && ! [[ -d /proc/$pid/  ]] ; then
         # TODO Maybe also check if it's actually a zenlog process.
-        # TODO Maybe remove stale pipe files.
+        rm -f "$dir/zenlog.$pid"{f,r}".pipe"
         continue
     fi
     echo $pid

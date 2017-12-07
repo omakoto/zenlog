@@ -1,5 +1,3 @@
-- Clean up the SIGUSR2 code.
-
 - Address all lint warnings.
 
 - Clean up e2e tests.

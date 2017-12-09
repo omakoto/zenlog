@@ -9,6 +9,19 @@ export ZENLOG_BIN="${ZENLOG_BIN:-zenlog}"
 # Install the basic shell helper functions.
 . <("$ZENLOG_BIN" sh-helper)
 
+zenlog_last_info() {
+    local rc="$1" log="$2" lines="$3"
+
+    if [[ -n "$log" ]]; then
+        if (( $rc == 0 )) ;then
+            echo -en "\e[32m^_^" # Command succeeded.
+        else
+            echo -en "\e[31mO_O [$rc]" # Command failed!
+        fi
+        echo -e "\e[0m [\e[36m$log \e[32m$lines\e[0m]"
+    fi
+}
+
 #==============================================================================
 # Functions for hot keys.
 #==============================================================================

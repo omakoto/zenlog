@@ -43,11 +43,8 @@ fi
 zenlog_zsh_basic_precmd() {
     local last_status=$?
     local lines=$(zenlog_zsh_postexec -n "$last_status")
-    local last_log="$(zenlog current-log)"
 
-    if [[ -n "$last_log" ]]; then
-        echo -e "[\e[0;44m\$?=$last_status $last_log (${lines:-n/a} lines)\e[0m]"
-    fi
+    zenlog_last_info $last_status "$(zenlog current-log)" "$lines"
 }
 
 if zenlog in-zenlog && [[ "$ZENLOG_NO_DEFAULT_PROMPT" != "1" ]] ; then

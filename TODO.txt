@@ -1,5 +1,6 @@
+- Reading with ReadBytes('\n') means it'll possibly have to keep all ninja output (which uses CRs) into the memory.
+But reading until '\n' or '\r' would lose the bytes.IndexByte optimization.
+
+
 - Address all lint warnings.
-
 - Clean up e2e tests.
-
-- Refactor subcommands and add tests.

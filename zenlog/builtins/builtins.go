@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/omakoto/zenlog-go/zenlog/builtins/commandline"
 	"github.com/omakoto/zenlog-go/zenlog/builtins/history"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
@@ -146,6 +147,10 @@ func MaybeRunBuiltin(command string, args []string) {
 	case "last-log":
 		FailUnlessInZenlog()
 		history.LastLogCommand(args)
+
+	case "insert-log-bash":
+		FailUnlessInZenlog()
+		commandline.InsertLogBash(args)
 
 	case "all-commands":
 		AllCommandsAndLogCommand(args)

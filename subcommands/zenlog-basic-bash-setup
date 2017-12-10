@@ -18,10 +18,12 @@ cat <<'EOF'
 
 #==============================================================================
 # Set up hot keys.
-# - Press ALT+1 on prompt to open the last log.
-# - Press ALT+2 on prompt to open the last log file on the web browser *with color*.
+# - ALT+1 on prompt to open the last log.
+# - ALT+2 on prompt to open the last log file on the web browser *with color*.
 #   (Must install a2h.)
-# - Press ALT+3 / ALT+4 Similar, but select a log with FZF.
+# - ALT+3 / ALT+4 Similar, but select a log with FZF.
+# - ALT+L inserts the last log filename at the current cursor pos.
+#   Press it multiple times to recall older log files.
 #==============================================================================
 
 if [[ "$ZENLOG_NO_DEFAULT_BINDING" != "1" ]] ; then
@@ -29,6 +31,7 @@ if [[ "$ZENLOG_NO_DEFAULT_BINDING" != "1" ]] ; then
     bind -x '"\e2": "zenlog_open_last_raw"'
     bind -x '"\e3": "zenlog_open_selected_log"'
     bind -x '"\e4": "zenlog_open_selected_raw"'
+    bind -x '"\el": "zenlog_evaler zenlog insert-log-bash"'
 fi
 
 #==============================================================================

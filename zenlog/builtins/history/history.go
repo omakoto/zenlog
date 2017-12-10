@@ -11,21 +11,21 @@ import (
 	"strings"
 )
 
-type logFileType int
+type LogFileType int
 
 const (
-	logTypeSan logFileType = iota
-	logTypeRaw
-	logTypeEnv
+	LogTypeSan LogFileType = iota
+	LogTypeRaw
+	LogTypeEnv
 )
 
-func logChar(logType logFileType) string {
+func logChar(logType LogFileType) string {
 	switch logType {
-	case logTypeSan:
+	case LogTypeSan:
 		return "S"
-	case logTypeRaw:
+	case LogTypeRaw:
 		return "R"
-	case logTypeEnv:
+	case LogTypeEnv:
 		return "E"
 	}
 	util.Fatalf("Unknown type %d", logType)
@@ -44,7 +44,25 @@ func writeIfLink(w *bufio.Writer, filename string) bool {
 	return true
 }
 
-func history(pid, nth int, logType logFileType, writer io.Writer) bool {
+func NthLastLog(config *config.Config, pid, nth int, logType LogFileType) string {
+	if pid <= 0 {
+		pid = config.ZenlogPid
+	}
+	ch := logChar(logType)
+	dir := fmt.Sprintf("%spids/%d/", config.LogDir, pid)
+	link := dir + strings.Repeat(ch, nth)
+	if !util.FileExists(link) {
+		return ""
+	}
+	file, err := os.Readlink(link)
+	if err != nil {
+		util.Warn(err, "Readlink failed")
+		return ""
+	}
+	return file
+}
+
+func history(pid, nth int, logType LogFileType, writer io.Writer) bool {
 	if nth < 0 {
 		util.Fatalf("Invalid argument for nth: %d", nth)
 	}
@@ -53,16 +71,20 @@ func history(pid, nth int, logType logFileType, writer io.Writer) bool {
 	if pid <= 0 {
 		pid = config.ZenlogPid
 	}
-	dir := fmt.Sprintf("%spids/%d/", config.LogDir, pid)
 	w := bufio.NewWriter(writer)
 	defer w.Flush()
 
-	ch := logChar(logType)
-
 	success := false
 	if nth > 0 {
-		success = writeIfLink(w, dir+strings.Repeat(ch, nth))
+		file := NthLastLog(config, pid, nth, logType)
+		if file != "" {
+			w.WriteString(file)
+			w.WriteString("\n")
+			success = true
+		}
 	} else {
+		dir := fmt.Sprintf("%spids/%d/", config.LogDir, pid)
+		ch := logChar(logType)
 		for i := 10; i >= 1; i-- {
 			success = writeIfLink(w, dir+strings.Repeat(ch, i)) || success
 		}
@@ -70,14 +92,14 @@ func history(pid, nth int, logType logFileType, writer io.Writer) bool {
 	return success
 }
 
-func flagsToLogType(flagR, flagE bool) logFileType {
+func flagsToLogType(flagR, flagE bool) LogFileType {
 	if flagR {
-		return logTypeRaw
+		return LogTypeRaw
 	}
 	if flagE {
-		return logTypeEnv
+		return LogTypeEnv
 	}
-	return logTypeSan
+	return LogTypeSan
 }
 
 // AllHistoryCommand is the implementation of "zenlog history".

@@ -9,6 +9,7 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -111,6 +112,10 @@ func createLinks(config *config.Config, parentDirName, childDirName, logType, lo
 	createPrevLink(fullChildDir, logType, logFullFileName)
 }
 
+func removePath(s string) string {
+	return regexp.MustCompile(`^\S+/`).ReplaceAllString(s, "")
+}
+
 // CreateAndOpenLogFiles opens the log files for a command.
 func CreateAndOpenLogFiles(config *config.Config, now time.Time, command *Command) LogFiles {
 	l := LogFiles{}
@@ -129,7 +134,7 @@ func CreateAndOpenLogFiles(config *config.Config, now time.Time, command *Comman
 		now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second(), now.Nanosecond()/1000000,
 		config.ZenlogPid,
 		tag,
-		clamp(util.FilenameSafe(command.CommandLine), 32))
+		clamp(util.FilenameSafe(removePath(command.CommandLine)), 32))
 
 	l.SanFile = strings.Replace(f, M, SanDir, 1)
 	l.RawFile = strings.Replace(f, M, RawDir, 1)

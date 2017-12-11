@@ -3,7 +3,7 @@
 medir="${0%/*}"
 
 TEST_NAME=05
-export ZDOTDIR=./e2etests/files/zshrc
+export ZDOTDIR=./e2etests/files/05/zshrc
 export ZENLOG_START_COMMAND="exec /usr/bin/zsh -l"
 . "$medir/zenlog-test-common"
 

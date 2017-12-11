@@ -14,6 +14,10 @@ const (
 type BashProxy struct {
 }
 
+func GetBashProxy() Proxy {
+	return &BashProxy{}
+}
+
 // GetCommandLine return the current command line and the cursor position from the READLINE_* environmental variables.
 func (b *BashProxy) GetCommandLine() (string, int) {
 	s := os.Getenv(readlineLine)

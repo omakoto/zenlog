@@ -22,18 +22,27 @@ cat <<'EOF'
 # - Press ALT+2 on prompt to open the last log file on the web browser *with color*.
 #   (Must install a2h.)
 # - Press ALT+3 / ALT+4 Similar, but select a log with FZF.
+# - ALT+L inserts the last log filename at the current cursor pos.
+#   Press it multiple times to recall older log files.
 #==============================================================================
+
+zenlog_insert_log_zsh() {
+    export BUFFER CURSOR
+    eval "$(zenlog insert-log-zsh)"
+}
 
 zle -N zenlog_open_last_log
 zle -N zenlog_open_last_raw
 zle -N zenlog_open_selected_log
 zle -N zenlog_open_selected_raw
+zle -N zenlog_insert_log_zsh
 
 if [[ "$ZENLOG_NO_DEFAULT_BINDING" != "1" ]] ; then
     bindkey "\e1" zenlog_open_last_log
     bindkey "\e2" zenlog_open_last_raw
     bindkey "\e3" zenlog_open_selected_log
     bindkey "\e4" zenlog_open_selected_raw
+    bindkey "\el" zenlog_insert_log_zsh
 fi
 
 #==============================================================================

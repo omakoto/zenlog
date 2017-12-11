@@ -23,9 +23,11 @@ func (s *nullShellProxy) PrintUpdateCommandLineEvalStr(commandLine string, curso
 func GetProxy() Proxy {
 	shell := filepath.Base(os.Getenv("SHELL"))
 
-	if shell == "bash" {
-		return &BashProxy{}
+	switch shell {
+	case "bash":
+		return GetBashProxy()
+	case "zsh":
+		return GetZshProxy()
 	}
-
 	return &nullShellProxy{}
 }

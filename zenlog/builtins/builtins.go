@@ -152,6 +152,10 @@ func MaybeRunBuiltin(command string, args []string) {
 		FailUnlessInZenlog()
 		commandline.InsertLogBash(args)
 
+	case "insert-log-zsh":
+		FailUnlessInZenlog()
+		commandline.InsertLogZsh(args)
+
 	case "all-commands":
 		AllCommandsAndLogCommand(args)
 

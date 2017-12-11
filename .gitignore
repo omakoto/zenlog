@@ -16,3 +16,4 @@ bin/
 .idea/workspace.xml
 
 .zcompdumps
+.zcompdump

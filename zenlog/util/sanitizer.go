@@ -1,7 +1,6 @@
 package util
 
 import (
-	"bytes"
 	"regexp"
 )
 
@@ -57,7 +56,6 @@ func (s *Sanitizer) Sanitize(data []byte) []byte {
 	data = s.reSanitizer.ReplaceAllLiteral(data, s.empty)
 	data = s.reCrLf.ReplaceAllLiteral(data, s.nl)
 	data = s.reBs.ReplaceAllLiteral(data, s.bs)
-	data = bytes.TrimRight(data, " \t")
 
 	return data
 }

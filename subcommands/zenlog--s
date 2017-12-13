@@ -2,11 +2,10 @@
 
 zenlog sh-helper
 
-# Legacy sh-helper.
 cat <<'EOF'
 
 #==============================================================================
-# Zenlog compatibility shell functions; provide functions that
+# Zenlog compatibility shell functions that provide functions that
 # zenlog(v1) -s provided.
 #==============================================================================
 

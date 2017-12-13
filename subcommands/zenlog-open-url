@@ -9,7 +9,7 @@ require 'open3'
 # The browser to use.
 BROWSER = ENV['ZENLOG_BROWSER'] || ENV['BROWSER'] || "google-chrome"
 
-# Regex that matches a URL. This intentionally ignores the last period.
+# Regex that matches a URL.
 ZENLOG_URL_REGEXP = ENV['ZENLOG_URL_REGEXP']
 pattern = ZENLOG_URL_REGEXP ? Regexp.compile(ZENLOG_URL_REGEXP) : %r((?:https?|file)\:\/\/\S+)
 

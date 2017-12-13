@@ -40,7 +40,20 @@ maybe_add_to_rc() {
     fi
 
     if ask "Wish to add '$command' to '$file'?"; then
-        echo ". <($command)" >> $file
+        cat >>"$file" <<EOF
+# Set up zenlog.
+# Note the following command does *not* start a zenlog session.
+# Type "zenlog" manually to start one, or change your terminal app's setting
+# to start zenlog instead of your login shell.
+#
+# Uncomment the following line to suppress zenlog default prompt.
+# ZENLOG_NO_DEFAULT_PROMPT=1
+#
+# Uncomment the following line to suppress zenlog default key bindings.
+# ZENLOG_NO_DEFAULT_BINDING=1
+#
+. <($command)
+EOF
     fi
 }
 
@@ -59,10 +72,6 @@ esac
 
 #==========================================================
 
-
-echo
-echo "*** Dot files initialized ***"
-echo
 
 if zenlog in-zenlog ; then
     echo "Now type 'exit 13' to restart a zenlog session."

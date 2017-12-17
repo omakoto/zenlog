@@ -12,30 +12,31 @@ import (
 )
 
 func forward(in, out *os.File) error {
-	// TODO Is it actually faster?
-	r, w, e := os.Pipe()
-	if e != nil {
-		return nil
-	}
-	for {
-		len, err := syscall.Splice(int(in.Fd()), nil, int(w.Fd()), nil, 1024*1024*32, unix.SPLICE_F_MOVE)
-		if len == 0 {
-			return nil
-		}
-		if len == -1 && util.Warn(err, "Splice failed (a1/2)") {
-			return err
-		}
-		for len > 0 {
-			len2, err := syscall.Splice(int(r.Fd()), nil, int(out.Fd()), nil, int(len), unix.SPLICE_F_MOVE)
-			if len2 == 0 {
-				return nil
-			}
-			if len2 == -1 && util.Warn(err, "Splice failed (a2/2)") {
-				return err
-			}
-			len -= len2
-		}
-	}
+	return forward_simple(in, out)
+	//// TODO Is it actually faster?
+	//r, w, e := os.Pipe()
+	//if e != nil {
+	//	return nil
+	//}
+	//for {
+	//	len, err := syscall.Splice(int(in.Fd()), nil, int(w.Fd()), nil, 1024*1024*32, unix.SPLICE_F_MOVE)
+	//	if len == 0 {
+	//		return nil
+	//	}
+	//	if len == -1 && util.Warn(err, "Splice failed (a1/2)") {
+	//		return err
+	//	}
+	//	for len > 0 {
+	//		len2, err := syscall.Splice(int(r.Fd()), nil, int(out.Fd()), nil, int(len), unix.SPLICE_F_MOVE)
+	//		if len2 == 0 {
+	//			return nil
+	//		}
+	//		if len2 == -1 && util.Warn(err, "Splice failed (a2/2)") {
+	//			return err
+	//		}
+	//		len -= len2
+	//	}
+	//}
 }
 
 func tee(in, out1, out2 *os.File) error {

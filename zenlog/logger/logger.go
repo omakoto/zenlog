@@ -131,11 +131,17 @@ func (l *Logger) Master() *os.File {
 
 func (l *Logger) startForwarders() {
 	m := l.master
-	// Forward the input from stdin to the l.
-	go forward(os.Stdin, m)
 
-	// Read the output, and write to the STDOUT, and also to the pipe.
-	go tee(m, l.ForwardPipe, os.Stdout)
+	if l.Config.UseSplice {
+		// Forward the input from stdin to the l.
+		go forward(os.Stdin, m)
+
+		// Read the output, and write to the STDOUT, and also to the pipe.
+		go tee(m, l.ForwardPipe, os.Stdout)
+	} else {
+		go forward_simple(os.Stdin, m)
+		go tee_simple(m, l.ForwardPipe, os.Stdout)
+	}
 }
 
 func (l *Logger) CleanUp() {

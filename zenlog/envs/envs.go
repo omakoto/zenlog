@@ -39,4 +39,7 @@ const (
 
 	// ZenlogLoggerOut is an environmental variable key.
 	ZenlogLoggerOut = "ZENLOG_LOGGER_OUT"
+
+	// If ZenlogUseSplice is true, zenlog uses splice(2) and tee(2) on linux.
+	ZenlogUseSplice = "ZENLOG_USE_SPLICE"
 )

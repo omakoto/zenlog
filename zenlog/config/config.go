@@ -27,6 +27,8 @@ type Config struct {
 
 	Maxproc int `toml:"ZENLOG_MAXPROC"`
 
+	UseSplice bool `toml:"ZENLOG_USE_SPLICE"`
+
 	ZenlogPid int
 
 	OuterTty  string

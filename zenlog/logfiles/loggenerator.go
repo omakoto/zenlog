@@ -46,11 +46,14 @@ func clamp(v string, maxLen int) string {
 }
 
 // Create and open a log file with the parent directory, if needed.
-func open(name string, truncate bool) (*os.File, *bufio.Writer) {
+func open(name string, truncate, append bool) (*os.File, *bufio.Writer) {
 	os.MkdirAll(filepath.Dir(name), 0700)
-	mode := os.O_APPEND | os.O_WRONLY | os.O_CREATE
+	mode := os.O_WRONLY | os.O_CREATE
 	if truncate {
 		mode |= os.O_TRUNC
+	}
+	if append {
+		mode |= os.O_APPEND
 	}
 	f, err := os.OpenFile(name, mode, 0600)
 	util.Check(err, "Cannot create logfile %s", name)
@@ -167,9 +170,9 @@ func CreateAndOpenLogFiles(config *config.Config, now time.Time, command *Comman
 
 // Open actually opens the set of the log files.
 func (l *LogFiles) Open(truncate bool) {
-	l.SanF, l.San = open(l.SanFile, truncate)
-	l.RawF, l.Raw = open(l.RawFile, truncate)
-	l.EnvF, l.Env = open(l.EnvFile, truncate)
+	l.SanF, l.San = open(l.SanFile, truncate, true)
+	l.RawF, l.Raw = open(l.RawFile, truncate, true)
+	l.EnvF, l.Env = open(l.EnvFile, truncate, true)
 }
 
 func closeSingle(f **os.File, w **bufio.Writer) {

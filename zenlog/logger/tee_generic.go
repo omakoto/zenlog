@@ -4,6 +4,10 @@ package logger
 
 import "os"
 
-func tee_faster(in, out1, out2 *os.File) error {
+func forward(in, out *os.File) error {
+	return forward_simple(in, out)
+}
+
+func tee(in, out1, out2 *os.File) error {
 	return tee(in, out1, out2)
 }

@@ -7,6 +7,11 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
+func forward(in, out *os.File) error {
+	_, err := io.Copy(out, in)
+	return err
+}
+
 func tee(in, out1, out2 *os.File) error {
 	buf := make([]byte, 32*1024)
 

@@ -132,9 +132,7 @@ func (l *Logger) Master() *os.File {
 func (l *Logger) startForwarders() {
 	m := l.master
 	// Forward the input from stdin to the l.
-	go func() {
-		io.Copy(m, os.Stdin)
-	}()
+	go forward(os.Stdin, m)
 
 	// Read the output, and write to the STDOUT, and also to the pipe.
 	go tee(m, os.Stdout, l.ForwardPipe)

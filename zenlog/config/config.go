@@ -93,6 +93,7 @@ func InitConfigForLogger() *Config {
 
 	overwriteBoolWithEnviron(&c.AutoFlush, envs.ZenlogAutoFlush)
 	overwriteBoolWithEnviron(&c.UseExperimentalCommandParser, envs.ZenlogUseExperimentalCommandParser)
+	overwriteBoolWithEnviron(&c.UseSplice, envs.ZenlogUseSplice)
 
 	if c.Maxproc < 1 {
 		c.Maxproc = 1

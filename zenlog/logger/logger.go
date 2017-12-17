@@ -135,7 +135,7 @@ func (l *Logger) startForwarders() {
 	go forward(os.Stdin, m)
 
 	// Read the output, and write to the STDOUT, and also to the pipe.
-	go tee(m, os.Stdout, l.ForwardPipe)
+	go tee(m, l.ForwardPipe, os.Stdout)
 }
 
 func (l *Logger) CleanUp() {

@@ -25,7 +25,8 @@ type Config struct {
 	CommandSplitter              string `toml:"ZENLOG_COMMAND_SPLITTER"`
 	CommentSplitter              string `toml:"ZENLOG_COMMENT_SPLITTER"`
 
-	Maxproc int `toml:"ZENLOG_MAXPROC"`
+	Maxproc                 int `toml:"ZENLOG_MAXPROC"`
+	CriticalCrashMaxSeconds int `toml:"ZENLOG_CRITICAL_CRASH_MAX_SECONDS"`
 
 	UseSplice bool `toml:"ZENLOG_USE_SPLICE"`
 
@@ -71,6 +72,9 @@ func InitConfigForLogger() *Config {
 	var c Config
 
 	c.UseExperimentalCommandParser = true // Default to true.
+	c.UseSplice = true
+
+	util.Debugf("config=%s", file)
 
 	data, err := ioutil.ReadFile(file)
 	if err == nil {

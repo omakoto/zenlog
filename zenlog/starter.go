@@ -16,7 +16,7 @@ import (
 
 const resurrectCode = 13
 
-func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus int) {
+func maybeStartEmergencyShell(c *config.Config, startTime time.Time, r interface{}, childStatus int) {
 	if r == nil && childStatus <= 0 {
 		return // okay
 	}
@@ -25,8 +25,11 @@ func maybeStartEmergencyShell(startTime time.Time, r interface{}, childStatus in
 		util.Say("Panic detected: %v", r)
 		startShell = true
 	} else {
+		threshold := 30.0
+		threshold = float64(c.CriticalCrashMaxSeconds)
+
 		// If the child dies too early, something may be wrong, so start a shell...
-		if util.NewClock().Now().Sub(startTime).Seconds() < 30 {
+		if util.NewClock().Now().Sub(startTime).Seconds() < threshold {
 			util.Say("Child finished unsuccessfully, too soon?: code=%d%s", childStatus)
 			startShell = true
 		}
@@ -91,19 +94,21 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 	// Initialize.
 	var childStatus = -1
 
+	var c *config.Config
+
 	startTime := util.NewClock().Now()
 	defer func() {
 		if !resurrect {
-			maybeStartEmergencyShell(startTime, recover(), childStatus)
+			maybeStartEmergencyShell(c, startTime, recover(), childStatus)
 		}
 	}()
 
-	config := config.InitConfigForLogger()
+	c = config.InitConfigForLogger()
 
 	// Create a logger and start a child.
-	fmt.Printf("Zenlog starting... [ZENLOG_DIR=%s ZENLOG_PID=%d]\n", config.LogDir, config.ZenlogPid)
+	fmt.Printf("Zenlog starting... [ZENLOG_DIR=%s ZENLOG_PID=%d]\n", c.LogDir, c.ZenlogPid)
 
-	l := logger.NewLogger(config)
+	l := logger.NewLogger(c)
 	defer l.CleanUp()
 
 	l.StartChild()

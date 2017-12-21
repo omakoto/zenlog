@@ -23,3 +23,9 @@ ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|emacs|htop|zenlog.*)"
 #ZENLOG_COMMENT_SPLITTER = '(?:^|[\;\|\&\(\)\{\}]|\s+)\#\s*'
 
 #ZENLOG_MAXPROC=1
+
+# If the shell finishes with non-zero status code within this second,
+# zenlog will start /bin/sh. Default is 30 seconds.
+#ZENLOG_CRITICAL_CRASH_MAX_SECONDS=5
+
+#ZENLOG_USE_SPLICE=false

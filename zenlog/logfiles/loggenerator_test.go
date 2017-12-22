@@ -12,6 +12,8 @@ import (
 func TestCreateLogFiles(t *testing.T) {
 	config := config.Config{}
 
+	os.Setenv("TZ", "America/Los_Angeles")
+
 	config.LogDir = "/tmp/zenlog-test/log/"
 	config.ZenlogPid = 111
 

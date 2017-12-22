@@ -14,6 +14,8 @@ unset IGNOREEOF
 
 export PATH="$(pwd)/bin:$PATH"
 
+export TZ='America/Los_Angeles'
+
 # Configuration.
 export ZENLOG_BIN="$medir/../bin/zenlog"
 

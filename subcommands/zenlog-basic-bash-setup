@@ -42,6 +42,8 @@ zenlog_bash_basic_prompt_command() {
     local last_status=$?
     local lines=$(zenlog_bash_postexec -n "$last_status")
 
+    zenlog in-zenlog && zenlog check-bin-update
+
     zenlog_last_info $last_status "$(zenlog current-log)" "$lines"
 }
 

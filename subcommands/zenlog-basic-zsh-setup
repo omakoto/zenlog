@@ -53,6 +53,8 @@ zenlog_zsh_basic_precmd() {
     local last_status=$?
     local lines=$(zenlog_zsh_postexec -n "$last_status")
 
+    zenlog in-zenlog && zenlog check-bin-update
+
     zenlog_last_info $last_status "$(zenlog current-log)" "$lines"
 }
 

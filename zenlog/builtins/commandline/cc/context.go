@@ -11,8 +11,8 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
-// CC represents "command line context" to detect consecutive calls of the same command.
-type CC struct {
+// CommandLineContext represents "command line context" to detect consecutive calls of the same command.
+type CommandLineContext struct {
 	FirstCommandLine string
 	FirstCursorPos   int
 
@@ -34,10 +34,10 @@ func filenameForConfig(c *config.Config) string {
 	return fmt.Sprintf("%s/zenlog_lastcommand_%d.json", c.TempDir, c.ZenlogPid)
 }
 
-func FromEnvironment(operation string, proxy shell.Proxy) *CC {
+func FromEnvironment(operation string, proxy shell.Proxy) *CommandLineContext {
 	config := config.InitConfigForCommands()
 
-	ret := CC{}
+	ret := CommandLineContext{}
 	ret.config = config
 	ret.Operation = operation
 	ret.BeforeCommandLine, ret.BeforeCursorPos = proxy.GetCommandLine()
@@ -63,11 +63,11 @@ func FromEnvironment(operation string, proxy shell.Proxy) *CC {
 	return &ret
 }
 
-func FromLastFile() *CC {
+func FromLastFile() *CommandLineContext {
 	config := config.InitConfigForCommands()
 	file := filenameForConfig(config)
 
-	ret := CC{config: config}
+	ret := CommandLineContext{config: config}
 	if !util.FileExists(file) {
 		return &ret
 	}
@@ -78,7 +78,7 @@ func FromLastFile() *CC {
 	return &ret
 }
 
-func (cc *CC) Save() {
+func (cc *CommandLineContext) Save() {
 	file := filenameForConfig(cc.config)
 
 	dat := []byte(util.MustMarshal(&cc))
@@ -87,10 +87,10 @@ func (cc *CC) Save() {
 	util.Warn(err, "WriteFile failed")
 }
 
-func (cc *CC) ClearSaved() {
+func (cc *CommandLineContext) ClearSaved() {
 	os.Remove(filenameForConfig(cc.config))
 }
 
-func (cc *CC) Config() *config.Config {
+func (cc *CommandLineContext) Config() *config.Config {
 	return cc.config
 }

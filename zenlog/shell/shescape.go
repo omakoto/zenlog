@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	reNeedsEscaping = util.NewLazyRegexp(`[^a-zA-Z0-9\-\.\_\/\+]`)
+	reNeedsEscaping = util.NewLazyRegexp(`[^a-zA-Z0-9\-\.\_\/\+\^\,\=\:]`)
 )
 
 // Escape a string for shell.

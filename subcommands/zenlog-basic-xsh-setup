@@ -40,7 +40,7 @@ zenlog_open_selected_log() {
 
 zenlog_open_raw_with_browser() {
   local log="$1"
-  local temp="$(tempfile)"
+  local temp="$(tempfile).html"
 
   zenlog a2h-wrapper "$log" > "$temp" || return 1
   "${ZENLOG_RAW_VIEWER:-google-chrome}" "$temp"

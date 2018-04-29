@@ -1,6 +1,0 @@
-Command: echo to_logger | zenlog write-to-logger
-Start time: 2017/10/20 17:01:37
----ENV---
-Exit status: 0
-Finish time: 2017/10/20 17:01:38
-Duration: 1s

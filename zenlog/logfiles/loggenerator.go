@@ -5,20 +5,24 @@ package logfiles
 import (
 	"bufio"
 	"fmt"
-	"github.com/omakoto/zenlog-go/zenlog/config"
-	"github.com/omakoto/zenlog-go/zenlog/util"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/omakoto/zenlog-go/zenlog/config"
+	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
 const (
 	SanDir = "SAN"
 	RawDir = "RAW"
 	EnvDir = "ENV"
+
+	TodayLink     = "TODAY"
+	ThisMonthLink = "THISMONTH"
 
 	maxPrevLinks = 10
 )
@@ -63,7 +67,29 @@ func open(name string, truncate, append bool) (*os.File, *bufio.Writer) {
 func makeSymlink(from, to string) {
 	if !util.FileExists(to) {
 		util.Warn(os.Symlink(from, to), "Symlink failed")
+	} else {
+		util.Say("%s already exists", to)
 	}
+}
+
+func ensureSymLink(from, to string) {
+	fi, err := os.Lstat(to)
+	if err != nil {
+		if os.IsNotExist(err) {
+			// okay
+		} else {
+			util.Warn(err, "lstat() failed")
+		}
+	} else {
+		if fi.Mode()&os.ModeSymlink != 0 {
+			e, _ := os.Readlink(to)
+			if e == from {
+				return // already exists.
+			}
+		}
+		util.Warn(os.Remove(to), "Can't remove %s", to)
+	}
+	makeSymlink(from, to)
 }
 
 // Create "previous" links.
@@ -89,6 +115,24 @@ func createPrevLink(fullDirName, logType, logFullFileName string) {
 		util.Warn(os.Rename(from, to), "Rename failed")
 	}
 	makeSymlink(logFullFileName, fullDirName+oneLetter)
+}
+
+// Create TODAY and THISMONTH links.
+// fullDirName: Parent directory, such as "/zenlog/"
+// logType: e.g. "SAN"
+// logFullFileName: Symlink target log filename.
+func createDayLinks(fullDirName, logType, logFullFileName string) {
+	if !util.FileExists(logFullFileName) {
+		return // just in case.
+	}
+	todayFrom := filepath.Dir(logFullFileName)
+	thisMonthFrom := filepath.Dir(todayFrom)
+
+	todayTo := fullDirName + "/" + logType + "/" + TodayLink
+	thisMonthTo := fullDirName + "/" + logType + "/" + ThisMonthLink
+
+	ensureSymLink(todayFrom, todayTo)
+	ensureSymLink(thisMonthFrom, thisMonthTo)
 }
 
 // Create auxiliary links.
@@ -155,6 +199,7 @@ func CreateAndOpenLogFiles(config *config.Config, now time.Time, command *Comman
 		{l.EnvFile, EnvDir},
 	}
 	for _, item := range items {
+		createDayLinks(config.LogDir, item.logType, item.fullLogFilename)
 		createPrevLink(config.LogDir, item.logType, item.fullLogFilename)
 		createLinks(config, "pids", spid, item.logType, item.fullLogFilename, now)
 		for _, exe := range command.ExeNames {

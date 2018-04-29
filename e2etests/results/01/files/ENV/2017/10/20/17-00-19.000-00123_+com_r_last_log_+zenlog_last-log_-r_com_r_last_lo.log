@@ -1,6 +1,0 @@
-Command: zenlog last-log -r # com r last log
-Start time: 2017/10/20 17:00:19
----ENV---
-Exit status: 0
-Finish time: 2017/10/20 17:00:20
-Duration: 1s

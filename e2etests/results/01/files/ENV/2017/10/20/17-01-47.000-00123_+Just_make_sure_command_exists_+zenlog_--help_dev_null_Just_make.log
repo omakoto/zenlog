@@ -1,6 +1,0 @@
-Command: zenlog --help >/dev/null # Just make sure command exists
-Start time: 2017/10/20 17:01:47
----ENV---
-Exit status: 0
-Finish time: 2017/10/20 17:01:48
-Duration: 1s

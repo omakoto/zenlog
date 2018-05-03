@@ -1,0 +1,2 @@
+$ echo to_logger | zenlog write-to-logger
+to_logger

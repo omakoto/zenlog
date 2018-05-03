@@ -1,0 +1,2 @@
+$ zenlog fail-if-in-zenlog
+zenlog: Already in zenlog.

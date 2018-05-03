@@ -1,0 +1,6 @@
+Command: echo to_outer | zenlog write-to-outer
+Start time: 2017/10/20 17:01:39
+---ENV---
+Exit status: 0
+Finish time: 2017/10/20 17:01:40
+Duration: 1s

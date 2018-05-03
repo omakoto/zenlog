@@ -1,0 +1,1 @@
+$ zenlog purge-log -y -p 9999999

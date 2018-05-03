@@ -1,0 +1,1 @@
+$ echo to_outer | zenlog write-to-outer

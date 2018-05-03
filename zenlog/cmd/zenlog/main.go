@@ -5,8 +5,6 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/builtins"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"runtime"
-
-	"C"
 )
 
 func restart() {

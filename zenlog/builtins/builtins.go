@@ -171,6 +171,9 @@ func MaybeRunBuiltin(command string, args []string) {
 		FailUnlessInZenlog()
 		endCommand(args)
 
+	case "list-logs":
+		listLogsCommand(args)
+
 	default:
 		return
 	}

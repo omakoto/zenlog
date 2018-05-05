@@ -9,10 +9,10 @@ L EEEEEEEE -> ENV/2017/10/20/17-02-03.000-00123_+echo_ok.log
 L EEEEEEEEE -> ENV/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
 L EEEEEEEEEE -> ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
 F ENV/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-F ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
+F ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
 F ENV/2017/10/20/17-00-07.000-00123_+man_man.log
 F ENV/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log
-F ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+F ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 F ENV/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log
 F ENV/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 F ENV/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
@@ -27,8 +27,8 @@ F ENV/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log
 F ENV/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log
 F ENV/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log
 F ENV/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log
-F ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-F ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+F ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+F ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 F ENV/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log
 F ENV/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log
 F ENV/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log
@@ -80,10 +80,10 @@ L ENV/THISMONTH -> ENV/2017/10
 L ENV/TODAY -> ENV/2017/10/20
 L R -> RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 F RAW/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-F RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
+F RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
 F RAW/2017/10/20/17-00-07.000-00123_+man_man.log
 F RAW/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log
-F RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+F RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 F RAW/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log
 F RAW/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 F RAW/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
@@ -98,8 +98,8 @@ F RAW/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log
 F RAW/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log
 F RAW/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log
 F RAW/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log
-F RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-F RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+F RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+F RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 F RAW/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log
 F RAW/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log
 F RAW/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log
@@ -160,10 +160,10 @@ L RRRRRRRRR -> RAW/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
 L RRRRRRRRRR -> RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
 L S -> SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 F SAN/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-F SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
+F SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
 F SAN/2017/10/20/17-00-07.000-00123_+man_man.log
 F SAN/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log
-F SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+F SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 F SAN/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log
 F SAN/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 F SAN/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
@@ -178,8 +178,8 @@ F SAN/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log
 F SAN/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log
 F SAN/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log
 F SAN/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log
-F SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-F SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+F SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+F SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 F SAN/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log
 F SAN/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log
 F SAN/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log
@@ -248,8 +248,8 @@ L cmds/cat/EEEEEEE -> ENV/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log
 L cmds/cat/EEEEEEEE -> ENV/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log
 L cmds/cat/EEEEEEEEE -> ENV/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log
 L cmds/cat/EEEEEEEEEE -> ENV/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
-L cmds/cat/ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/cat/ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L cmds/cat/ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/cat/ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L cmds/cat/ENV/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log -> ENV/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 L cmds/cat/ENV/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log -> ENV/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log
 L cmds/cat/ENV/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log -> ENV/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log
@@ -259,8 +259,8 @@ L cmds/cat/ENV/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.l
 L cmds/cat/ENV/2017/10/20/17-01-29.000-00123_+cat_data_fstab_cat_-n_cat_-E.log -> ENV/2017/10/20/17-01-29.000-00123_+cat_data_fstab_cat_-n_cat_-E.log
 L cmds/cat/ENV/2017/10/20/17-01-31.000-00123_+Wildcard_+cat_data_Wildcard.log -> ENV/2017/10/20/17-01-31.000-00123_+Wildcard_+cat_data_Wildcard.log
 L cmds/cat/R -> RAW/2017/10/20/17-01-31.000-00123_+Wildcard_+cat_data_Wildcard.log
-L cmds/cat/RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/cat/RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L cmds/cat/RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/cat/RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L cmds/cat/RAW/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log -> RAW/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 L cmds/cat/RAW/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log -> RAW/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log
 L cmds/cat/RAW/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log -> RAW/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log
@@ -279,8 +279,8 @@ L cmds/cat/RRRRRRRR -> RAW/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab
 L cmds/cat/RRRRRRRRR -> RAW/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log
 L cmds/cat/RRRRRRRRRR -> RAW/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 L cmds/cat/S -> SAN/2017/10/20/17-01-31.000-00123_+Wildcard_+cat_data_Wildcard.log
-L cmds/cat/SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/cat/SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L cmds/cat/SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/cat/SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L cmds/cat/SAN/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log -> SAN/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
 L cmds/cat/SAN/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log -> SAN/2017/10/20/17-00-31.000-00123_+184_cat_data_fstab.log
 L cmds/cat/SAN/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log -> SAN/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log
@@ -305,15 +305,15 @@ L cmds/echo/EEEE -> ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
 L cmds/echo/EEEEE -> ENV/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log
 L cmds/echo/EEEEEE -> ENV/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log
 L cmds/echo/EEEEEEE -> ENV/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log
-L cmds/echo/EEEEEEEE -> ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
-L cmds/echo/EEEEEEEEE -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
+L cmds/echo/EEEEEEEE -> ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
+L cmds/echo/EEEEEEEEE -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
 L cmds/echo/EEEEEEEEEE -> ENV/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
 L cmds/echo/ENV/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log -> ENV/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-L cmds/echo/ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L cmds/echo/ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L cmds/echo/ENV/2017/10/20/17-00-21.000-00123_+and_test_+true_echo_and_test_and_test.log -> ENV/2017/10/20/17-00-21.000-00123_+and_test_+true_echo_and_test_and_test.log
 L cmds/echo/ENV/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log -> ENV/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
-L cmds/echo/ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L cmds/echo/ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L cmds/echo/ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L cmds/echo/ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L cmds/echo/ENV/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log -> ENV/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log
 L cmds/echo/ENV/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log -> ENV/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log
 L cmds/echo/ENV/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> ENV/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log
@@ -323,11 +323,11 @@ L cmds/echo/ENV/2017/10/20/17-02-13.000-00123_+V_a_b_c_echo_ok.log -> ENV/2017/1
 L cmds/echo/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 L cmds/echo/R -> RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 L cmds/echo/RAW/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log -> RAW/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-L cmds/echo/RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L cmds/echo/RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L cmds/echo/RAW/2017/10/20/17-00-21.000-00123_+and_test_+true_echo_and_test_and_test.log -> RAW/2017/10/20/17-00-21.000-00123_+and_test_+true_echo_and_test_and_test.log
 L cmds/echo/RAW/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log -> RAW/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
-L cmds/echo/RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L cmds/echo/RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L cmds/echo/RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L cmds/echo/RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L cmds/echo/RAW/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log -> RAW/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log
 L cmds/echo/RAW/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log -> RAW/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log
 L cmds/echo/RAW/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> RAW/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log
@@ -341,16 +341,16 @@ L cmds/echo/RRRR -> RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
 L cmds/echo/RRRRR -> RAW/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log
 L cmds/echo/RRRRRR -> RAW/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log
 L cmds/echo/RRRRRRR -> RAW/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log
-L cmds/echo/RRRRRRRR -> RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
-L cmds/echo/RRRRRRRRR -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
+L cmds/echo/RRRRRRRR -> RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
+L cmds/echo/RRRRRRRRR -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
 L cmds/echo/RRRRRRRRRR -> RAW/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
 L cmds/echo/S -> SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 L cmds/echo/SAN/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log -> SAN/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-L cmds/echo/SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L cmds/echo/SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L cmds/echo/SAN/2017/10/20/17-00-21.000-00123_+and_test_+true_echo_and_test_and_test.log -> SAN/2017/10/20/17-00-21.000-00123_+and_test_+true_echo_and_test_and_test.log
 L cmds/echo/SAN/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log -> SAN/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
-L cmds/echo/SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L cmds/echo/SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L cmds/echo/SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L cmds/echo/SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L cmds/echo/SAN/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log -> SAN/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log
 L cmds/echo/SAN/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log -> SAN/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log
 L cmds/echo/SAN/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log -> SAN/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log
@@ -364,8 +364,8 @@ L cmds/echo/SSSS -> SAN/2017/10/20/17-01-59.000-00123_+echo_ok.log
 L cmds/echo/SSSSS -> SAN/2017/10/20/17-01-39.000-00123_+echo_to_outer_zenlog_write-to-ou.log
 L cmds/echo/SSSSSS -> SAN/2017/10/20/17-01-37.000-00123_+echo_to_logger_zenlog_write-to-l.log
 L cmds/echo/SSSSSSS -> SAN/2017/10/20/17-00-57.000-00123_+broken_utf8_+echo_a_xffb_broken_utf8.log
-L cmds/echo/SSSSSSSS -> SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
-L cmds/echo/SSSSSSSSS -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
+L cmds/echo/SSSSSSSS -> SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
+L cmds/echo/SSSSSSSSS -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
 L cmds/echo/SSSSSSSSSS -> SAN/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
 L cmds/exit/E -> ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 L cmds/exit/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
@@ -421,18 +421,18 @@ L cmds/fgrep/SS -> SAN/2017/10/20/17-02-11.000-00123_+command_fgrep_dev_data_fst
 L cmds/fgrep/SSS -> SAN/2017/10/20/17-00-29.000-00123_+186_fgrep_dev_data_fstab.log
 L cmds/fgrep/SSSS -> SAN/2017/10/20/17-00-27.000-00123_+fgrep_dev_data_fstab.log
 L cmds/fgrep/SSSSS -> SAN/2017/10/20/17-00-25.000-00123_+cat_data_fstab_fgrep_dev.log
-L cmds/grep/E -> ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/grep/ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/grep/R -> RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/grep/RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/grep/S -> SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/grep/SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
-L cmds/in_zenlog/E -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L cmds/in_zenlog/ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L cmds/in_zenlog/R -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L cmds/in_zenlog/RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L cmds/in_zenlog/S -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L cmds/in_zenlog/SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
+L cmds/grep/E -> ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/grep/ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/grep/R -> RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/grep/RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/grep/S -> SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/grep/SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
+L cmds/in_zenlog/E -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L cmds/in_zenlog/ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L cmds/in_zenlog/R -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L cmds/in_zenlog/RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L cmds/in_zenlog/S -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L cmds/in_zenlog/SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
 L cmds/man/E -> ENV/2017/10/20/17-00-07.000-00123_+man_man.log
 L cmds/man/ENV/2017/10/20/17-00-07.000-00123_+man_man.log -> ENV/2017/10/20/17-00-07.000-00123_+man_man.log
 L cmds/man/R -> RAW/2017/10/20/17-00-07.000-00123_+man_man.log
@@ -472,7 +472,7 @@ L cmds/zenlog/ENV/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current
 L cmds/zenlog/ENV/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log -> ENV/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 L cmds/zenlog/ENV/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log -> ENV/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
 L cmds/zenlog/ENV/2017/10/20/17-00-19.000-00123_+com_r_last_log_+zenlog_last-log_-r_com_r_last_lo.log -> ENV/2017/10/20/17-00-19.000-00123_+com_r_last_log_+zenlog_last-log_-r_com_r_last_lo.log
-L cmds/zenlog/ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L cmds/zenlog/ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L cmds/zenlog/ENV/2017/10/20/17-00-53.000-00123_+history_2_+zenlog_history_history_2.log -> ENV/2017/10/20/17-00-53.000-00123_+history_2_+zenlog_history_history_2.log
 L cmds/zenlog/ENV/2017/10/20/17-00-55.000-00123_+history_raw_+zenlog_history_-r_history_raw.log -> ENV/2017/10/20/17-00-55.000-00123_+history_raw_+zenlog_history_-r_history_raw.log
 L cmds/zenlog/ENV/2017/10/20/17-01-01.000-10000_+zenlog_current-log_-r.log -> ENV/2017/10/20/17-01-01.000-10000_+zenlog_current-log_-r.log
@@ -509,7 +509,7 @@ L cmds/zenlog/RAW/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current
 L cmds/zenlog/RAW/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log -> RAW/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 L cmds/zenlog/RAW/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log -> RAW/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
 L cmds/zenlog/RAW/2017/10/20/17-00-19.000-00123_+com_r_last_log_+zenlog_last-log_-r_com_r_last_lo.log -> RAW/2017/10/20/17-00-19.000-00123_+com_r_last_log_+zenlog_last-log_-r_com_r_last_lo.log
-L cmds/zenlog/RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L cmds/zenlog/RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L cmds/zenlog/RAW/2017/10/20/17-00-53.000-00123_+history_2_+zenlog_history_history_2.log -> RAW/2017/10/20/17-00-53.000-00123_+history_2_+zenlog_history_history_2.log
 L cmds/zenlog/RAW/2017/10/20/17-00-55.000-00123_+history_raw_+zenlog_history_-r_history_raw.log -> RAW/2017/10/20/17-00-55.000-00123_+history_raw_+zenlog_history_-r_history_raw.log
 L cmds/zenlog/RAW/2017/10/20/17-01-01.000-10000_+zenlog_current-log_-r.log -> RAW/2017/10/20/17-01-01.000-10000_+zenlog_current-log_-r.log
@@ -555,7 +555,7 @@ L cmds/zenlog/SAN/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current
 L cmds/zenlog/SAN/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log -> SAN/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 L cmds/zenlog/SAN/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log -> SAN/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
 L cmds/zenlog/SAN/2017/10/20/17-00-19.000-00123_+com_r_last_log_+zenlog_last-log_-r_com_r_last_lo.log -> SAN/2017/10/20/17-00-19.000-00123_+com_r_last_log_+zenlog_last-log_-r_com_r_last_lo.log
-L cmds/zenlog/SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L cmds/zenlog/SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L cmds/zenlog/SAN/2017/10/20/17-00-53.000-00123_+history_2_+zenlog_history_history_2.log -> SAN/2017/10/20/17-00-53.000-00123_+history_2_+zenlog_history_history_2.log
 L cmds/zenlog/SAN/2017/10/20/17-00-55.000-00123_+history_raw_+zenlog_history_-r_history_raw.log -> SAN/2017/10/20/17-00-55.000-00123_+history_raw_+zenlog_history_-r_history_raw.log
 L cmds/zenlog/SAN/2017/10/20/17-01-01.000-10000_+zenlog_current-log_-r.log -> SAN/2017/10/20/17-01-01.000-10000_+zenlog_current-log_-r.log
@@ -714,10 +714,10 @@ L pids/123/EEEEEEEE -> ENV/2017/10/20/17-02-03.000-00123_+echo_ok.log
 L pids/123/EEEEEEEEE -> ENV/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.log
 L pids/123/EEEEEEEEEE -> ENV/2017/10/20/17-01-59.000-00123_+echo_ok.log
 L pids/123/ENV/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log -> ENV/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-L pids/123/ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
+L pids/123/ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> ENV/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
 L pids/123/ENV/2017/10/20/17-00-07.000-00123_+man_man.log -> ENV/2017/10/20/17-00-07.000-00123_+man_man.log
 L pids/123/ENV/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log -> ENV/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log
-L pids/123/ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L pids/123/ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L pids/123/ENV/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log -> ENV/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log
 L pids/123/ENV/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log -> ENV/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 L pids/123/ENV/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log -> ENV/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
@@ -732,8 +732,8 @@ L pids/123/ENV/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log -> ENV/
 L pids/123/ENV/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log -> ENV/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log
 L pids/123/ENV/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log -> ENV/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log
 L pids/123/ENV/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log -> ENV/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log
-L pids/123/ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L pids/123/ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L pids/123/ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> ENV/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L pids/123/ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> ENV/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L pids/123/ENV/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log -> ENV/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log
 L pids/123/ENV/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log -> ENV/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log
 L pids/123/ENV/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log -> ENV/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log
@@ -769,10 +769,10 @@ L pids/123/ENV/2017/10/20/17-02-15.000-00123_+fgrep_data_fstab.log -> ENV/2017/1
 L pids/123/ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> ENV/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 L pids/123/R -> RAW/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 L pids/123/RAW/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log -> RAW/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-L pids/123/RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
+L pids/123/RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> RAW/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
 L pids/123/RAW/2017/10/20/17-00-07.000-00123_+man_man.log -> RAW/2017/10/20/17-00-07.000-00123_+man_man.log
 L pids/123/RAW/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log -> RAW/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log
-L pids/123/RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L pids/123/RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L pids/123/RAW/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log -> RAW/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log
 L pids/123/RAW/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log -> RAW/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 L pids/123/RAW/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log -> RAW/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
@@ -787,8 +787,8 @@ L pids/123/RAW/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log -> RAW/
 L pids/123/RAW/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log -> RAW/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log
 L pids/123/RAW/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log -> RAW/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log
 L pids/123/RAW/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log -> RAW/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log
-L pids/123/RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L pids/123/RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L pids/123/RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> RAW/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L pids/123/RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> RAW/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L pids/123/RAW/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log -> RAW/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log
 L pids/123/RAW/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log -> RAW/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log
 L pids/123/RAW/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log -> RAW/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log
@@ -833,10 +833,10 @@ L pids/123/RRRRRRRRR -> RAW/2017/10/20/17-02-01.000-00123_+zenlog_cat-last-log.l
 L pids/123/RRRRRRRRRR -> RAW/2017/10/20/17-01-59.000-00123_+echo_ok.log
 L pids/123/S -> SAN/2017/10/20/17-02-17.000-00123_+echo_1594944000_tmp_zenlog-time_.log
 L pids/123/SAN/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log -> SAN/2017/10/20/17-00-00.000-00123_+echo_ok_tick_3.log
-L pids/123/SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log -> SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--_.log
+L pids/123/SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log -> SAN/2017/10/20/17-00-05.000-00123_+cat_data_fstab_grep_-v_--.log
 L pids/123/SAN/2017/10/20/17-00-07.000-00123_+man_man.log -> SAN/2017/10/20/17-00-07.000-00123_+man_man.log
 L pids/123/SAN/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log -> SAN/2017/10/20/17-00-09.000-00123_+history_1_+zenlog_history_history_1.log
-L pids/123/SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L pids/123/SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
 L pids/123/SAN/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log -> SAN/2017/10/20/17-00-13.000-00123_+com_current_log_+zenlog_current-log_com_current_l.log
 L pids/123/SAN/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log -> SAN/2017/10/20/17-00-15.000-00123_+com_last_log_+zenlog_last-log_com_last_log.log
 L pids/123/SAN/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log -> SAN/2017/10/20/17-00-17.000-00123_+com_r_current_log_+zenlog_current-log_-r_com_r_curr.log
@@ -851,8 +851,8 @@ L pids/123/SAN/2017/10/20/17-00-33.000-00123_+command_cat_data_fstab.log -> SAN/
 L pids/123/SAN/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log -> SAN/2017/10/20/17-00-35.000-00123_+cat_data_fstab.log
 L pids/123/SAN/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log -> SAN/2017/10/20/17-00-37.000-00123_+ABC_1_2_3_cat_data_fstab.log
 L pids/123/SAN/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log -> SAN/2017/10/20/17-00-39.000-00123_+cat_data_fstab_command_sed_-ne_1.log
-L pids/123/SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog_.log
-L pids/123/SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log -> SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog_.log
+L pids/123/SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log -> SAN/2017/10/20/17-00-41.000-00123_+in_zenlog_echo_in_zenlog.log
+L pids/123/SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log -> SAN/2017/10/20/17-00-43.000-00123_+zenlog_in_zenlog_echo_in_zenlog.log
 L pids/123/SAN/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log -> SAN/2017/10/20/17-00-45.000-00123_+fun_current_log_+zenlog_current_log_fun_current_l.log
 L pids/123/SAN/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log -> SAN/2017/10/20/17-00-47.000-00123_+fun_last_log_+zenlog_last_log_fun_last_log.log
 L pids/123/SAN/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log -> SAN/2017/10/20/17-00-49.000-00123_+fun_r_current_log_+zenlog_current_log_-r_fun_r_curr.log
@@ -1051,9 +1051,9 @@ L tags/or_test/R -> RAW/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_te
 L tags/or_test/RAW/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log -> RAW/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
 L tags/or_test/S -> SAN/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
 L tags/or_test/SAN/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log -> SAN/2017/10/20/17-00-23.000-00123_+or_test_+false_echo_or_test_or_test.log
-L tags/tag_test_abc_def_/E -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
-L tags/tag_test_abc_def_/ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
-L tags/tag_test_abc_def_/R -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
-L tags/tag_test_abc_def_/RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
-L tags/tag_test_abc_def_/S -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
-L tags/tag_test_abc_def_/SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def__+echo_ok_cat_tag_test_abc_def_.log
+L tags/tag_test_abc_def/E -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
+L tags/tag_test_abc_def/ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> ENV/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
+L tags/tag_test_abc_def/R -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
+L tags/tag_test_abc_def/RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> RAW/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
+L tags/tag_test_abc_def/S -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log
+L tags/tag_test_abc_def/SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log -> SAN/2017/10/20/17-00-11.000-00123_+tag_test_abc_def_+echo_ok_cat_tag_test_abc_def.log

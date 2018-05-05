@@ -28,7 +28,7 @@ func TestCreateLogFiles(t *testing.T) {
 		log         string
 	}{
 		{"/bin/echo ok", "/tmp/zenlog-test/log/SAN/2011/10/21/06-01-02.123-00111_+echo_ok.log"},
-		{"/bin/echo ok # comment tag ", "/tmp/zenlog-test/log/SAN/2011/10/21/06-02-02.123-00111_+comment_tag__+echo_ok_comment_tag.log"},
+		{"/bin/echo ok # comment tag ", "/tmp/zenlog-test/log/SAN/2011/10/21/06-02-02.123-00111_+comment_tag_+echo_ok_comment_tag.log"},
 		{"echo ok", "/tmp/zenlog-test/log/SAN/2011/10/21/06-03-02.123-00111_+echo_ok.log"},
 		{"./echo ok", "/tmp/zenlog-test/log/SAN/2011/10/21/06-04-02.123-00111_+echo_ok.log"},
 	}

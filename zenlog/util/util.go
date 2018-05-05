@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -22,8 +23,7 @@ func init() {
 }
 
 func FilenameSafe(s string) string {
-	//return strings.TrimRight(reFilenameSafe.Pattern().ReplaceAllLiteralString(s, "_"), "_")
-	return reFilenameSafe.Pattern().ReplaceAllLiteralString(s, "_")
+	return strings.TrimRight(reFilenameSafe.Pattern().ReplaceAllLiteralString(s, "_"), "_")
 }
 
 func CompressSlash(file string) string {

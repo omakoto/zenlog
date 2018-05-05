@@ -21,7 +21,7 @@ export ZENLOG_BIN="$medir/../bin/zenlog"
 
 export ZENLOG_CONF="$medir/files/$TEST_NAME/zenlog.toml"
 export ZENLOG_START_COMMAND=${ZENLOG_START_COMMAND:-"exec /bin/bash --noprofile --rcfile $medir/files/bashrc"}
-export ZENLOG_DIR=/tmp/zenlog-test/$TEST_NAME
+export ZENLOG_DIR=/tmp/zenlog-test/$TEST_NAME/files
 
 export _ZENLOG_LOGGER_PID=123
 export _ZENLOG_TIME_INJECTION_FILE=/tmp/zenlog-time
@@ -48,15 +48,13 @@ check_result() {
     local name="$TEST_NAME"
 
     local fail=0
-    echo "Checking tree..."
-    diff --color=always -c $medir/results/$name/tree.txt <($TREE -aF "$ZENLOG_DIR")
-    fail=$(( $fail || $?))
+    echo "Creating tree..."
+    $TREE "$ZENLOG_DIR" > "$ZENLOG_DIR/../tree.txt"
 
     echo "Checking log files..."
     diff --color=always  -X $medir/files/diff-ignore-files.txt \
-        -ur $medir/results/$name/files "$ZENLOG_DIR"
+        -ur $medir/results/$name "$ZENLOG_DIR/.."
     fail=$(( $fail || $?))
-
 
     if (( $fail )); then
         echo "Some tests failed."

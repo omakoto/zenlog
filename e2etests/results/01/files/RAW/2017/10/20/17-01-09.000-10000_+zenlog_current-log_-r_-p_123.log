@@ -1,2 +1,2 @@
 $ zenlog current-log -r -p 123
-/tmp/zenlog-test/01/RAW/2017/10/20/17-00-59.000-00123_+export_ZENLOG_PID_10000.log
+/tmp/zenlog-test/01/files/RAW/2017/10/20/17-00-59.000-00123_+export_ZENLOG_PID_10000.log

@@ -22,6 +22,7 @@ func init() {
 }
 
 func FilenameSafe(s string) string {
+	//return strings.TrimRight(reFilenameSafe.Pattern().ReplaceAllLiteralString(s, "_"), "_")
 	return reFilenameSafe.Pattern().ReplaceAllLiteralString(s, "_")
 }
 

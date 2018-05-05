@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/omakoto/go-common/src/fileutils"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
@@ -65,7 +66,7 @@ func open(name string, truncate, append bool) (*os.File, *bufio.Writer) {
 }
 
 func makeSymlink(from, to string) {
-	if !util.FileExists(to) {
+	if !fileutils.FileExists(to) {
 		util.Warn(os.Symlink(from, to), "Symlink failed")
 	} else {
 		util.Say("%s already exists", to)
@@ -97,19 +98,19 @@ func ensureSymLink(from, to string) {
 // logType: e.g. "SAN"
 // logFullFileName: Symlink target log filename.
 func createPrevLink(fullDirName, logType, logFullFileName string) {
-	if !util.FileExists(logFullFileName) {
+	if !fileutils.FileExists(logFullFileName) {
 		return // just in case.
 	}
 	oneLetter := logType[0:1]
 	for i := maxPrevLinks; i >= 2; i-- {
 		from := fullDirName + (strings.Repeat(oneLetter, i-1))
-		if !util.FileExists(from) {
+		if !fileutils.FileExists(from) {
 			continue
 		}
 		to := fullDirName + (strings.Repeat(oneLetter, i))
 
-		// No nened to check the error.
-		if util.FileExists(to) {
+		// No need to check the error.
+		if fileutils.FileExists(to) {
 			util.Warn(os.Remove(to), "Remove failed")
 		}
 		util.Warn(os.Rename(from, to), "Rename failed")
@@ -122,7 +123,7 @@ func createPrevLink(fullDirName, logType, logFullFileName string) {
 // logType: e.g. "SAN"
 // logFullFileName: Symlink target log filename.
 func createDayLinks(fullDirName, logType, logFullFileName string) {
-	if !util.FileExists(logFullFileName) {
+	if !fileutils.FileExists(logFullFileName) {
 		return // just in case.
 	}
 	todayFrom := filepath.Dir(logFullFileName)
@@ -141,7 +142,7 @@ func createDayLinks(fullDirName, logType, logFullFileName string) {
 // logType: e.g. "SAN"
 // logFullFileName: Symlink target log filename.
 func createLinks(config *config.Config, parentDirName, childDirName, logType, logFullFileName string, now time.Time) {
-	if !util.FileExists(logFullFileName) {
+	if !fileutils.FileExists(logFullFileName) {
 		return // just in case.
 	}
 	childDirName = clamp(util.FilenameSafe(childDirName), 64)

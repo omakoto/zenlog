@@ -8,6 +8,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/logger"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -29,7 +30,7 @@ func maybeStartEmergencyShell(c *config.Config, startTime time.Time, r interface
 		threshold = float64(c.CriticalCrashMaxSeconds)
 
 		// If the child dies too early, something may be wrong, so start a shell...
-		if util.NewClock().Now().Sub(startTime).Seconds() < threshold {
+		if utils.NewClock().Now().Sub(startTime).Seconds() < threshold {
 			util.Say("Child finished unsuccessfully, too soon?: code=%d%s", childStatus)
 			startShell = true
 		}
@@ -96,7 +97,7 @@ func StartZenlog(args []string) (commandExitCode int, resurrect bool) {
 
 	var c *config.Config
 
-	startTime := util.NewClock().Now()
+	startTime := utils.NewClock().Now()
 	defer func() {
 		if !resurrect {
 			maybeStartEmergencyShell(c, startTime, recover(), childStatus)

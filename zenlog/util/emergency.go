@@ -1,11 +1,14 @@
 package util
 
-import "syscall"
+import (
+	"github.com/omakoto/go-common/src/utils"
+	"syscall"
+)
 
 // StartEmergencyShell exec's /bin/sh.
 func StartEmergencyShell() {
 	Say("Starting emergency shell...")
 
 	shell := "/bin/sh"
-	syscall.Exec(shell, StringSlice(shell), nil)
+	syscall.Exec(shell, utils.StringSlice(shell), nil)
 }

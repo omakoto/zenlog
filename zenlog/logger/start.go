@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -14,7 +15,7 @@ type StartRequest struct {
 	StartTime time.Time
 }
 
-func StartCommand(envs string, commandLineArray []string, clock util.Clock) {
+func StartCommand(envs string, commandLineArray []string, clock utils.Clock) {
 	config := config.InitConfigForCommands()
 
 	commandLine := strings.Join(commandLineArray, " ")
@@ -32,5 +33,5 @@ func StartCommand(envs string, commandLineArray []string, clock util.Clock) {
 	req := StartRequest{*command, logFiles, now}
 	util.Dump("startRequest=", req)
 
-	MustSendToLogger(config, util.StringSlice(CommandStartCommand, util.MustMarshal(req)))
+	MustSendToLogger(config, utils.StringSlice(CommandStartCommand, util.MustMarshal(req)))
 }

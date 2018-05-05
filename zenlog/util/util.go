@@ -2,6 +2,8 @@ package util
 
 import (
 	"fmt"
+	"github.com/omakoto/go-common/src/fileutils"
+	"github.com/omakoto/go-common/src/utils"
 	"log"
 	"math/rand"
 	"os"
@@ -11,37 +13,16 @@ import (
 )
 
 var (
-	reFilenameSafe = NewLazyRegexp(`[^a-zA-Z0-9\-\_\.\+]+`)
-	reSlashes      = NewLazyRegexp(`//+`)
-
-	reRegexCleaner = NewLazyRegexp(`(?:\s+|\s*#[^\n]*\n\s*)`)
+	reFilenameSafe = utils.NewLazyRegexp(`[^a-zA-Z0-9\-\_\.\+]+`)
+	reSlashes      = utils.NewLazyRegexp(`//+`)
 )
 
 func init() {
 	rand.Seed(time.Now().Unix())
 }
 
-func FirstNonEmpty(vals ...string) string {
-	for _, v := range vals {
-		if v != "" {
-			return v
-		}
-	}
-	return ""
-}
-
 func FilenameSafe(s string) string {
 	return reFilenameSafe.Pattern().ReplaceAllLiteralString(s, "_")
-}
-
-func FileExists(file string) bool {
-	_, err := os.Stat(file)
-	return err == nil
-}
-
-func DirExists(file string) bool {
-	stat, err := os.Stat(file)
-	return err == nil && ((stat.Mode() & os.ModeDir) != 0)
 }
 
 func CompressSlash(file string) string {
@@ -51,11 +32,6 @@ func CompressSlash(file string) string {
 // Create a random string.
 func Fingerprint() string {
 	return fmt.Sprintf("%08x", rand.Int31())
-}
-
-// Remove whitespace and comments from a regex pattern.
-func CleanUpRegexp(pattern string) string {
-	return reRegexCleaner.Pattern().ReplaceAllLiteralString(pattern, "")
 }
 
 // Return number of LFs in bytes.
@@ -102,22 +78,17 @@ func ZenlogBinCtime() time.Time {
 func ZenlogSrcTopDir() string {
 	zenlogBinDir := FindZenlogBinDir()
 
-	for _, d := range StringSlice("/../", "/../src/github.com/omakoto/zenlog-go/") {
+	for _, d := range utils.StringSlice("/../", "/../src/github.com/omakoto/zenlog-go/") {
 		candidate := zenlogBinDir + d
 		candidate, err := filepath.Abs(candidate)
 		Check(err, "Abs failed")
 
-		if DirExists(candidate + "/subcommands") {
+		if fileutils.DirExists(candidate + "/subcommands") {
 			return candidate
 		}
 	}
 	log.Fatalf("Zenlog source directory not found.")
 	return ""
-}
-
-// StringSlice is a convenient way to build a string slice.
-func StringSlice(arr ...string) []string {
-	return arr
 }
 
 // GetIntEnv extracts an integer from an environmental variable.

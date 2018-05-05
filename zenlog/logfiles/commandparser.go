@@ -3,9 +3,9 @@ package logfiles
 // Parse a command line and extract executable names and a comment out of it.
 
 import (
+	"github.com/omakoto/go-common/src/shell"
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog/config"
-	"github.com/omakoto/zenlog-go/zenlog/shell"
-	"github.com/omakoto/zenlog-go/zenlog/util"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -19,7 +19,7 @@ const (
 )
 
 var (
-	reWordSplitter = util.NewLazyRegexp(`\s+`)
+	reWordSplitter = utils.NewLazyRegexp(`\s+`)
 )
 
 // Command represents a single running command executed by the user on the shell.
@@ -48,7 +48,7 @@ const (
 // Note when # appears in the middle of a word, it won't start a comment.
 // i.g. "this is comma#nd" is a 3 word command and the # mark doesn't start a comment.
 func splitComment(config *config.Config, commandLine string) (string, string) {
-	pat := util.FirstNonEmpty(config.CommentSplitter, defaultCommentSplitter)
+	pat := utils.FirstNonEmpty(config.CommentSplitter, defaultCommentSplitter)
 	re := regexp.MustCompile(pat)
 	vals := re.Split(commandLine, 2)
 	if len(vals) == 2 {
@@ -58,7 +58,7 @@ func splitComment(config *config.Config, commandLine string) (string, string) {
 }
 
 func splitCommands(config *config.Config, commandLine string) []string {
-	re := regexp.MustCompile(util.FirstNonEmpty(config.CommandSplitter, defaultCommandSplitter))
+	re := regexp.MustCompile(utils.FirstNonEmpty(config.CommandSplitter, defaultCommandSplitter))
 	return re.Split(commandLine, -1)
 }
 

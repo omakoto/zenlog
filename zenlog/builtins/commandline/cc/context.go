@@ -5,9 +5,10 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/omakoto/go-common/src/fileutils"
+	"github.com/omakoto/go-common/src/shell"
 	"github.com/omakoto/zenlog-go/zenlog/builtins/history"
 	"github.com/omakoto/zenlog-go/zenlog/config"
-	"github.com/omakoto/zenlog-go/zenlog/shell"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
@@ -68,7 +69,7 @@ func FromLastFile() *CommandLineContext {
 	file := filenameForConfig(config)
 
 	ret := CommandLineContext{config: config}
-	if !util.FileExists(file) {
+	if !fileutils.FileExists(file) {
 		return &ret
 	}
 	dat, err := ioutil.ReadFile(file)

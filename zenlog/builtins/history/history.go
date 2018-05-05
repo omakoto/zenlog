@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"github.com/omakoto/go-common/src/fileutils"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"io"
@@ -51,7 +52,7 @@ func NthLastLog(config *config.Config, pid, nth int, logType LogFileType) string
 	ch := logChar(logType)
 	dir := fmt.Sprintf("%spids/%d/", config.LogDir, pid)
 	link := dir + strings.Repeat(ch, nth)
-	if !util.FileExists(link) {
+	if !fileutils.FileExists(link) {
 		return ""
 	}
 	file, err := os.Readlink(link)

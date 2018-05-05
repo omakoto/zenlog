@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -27,7 +28,7 @@ func AllCommandsAndLogCommand(args []string) {
 
 	flags.Parse(args)
 
-	now := util.GetInjectedNow(util.NewClock())
+	now := util.GetInjectedNow(utils.NewClock())
 	wf := func(path string, info os.FileInfo, err error) error {
 		if now.Sub(info.ModTime()).Hours() > (*n * 24) {
 			return nil

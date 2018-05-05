@@ -7,6 +7,8 @@ import (
 	"strings"
 
 	"github.com/BurntSushi/toml"
+	"github.com/omakoto/go-common/src/fileutils"
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"runtime"
@@ -112,8 +114,8 @@ func InitConfigForLogger() *Config {
 		}
 	}
 
-	if c.TempDir == "" || !util.DirExists(c.TempDir) {
-		c.TempDir = util.FirstNonEmpty(os.Getenv("TEMP"), os.Getenv("TMP"), "/tmp/")
+	if c.TempDir == "" || !fileutils.DirExists(c.TempDir) {
+		c.TempDir = utils.FirstNonEmpty(os.Getenv("TEMP"), os.Getenv("TMP"), "/tmp/")
 	}
 
 	ensureSlash(&c.LogDir)

@@ -11,10 +11,12 @@ import (
 
 	"github.com/kr/pty"
 	"github.com/mattn/go-isatty"
+	"github.com/omakoto/go-common/src/shell"
+	"github.com/omakoto/go-common/src/textio"
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/envs"
 	"github.com/omakoto/zenlog-go/zenlog/logfiles"
-	"github.com/omakoto/zenlog-go/zenlog/shell"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"github.com/pkg/term"
 )
@@ -36,9 +38,9 @@ type Logger struct {
 	numLines            int
 	hasDanglingLastLine bool
 
-	sanitizer *util.Sanitizer
+	sanitizer *textio.Sanitizer
 
-	clock util.Clock
+	clock utils.Clock
 }
 
 func mustMakeFifo(config *config.Config, suffix string) *os.File {
@@ -61,7 +63,7 @@ func NewLogger(config *config.Config) *Logger {
 
 	l := Logger{Config: config}
 
-	l.sanitizer = util.NewSanitizer()
+	l.sanitizer = textio.NewSanitizer()
 
 	l.OuterTty = util.Ttyname(os.Stdin.Fd())
 	stdinTerm, err := term.Open(l.OuterTty)
@@ -78,7 +80,7 @@ func NewLogger(config *config.Config) *Logger {
 	l.ForwardPipe = mustMakeFifo(config, "f")
 	l.ReversePipe = mustMakeFifo(config, "r")
 
-	l.clock = util.NewClock()
+	l.clock = utils.NewClock()
 
 	// Update config with the pipe names.
 	config.LoggerIn = l.ForwardPipe.Name()
@@ -171,11 +173,11 @@ func (l *Logger) isOpen() bool {
 }
 
 func (l *Logger) SendCloseRequest() {
-	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(CloseSessionCommand))
+	util.WriteToFile(l.Config.LoggerIn, utils.StringSlice(CloseSessionCommand))
 }
 
 func (l *Logger) SendFlushRequest() {
-	util.WriteToFile(l.Config.LoggerIn, util.StringSlice(FlushCommand))
+	util.WriteToFile(l.Config.LoggerIn, utils.StringSlice(FlushCommand))
 }
 
 // Open log files.
@@ -310,7 +312,7 @@ func (l *Logger) DoLogger() {
 					l.closeLogs(&req)
 
 					// Send reply.
-					l.MustReply(l.Config, util.StringSlice(CommandEndCommand, fingerprint, util.MustMarshal(StopReply{l.numLines})))
+					l.MustReply(l.Config, utils.StringSlice(CommandEndCommand, fingerprint, util.MustMarshal(StopReply{l.numLines})))
 					continue
 				}
 			}

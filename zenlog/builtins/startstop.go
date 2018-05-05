@@ -4,6 +4,7 @@ import (
 	"flag"
 	"strconv"
 
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog/logger"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
@@ -18,7 +19,7 @@ func startCommand(args []string) {
 	if len(args) < 1 {
 		util.Fatalf("start-command expects at least 1 argument.")
 	}
-	logger.StartCommand(*e, args[:], util.NewClock())
+	logger.StartCommand(*e, args[:], utils.NewClock())
 }
 
 // endCommand tells zenlog to stop logging for the current command.
@@ -35,5 +36,5 @@ func endCommand(args []string) {
 		exitStatus, err = strconv.Atoi(args[0])
 		util.Check(err, "Exit status must be integer; '%s' given.", args[0])
 	}
-	logger.EndCommand(exitStatus, *wantLineNumber, util.NewClock())
+	logger.EndCommand(exitStatus, *wantLineNumber, utils.NewClock())
 }

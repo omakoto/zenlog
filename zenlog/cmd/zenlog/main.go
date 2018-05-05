@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog"
 	"github.com/omakoto/zenlog-go/zenlog/builtins"
 	"github.com/omakoto/zenlog-go/zenlog/util"
@@ -9,7 +10,7 @@ import (
 
 func restart() {
 	util.Say("Restarting zenlog...")
-	util.MustExec(util.StringSlice(util.FindZenlogBin()))
+	util.MustExec(utils.StringSlice(util.FindZenlogBin()))
 }
 
 func realMain() int {

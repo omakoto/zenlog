@@ -1,9 +1,9 @@
 package commandline
 
 import (
+	"github.com/omakoto/go-common/src/shell"
 	"github.com/omakoto/zenlog-go/zenlog/builtins/commandline/cc"
 	"github.com/omakoto/zenlog-go/zenlog/builtins/history"
-	"github.com/omakoto/zenlog-go/zenlog/shell"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 

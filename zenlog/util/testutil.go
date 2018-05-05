@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
+	"github.com/omakoto/go-common/src/fileutils"
 )
 
 func Ar(a ...string) []string {
@@ -35,7 +36,7 @@ func AssertStringSlicesEqual(t *testing.T, input string, expected []string, actu
 }
 
 func AssertFileExist(t *testing.T, file string) {
-	if !FileExists(file) {
+	if !fileutils.FileExists(file) {
 		t.Errorf("File %s not createtd.", file)
 	}
 }

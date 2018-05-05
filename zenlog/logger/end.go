@@ -2,6 +2,7 @@ package logger
 
 import (
 	"fmt"
+	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog-go/zenlog/config"
 	"github.com/omakoto/zenlog-go/zenlog/util"
 	"time"
@@ -16,7 +17,7 @@ type StopReply struct {
 	NumLines int
 }
 
-func EndCommand(exitStatus int, wantLineNumber bool, clock util.Clock) {
+func EndCommand(exitStatus int, wantLineNumber bool, clock utils.Clock) {
 	config := config.InitConfigForCommands()
 
 	// Create a requst.
@@ -26,7 +27,7 @@ func EndCommand(exitStatus int, wantLineNumber bool, clock util.Clock) {
 	fingerprint := util.Fingerprint()
 
 	// Send it.
-	MustSendToLogger(config, util.StringSlice(CommandEndCommand, fingerprint, util.MustMarshal(req)))
+	MustSendToLogger(config, utils.StringSlice(CommandEndCommand, fingerprint, util.MustMarshal(req)))
 
 	// Wait for reply.
 	ret := MustReceiveFromLogger(config, func(args []string) bool {

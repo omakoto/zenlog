@@ -1,6 +1,7 @@
 package util
 
 import (
+	"github.com/omakoto/go-common/src/utils"
 	"io/ioutil"
 	"os"
 	"strconv"
@@ -14,7 +15,7 @@ var (
 )
 
 // GetInjectedNow returns an injected time if _ZENLOG_TIME_INJECTION_FILE is set, or otherwise just returns a passed Clock.
-func GetInjectedNow(clock Clock) time.Time {
+func GetInjectedNow(clock utils.Clock) time.Time {
 	if timeOverrideFile == "" {
 		return clock.Now()
 	}

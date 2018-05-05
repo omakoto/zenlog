@@ -1,198 +1,102 @@
-/tmp/zenlog-test/03
-├── cmds/
-│   ├── echo/
-│   │   ├── E -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── EE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │   ├── EEE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│   │   ├── EEEE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   │   ├── ENV/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   │   │               ├── 17-00-02.000-00123_+echo_a_tag2.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│   │   │               ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │   │               └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── R -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── RAW/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   │   │               ├── 17-00-02.000-00123_+echo_a_tag2.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│   │   │               ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │   │               └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── RR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │   ├── RRR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│   │   ├── RRRR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   │   ├── S -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── SAN/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   │   │               ├── 17-00-02.000-00123_+echo_a_tag2.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│   │   │               ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │   │               └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── SS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │   ├── SSS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│   │   └── SSSS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   ├── exit/
-│   │   ├── E -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── ENV/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── R -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── RAW/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   ├── S -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   │   └── SAN/
-│   │       └── 2017/
-│   │           └── 10/
-│   │               └── 20/
-│   │                   └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   └── ok_/
-│       ├── E -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       ├── ENV/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               └── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       ├── R -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       ├── RAW/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               └── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       ├── S -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       └── SAN/
-│           └── 2017/
-│               └── 10/
-│                   └── 20/
-│                       └── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-├── E -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-├── EE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-├── EEE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-├── EEEE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-├── ENV/
-│   ├── 2017/
-│   │   └── 10/
-│   │       └── 20/
-│   │           ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   │           ├── 17-00-02.000-00123_+echo_a_tag2.log
-│   │           ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │           └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   ├── THISMONTH -> /tmp/zenlog-test/03/ENV/2017/10/
-│   └── TODAY -> /tmp/zenlog-test/03/ENV/2017/10/20/
-├── pids/
-│   └── 123/
-│       ├── E -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── EE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│       ├── EEE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│       ├── EEEE -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       ├── ENV/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       │               ├── 17-00-02.000-00123_+echo_a_tag2.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│       │               ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│       │               └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── R -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── RAW/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       │               ├── 17-00-02.000-00123_+echo_a_tag2.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│       │               ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│       │               └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── RR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│       ├── RRR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│       ├── RRRR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       ├── S -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── SAN/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│       │               ├── 17-00-02.000-00123_+echo_a_tag2.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│       │               ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│       │               └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│       ├── SS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│       ├── SSS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-│       └── SSSS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-├── R -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-├── RAW/
-│   ├── 2017/
-│   │   └── 10/
-│   │       └── 20/
-│   │           ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   │           ├── 17-00-02.000-00123_+echo_a_tag2.log
-│   │           ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │           └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   ├── THISMONTH -> /tmp/zenlog-test/03/RAW/2017/10/
-│   └── TODAY -> /tmp/zenlog-test/03/RAW/2017/10/20/
-├── RR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-├── RRR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-├── RRRR -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-├── S -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-├── SAN/
-│   ├── 2017/
-│   │   └── 10/
-│   │       └── 20/
-│   │           ├── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-│   │           ├── 17-00-02.000-00123_+echo_a_tag2.log
-│   │           ├── 17-00-04.000-00123_+tag3_+echo_a_tag3.log
-│   │           └── 17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
-│   ├── THISMONTH -> /tmp/zenlog-test/03/SAN/2017/10/
-│   └── TODAY -> /tmp/zenlog-test/03/SAN/2017/10/20/
-├── SS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-├── SSS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
-├── SSSS -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-└── tags/
-    ├── tag1/
-    │   ├── E -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-    │   ├── ENV/
-    │   │   └── 2017/
-    │   │       └── 10/
-    │   │           └── 20/
-    │   │               └── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-    │   ├── R -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-    │   ├── RAW/
-    │   │   └── 2017/
-    │   │       └── 10/
-    │   │           └── 20/
-    │   │               └── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-    │   ├── S -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-    │   └── SAN/
-    │       └── 2017/
-    │           └── 10/
-    │               └── 20/
-    │                   └── 17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
-    └── tag3/
-        ├── E -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-        ├── ENV/
-        │   └── 2017/
-        │       └── 10/
-        │           └── 20/
-        │               └── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-        ├── R -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-        ├── RAW/
-        │   └── 2017/
-        │       └── 10/
-        │           └── 20/
-        │               └── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-        ├── S -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-        └── SAN/
-            └── 2017/
-                └── 10/
-                    └── 20/
-                        └── 17-00-04.000-00123_+tag3_+echo_a_tag3.log -> /tmp/zenlog-test/03/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
-
-99 directories, 96 files
+L E -> ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L EE -> ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L EEE -> ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L EEEE -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+F ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+F ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+F ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+F ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L ENV/THISMONTH -> ENV/2017/10
+L ENV/TODAY -> ENV/2017/10/20
+L R -> RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+F RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+F RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+F RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+F RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L RAW/THISMONTH -> RAW/2017/10
+L RAW/TODAY -> RAW/2017/10/20
+L RR -> RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L RRR -> RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L RRRR -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L S -> SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+F SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+F SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+F SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+F SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L SAN/THISMONTH -> SAN/2017/10
+L SAN/TODAY -> SAN/2017/10/20
+L SS -> SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L SSS -> SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L SSSS -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/echo/E -> ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/echo/EE -> ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L cmds/echo/EEE -> ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L cmds/echo/EEEE -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/echo/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/echo/ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log -> ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L cmds/echo/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L cmds/echo/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/echo/R -> RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/echo/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/echo/RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log -> RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L cmds/echo/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L cmds/echo/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/echo/RR -> RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L cmds/echo/RRR -> RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L cmds/echo/RRRR -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/echo/S -> SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/echo/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/echo/SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log -> SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L cmds/echo/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L cmds/echo/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/echo/SS -> SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L cmds/echo/SSS -> SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L cmds/echo/SSSS -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/exit/E -> ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/exit/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/exit/R -> RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/exit/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/exit/S -> SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/exit/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L cmds/ok_/E -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/ok_/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/ok_/R -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/ok_/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/ok_/S -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L cmds/ok_/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L pids/123/E -> ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L pids/123/EE -> ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L pids/123/EEE -> ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L pids/123/EEEE -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L pids/123/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L pids/123/ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log -> ENV/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L pids/123/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L pids/123/ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> ENV/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L pids/123/R -> RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L pids/123/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L pids/123/RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log -> RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L pids/123/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L pids/123/RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> RAW/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L pids/123/RR -> RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L pids/123/RRR -> RAW/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L pids/123/RRRR -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L pids/123/S -> SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L pids/123/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L pids/123/SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log -> SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L pids/123/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L pids/123/SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log -> SAN/2017/10/20/17-00-06.000-00123_+echo_1594944000_tmp_zenlog-time_.log
+L pids/123/SS -> SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L pids/123/SSS -> SAN/2017/10/20/17-00-02.000-00123_+echo_a_tag2.log
+L pids/123/SSSS -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L tags/tag1/E -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L tags/tag1/ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> ENV/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L tags/tag1/R -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L tags/tag1/RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> RAW/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L tags/tag1/S -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L tags/tag1/SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log -> SAN/2017/10/20/17-00-00.000-00123_+tag1_+echo_ok_tag1.log
+L tags/tag3/E -> ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L tags/tag3/ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> ENV/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L tags/tag3/R -> RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L tags/tag3/RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> RAW/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L tags/tag3/S -> SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log
+L tags/tag3/SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log -> SAN/2017/10/20/17-00-04.000-00123_+tag3_+echo_a_tag3.log

@@ -1,147 +1,78 @@
-/tmp/zenlog-test/02
-├── cmds/
-│   ├── echo/
-│   │   ├── E -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│   │   ├── EE -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
-│   │   ├── ENV/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               ├── 17-00-00.000-00123_+echo_start.log -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
-│   │   │               └── 17-00-03.000-00123_+echo_post-restart.log -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│   │   ├── R -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│   │   ├── RAW/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               ├── 17-00-00.000-00123_+echo_start.log -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
-│   │   │               └── 17-00-03.000-00123_+echo_post-restart.log -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│   │   ├── RR -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
-│   │   ├── S -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│   │   ├── SAN/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               ├── 17-00-00.000-00123_+echo_start.log -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
-│   │   │               └── 17-00-03.000-00123_+echo_post-restart.log -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│   │   └── SS -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
-│   ├── exit/
-│   │   ├── E -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-05.000-00123_+exit.log
-│   │   ├── ENV/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               └── 17-00-05.000-00123_+exit.log -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-05.000-00123_+exit.log
-│   │   ├── R -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-05.000-00123_+exit.log
-│   │   ├── RAW/
-│   │   │   └── 2017/
-│   │   │       └── 10/
-│   │   │           └── 20/
-│   │   │               └── 17-00-05.000-00123_+exit.log -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-05.000-00123_+exit.log
-│   │   ├── S -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-05.000-00123_+exit.log
-│   │   └── SAN/
-│   │       └── 2017/
-│   │           └── 10/
-│   │               └── 20/
-│   │                   └── 17-00-05.000-00123_+exit.log -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-05.000-00123_+exit.log
-│   └── zenlog_restart/
-│       ├── E -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       ├── ENV/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               └── 17-00-02.000-00123_+zenlog_restart.log -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       ├── R -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       ├── RAW/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               └── 17-00-02.000-00123_+zenlog_restart.log -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       ├── S -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       └── SAN/
-│           └── 2017/
-│               └── 10/
-│                   └── 20/
-│                       └── 17-00-02.000-00123_+zenlog_restart.log -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-├── E -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-05.000-00123_+exit.log
-├── EE -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-├── EEE -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-├── EEEE -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
-├── ENV/
-│   ├── 2017/
-│   │   └── 10/
-│   │       └── 20/
-│   │           ├── 17-00-00.000-00123_+echo_start.log
-│   │           ├── 17-00-02.000-00123_+zenlog_restart.log
-│   │           ├── 17-00-03.000-00123_+echo_post-restart.log
-│   │           └── 17-00-05.000-00123_+exit.log
-│   ├── THISMONTH -> /tmp/zenlog-test/02/ENV/2017/10/
-│   └── TODAY -> /tmp/zenlog-test/02/ENV/2017/10/20/
-├── pids/
-│   └── 123/
-│       ├── E -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-05.000-00123_+exit.log
-│       ├── EE -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│       ├── EEE -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       ├── EEEE -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
-│       ├── ENV/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               ├── 17-00-00.000-00123_+echo_start.log -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
-│       │               ├── 17-00-02.000-00123_+zenlog_restart.log -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       │               ├── 17-00-03.000-00123_+echo_post-restart.log -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│       │               └── 17-00-05.000-00123_+exit.log -> /tmp/zenlog-test/02/ENV/2017/10/20/17-00-05.000-00123_+exit.log
-│       ├── R -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-05.000-00123_+exit.log
-│       ├── RAW/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               ├── 17-00-00.000-00123_+echo_start.log -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
-│       │               ├── 17-00-02.000-00123_+zenlog_restart.log -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       │               ├── 17-00-03.000-00123_+echo_post-restart.log -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│       │               └── 17-00-05.000-00123_+exit.log -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-05.000-00123_+exit.log
-│       ├── RR -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│       ├── RRR -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       ├── RRRR -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
-│       ├── S -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-05.000-00123_+exit.log
-│       ├── SAN/
-│       │   └── 2017/
-│       │       └── 10/
-│       │           └── 20/
-│       │               ├── 17-00-00.000-00123_+echo_start.log -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
-│       │               ├── 17-00-02.000-00123_+zenlog_restart.log -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       │               ├── 17-00-03.000-00123_+echo_post-restart.log -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│       │               └── 17-00-05.000-00123_+exit.log -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-05.000-00123_+exit.log
-│       ├── SS -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-│       ├── SSS -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-│       └── SSSS -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
-├── R -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-05.000-00123_+exit.log
-├── RAW/
-│   ├── 2017/
-│   │   └── 10/
-│   │       └── 20/
-│   │           ├── 17-00-00.000-00123_+echo_start.log
-│   │           ├── 17-00-02.000-00123_+zenlog_restart.log
-│   │           ├── 17-00-03.000-00123_+echo_post-restart.log
-│   │           └── 17-00-05.000-00123_+exit.log
-│   ├── THISMONTH -> /tmp/zenlog-test/02/RAW/2017/10/
-│   └── TODAY -> /tmp/zenlog-test/02/RAW/2017/10/20/
-├── RR -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-├── RRR -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-├── RRRR -> /tmp/zenlog-test/02/RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
-├── S -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-05.000-00123_+exit.log
-├── SAN/
-│   ├── 2017/
-│   │   └── 10/
-│   │       └── 20/
-│   │           ├── 17-00-00.000-00123_+echo_start.log
-│   │           ├── 17-00-02.000-00123_+zenlog_restart.log
-│   │           ├── 17-00-03.000-00123_+echo_post-restart.log
-│   │           └── 17-00-05.000-00123_+exit.log
-│   ├── THISMONTH -> /tmp/zenlog-test/02/SAN/2017/10/
-│   └── TODAY -> /tmp/zenlog-test/02/SAN/2017/10/20/
-├── SS -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
-├── SSS -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
-└── SSSS -> /tmp/zenlog-test/02/SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
-
-72 directories, 72 files
+L E -> ENV/2017/10/20/17-00-05.000-00123_+exit.log
+L EE -> ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L EEE -> ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L EEEE -> ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
+F ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
+F ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+F ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+F ENV/2017/10/20/17-00-05.000-00123_+exit.log
+L ENV/THISMONTH -> ENV/2017/10
+L ENV/TODAY -> ENV/2017/10/20
+L R -> RAW/2017/10/20/17-00-05.000-00123_+exit.log
+F RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
+F RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+F RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+F RAW/2017/10/20/17-00-05.000-00123_+exit.log
+L RAW/THISMONTH -> RAW/2017/10
+L RAW/TODAY -> RAW/2017/10/20
+L RR -> RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L RRR -> RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L RRRR -> RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
+L S -> SAN/2017/10/20/17-00-05.000-00123_+exit.log
+F SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
+F SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+F SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+F SAN/2017/10/20/17-00-05.000-00123_+exit.log
+L SAN/THISMONTH -> SAN/2017/10
+L SAN/TODAY -> SAN/2017/10/20
+L SS -> SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L SSS -> SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L SSSS -> SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
+L cmds/echo/E -> ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L cmds/echo/EE -> ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
+L cmds/echo/ENV/2017/10/20/17-00-00.000-00123_+echo_start.log -> ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
+L cmds/echo/ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log -> ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L cmds/echo/R -> RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L cmds/echo/RAW/2017/10/20/17-00-00.000-00123_+echo_start.log -> RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
+L cmds/echo/RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log -> RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L cmds/echo/RR -> RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
+L cmds/echo/S -> SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L cmds/echo/SAN/2017/10/20/17-00-00.000-00123_+echo_start.log -> SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
+L cmds/echo/SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log -> SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L cmds/echo/SS -> SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
+L cmds/exit/E -> ENV/2017/10/20/17-00-05.000-00123_+exit.log
+L cmds/exit/ENV/2017/10/20/17-00-05.000-00123_+exit.log -> ENV/2017/10/20/17-00-05.000-00123_+exit.log
+L cmds/exit/R -> RAW/2017/10/20/17-00-05.000-00123_+exit.log
+L cmds/exit/RAW/2017/10/20/17-00-05.000-00123_+exit.log -> RAW/2017/10/20/17-00-05.000-00123_+exit.log
+L cmds/exit/S -> SAN/2017/10/20/17-00-05.000-00123_+exit.log
+L cmds/exit/SAN/2017/10/20/17-00-05.000-00123_+exit.log -> SAN/2017/10/20/17-00-05.000-00123_+exit.log
+L cmds/zenlog_restart/E -> ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L cmds/zenlog_restart/ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log -> ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L cmds/zenlog_restart/R -> RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L cmds/zenlog_restart/RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log -> RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L cmds/zenlog_restart/S -> SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L cmds/zenlog_restart/SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log -> SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L pids/123/E -> ENV/2017/10/20/17-00-05.000-00123_+exit.log
+L pids/123/EE -> ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L pids/123/EEE -> ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L pids/123/EEEE -> ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
+L pids/123/ENV/2017/10/20/17-00-00.000-00123_+echo_start.log -> ENV/2017/10/20/17-00-00.000-00123_+echo_start.log
+L pids/123/ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log -> ENV/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L pids/123/ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log -> ENV/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L pids/123/ENV/2017/10/20/17-00-05.000-00123_+exit.log -> ENV/2017/10/20/17-00-05.000-00123_+exit.log
+L pids/123/R -> RAW/2017/10/20/17-00-05.000-00123_+exit.log
+L pids/123/RAW/2017/10/20/17-00-00.000-00123_+echo_start.log -> RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
+L pids/123/RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log -> RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L pids/123/RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log -> RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L pids/123/RAW/2017/10/20/17-00-05.000-00123_+exit.log -> RAW/2017/10/20/17-00-05.000-00123_+exit.log
+L pids/123/RR -> RAW/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L pids/123/RRR -> RAW/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L pids/123/RRRR -> RAW/2017/10/20/17-00-00.000-00123_+echo_start.log
+L pids/123/S -> SAN/2017/10/20/17-00-05.000-00123_+exit.log
+L pids/123/SAN/2017/10/20/17-00-00.000-00123_+echo_start.log -> SAN/2017/10/20/17-00-00.000-00123_+echo_start.log
+L pids/123/SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log -> SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L pids/123/SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log -> SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L pids/123/SAN/2017/10/20/17-00-05.000-00123_+exit.log -> SAN/2017/10/20/17-00-05.000-00123_+exit.log
+L pids/123/SS -> SAN/2017/10/20/17-00-03.000-00123_+echo_post-restart.log
+L pids/123/SSS -> SAN/2017/10/20/17-00-02.000-00123_+zenlog_restart.log
+L pids/123/SSSS -> SAN/2017/10/20/17-00-00.000-00123_+echo_start.log

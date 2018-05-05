@@ -8,9 +8,14 @@ import (
 )
 
 func listLogsCommand(args []string) {
-	config := config.InitConfigForCommands()
+	var top string
+	if len(args) > 0 {
+		top = args[0]
+	} else {
+		config := config.InitConfigForCommands()
+		top = config.LogDir
+	}
 
-	top := config.LogDir
 	filepath.Walk(top, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err

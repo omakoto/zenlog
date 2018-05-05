@@ -31,7 +31,7 @@ echo $_ZENLOG_E2E_START_TIME >"$_ZENLOG_TIME_INJECTION_FILE"
 
 #export ZENLOG_DEBUG=1
 
-export TREE="tree -aF"
+export TREE="${ZENLOG_BIN} list-logs"
 
 clear_log() {
   # Prepare log dir.

@@ -8,6 +8,9 @@ import (
 )
 
 func Ar(a ...string) []string {
+	if a == nil {
+		return make([]string, 0)
+	}
 	return a
 }
 

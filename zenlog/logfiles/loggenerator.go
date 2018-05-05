@@ -65,10 +65,10 @@ func open(name string, truncate, append bool) (*os.File, *bufio.Writer) {
 	return f, bufio.NewWriter(f)
 }
 
-func makeSymlink(from, to string) {
+func makeSymlink(from, to string, warnIfExists bool) {
 	if !fileutils.FileExists(to) {
 		util.Warn(os.Symlink(from, to), "Symlink failed")
-	} else {
+	} else if warnIfExists {
 		util.Say("%s already exists", to)
 	}
 }
@@ -90,7 +90,7 @@ func ensureSymLink(from, to string) {
 		}
 		util.Warn(os.Remove(to), "Can't remove %s", to)
 	}
-	makeSymlink(from, to)
+	makeSymlink(from, to, true)
 }
 
 // Create "previous" links.
@@ -115,7 +115,7 @@ func createPrevLink(fullDirName, logType, logFullFileName string) {
 		}
 		util.Warn(os.Rename(from, to), "Rename failed")
 	}
-	makeSymlink(logFullFileName, fullDirName+oneLetter)
+	makeSymlink(logFullFileName, fullDirName+oneLetter, true)
 }
 
 // Create TODAY and THISMONTH links.
@@ -156,7 +156,7 @@ func createLinks(config *config.Config, parentDirName, childDirName, logType, lo
 		fmt.Sprintf("%04d/%02d/%02d", now.Year(), now.Month(), now.Day()) + "/"
 
 	util.Warn(os.MkdirAll(fullDirName, 0700), "MkdirAll failed")
-	makeSymlink(logFullFileName, fullDirName+filepath.Base(logFullFileName))
+	makeSymlink(logFullFileName, fullDirName+filepath.Base(logFullFileName), false)
 	createPrevLink(fullChildDir, logType, logFullFileName)
 }
 

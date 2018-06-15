@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/omakoto/zenlog-go.svg?branch=master)](https://travis-ci.org/omakoto/zenlog-go)
+
 # Zenlog -- no more tee(1)-ing.
 
 Zenlog wraps a login shell and automatically saves all the output of each command to a separate log

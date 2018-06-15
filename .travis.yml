@@ -1,0 +1,8 @@
+language: go
+sudo: false
+go:
+- "1.10.x"
+before_script:
+  - go vet ./...
+script:
+ - go test -v ./...

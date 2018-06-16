@@ -27,7 +27,7 @@ Instead it'll create a PTY by itself.
 To install, set up the Go SDK and run:
 
 ```
-go get -u github.com/omakoto/zenlog-go/zenlog/cmd/zenlog 
+go get -v -u github.com/omakoto/zenlog-go/zenlog/cmd/zenlog 
 ```
 
 Then, create `~/.zenlog.toml` and update `.bashrc` (or `.zshrc`) by running:

@@ -141,8 +141,8 @@ func (l *Logger) startForwarders() {
 		// Read the output, and write to the STDOUT, and also to the pipe.
 		go tee(m, l.ForwardPipe, os.Stdout)
 	} else {
-		go forward_simple(os.Stdin, m)
-		go tee_simple(m, l.ForwardPipe, os.Stdout)
+		go forwardSimple(os.Stdin, m)
+		go teeSimple(m, l.ForwardPipe, os.Stdout)
 	}
 }
 

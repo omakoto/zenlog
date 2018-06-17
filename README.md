@@ -45,6 +45,10 @@ zenlog
 Then, try running `ls -l` and then press `ALT+1`. The output of the `ls` command should open
 in `less`. (If the hotkey doesn't work, then run `zenlog open-last-log` instead.)
 
+## Customization
+
+Set `$ZENLOG_VIEWER` and `$ZENLOG_RAW_VIEWER` to change what command to use to open log files.
+Set it in `.bashrc` / `.zshrc`.
 
 ## Manual bash Setup
 

@@ -52,6 +52,13 @@ maybe_add_to_rc() {
 # Uncomment the following line to suppress zenlog default key bindings.
 # ZENLOG_NO_DEFAULT_BINDING=1
 #
+
+# Open log files in this command.
+ZENLOG_VIEWER=less
+
+# Open raw log in this command. (Requires A2H.)
+ZENLOG_RAW_VIEWER=google-chrome
+
 . <($command)
 EOF
     fi

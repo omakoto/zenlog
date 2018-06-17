@@ -33,6 +33,9 @@ echo $_ZENLOG_E2E_START_TIME >"$_ZENLOG_TIME_INJECTION_FILE"
 
 export TREE="${ZENLOG_BIN} list-logs"
 
+# Force loading .inputrc from this directory.
+export FAKE_HOME="$medir/files"
+
 clear_log() {
   # Prepare log dir.
   rm -fr "$ZENLOG_DIR"/*
@@ -41,7 +44,7 @@ clear_log() {
 
 # Start
 run_zenlog() {
-  script -qec "$ZENLOG_BIN" /dev/null
+  HOME=$FAKE_HOME script -qec "$ZENLOG_BIN" /dev/null
 }
 
 check_result() {
@@ -52,7 +55,7 @@ check_result() {
     $TREE "$ZENLOG_DIR" > "$ZENLOG_DIR/../tree.txt"
 
     echo "Checking log files..."
-    diff --color=always  -X $medir/files/diff-ignore-files.txt \
+    diff --color=always -X $medir/files/diff-ignore-files.txt \
         -ur $medir/results/$name "$ZENLOG_DIR/.."
     fail=$(( $fail || $?))
 

@@ -17,3 +17,4 @@ bin/
 
 .zcompdumps
 .zcompdump
+e2etests/files/.bash_history

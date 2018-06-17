@@ -55,7 +55,7 @@ check_result() {
     $TREE "$ZENLOG_DIR" > "$ZENLOG_DIR/../tree.txt"
 
     echo "Checking log files..."
-    diff -X $medir/files/diff-ignore-files.txt \
+    diff --color=always -X $medir/files/diff-ignore-files.txt \
         -ur $medir/results/$name "$ZENLOG_DIR/.."
     fail=$(( $fail || $?))
 

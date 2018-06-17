@@ -7,4 +7,4 @@ before_script:
 script:
  - "gofmt -s -d $(find . -type f -name '*.go') |& perl -pe 'END{exit($. > 0 ? 1 : 0)}'"
  - go test -v ./...
- - ./scripts/e2e-test.sh
+# - ./scripts/e2e-test.sh 

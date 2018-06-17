@@ -7,12 +7,12 @@ import (
 	"github.com/omakoto/zenlog-go/zenlog/util"
 )
 
-func forward_simple(in, out *os.File) error {
+func forwardSimple(in, out *os.File) error {
 	_, err := io.Copy(out, in)
 	return err
 }
 
-func tee_simple(in, out1, out2 *os.File) error {
+func teeSimple(in, out1, out2 *os.File) error {
 	buf := make([]byte, 32*1024)
 
 	var err error

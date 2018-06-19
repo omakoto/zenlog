@@ -4,6 +4,9 @@ set -e
 
 cd "${0%/*}/.."
 
+pwd
+ls -l
+
 out=bin
 mkdir -p "$out"
 

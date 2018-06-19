@@ -7,7 +7,7 @@ before_install:
  - docker/build-docker.sh
 
 script:
- - docker run -it --rm -t zenlog_docker /bin/bash -c '"go/src/github.com/omakoto/zenlog-go/scripts/presubmit.sh" && "go/src/github.com/omakoto/zenlog-go/scripts/e2e-test.sh"'
+ - docker run -it --rm -t zenlog_docker /bin/bash -c 'id;pwd;env;ls -l;"go/src/github.com/omakoto/zenlog-go/scripts/presubmit.sh" && "go/src/github.com/omakoto/zenlog-go/scripts/e2e-test.sh"'
 
 
 

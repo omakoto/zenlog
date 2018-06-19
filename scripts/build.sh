@@ -5,7 +5,7 @@ set -e
 cd "${0%/*}/.."
 
 pwd
-ls -l
+ls -al
 
 out=bin
 mkdir -p "$out"

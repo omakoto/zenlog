@@ -27,8 +27,6 @@ ENV HOME=$home
 RUN groupadd -g 1000 $group && \
     useradd -r -u 1000 -g $group -s $shell $user
 
-RUN chown $user:$group $home
-
 USER $user
 
 RUN mkdir -p $GOPATH
@@ -42,5 +40,7 @@ ENV SHELL=$shell
 RUN echo "PATH=$PATH" >> .profile ;\
     echo "if [ -n \"\$BASH_VERSION\" -a -f .bashrc ] ; then source .bashrc ; fi" >> .profile ;\
     echo "if [ -n \"\$ZSH_VERSION\" -a -f .zshrc ] ; then source .zshrc ; fi" >> .profile
+
+RUN chown $user:$group $home
 
 #ENTRYPOINT $SHELL -l

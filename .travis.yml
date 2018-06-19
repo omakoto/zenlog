@@ -1,14 +1,13 @@
-language: go
-sudo: false
-go:
-- "1.10.x"
-install:
-  - sudo apt-get install -y zsh
-  - go get -v -t github.com/golang/lint/golint honnef.co/go/tools/cmd/megacheck
-  - go get -t ./...
-before_script:
-  - go vet ./...
+sudo: required
+
+services:
+  - docker
+
+before_install:
+ - docker/build-docker.sh
+
 script:
- - "gofmt -s -d $(find . -type f -name '*.go') |& perl -pe 'END{exit($. > 0 ? 1 : 0)}'"
- #- go test -v ./...
- - ./scripts/presubmit.sh
+ - docker run -it --rm -t zenlog_docker /bin/bash -c 'id;pwd;env;ls -l;"go/src/github.com/omakoto/zenlog-go/scripts/presubmit.sh" && "go/src/github.com/omakoto/zenlog-go/scripts/e2e-test.sh"'
+
+
+

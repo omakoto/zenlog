@@ -1,0 +1,15 @@
+.less-history-file:
+.search
+"& echo "and test" # and test
+"fstab | fgrep dev
+"fstab
+"usr/bin/cat data/fstab
+"fstab
+"fstab | command sed -ne '1p'
+"& echo "in zenlog"
+"fstab|cat -n|cat -E
+" #Wildcard
+"dev/null # Just make sure command exists
+"fstab
+"bin/fgrep ^ data/fstab
+"tmp/zenlog-time"; exit

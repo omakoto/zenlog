@@ -1,6 +1,7 @@
 #!/bin/bash
 
 medir=$(readlink -m "$medir")
+cd "$medir/.."
 
 $medir/../scripts/build.sh
 
@@ -12,7 +13,7 @@ done
 # Make sure to close the shell when the input finishes.
 unset IGNOREEOF
 
-export PATH="$(pwd)/bin:$PATH"
+export PATH="${medir}/../bin:$PATH"
 
 export TZ='America/Los_Angeles'
 

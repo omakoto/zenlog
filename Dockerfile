@@ -16,7 +16,10 @@ ENV GOPATH=$home/go/
 ARG copy_target=$GOPATH/src/$go_target
 
 RUN apt-get update
-RUN apt-get install -y git-core zsh vim less psmisc sudo procps libpcre++-dev
+RUN apt-get install -y git-core zsh vim less psmisc sudo procps libpcre++-dev man-db
+
+RUN go get -v -t github.com/golang/lint/golint honnef.co/go/tools/cmd/megacheck $go_target/zenlog/cmd/zenlog/
+RUN go install $go_target/zenlog/cmd/zenlog/
 
 WORKDIR $home
 ENV HOME=$home
@@ -40,7 +43,4 @@ RUN echo "PATH=$PATH" >> .profile ;\
     echo "if [ -n \"\$BASH_VERSION\" -a -f .bashrc ] ; then source .bashrc ; fi" >> .profile ;\
     echo "if [ -n \"\$ZSH_VERSION\" -a -f .zshrc ] ; then source .zshrc ; fi" >> .profile
 
-RUN go get -v -t github.com/golang/lint/golint honnef.co/go/tools/cmd/megacheck $go_target/zenlog/cmd/zenlog/
-RUN go install $go_target/zenlog/cmd/zenlog/
-
-ENTRYPOINT $SHELL -l
+#ENTRYPOINT $SHELL -l

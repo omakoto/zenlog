@@ -1,8 +1,8 @@
 package logfiles
 
 import (
-	"github.com/omakoto/zenlog-go/zenlog/config"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/config"
+	"github.com/omakoto/zenlog/zenlog/util"
 	"testing"
 )
 

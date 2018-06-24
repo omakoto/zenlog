@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/omakoto/go-common/src/utils"
-	"github.com/omakoto/zenlog-go/zenlog/logger"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/logger"
+	"github.com/omakoto/zenlog/zenlog/util"
 )
 
 // startCommand tells zenlog to start logging for a command.

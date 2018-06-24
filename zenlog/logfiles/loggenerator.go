@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/omakoto/go-common/src/fileutils"
-	"github.com/omakoto/zenlog-go/zenlog/config"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/config"
+	"github.com/omakoto/zenlog/zenlog/util"
 )
 
 const (

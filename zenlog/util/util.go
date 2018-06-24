@@ -79,7 +79,7 @@ func ZenlogBinCtime() time.Time {
 func ZenlogSrcTopDir() string {
 	zenlogBinDir := FindZenlogBinDir()
 
-	for _, d := range utils.StringSlice("/../", "/../src/github.com/omakoto/zenlog-go/") {
+	for _, d := range utils.StringSlice("/../", "/../src/github.com/omakoto/zenlog/") {
 		candidate := zenlogBinDir + d
 		candidate, err := filepath.Abs(candidate)
 		Check(err, "Abs failed")

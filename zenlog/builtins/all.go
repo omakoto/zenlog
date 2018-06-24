@@ -10,9 +10,9 @@ import (
 	"strings"
 
 	"github.com/omakoto/go-common/src/utils"
-	"github.com/omakoto/zenlog-go/zenlog/config"
-	"github.com/omakoto/zenlog-go/zenlog/logfiles"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/config"
+	"github.com/omakoto/zenlog/zenlog/logfiles"
+	"github.com/omakoto/zenlog/zenlog/util"
 )
 
 // AllCommandsAndLogCommand implements "all-commands" subcommand, which lists all log files with their command lines.

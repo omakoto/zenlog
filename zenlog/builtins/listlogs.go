@@ -2,7 +2,7 @@ package builtins
 
 import (
 	"fmt"
-	"github.com/omakoto/zenlog-go/zenlog/config"
+	"github.com/omakoto/zenlog/zenlog/config"
 	"os"
 	"path/filepath"
 )

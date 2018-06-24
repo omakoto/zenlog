@@ -4,7 +4,7 @@
 
 set -e
 
-from=github.com/omakoto/zenlog-go/zenlog/cmd/zenlog
+from=github.com/omakoto/zenlog/zenlog/cmd/zenlog
 echo "Downloading and compiling zenlog..."
 go get -u "$from"
 

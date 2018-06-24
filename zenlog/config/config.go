@@ -9,8 +9,8 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/omakoto/go-common/src/fileutils"
 	"github.com/omakoto/go-common/src/utils"
-	"github.com/omakoto/zenlog-go/zenlog/envs"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/envs"
+	"github.com/omakoto/zenlog/zenlog/util"
 	"runtime"
 )
 

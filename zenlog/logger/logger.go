@@ -14,10 +14,10 @@ import (
 	"github.com/omakoto/go-common/src/shell"
 	"github.com/omakoto/go-common/src/textio"
 	"github.com/omakoto/go-common/src/utils"
-	"github.com/omakoto/zenlog-go/zenlog/config"
-	"github.com/omakoto/zenlog-go/zenlog/envs"
-	"github.com/omakoto/zenlog-go/zenlog/logfiles"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/config"
+	"github.com/omakoto/zenlog/zenlog/envs"
+	"github.com/omakoto/zenlog/zenlog/logfiles"
+	"github.com/omakoto/zenlog/zenlog/util"
 	"github.com/pkg/term"
 )
 

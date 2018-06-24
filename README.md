@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/omakoto/zenlog-go.svg?branch=master)](https://travis-ci.org/omakoto/zenlog-go)
+[![Build Status](https://travis-ci.org/omakoto/zenlog.svg?branch=master)](https://travis-ci.org/omakoto/zenlog)
 
 # Zenlog -- no more tee(1)-ing.
 
@@ -27,7 +27,7 @@ Instead it'll create a PTY by itself.
 To install, set up the Go SDK and run:
 
 ```
-go get -v -u github.com/omakoto/zenlog-go/zenlog/cmd/zenlog 
+go get -v -u github.com/omakoto/zenlog/zenlog/cmd/zenlog 
 ```
 
 Then, create `~/.zenlog.toml` and update `.bashrc` (or `.zshrc`) by running:

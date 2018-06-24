@@ -5,7 +5,7 @@ package logfiles
 import (
 	"github.com/omakoto/go-common/src/shell"
 	"github.com/omakoto/go-common/src/utils"
-	"github.com/omakoto/zenlog-go/zenlog/config"
+	"github.com/omakoto/zenlog/zenlog/config"
 	"path/filepath"
 	"regexp"
 	"strings"

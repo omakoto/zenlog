@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/omakoto/go-common/src/utils"
-	"github.com/omakoto/zenlog-go/zenlog"
-	"github.com/omakoto/zenlog-go/zenlog/builtins"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog"
+	"github.com/omakoto/zenlog/zenlog/builtins"
+	"github.com/omakoto/zenlog/zenlog/util"
 	"runtime"
 )
 

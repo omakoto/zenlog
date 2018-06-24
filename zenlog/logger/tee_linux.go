@@ -7,7 +7,7 @@ import (
 	"syscall"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/util"
 	"golang.org/x/sys/unix"
 )
 

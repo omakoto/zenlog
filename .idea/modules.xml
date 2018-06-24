@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/zenlog-go.iml" filepath="$PROJECT_DIR$/.idea/zenlog-go.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/zenlog.iml" filepath="$PROJECT_DIR$/.idea/zenlog.iml" />
     </modules>
   </component>
 </project>

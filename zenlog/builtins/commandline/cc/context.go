@@ -7,9 +7,9 @@ import (
 
 	"github.com/omakoto/go-common/src/fileutils"
 	"github.com/omakoto/go-common/src/shell"
-	"github.com/omakoto/zenlog-go/zenlog/builtins/history"
-	"github.com/omakoto/zenlog-go/zenlog/config"
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/builtins/history"
+	"github.com/omakoto/zenlog/zenlog/config"
+	"github.com/omakoto/zenlog/zenlog/util"
 )
 
 // CommandLineContext represents "command line context" to detect consecutive calls of the same command.

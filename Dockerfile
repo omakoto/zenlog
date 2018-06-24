@@ -10,7 +10,7 @@ ARG group=user
 ARG home=/home/$user
 ARG shell=/bin/bash
 
-ARG go_target=github.com/omakoto/zenlog-go/
+ARG go_target=github.com/omakoto/zenlog/
 
 ENV GOPATH=$home/go/
 ARG copy_target=$GOPATH/src/$go_target

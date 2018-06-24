@@ -4,7 +4,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/omakoto/zenlog-go/zenlog/util"
+	"github.com/omakoto/zenlog/zenlog/util"
 )
 
 func forwardSimple(in, out *os.File) error {

@@ -10,16 +10,16 @@ It has various applications:
     - With the default installation you can do it with simply pressing `ALT+1` on the command line.
      
  - "What was the output of `lsusb` command I ran a month ago?"
-    - Zenlog keeps log files in such a way it's easy to find out a specific output, with
+    - Zenlog keeps log files in such a way that it's easy to find out a specific output, with
         meta-information such as the directory it was executed in, the git branch, the execution
         time, etc.
         
  - The previous command output had an HTTP link. I want to open it in the browser.
-   - Zenlog provides various commands that can be used in scripts. 
+   - Zenlog provides various commands to access the output of previous commands, to help write a script like this. 
     
 
 The primary target shell is Bash 4.4 or later (Zenlog requires the `PS0` (aka preexec) hook added
-in Bash 4.4), but any shell with similar syntax an a pre-exec hook should work with zenlog. It
+in Bash 4.4), but any shell with similar syntax with a pre-exec hook should work with zenlog. It
 comes with an installation script that supports both Bash and Zsh.
 
 # How it works
@@ -55,7 +55,7 @@ in `less`. (If the hotkey doesn't work, then run `zenlog open-last-log` instead.
 
 ## Customization
 
- - `~/.zenlog.toml` contains various configuration such as the log directory. 
+ - [`~/.zenlog.toml`](dot_zenlog.toml) contains various configuration such as the log directory. 
 
  - Set `$ZENLOG_VIEWER` and `$ZENLOG_RAW_VIEWER` to change what command to use to open log files.
 Set it in `.bashrc` / `.zshrc`.
@@ -82,7 +82,10 @@ cp "$(zenlog zenlog-src-top)/dot_zenlog.toml" "$HOME/.zenlog.toml"
 
 Any shell should work, as long as it supports some sort of "pre-exec" and "post-exec" hooks.
 
-Look at the output of `zenlog basic-bash-setup` and figure it out.
+ - Look at the output of `zenlog basic-bash-setup` and figure it out.
+
+(However if your shell's command line syntax is far from Posix shell's, then Zenlog may not be able to extract command names 
+property and you may not get "per command" output links.)
 
 ## Log file structure
 
@@ -116,6 +119,7 @@ By default, log files are stored in `$HOME/zenlog/`, with the following structur
  |  |  |--E
  |  |  |--EE
  |  |  |--...
+ |  |  
  |  +--ls
  |  :
  | 
@@ -141,7 +145,7 @@ By default, log files are stored in `$HOME/zenlog/`, with the following structur
    but hard to grep.
     
  - "SAW" log files contain the original output with escape sequences stripped out, so easy to grep.
-   (Note Zenlog only recognizes "major" escape sequences, so some "rare" sequences may
+   (Note Zenlog only recognizes often-used escape sequences. Uncommon escape sequences may
    still be left.)
  
  - "ENV" log files contain various meta inforamtion such as the current directory, execution time,
@@ -161,7 +165,7 @@ If you run a command with a comment, for example:
 ```bash
 $ make -B # full build 
 ```
-then Zenlog creates synmobic links in the `tags/` directory too, so `$ZENLOG_DIR/tags/full_build/S`
+then Zenlog creates symbolic links in the `tags/` directory too, so `$ZENLOG_DIR/tags/full_build/S`
 will be a symbolic link to the most recent "full build" output.
 
 ## Advanced customization

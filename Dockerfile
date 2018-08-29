@@ -1,6 +1,6 @@
 # Reference: https://docs.docker.com/engine/reference/builder/
 
-ARG gover=1.10
+ARG gover=1.11
 
 FROM debian:latest
 FROM golang:$gover

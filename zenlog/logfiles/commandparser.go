@@ -150,7 +150,7 @@ func ParseCommandLine(config *config.Config, commandLine string) *Command {
 				continue
 			}
 			basename := filepath.Base(w)
-			if prefixCommands.MatchString(basename) {
+			if prefixCommands.MatchString(w) || prefixCommands.MatchString(basename) {
 				continue
 			}
 

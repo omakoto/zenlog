@@ -55,6 +55,31 @@ func TestParseCommandLine(t *testing.T) {
 	}
 }
 
+func TestParseCommandLine_withPrefix(t *testing.T) {
+	config := config.Config{}
+	config.PrefixCommands = "(?:time|sudo|[a-zA-Z0-9_]+=.*)"
+	tests := []struct {
+		input   string
+		exes    []string
+		comment string
+	}{
+		{``, util.Ar(), ""},
+		{`abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`time abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`sudo abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`time sudo abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`time1 sudo abc def #xyz`, util.Ar("time1"), "xyz"},
+		{`PATH=abc sudo abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`PATH=abc/def sudo abc def #xyz`, util.Ar("abc"), "xyz"},
+	}
+	for _, v := range tests {
+		res := ParseCommandLine(&config, v.input)
+
+		util.AssertStringSlicesEqual(t, v.input, v.exes, res.ExeNames)
+		util.AssertStringsEqual(t, v.input, v.comment, res.Comment)
+	}
+}
+
 func TestParseCommandLineWithParser(t *testing.T) {
 	config := config.Config{}
 	config.UseExperimentalCommandParser = true
@@ -71,6 +96,32 @@ func TestParseCommandLineWithParser(t *testing.T) {
 		{`a x;b x|c x|&d x&&e x||f x|&g x>A<B>&A<&B>>>A`, util.Ar("a", "b", "c", "d", "e", "f", "g"), ""},
 
 		{`cat arg|&grep pat>&ab<&file>>>ax;echo ok#def  #  comment; abc   `, util.Ar("cat", "grep", "echo"), "comment; abc"},
+	}
+	for _, v := range tests {
+		res := ParseCommandLine(&config, v.input)
+
+		util.AssertStringSlicesEqual(t, v.input, v.exes, res.ExeNames)
+		util.AssertStringsEqual(t, v.input, v.comment, res.Comment)
+	}
+}
+
+func TestParseCommandLineWithParser_withPrefix(t *testing.T) {
+	config := config.Config{}
+	config.UseExperimentalCommandParser = true
+	config.PrefixCommands = "(?:time|sudo|[a-zA-Z0-9_]+=.*)"
+	tests := []struct {
+		input   string
+		exes    []string
+		comment string
+	}{
+		{``, util.Ar(), ""},
+		{`abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`time abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`sudo abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`time sudo abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`time1 sudo abc def #xyz`, util.Ar("time1"), "xyz"},
+		{`PATH=abc sudo abc def #xyz`, util.Ar("abc"), "xyz"},
+		{`PATH=abc/def sudo abc def #xyz`, util.Ar("abc"), "xyz"},
 	}
 	for _, v := range tests {
 		res := ParseCommandLine(&config, v.input)

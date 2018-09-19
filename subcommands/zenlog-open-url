@@ -20,7 +20,7 @@ urls = []
   open(filename, 'r') do |file|
     file.each_line do |line|
       line.chomp!
-      line.scan(pattern) do |match|
+      line.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '').scan(pattern) do |match|
         match.gsub! /\.+$/, "" # Remove following dots.
         urls.push match
       end

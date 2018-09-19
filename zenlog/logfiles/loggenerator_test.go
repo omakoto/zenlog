@@ -17,6 +17,7 @@ func TestCreateLogFiles(t *testing.T) {
 
 	config.LogDir = "/tmp/zenlog-test/log/"
 	config.ZenlogPid = 111
+	config.PrefixCommands = "(?:time|sudo|[a-zA-Z0-9_]+=.*)"
 
 	os.RemoveAll(config.LogDir)
 
@@ -31,6 +32,10 @@ func TestCreateLogFiles(t *testing.T) {
 		{"/bin/echo ok # comment tag ", "/tmp/zenlog-test/log/SAN/2011/10/21/06-02-02.123-00111_+comment_tag_+echo_ok_comment_tag.log"},
 		{"echo ok", "/tmp/zenlog-test/log/SAN/2011/10/21/06-03-02.123-00111_+echo_ok.log"},
 		{"./echo ok", "/tmp/zenlog-test/log/SAN/2011/10/21/06-04-02.123-00111_+echo_ok.log"},
+
+		// Note for log filenames, we do *not* use PREFIX_COMMAND.
+		// PREFIX_COMMAND is only used to decide the directory name under $ZENLOG_DIR/cmds/.
+		{"time echo ok", "/tmp/zenlog-test/log/SAN/2011/10/21/06-05-02.123-00111_+time_echo_ok.log"},
 	}
 	for _, v := range tests {
 		actual := CreateAndOpenLogFiles(&config, clock.Now(), ParseCommandLine(&config, v.commandLine))

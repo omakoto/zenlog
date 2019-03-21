@@ -23,7 +23,7 @@ var (
 )
 
 func _addHexDigit(b *bytes.Buffer, v uint8) {
-	if 0 <= v && v <= 9 {
+	if v <= 9 {
 		b.WriteRune(rune('0' + v))
 	} else if 10 <= v && v <= 15 {
 		b.WriteRune(rune('a' + (v - 10)))
@@ -179,6 +179,6 @@ func ReadFromFile(filename string, predicate func(vals []string) bool, timeout t
 	case res := <-ch:
 		return res.vals, res.err
 	case <-time.After(timeout):
-		return nil, fmt.Errorf("Timed out reading from '%s'", filename)
+		return nil, fmt.Errorf("timed out reading from '%s'", filename)
 	}
 }

@@ -1,6 +1,6 @@
 # Reference: https://docs.docker.com/engine/reference/builder/
 
-ARG gover=1.11
+ARG gover=1.12
 
 FROM debian:latest
 FROM golang:$gover
@@ -18,7 +18,7 @@ ARG copy_target=$GOPATH/src/$go_target
 RUN apt-get update
 RUN apt-get install -y git-core zsh vim less psmisc sudo procps libpcre++-dev man-db
 
-RUN go get -v -t github.com/golang/lint/golint honnef.co/go/tools/cmd/megacheck $go_target/zenlog/cmd/zenlog/
+RUN go get -v -t golang.org/x/lint/golint honnef.co/go/tools/cmd/... $go_target/zenlog/cmd/zenlog/
 RUN go install $go_target/zenlog/cmd/zenlog/
 
 WORKDIR $home

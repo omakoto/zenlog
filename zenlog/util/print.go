@@ -85,7 +85,7 @@ func Dump(prefix string, obj interface{}) {
 
 func Fatalf(format string, a ...interface{}) {
 	//fmt.Fprint(os.Stderr, "\x1b[0m\x1b[1;31m")
-	fmt.Fprintf(os.Stderr, formatMessage(format, a...))
+	fmt.Fprint(os.Stderr, formatMessage(format, a...))
 	//fmt.Fprint(os.Stderr, "\x1b[0m")
 	fmt.Fprint(os.Stderr, getNewLine())
 	maybePrintStackTrack()

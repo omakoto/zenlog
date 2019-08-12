@@ -40,7 +40,7 @@ func forward(in, out *os.File) error {
 }
 
 func tee(in, out1, out2 *os.File) error {
-	if os.Getenv("ZENLOG_NO_SPLICE") == "1" {
+	if os.Getenv("ZENLOG_USE_SPLICE") != "1" {
 		return teeSimple(in, out1, out2)
 	}
 	// TODO Is it actually faster?

@@ -107,7 +107,7 @@ func MaybeRunBuiltin(command string, args []string) {
 		util.ExitSuccess()
 
 	case "zenlog-src-top":
-		fmt.Println(util.ZenlogSrcTopDir())
+		fmt.Println(config.ZenlogSrcTopDir())
 		util.ExitSuccess()
 
 	case "temp-dir":

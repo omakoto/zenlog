@@ -4,6 +4,7 @@ import (
 	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog/zenlog"
 	"github.com/omakoto/zenlog/zenlog/builtins"
+	"github.com/omakoto/zenlog/zenlog/config"
 	"github.com/omakoto/zenlog/zenlog/util"
 	"runtime"
 )
@@ -17,6 +18,7 @@ func realMain() int {
 	command, args := util.GetSubcommand()
 
 	if command == "" {
+		config.SetIsLogger(true)
 		builtins.FailIfInZenlog()
 		status, resurrect := zenlog.StartZenlog(args)
 		if resurrect {
@@ -24,6 +26,7 @@ func realMain() int {
 		}
 		return status
 	}
+	config.SetIsLogger(false)
 	builtins.MaybeRunBuiltin(command, args)
 	MaybeRunExternalCommand(command, args)
 

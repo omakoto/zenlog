@@ -7,8 +7,8 @@ const (
 	// ZenlogBin is an environmental variable key for the zenlog executable fullpath.
 	ZenlogBin = "ZENLOG_BIN"
 
-	// ZenlogSourceTop is an environmental variable key for the zenlog source top directory fullpath.
-	ZenlogSourceTop = "ZENLOG_SRC_TOP"
+	// ZenlogSourceDir is an environmental variable key for the zenlog source top directory fullpath.
+	ZenlogSourceDir = "ZENLOG_SRC_DIR"
 
 	// ZenlogBinCtime is an environmental variable key for the zenlog binary timestamp.
 	ZenlogBinCtime = "ZENLOG_BIN_CTIME"

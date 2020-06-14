@@ -2,7 +2,9 @@ package config
 
 import (
 	"io/ioutil"
+	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -14,10 +16,25 @@ import (
 	"runtime"
 )
 
+var (
+	isLogger    = false
+	isLoggerSet = false
+	config      *Config
+)
+
+func SetIsLogger(logger bool) {
+	if isLoggerSet {
+		util.Fatalf("SetIsLogger already set")
+	}
+	isLogger = logger
+	isLoggerSet = true
+}
+
 // Config represents configuration parameters, read from ~/.zenlog.toml and overridden with the environmental variables.
 type Config struct {
 	LogDir              string `toml:"ZENLOG_DIR"`
 	TempDir             string `toml:"ZENLOG_TEMP"`
+	SourceDir           string `toml:"ZENLOG_SOURCE_DIR"`
 	StartCommand        string `toml:"ZENLOG_START_COMMAND"`
 	PrefixCommands      string `toml:"ZENLOG_PREFIX_COMMANDS"`
 	AlwaysNoLogCommands string `toml:"ZENLOG_ALWAYS_NO_LOG_COMMANDS"`
@@ -89,6 +106,7 @@ func InitConfigForLogger() *Config {
 
 	overwriteWithEnviron(&c.StartCommand, "ZENLOG_START_COMMAND", "")
 	overwriteWithEnviron(&c.LogDir, envs.ZenlogDir, os.ExpandEnv("$HOME/zenlog/"))
+	overwriteWithEnviron(&c.SourceDir, envs.ZenlogSourceDir, "")
 	overwriteWithEnviron(&c.PrefixCommands, "ZENLOG_PREFIX_COMMANDS", `(?:command|builtin|time|sudo|[a-zA-Z0-9_]+\=.*)`)
 	overwriteWithEnviron(&c.AlwaysNoLogCommands, "ZENLOG_ALWAYS_NO_LOG_COMMANDS", `(?:vi|vim|man|nano|pico|emacs|zenlog.*)`)
 
@@ -143,6 +161,7 @@ func InitConfigForCommands() *Config {
 	c.ZenlogPid = pid
 
 	c.LogDir = os.Getenv(envs.ZenlogDir)
+	c.SourceDir = os.Getenv(envs.ZenlogSourceDir)
 	c.OuterTty = os.Getenv(envs.ZenlogOuterTty)
 	c.LoggerIn = os.Getenv(envs.ZenlogLoggerIn)
 	c.LoggerOut = os.Getenv(envs.ZenlogLoggerOut)
@@ -175,4 +194,38 @@ func InitConfigForCommands() *Config {
 
 	util.Dump("Command config=", c)
 	return &c
+}
+
+// GetConfig returns the singleton config suitable for the current run mode.
+func GetConfig() *Config {
+	if config == nil {
+		if isLogger {
+			config = InitConfigForLogger()
+		} else {
+			config = InitConfigForCommands()
+		}
+	}
+	return config
+}
+
+// ZenlogSrcTopDir returns the fullpath of the source top directory.
+func ZenlogSrcTopDir() string {
+	zenlogBinDir := util.FindZenlogBinDir()
+
+	configSourceDir := GetConfig().SourceDir
+	if fileutils.DirExists(configSourceDir + "/subcommands") {
+		return configSourceDir
+	}
+
+	for _, d := range utils.StringSlice("/../", "/../zenlog/", "/../src/github.com/omakoto/zenlog/") {
+		candidate := zenlogBinDir + d
+		candidate, err := filepath.Abs(candidate)
+		util.Check(err, "Abs failed")
+
+		if fileutils.DirExists(candidate + "/subcommands") {
+			return candidate
+		}
+	}
+	log.Fatalf("Zenlog source directory not found.")
+	return ""
 }

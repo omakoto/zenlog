@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/omakoto/zenlog/zenlog/config"
 	"github.com/omakoto/zenlog/zenlog/util"
 	"os"
 	"path/filepath"
@@ -27,7 +28,7 @@ func tryRunExternalCommand(path string, command string, args []string) {
 // MaybeRunExternalCommand looks for "zenlog-SUBCOMMAND", first in the zenlog "subcommand" directory,
 // then in PATH and executes it.
 func MaybeRunExternalCommand(command string, args []string) {
-	tryRunExternalCommand(util.ZenlogSrcTopDir()+"/subcommands", command, args)
+	tryRunExternalCommand(config.ZenlogSrcTopDir()+"/subcommands", command, args)
 
 	for _, path := range strings.Split(os.Getenv("PATH"), ":") {
 		tryRunExternalCommand(path, command, args)

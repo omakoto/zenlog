@@ -2,9 +2,7 @@ package util
 
 import (
 	"fmt"
-	"github.com/omakoto/go-common/src/fileutils"
 	"github.com/omakoto/go-common/src/utils"
-	"log"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -73,23 +71,6 @@ func ZenlogBinCtime() time.Time {
 	stat, err := os.Stat(FindZenlogBin())
 	Check(err, "Stat failed")
 	return stat.ModTime()
-}
-
-// ZenlogSrcTopDir returns the fullpath of the source top directory.
-func ZenlogSrcTopDir() string {
-	zenlogBinDir := FindZenlogBinDir()
-
-	for _, d := range utils.StringSlice("/../", "/../zenlog/", "/../src/github.com/omakoto/zenlog/") {
-		candidate := zenlogBinDir + d
-		candidate, err := filepath.Abs(candidate)
-		Check(err, "Abs failed")
-
-		if fileutils.DirExists(candidate + "/subcommands") {
-			return candidate
-		}
-	}
-	log.Fatalf("Zenlog source directory not found.")
-	return ""
 }
 
 // GetIntEnv extracts an integer from an environmental variable.

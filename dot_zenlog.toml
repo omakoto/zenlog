@@ -28,4 +28,10 @@ ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|emacs|htop|zenlog.*)"
 # zenlog will start /bin/sh. Default is 30 seconds.
 #ZENLOG_CRITICAL_CRASH_MAX_SECONDS=5
 
+# Use splice(2) to copy FDs.
 #ZENLOG_USE_SPLICE=false
+
+# Zenlog source directory. When zenlog is installed with "go get", the source directory is
+# automatically detected, but when building zenlog from a local source repository, set this
+# so zenlog can find the standard subcommands in the source directory.
+ZENLOG_SOURCE_DIR = "$HOME/cbin/src/go/zenlog"

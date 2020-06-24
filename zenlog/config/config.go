@@ -212,7 +212,10 @@ func GetConfig() *Config {
 func ZenlogSrcTopDir() string {
 	zenlogBinDir := util.FindZenlogBinDir()
 
-	configSourceDir := GetConfig().SourceDir
+	// Note, this needs to work even outside of a zenlog session, where InitConfigForCommands()
+	// doesn't work, so we need to use InitConfigForLogger().
+	config = InitConfigForLogger()
+	configSourceDir := config.SourceDir
 	if fileutils.DirExists(configSourceDir + "/subcommands") {
 		return configSourceDir
 	}

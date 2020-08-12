@@ -192,6 +192,7 @@ func (l *Logger) openLogs(request *StartRequest) {
 	l.logFiles.Open(false)
 
 	l.write([]byte("$ " + request.Command.CommandLine + "\n"))
+	l.flush()
 
 	l.numLines = 0 // Don't count the first line. Start with 0 here.
 	l.hasDanglingLastLine = false

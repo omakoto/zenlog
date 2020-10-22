@@ -73,7 +73,7 @@ cp "$(zenlog zenlog-src-top)/dot_zenlog.toml" "$HOME/.zenlog.toml"
 . <(zenlog basic-bash-setup)
 ```
 
- - Then, if you're using Zsh, add it to your `~/.zrc`.
+ - Then, if you're using Zsh, add it to your `~/.zshrc`.
 ```zsh
 . <(zenlog basic-zsh-setup)
 ```

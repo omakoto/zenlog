@@ -14,6 +14,7 @@ github.com/mattn/go-isatty v0.0.9/go.mod h1:YNRxwqDuOph6SZLI9vUUz6OYw3QyUt7WiY2y
 github.com/mattn/go-runewidth v0.0.4/go.mod h1:LwmH8dsx7+W8Uxz3IHJYH5QSwggIsqBzpuz5H//U1FU=
 github.com/omakoto/go-common v0.0.0-20190929182938-7ec82e969da9 h1:PLuzwAS/CCOxCzg5c67yx0Uv4tSCscIffBvHhaG6hLg=
 github.com/omakoto/go-common v0.0.0-20190929182938-7ec82e969da9/go.mod h1:qZAhdjMaCqvLTLpircN5wqm3B0S7eUTd6flSszQF5gE=
+github.com/omakoto/go-common v0.0.0-20200802222910-58076bac3585 h1:FRVPvY2899qLFnsKx2/p5j4mW9cutVAwEwfu27thd3s=
 github.com/pborman/getopt v0.0.0-20190409184431-ee0cd42419d3 h1:YtFkrqsMEj7YqpIhRteVxJxCeC3jJBieuLr0d4C4rSA=
 github.com/pborman/getopt v0.0.0-20190409184431-ee0cd42419d3/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=
 github.com/pkg/term v0.0.0-20190109203006-aa71e9d9e942 h1:A7GG7zcGjl3jqAqGPmcNjd/D9hzL95SuoOQAaFNdLU0=

@@ -212,19 +212,11 @@ func GetConfig() *Config {
 func ZenlogSrcTopDir() string {
 	zenlogBinDir := util.FindZenlogBinDir()
 
-	subcommandDir := "/subcommands"
-
-	// Try to infer the source root from this source file paht.
-	detectedTop := getDetectedSourceTopDir()
-	if fileutils.DirExists(detectedTop + subcommandDir) {
-		return detectedTop
-	}
-
 	// Note, this needs to work even outside of a zenlog session, where InitConfigForCommands()
 	// doesn't work, so we need to use InitConfigForLogger().
 	config = InitConfigForLogger()
 	configSourceDir := config.SourceDir
-	if fileutils.DirExists(configSourceDir + subcommandDir) {
+	if fileutils.DirExists(configSourceDir + "/subcommands") {
 		return configSourceDir
 	}
 
@@ -233,24 +225,10 @@ func ZenlogSrcTopDir() string {
 		candidate, err := filepath.Abs(candidate)
 		util.Check(err, "Abs failed")
 
-		if fileutils.DirExists(candidate + subcommandDir) {
+		if fileutils.DirExists(candidate + "/subcommands") {
 			return candidate
 		}
 	}
 	log.Fatalf("Zenlog source directory not found.")
 	return ""
-}
-
-func getDetectedSourceTopDir() string {
-	_, thisFilename, _, ok := runtime.Caller(1)
-	if !ok {
-		return ""
-	}
-
-	result, err := filepath.Abs(filepath.Dir(thisFilename) + "/../..")
-	util.Check(err, "Abs failed")
-
-	util.Debugf("Detected source dir=%s", result)
-
-	return result
 }

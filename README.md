@@ -10,7 +10,7 @@ Zenlog wraps a login shell and automatically saves all the output of each comman
 file, along with metadata such as each command start/finish time, the current directory, etc.
 
 It has various applications:
- - Want to open the output of the last command in my faviroite editor!
+ - Want to open the output of the last command in my favorite editor!
     - With the default installation you can do it with simply pressing `ALT+1` on the command line.
      
  - "What was the output of `lsusb` command I ran a month ago?"
@@ -85,7 +85,7 @@ cp "$(zenlog zenlog-src-top)/dot_zenlog.toml" "$HOME/.zenlog.toml"
 . <(zenlog basic-bash-setup)
 ```
 
- - Then, if you're using Zsh, add it to your `~/.zrc`.
+ - Then, if you're using Zsh, add it to your `~/.zshrc`.
 ```zsh
 . <(zenlog basic-zsh-setup)
 ```
@@ -104,7 +104,7 @@ property and you may not get "per command" output links.)
 By default, log files are stored in `$HOME/zenlog/`, with the following structure:
 
 ```
- +--SAN/ # "Sanitized" log -- outout with ESC sequences removed, for easy grepping.
+ +--SAN/ # "Sanitized" log -- output with ESC sequences removed, for easy grepping.
  |  +--YEAR
  |     +--MONTH
  |        +--DAY
@@ -160,7 +160,7 @@ By default, log files are stored in `$HOME/zenlog/`, with the following structur
    (Note Zenlog only recognizes often-used escape sequences. Uncommon escape sequences may
    still be left.)
  
- - "ENV" log files contain various meta inforamtion such as the current directory, execution time,
+ - "ENV" log files contain various meta information such as the current directory, execution time,
    git branch, etc.
    
  - "S" is a symbolic link to the most recent SAN log file. "R" for RAW, "E" for ENV.
@@ -215,7 +215,7 @@ will be a symbolic link to the most recent "full build" output.
         on the command line, `-n 0` refers to the the previous output. 
      
  - See [this directory](subcommands/) for more (external) subcommands.
-   [This file](zenlog/builtins/builtins.go) contains more "buildin" subcommands.  
+   [This file](zenlog/builtins/builtins.go) contains more "builtin" subcommands.  
 
 [See also the readme of the old version.](https://github.com/omakoto/zenlog)
 

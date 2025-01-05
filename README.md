@@ -35,7 +35,7 @@ comes with an installation script that supports both Bash and Zsh.
 
 Zenlog uses the same idea as the previous perl/ruby versions,
 but is a complete write in Go, and no longer relies on script(1), and 
-instead it'll create a PTY by itself. 
+instead it'll create a PTY by itself.
 
 ## Quick start: Install and set up
 

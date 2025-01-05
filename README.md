@@ -41,11 +41,7 @@ instead it'll create a PTY by itself.
 
 To install, set up the Go SDK and follow the below instructions:
 
-~~The `go get` method probably won't work anymore because it won't download the source file into~~
-~~`$HOME/go/src`. So now instead, you'll need to download the source file manually with `git clone`,~~
-~~and run `scripts/install.sh`, and set `$ZENLOG_SRC_DIR` to `$HOME/src/zenlog/`. ~~
-
-The following command __should__ be enough to install zenlog.
+The following command __should__ be enough to install zenlog. (`git clone` shouldn't be needed.)
 ```
 go install -v github.com/omakoto/zenlog/zenlog/cmd/zenlog@latest
 ```

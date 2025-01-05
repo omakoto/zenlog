@@ -4,16 +4,18 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"path/filepath"
+	"path"
 	"strconv"
 	"strings"
 
+	"runtime"
+
 	"github.com/BurntSushi/toml"
+	"github.com/omakoto/go-common/src/common"
 	"github.com/omakoto/go-common/src/fileutils"
 	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog/zenlog/envs"
 	"github.com/omakoto/zenlog/zenlog/util"
-	"runtime"
 )
 
 var (
@@ -210,8 +212,6 @@ func GetConfig() *Config {
 
 // ZenlogSrcTopDir returns the fullpath of the source top directory.
 func ZenlogSrcTopDir() string {
-	zenlogBinDir := util.FindZenlogBinDir()
-
 	// Note, this needs to work even outside of a zenlog session, where InitConfigForCommands()
 	// doesn't work, so we need to use InitConfigForLogger().
 	config = InitConfigForLogger()
@@ -220,15 +220,12 @@ func ZenlogSrcTopDir() string {
 		return configSourceDir
 	}
 
-	for _, d := range utils.StringSlice("/../", "/../zenlog/", "/../src/github.com/omakoto/zenlog/") {
-		candidate := zenlogBinDir + d
-		candidate, err := filepath.Abs(candidate)
-		util.Check(err, "Abs failed")
-
-		if fileutils.DirExists(candidate + "/subcommands") {
-			return candidate
-		}
+	sourcePath, _ := common.GetSourceInfo()
+	topDir := path.Clean(path.Dir(sourcePath) + "/../..")
+	if fileutils.DirExists(topDir + "/subcommands") {
+		return topDir
 	}
+
 	log.Fatalf("Zenlog source directory not found.")
 	return ""
 }

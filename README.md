@@ -7,6 +7,7 @@
 ~~To make it work again, follow the new install instructions below...~~
 
 **2025-01-05 NOTE: I tried fixing the above problem. Now you should be able to install zenlog with `go install`**
+**`git clone` shouldn't be needed.**
 
 Zenlog wraps a login shell and automatically saves all the output of each command to a separate log
 file, along with metadata such as each command start/finish time, the current directory, etc.

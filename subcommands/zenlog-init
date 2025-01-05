@@ -24,6 +24,7 @@ toml_from=$(zenlog zenlog-src-top)/dot_zenlog.toml
 if [[ ! -e "$toml_to" ]] ; then
     if ask "Wish to create file '$toml_to'?"; then
         cp "$toml_from" "$toml_to"
+        chmod +rw "$toml_to"
     fi
 fi
 

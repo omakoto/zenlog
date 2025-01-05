@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/omakoto/zenlog.svg?branch=master)](https://travis-ci.org/omakoto/zenlog)
 
-# Zenlog -- no more tee-ing.
+# Zenlog -- no more tee-ing
 
-**2020-02-22 NOTE: Looks like Go stopped putting the source file under `$HOME/go/src`.**
-**Without it, the external subcommands like `zenlog init`, etc will not work**
-**To make it work again, follow the new install instructions below...**
+~~2020-02-22 NOTE: Looks like Go stopped putting the source file under `$HOME/go/src`.~~
+~~Without it, the external subcommands like `zenlog init`, etc will not work~~
+~~To make it work again, follow the new install instructions below...~~
 
 Zenlog wraps a login shell and automatically saves all the output of each command to a separate log
 file, along with metadata such as each command start/finish time, the current directory, etc.
@@ -38,17 +38,15 @@ instead it'll create a PTY by itself.
 
 To install, set up the Go SDK and follow the below instructions:
 
-The `go get` method probably won't work anymore because it won't download the source file into
+~~The `go get` method probably won't work anymore because it won't download the source file into
 `$HOME/go/src`. So now instead, you'll need to download the source file manually with `git clone`,
-and run `scripts/install.sh`, and set `$ZENLOG_SRC_DIR` to `$HOME/src/zenlog/`. 
-Example:
+and run `scripts/install.sh`, and set `$ZENLOG_SRC_DIR` to `$HOME/src/zenlog/`. ~~
+
+The following command __should__ be enough to install zenlog.
 ```
-mkdir $HOME/src
-cd $HOME/src
-git clone https://github.com/omakoto/zenlog.git
-./zenlog/scripts/install.sh
+go install -v github.com/omakoto/zenlog/zenlog/cmd/zenlog@latest
 ```
-... And add `export ZENLOG_SRC_DIR=$HOME/src/zenlog/` to your `.*shrc`.
+
 
 Then, run the following command to create `~/.zenlog.toml` and update `.bashrc` (or `.zshrc`):
 

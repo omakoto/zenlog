@@ -1,5 +1,6 @@
 #!/bin/bash
 
 # We can't use symlink because `go install` won't fetch them, so directly execute the target
-
-exec "${0%/*}"/zenlog-flush "$@"
+cmd="${0%/*}"/zenlog-flush
+chmod +x "$cmd"
+exec "$cmd" "$@"

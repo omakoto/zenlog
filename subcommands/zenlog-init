@@ -29,6 +29,13 @@ if [[ ! -e "$toml_to" ]] ; then
 fi
 
 #==========================================================
+# Make sure all files under subcommands/ are executable.
+# This is needed because `go install` won't set the executable bits
+# to fetched files.
+
+chmod +x "${0%/*}"/*
+
+#==========================================================
 # Maybe add "basic setup" to the shell's RC file.
 
 maybe_add_to_rc() {

@@ -42,8 +42,10 @@ instead it'll create a PTY by itself.
 To install, set up the Go SDK and follow the below instructions:
 
 The following command __should__ be enough to install zenlog. (`git clone` shouldn't be needed.)
+
+**NOTE: `-a` is needed to ensure all source files are rebuilt, which is needed to detect source directory**
 ```
-go install -v github.com/omakoto/zenlog/zenlog/cmd/zenlog@latest
+go install -a github.com/omakoto/zenlog/zenlog/cmd/zenlog@latest
 ```
 
 

@@ -19,7 +19,7 @@ const (
 	// CommandEndCommand tells the logger when a command finishes. The argument is StopRequest.
 	CommandEndCommand = "end-command"
 
-	readTimeout = time.Second * 1
+	readTimeout = time.Second * 2
 )
 
 // MustSendToLogger writes a command (which is basically just a set of strings) to the named pipe to the logger.

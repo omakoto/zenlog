@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"sync/atomic"
 	"time"
 )
 
@@ -157,6 +158,13 @@ func ReadFromFile(filename string, predicate func(vals []string) bool, timeout t
 
 	bi := bufio.NewReader(file)
 
+	// When we get a timeout, the goroutine would try to write to the
+	// closed channel, which would cause a panic ("panic: send on closed channel").
+	// To avoid it, we use this.
+	// There's still a small race condition the same panic could happen, but it should
+	// be okay, most of the time....
+	closed := atomic.Bool{}
+
 	go func() {
 		for {
 			line, err := bi.ReadBytes('\n')
@@ -164,23 +172,26 @@ func ReadFromFile(filename string, predicate func(vals []string) bool, timeout t
 				success, _, args := TryDecodeBytes(line)
 				Debugf("reply: %v", args)
 				if success && predicate != nil && predicate(args) {
-					ch <- result{args, nil}
+					if !closed.Load() {
+						ch <- result{args, nil}
+					}
 					return
 				}
 			}
 			if err != nil {
-				ch <- result{nil, err}
+				if !closed.Load() {
+					ch <- result{nil, err}
+				}
 				return
 			}
 		}
 	}()
 
-	// TODO: When the timeout happens, we'll get
-	// "panic: send on closed channel" from the above goroutine.
 	select {
 	case res := <-ch:
 		return res.vals, res.err
 	case <-time.After(timeout):
+		closed.Store(true)
 		return nil, fmt.Errorf("timed out reading from '%s'", filename)
 	}
 }

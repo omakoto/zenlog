@@ -175,6 +175,8 @@ func ReadFromFile(filename string, predicate func(vals []string) bool, timeout t
 		}
 	}()
 
+	// TODO: When the timeout happens, we'll get
+	// "panic: send on closed channel" from the above goroutine.
 	select {
 	case res := <-ch:
 		return res.vals, res.err

@@ -13,7 +13,7 @@ func InsertLogBash(args []string) {
 	insertLog(shell.GetBashProxy())
 }
 
-// InsertLogBash handles ALT-L for Zsh -- first call will insert the last log in the command line, and the subsequent calls
+// InsertLogZsh handles ALT-L for Zsh -- first call will insert the last log in the command line, and the subsequent calls
 // will replace it with a previous log.
 func InsertLogZsh(args []string) {
 	insertLog(shell.GetZshProxy())

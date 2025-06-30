@@ -8,11 +8,12 @@ import (
 	"syscall"
 	"time"
 
+	"runtime/pprof"
+
 	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog/zenlog/config"
 	"github.com/omakoto/zenlog/zenlog/logger"
 	"github.com/omakoto/zenlog/zenlog/util"
-	"runtime/pprof"
 )
 
 const resurrectCode = 13
@@ -50,7 +51,7 @@ func dumpAllGoroutines() {
 }
 
 func setupSignalHandler(l *logger.Logger, childStatus *int) {
-	sigch := make(chan os.Signal)
+	sigch := make(chan os.Signal, 1)
 	signal.Notify(sigch, syscall.SIGCHLD, syscall.SIGWINCH, syscall.SIGHUP, syscall.SIGUSR2)
 
 	// Signal handler.

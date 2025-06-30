@@ -126,7 +126,7 @@ func (l *Logger) Child() *exec.Cmd {
 	return l.child
 }
 
-// Child returns the master tty.
+// Master returns the master tty.
 func (l *Logger) Master() *os.File {
 	return l.master
 }
@@ -252,7 +252,7 @@ func (l *Logger) flush() {
 	}
 }
 
-// Start the forwarders, and do the main loop.
+// DoLogger starts the forwarders, and do the main loop.
 func (l *Logger) DoLogger() {
 	l.startForwarders()
 

@@ -2,7 +2,6 @@ package cc
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 
 	"github.com/omakoto/go-common/src/fileutils"
@@ -72,7 +71,7 @@ func FromLastFile() *CommandLineContext {
 	if !fileutils.FileExists(file) {
 		return &ret
 	}
-	dat, err := ioutil.ReadFile(file)
+	dat, err := os.ReadFile(file)
 	util.Check(err, "ReadFile failed")
 
 	util.MustUnmarshal(string(dat), &ret)
@@ -84,7 +83,7 @@ func (cc *CommandLineContext) Save() {
 
 	dat := []byte(util.MustMarshal(&cc))
 
-	err := ioutil.WriteFile(file, dat, 0600)
+	err := os.WriteFile(file, dat, 0600)
 	util.Warn(err, "WriteFile failed")
 }
 

@@ -1,12 +1,12 @@
 package util
 
 import (
-	"github.com/omakoto/go-common/src/utils"
-	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/omakoto/go-common/src/utils"
 )
 
 var (
@@ -19,12 +19,12 @@ func GetInjectedNow(clock utils.Clock) time.Time {
 	if timeOverrideFile == "" {
 		return clock.Now()
 	}
-	bytes, err := ioutil.ReadFile(timeOverrideFile)
+	bytes, err := os.ReadFile(timeOverrideFile)
 	Check(err, "ReadFile failed")
 	i, err := strconv.ParseInt(strings.TrimRight(string(bytes), "\n"), 10, 64)
 	Check(err, "ParseInt failed")
 
-	err = ioutil.WriteFile(timeOverrideFile, []byte(strconv.FormatInt(i+1, 10)), 0600)
+	err = os.WriteFile(timeOverrideFile, []byte(strconv.FormatInt(i+1, 10)), 0600)
 	Check(err, "WriteFile failed")
 
 	return time.Unix(i, 0)

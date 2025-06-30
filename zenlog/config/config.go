@@ -1,19 +1,19 @@
 package config
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
 
+	"runtime"
+
 	"github.com/BurntSushi/toml"
 	"github.com/omakoto/go-common/src/fileutils"
 	"github.com/omakoto/go-common/src/utils"
 	"github.com/omakoto/zenlog/zenlog/envs"
 	"github.com/omakoto/zenlog/zenlog/util"
-	"runtime"
 )
 
 var (
@@ -95,7 +95,7 @@ func InitConfigForLogger() *Config {
 
 	util.Debugf("config=%s", file)
 
-	data, err := ioutil.ReadFile(file)
+	data, err := os.ReadFile(file)
 	if err == nil {
 		if _, err := toml.Decode(string(data), &c); err != nil {
 			util.Fatalf("Unable to load %s: %s", file, err)

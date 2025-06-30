@@ -2,13 +2,14 @@ package util
 
 import (
 	"fmt"
-	"github.com/omakoto/go-common/src/utils"
 	"math/rand"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/omakoto/go-common/src/utils"
 )
 
 var (
@@ -16,9 +17,7 @@ var (
 	reSlashes      = utils.NewLazyRegexp(`//+`)
 )
 
-func init() {
-	rand.Seed(time.Now().Unix())
-}
+// No need for rand.Seed in Go 1.20+, the global random source is automatically seeded
 
 func FilenameSafe(s string) string {
 	return strings.TrimRight(reFilenameSafe.Pattern().ReplaceAllLiteralString(s, "_"), "_")
@@ -28,12 +27,12 @@ func CompressSlash(file string) string {
 	return reSlashes.Pattern().ReplaceAllLiteralString(file, "/")
 }
 
-// Create a random string.
+// Fingerprint creates a random string.
 func Fingerprint() string {
 	return fmt.Sprintf("%08x", rand.Int31())
 }
 
-// Return number of LFs in bytes.
+// NumLines returns number of LFs in bytes.
 func NumLines(data []byte) int {
 	ret := 0
 	for _, b := range data {

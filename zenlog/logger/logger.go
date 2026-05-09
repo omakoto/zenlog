@@ -136,12 +136,12 @@ func (l *Logger) startForwarders() {
 
 	if l.Config.UseSplice {
 		// Forward the input from stdin to the l.
-		go forward(os.Stdin, m)
+		go func() { util.Warn(forward(os.Stdin, m), "Forward failed") }()
 
 		// Read the output, and write to the STDOUT, and also to the pipe.
 		go tee(m, l.ForwardPipe, os.Stdout)
 	} else {
-		go forwardSimple(os.Stdin, m)
+		go func() { util.Warn(forwardSimple(os.Stdin, m), "Forward failed") }()
 		go teeSimple(m, l.ForwardPipe, os.Stdout)
 	}
 }

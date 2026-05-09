@@ -41,7 +41,9 @@ func FailUnlessInZenlog() {
 func copyStdinToFile(file string) {
 	out, err := os.OpenFile(file, os.O_WRONLY, 0)
 	util.Check(err, "Unable to open "+file)
-	io.Copy(out, os.Stdin)
+	defer out.Close()
+	_, err = io.Copy(out, os.Stdin)
+	util.Warn(err, "Failed to copy to file")
 }
 
 // WriteToLogger read from STDIN and writes to the current logger. Implies FailUnlessInZenlog().
@@ -56,6 +58,7 @@ func WriteToOuter() {
 	file := os.Getenv(envs.ZenlogOuterTty)
 	out, err := os.OpenFile(file, os.O_WRONLY, 0)
 	util.Check(err, "Unable to open "+file)
+	defer out.Close()
 
 	in := bufio.NewReader(os.Stdin)
 
@@ -67,8 +70,11 @@ func WriteToOuter() {
 		line, err := in.ReadBytes('\n')
 		if line != nil {
 			line = bytes.TrimRight(line, "\r\n")
-			out.Write(line)
-			out.Write(crlf)
+			// Just ignore wrie
+			_, ew := out.Write(line)
+			util.Warn(ew, "Write failed")
+			_, ew = out.Write(crlf)
+			util.Warn(ew, "Write failed")
 		}
 		if err != nil {
 			break

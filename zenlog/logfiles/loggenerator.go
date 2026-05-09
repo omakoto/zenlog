@@ -83,8 +83,10 @@ func ensureSymLink(from, to string) {
 		}
 	} else {
 		if fi.Mode()&os.ModeSymlink != 0 {
-			e, _ := os.Readlink(to)
-			if e == from {
+			e, err := os.Readlink(to)
+			if err != nil {
+				util.Warn(err, "Readlink failed for %s", to)
+			} else if e == from {
 				return // already exists.
 			}
 		}
@@ -258,7 +260,7 @@ func (l *LogFiles) WriteEnv(command *Command, envs string, startTime time.Time) 
 	l.writeTimeToEnv("Start time", startTime)
 
 	l.Env.WriteString(envs)
-	if envs[len(envs)-1] != '\n' {
+	if len(envs) == 0 || envs[len(envs)-1] != '\n' {
 		l.Env.WriteString("\n")
 	}
 }

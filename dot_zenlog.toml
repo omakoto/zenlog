@@ -11,7 +11,7 @@ ZENLOG_PREFIX_COMMANDS = "(?:command|builtin|time|sudo|[a-zA-Z0-9_]+=.*)"
 
 # Always do not log output from these commands.
 # You might also want to add commands like: more, less, ssh, ...
-ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|emacs|htop|zenlog.*)"
+ZENLOG_ALWAYS_NO_LOG_COMMANDS = "(?:vim?|man|nano|pico|emacs|htop|zenlog.*|gemini|claude)"
 
 # Uncomment this to get zenlog to always flush the log files.
 #ZENLOG_AUTO_FLUSH=1

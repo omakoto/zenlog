@@ -2,8 +2,105 @@
 
 cat <<'EOF'
 
-Zenlog: Log all command output to separate log files.
+Zenlog — automatic per-command shell logging.
 
-See https://github.com/omakoto/zenlog for the help.
+Zenlog wraps your login shell and saves every command's output to its own log
+file, tagged with metadata (directory, git branch, timestamps, etc.).
+
+USAGE
+  zenlog                           Start a new logged shell session
+  zenlog SUBCOMMAND [OPTIONS]      Run a subcommand
+
+QUICK START
+  zenlog init                      Create ~/.zenlog.toml and patch your shell RC
+  zenlog                           Start a logged session
+  zenlog open-last-log             View the previous command's output
+
+HOTKEYS (inside a zenlog session)
+  ALT+1    Open last command output in $ZENLOG_VIEWER (default: less)
+  ALT+2    Open last output in browser with color (requires a2h)
+  ALT+3    Pick any recent log with fzf, open in $ZENLOG_VIEWER
+  ALT+4    Pick any recent log with fzf, open in browser with color
+  ALT+L    Insert last log filename at cursor (repeat to cycle older logs)
+
+VIEWING LOGS
+  open-last-log [-r] [-e] [-p PID]     Open previous command's log
+  open-current-log [-r] [-e] [-p PID]  Open most recent command's log
+  open-log                             Pick a log interactively with fzf
+  open-url                             Find URLs in recent logs, pick with fzf, open in browser
+  cat-last-log                         Print previous command's log to stdout
+  cat-last-log-content                 Same, but strip the command-line header
+  select-log [-r] [-e]                 Print a log filename chosen via fzf
+
+FINDING LOG FILES
+  history [-r] [-e] [-n N] [-p PID]    Print recent log filenames (up to 10)
+  current-log [-r] [-e] [-p PID]       Print filename of the most recent log
+  last-log [-r] [-e] [-p PID]          Print filename of the second most recent log
+  all-commands [-r] [-e] [-n DAYS] [-c] [-l]
+                                       List all logs with their command lines
+
+  Flags for history / current-log / last-log:
+    -r        RAW log filename (with ANSI codes) instead of SAN (stripped)
+    -e        ENV log filename (metadata) instead of SAN
+    -n N      Nth most recent log only (1 = most recent)
+    -p PID    Use a specific zenlog session PID
+
+  Flags for all-commands:
+    -n DAYS   Limit to logs within the last N days (default: 30)
+    -c        Current session only
+    -l        Print filenames only, no command lines
+
+MAINTENANCE
+  purge-log -p DAYS [-y] [-P] [-b]     Delete logs older than DAYS days
+    -p DAYS   (required) age threshold in days
+    -y        Skip confirmation prompt
+    -P        Dry run: print files that would be deleted
+    -b        Run in the background
+  du [OPTIONS]                         Show disk usage of the log directory
+  free-space                           Print free bytes on the log filesystem
+  update                               Download and build the latest zenlog
+
+SESSION
+  pids                                 List all active zenlog session PIDs
+  in-zenlog                            Exit 0 if inside a zenlog session, 1 otherwise
+  flush                                Flush log buffers for the current session
+  flush-all                            Flush log buffers for all sessions
+
+SHELL SETUP
+  init                                 Interactive setup (recommended)
+  basic-bash-setup                     Print Bash setup snippet (source into .bashrc)
+  basic-zsh-setup                      Print Zsh setup snippet (source into .zshrc)
+
+EXAMPLES
+  # Open the previous command's output in less:
+  zenlog open-last-log
+
+  # Print the filename of the most recent log (useful in scripts):
+  zenlog current-log
+
+  # Find and open a URL from recent output:
+  zenlog open-url
+
+  # List all commands run in the last 7 days:
+  zenlog all-commands -n 7
+
+  # Delete logs older than 30 days without prompting:
+  zenlog purge-log -p 30 -y
+
+  # Show disk usage of the log directory:
+  zenlog du -sh
+
+LOG DIRECTORY (~/$ZENLOG_DIR, default ~/zenlog/)
+  SAN/         Sanitized output (ANSI stripped) — grep-friendly
+  RAW/         Raw output (with ANSI color codes)
+  ENV/         Metadata: pwd, git branch, exit status, timestamps
+  cmds/CMD/    Per-command logs; S/SS/… symlinks to most recent N outputs
+  pids/PID/    Per-session logs (scoped to one shell)
+  tags/TAG/    Per-tag logs (from inline # comments in commands)
+  S, SS, …     Global most-recent sanitized logs (across all shells)
+  R, RR, …     Global most-recent raw logs
+  E, EE, …     Global most-recent env logs
+
+See https://github.com/omakoto/zenlog for full documentation.
 
 EOF

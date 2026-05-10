@@ -6,22 +6,28 @@ Zenlog wraps your login shell and silently saves every command's output to its
 own log file, tagged with metadata (directory, git branch, timestamps, etc.).
 No more `tee`, no more scrollback hunting.
 
+- *This documentation is in BETA -- it was made with Claude and not fully reviewed yet.*
+- *This documentation also covers features that I haven't used myself for a long time, such as `ALT-3` and `ALT-4`. Some features may have bugs.*
+
 ## What you can do with it
 
 | Want to… | How |
 |---|---|
-| Re-read the last command's output | Press `ALT+1` on the prompt (opens in `less`) |
-| View it with full color in a browser | Press `ALT+2` (converts ANSI → HTML, requires `a2h`) |
+| Re-read the last command's output | Press `ALT+1` on the prompt (opens in `$ZENLOG_VIEWER`, default: `less`) |
+| View it with full color in a browser | Press `ALT+2` (converts ANSI → HTML via `a2h`, opens in `$ZENLOG_RAW_VIEWER`, default: `google-chrome`; install `a2h` with `go install github.com/omakoto/a2h@latest`) |
 | Pick any recent output interactively | Press `ALT+3` / `ALT+4` (uses `fzf`) |
 | Insert a log filename into your command | Press `ALT+L` at any cursor position |
-| Find URLs in recent output | `zenlog open-url` (picks with fzf, opens in browser) |
+| Find URLs in recent output | `zenlog open-url` (picks with `fzf`, opens in `$ZENLOG_BROWSER`, default: `google-chrome`) |
 | Grep old output from `lsusb` | `grep … ~/zenlog/cmds/lsusb/SAN/` |
 | Check what `make` printed last week | `less ~/zenlog/cmds/make/S` (symlink to latest) |
 | Clean up old logs | `zenlog purge-log -p 30 -y` |
+| Change which viewer/browser is used | Set `ZENLOG_VIEWER`, `ZENLOG_RAW_VIEWER`, `ZENLOG_BROWSER` in `.bashrc`/`.zshrc` (see [Configuration](#configuration-zenlogtoml)) |
 
 ## Quick start
 
 ### 1. Install
+
+*Zenlog can't be installed with `go install` because it requires commands in `subcommands/` to have a `+x` bit set, which `go install` won't do. Use `git clone`, and _do not_ remove the source files.*
 
 ```bash
 mkdir -p "$HOME/src"
@@ -57,11 +63,7 @@ output.  Type `exit` (or `exit 13` to restart zenlog) to leave the session.
 
 ## Configuration: `~/.zenlog.toml`
 
-Copy the sample from the source tree and edit to taste:
-
-```bash
-cp "$(zenlog zenlog-src-top)/dot_zenlog.toml" ~/.zenlog.toml
-```
+`zenlog init` creates `~/.zenlog.toml`. Edit it as you like.
 
 Key settings:
 
@@ -71,17 +73,34 @@ Key settings:
 | `ZENLOG_START_COMMAND` | `exec $SHELL -l` | Shell started by `zenlog` |
 | `ZENLOG_ALWAYS_NO_LOG_COMMANDS` | `vim`, `man`, `emacs`, `zenlog*`, … | Commands whose output is never saved |
 | `ZENLOG_PREFIX_COMMANDS` | `sudo`, `time`, `command`, … | Prefixes stripped when determining the command name |
-| `ZENLOG_AUTO_FLUSH` | `false` | Flush log files after every command |
+| `ZENLOG_AUTO_FLUSH` | `false` | Flush log files after every line (slow) |
 
 Environment variables to set in `.bashrc` / `.zshrc`:
 
-| Variable | Description |
-|---|---|
-| `ZENLOG_VIEWER` | Program to open SAN logs (default: `less`) |
-| `ZENLOG_RAW_VIEWER` | Program to open RAW HTML logs (default: `google-chrome`) |
-| `ZENLOG_BROWSER` | Browser for `zenlog open-url` (default: `google-chrome`) |
-| `ZENLOG_NO_DEFAULT_PROMPT` | Set to `1` to disable the post-command status line |
-| `ZENLOG_NO_DEFAULT_BINDING` | Set to `1` to disable the `ALT+*` hotkeys |
+| Variable | Default | Used by | Description |
+|---|---|---|---|
+| `ZENLOG_VIEWER` | `less` | `ALT+1`, `ALT+3`, `open-last-log`, … | Viewer for sanitized (text) logs |
+| `ZENLOG_RAW_VIEWER` | `google-chrome` | `ALT+2`, `ALT+4` | Viewer for colorized HTML logs (requires `a2h`) |
+| `ZENLOG_BROWSER` | `$BROWSER` → `google-chrome` | `open-url` | Browser for opening URLs found in logs |
+| `ZENLOG_NO_DEFAULT_PROMPT` | — | shell prompt | Set to `1` to disable the post-command status line |
+| `ZENLOG_NO_DEFAULT_BINDING` | — | shell | Set to `1` to disable the `ALT+*` hotkeys |
+
+The viewer/browser variables are read at the time you actually open a log, so
+they can appear anywhere in your RC file.  The `ZENLOG_NO_DEFAULT_*` variables
+are checked when the setup line runs, so they **must** be set before it:
+
+```bash
+# Must be before the setup line:
+export ZENLOG_NO_DEFAULT_BINDING=1
+export ZENLOG_NO_DEFAULT_PROMPT=1
+
+. <(zenlog basic-bash-setup)   # setup line
+
+# These can be before or after:
+export ZENLOG_VIEWER=bat
+export ZENLOG_RAW_VIEWER=firefox
+export ZENLOG_BROWSER=firefox
+```
 
 ---
 
